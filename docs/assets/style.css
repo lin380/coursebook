@@ -17,10 +17,6 @@ p.flushright {
   text-align: right;
 }
 
-p.author {
- text-size-adjust: 2em;
-}
-
 blockquote > p:last-child {
   text-align: right;
 }
