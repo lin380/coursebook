@@ -1,0 +1,11 @@
+# Framing research
+
+```{block, type="rmdkey"}
+In this chapter you will learn:
+
+- the goals of this textbook
+- the reasoning for using the R programming language
+- important text conventions employed in this textbook
+```
+
+## ...

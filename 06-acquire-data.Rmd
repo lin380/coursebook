@@ -1,0 +1,24 @@
+# (PART) Preparation {-}
+
+# Overview {-#preparation-overview}
+
+# Acquire data
+
+```{block, type="rmdkey"}
+In this chapter you will learn:
+
+- the goals of this textbook
+- the reasoning for using the R programming language
+- important text conventions employed in this textbook
+```
+
+## ...
+
+
+### Packages {#acquire-data-packages}
+
+```{r acquire-data-packages}
+library(rvest) # full-fleged web scraping
+library(datapasta) # copy/paste approach to HTML tables
+```
+

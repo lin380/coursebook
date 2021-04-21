@@ -1,0 +1,111 @@
+# (PART) Welcome {-}
+
+# Overview {-#course-overview}
+
+**WELCOME**
+
+... overview text
+
+**Learning outcomes**
+
+- PS (2) demonstrate ability to produce collaborative and reproducible research using R, RStudio, and GitHub
+
+**Learning goals**
+
+- ...
+
+# About this course {-}
+
+## Description {-}
+
+## Conventions {-}
+
+This book is about the concepts for understanding and the techniques for doing quantitative language science. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself --specifically using an R language package called `bookdown` [@R-bookdown]. This R package makes it possible to write, execute ('run'), and display code and results within the text. 
+
+For example, the following text block shows actual R code and the results that are generated when running this code. Note that the hashtag `#` signals a **code comment**. The code follows within the same text block and a subsequent text block displays the output of the code.
+
+```{r preface-example-code}
+# Add 1 plus 1
+1 + 1
+```
+
+Inline code will be used when code blocks are short and the results are not needed for display. For example, the same code as above will sometimes appear as `1 + 1`. 
+
+When necessary meta-description of code will appear. This is particularly relevant for R Markdown documents. 
+
+````clike
+```{r test-code}`r ''`
+1 + 1
+```
+````
+
+In terms of prose, key concepts will be signaled using **_bold italics_**. Terms that appear in this typeface will also appear in the [glossary] at the end of the text. Furthermore, there are four pose text blocks that will be used to signal the reader's attention: *key points*, *notes*, *tips*, and *warnings*.  
+
+Key points summarize the main points to be covered in a chapter or a subsection of the text.
+
+```{block, type="rmdkey"}
+In this chapter you will learn:
+
+- the goals of this textbook
+- the reasoning for using the R programming language
+- important text conventions employed in this textbook
+```
+
+Notes provide a bit more information on the topic or where to find more information.
+
+```{block, type="rmdnote"}
+R is more than a powerful statistical programming language, it also can be used to perform all the necessary steps in a data science project; including reporting. A relatively new addition to the reporting capabilities of R is the `bookdown` package (this textbook was created using this very package). You can find out more [here](https://bookdown.org/).
+```
+
+Tips are used to signal helpful hints that might otherwise be overlooked.
+
+```{block, type="rmdtip"}
+During a the course of an exploratory work session, many R objects are often created to test ideas. At some point inspecting the workspace becomes difficult due to the number of objects displayed using `ls()`. 
+
+To remove all objects from the workspace, use `rm(list = ls())`.
+```
+
+Errors will be an inevitable part of learning, but some errors can be avoided. The text will used the warning text block to highlight typical pitfalls and errors.
+
+```{block, type="rmdwarning"}
+Hello world!  
+This is a warning. 
+```
+
+Although this is not intended to be a in-depth introduction to statistical techniques, mathematical formulas will be included in the text. These formulas will appear either inline $1 + 1 = 2$ or as block equations.
+
+\begin{equation}
+  \hat{c} = \underset{c \in C} {\mathrm{argmax}} ~\hat{P}(c) \prod_i \hat{P}(w_i|c)
+  (\#eq:example-formula)
+\end{equation}
+
+Data analysis leans heavily on graphical representations. Figures will appear numbered, as in Figure \@ref(fig:test-fig). 
+
+```{r test-fig, fig.cap='Test plot from mtcars dataset'}
+library(ggplot2) # load graphics package
+ggplot(mtcars, aes(x = hp, y = mpg)) + # map 'hp' and 'mpg' to coordinate space
+  geom_point() + # add points
+  geom_smooth(method = "lm") + # draw linear trend line
+  labs(x = "Horsepower", # label x axis
+       y = "Miles per gallon", # label y axis
+       title = "Test plot", # add title
+       subtitle = "From mtcars dataset") # add subtitle
+```
+
+Tables, such as Table \@ref(tab:test-tab) will be numbered separately from figures. 
+
+```{r test-tab}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+# R and RStudio {-}
+
+```{r learnr-tutorial-setup}
+knitr::include_url("https://jjallaire.shinyapps.io/learnr-tutorial-00-setup/#section-welcome", height = "600px")
+```
+
+
+
