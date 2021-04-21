@@ -14,7 +14,7 @@ bookdown::gitbook:
         <li>
         <center>...</center>
         </li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+    edit: https://github.com/lin380/coursebook/edit/master/%s
     download: ["pdf", "epub"]
     sharing:
       github: yes

@@ -11,8 +11,8 @@ biblio-style: apalike
 csl: /Users/francojc/Documents/Styles/apa-no-doi-no-issue.csl
 link-citations: yes
 links-as-notes: true
-url: https://francojc.github.io/lin380coursebook/
-github-repo: https://github.com/francojc/lin380coursebook
+url: https://lin380.github.io/coursebook/
+github-repo: https://github.com/lin380/coursebook
 twitter-handle: jeridfrancom
 description: "Coursebook to accompany Linguistics 380 'Language Use and Technology' Fall 2021"
 cover-image: assets/images/logo.png
