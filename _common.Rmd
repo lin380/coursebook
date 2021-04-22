@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
   tidy = TRUE
 )
 
+options(digits = 3)
+
 pacman::p_load(tidyverse, rmarkdown, here, DT)
 ```
 

@@ -1,3 +1,4 @@
+fig:tidy-workflow-img
 eq:example-formula
 fig:test-fig
 tab:test-tab
@@ -15,4 +16,7 @@ section-3
 acquire-data
 section-4
 acquire-data-packages
+curate-data
 section-5
+curate-data-packages
+section-6

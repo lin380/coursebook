@@ -1,0 +1,23 @@
+# Curate data
+
+```{block, type="rmdkey"}
+In this chapter you will learn:
+
+- the goals of this textbook
+- the reasoning for using the R programming language
+- important text conventions employed in this textbook
+```
+
+## ...
+
+
+### Packages {#curate-data-packages}
+
+```{r curate-data-packages}
+# ...
+```
+
+
+Data Organization in Spreadsheets [@Broman2018]. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.
+
+

@@ -20,6 +20,7 @@ bookdown::gitbook:
       github: yes
       facebook: no
       twitter: yes
+      all: []
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

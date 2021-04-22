@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Acquire data | LIN 380 Coursebook</title>
   <meta name="description" content="Coursebook to accompany Linguistics 380 ‘Language Use and Technology’" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Acquire data | LIN 380 Coursebook" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://lin380.github.io/coursebook/" />
-  <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png" />
+  <meta property="og:image" content="https://lin380.github.io/coursebook//assets/images/logo.png" />
   <meta property="og:description" content="Coursebook to accompany Linguistics 380 ‘Language Use and Technology’" />
   <meta name="github-repo" content="lin380/coursebook" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 5 Acquire data | LIN 380 Coursebook" />
   <meta name="twitter:site" content="@jeridfrancom" />
   <meta name="twitter:description" content="Coursebook to accompany Linguistics 380 ‘Language Use and Technology’" />
-  <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png" />
+  <meta name="twitter:image" content="https://lin380.github.io/coursebook//assets/images/logo.png" />
 
 <meta name="author" content="Jerid Francom" />
 
@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="preparation-overview.html"/>
-<link rel="next" href="section-5.html"/>
+<link rel="next" href="curate-data.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.18/datatables.js"></script>
@@ -62,7 +64,10 @@
 <script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<!-- Embed Hypothes.is -->
 <script src="https://hypothes.is/embed.js" async></script>
+
+<!-- Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -138,6 +143,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="assets/style.css" type="text/css" />
 </head>
 
@@ -161,12 +189,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>I Welcome</b></span></li>
 <li class="chapter" data-level="" data-path="course-overview.html"><a href="course-overview.html"><i class="fa fa-check"></i>Overview</a></li>
-<li class="chapter" data-level="" data-path="about-this-course.html"><a href="about-this-course.html"><i class="fa fa-check"></i>About this course</a>
+<li class="chapter" data-level="" data-path="about-this-coursebook.html"><a href="about-this-coursebook.html"><i class="fa fa-check"></i>About this coursebook</a>
 <ul>
-<li class="chapter" data-level="" data-path="about-this-course.html"><a href="about-this-course.html#description"><i class="fa fa-check"></i>Description</a></li>
-<li class="chapter" data-level="" data-path="about-this-course.html"><a href="about-this-course.html#conventions"><i class="fa fa-check"></i>Conventions</a></li>
+<li class="chapter" data-level="" data-path="about-this-coursebook.html"><a href="about-this-coursebook.html#approach"><i class="fa fa-check"></i>Approach</a></li>
+<li class="chapter" data-level="" data-path="about-this-coursebook.html"><a href="about-this-coursebook.html#conventions"><i class="fa fa-check"></i>Conventions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r-and-rstudio.html"><a href="r-and-rstudio.html"><i class="fa fa-check"></i>R and RStudio</a></li>
+<li class="chapter" data-level="" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i>Git and GitHub</a></li>
 <li class="part"><span><b>II Foundations</b></span></li>
 <li class="chapter" data-level="" data-path="foundations-overview.html"><a href="foundations-overview.html"><i class="fa fa-check"></i>Overview</a></li>
 <li class="chapter" data-level="1" data-path="introduction-to-text-analysis.html"><a href="introduction-to-text-analysis.html"><i class="fa fa-check"></i><b>1</b> Introduction to text analysis</a>
@@ -202,8 +231,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="acquire-data.html"><a href="acquire-data.html#acquire-data-packages"><i class="fa fa-check"></i><b>5.1.1</b> Packages</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="curate-data.html"><a href="curate-data.html"><i class="fa fa-check"></i><b>6</b> Curate data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="curate-data.html"><a href="curate-data.html#section-5"><i class="fa fa-check"></i><b>6.1</b> …</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="curate-data.html"><a href="curate-data.html#curate-data-packages"><i class="fa fa-check"></i><b>6.1.1</b> Packages</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>A</b> …</a></li>
+<li class="chapter" data-level="A" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>A</b> …</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li>
@@ -255,16 +291,13 @@ important text conventions employed in this textbook
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="preparation-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="curate-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -287,7 +320,8 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"whatsapp": false,
+"all": {}
 },
 "fontsettings": {
 "theme": "white",

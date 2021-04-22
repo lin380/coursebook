@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Statistical approaches | LIN 380 Coursebook</title>
+  <title>About this coursebook | LIN 380 Coursebook</title>
   <meta name="description" content="Coursebook to accompany Linguistics 380 ‘Language Use and Technology’" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Statistical approaches | LIN 380 Coursebook" />
+  <meta property="og:title" content="About this coursebook | LIN 380 Coursebook" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://lin380.github.io/coursebook/" />
   <meta property="og:image" content="https://lin380.github.io/coursebook//assets/images/logo.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lin380/coursebook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Statistical approaches | LIN 380 Coursebook" />
+  <meta name="twitter:title" content="About this coursebook | LIN 380 Coursebook" />
   <meta name="twitter:site" content="@jeridfrancom" />
   <meta name="twitter:description" content="Coursebook to accompany Linguistics 380 ‘Language Use and Technology’" />
   <meta name="twitter:image" content="https://lin380.github.io/coursebook//assets/images/logo.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="understanding-data.html"/>
-<link rel="next" href="framing-research.html"/>
+<link rel="prev" href="course-overview.html"/>
+<link rel="next" href="r-and-rstudio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -263,8 +263,37 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="statistical-approaches" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Statistical approaches</h1>
+<div id="about-this-coursebook" class="section level1 unnumbered">
+<h1>About this coursebook</h1>
+<p>In recent years there has been a growing buzz around the term ‘Data Science’ and related terms; data analytics, data mining, <em>etc</em>. In a nutshell data science is the process by which an investigator leverages statistical methods and computational power to uncover insight from large datasets. Driven in large part by the increase in computing power available to the average individual and the increasing amount of electronic data that is now available through the internet, interest in data science has expanded to virtually all fields in academia and areas in the public sector. Data scientists are in high demand and this trend is expected to continue into the foreseeable future, which means that undergraduate and post-graduate students will be increasingly seeking out resources and training in the area.</p>
+<p>This coursebook is an introduction to the fundamental concepts and practical programming skills from Data Science that are increasingly employed in a variety of language-centered fields and sub-fields. It is geared towards advanced undergraduates and graduate students of linguistics and related fields. As quantitative research skills are quickly becoming a core aspect of many language programs, this coursebook aims to provide a fundamental understanding of theoretical concepts, programming skills, and statistical methods for doing quantitative text analysis. Through these skills we will explore topics and replicate previous research in a variety of areas in language research (psycholinguistics, sociolinguistics, translation studies, <em>etc.</em>) using common methods and authentic data sources.</p>
+<p>No programming knowledge is assumed, either with R or otherwise.</p>
+<div id="approach" class="section level2 unnumbered">
+<h2>Approach</h2>
+<p>Many textbooks on doing ‘Data Science,’ even those that have a domain-centric approach, such as text analysis, tend to focus on the basic ‘tidy’ approach, seen in Figure <a href="about-this-coursebook.html#fig:tidy-workflow-img">0.1</a>. to analysis and do not tend to encourage readers to lead with research questions. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings</p>
+<div class="figure"><span id="fig:tidy-workflow-img"></span>
+<img src="images/preface-tidy-approach.png" alt="Wickham diagram..." width="601" />
+<p class="caption">
+Figure 0.1: Wickham diagram…
+</p>
+</div>
+<p>I think a central advantage to this coursebook for language researchers is to thread the project goals without technical implementation in mind first.</p>
+<p>Then, after a general idea about what the data should look like, how it should be analyzed, and how the analysis will contribute to knowledge in the field, we can move towards implementing these preliminary formulations in R code. In a way this is the classic separation between content and format –the content of our research should precede the format it should or will take.</p>
+</div>
+<div id="conventions" class="section level2 unnumbered">
+<h2>Conventions</h2>
+<p>This coursebook is about the concepts for understanding and the techniques for doing quantitative text analysis with R. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader’s attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself –specifically using an R language package called <code>bookdown</code> <span class="citation">(<a href="references.html#ref-R-bookdown" role="doc-biblioref">Xie, 2020</a>)</span>. This R package makes it possible to write, execute (‘run’), and display code and results within the text.</p>
+<p>For example, the following text block shows actual R code and the results that are generated when running this code. Note that the hashtag <code>#</code> signals a <strong>code comment</strong>. The code follows within the same text block and a subsequent text block displays the output of the code.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="about-this-coursebook.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 1 plus 1</span></span>
+<span id="cb2-2"><a href="about-this-coursebook.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Inline code will be used when code blocks are short and the results are not needed for display. For example, the same code as above will sometimes appear as <code>1 + 1</code>.</p>
+<p>When necessary meta-description of code will appear. This is particularly relevant for R Markdown documents.</p>
+<pre class="clike"><code>```{r test-code}
+1 + 1
+```</code></pre>
+<p>In terms of prose, key concepts will be signaled using <strong><em>bold italics</em></strong>. Terms that appear in this typeface will also appear in the [glossary] at the end of the text. Furthermore, there are four pose text blocks that will be used to signal the reader’s attention: <em>key points</em>, <em>notes</em>, <em>tips</em>, and <em>warnings</em>.</p>
+<p>Key points summarize the main points to be covered in a chapter or a subsection of the text.</p>
 <div class="rmdkey">
 <p>
 In this chapter you will learn:
@@ -281,9 +310,208 @@ important text conventions employed in this textbook
 </li>
 </ul>
 </div>
-<div id="section-2" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> …</h2>
-
+<p>Notes provide a bit more information on the topic or where to find more information.</p>
+<div class="rmdnote">
+<p>
+R is more than a powerful statistical programming language, it also can be used to perform all the necessary steps in a data science project; including reporting. A relatively new addition to the reporting capabilities of R is the <code>bookdown</code> package (this textbook was created using this very package). You can find out more <a href="https://bookdown.org/">here</a>.
+</p>
+</div>
+<p>Tips are used to signal helpful hints that might otherwise be overlooked.</p>
+<div class="rmdtip">
+<p>
+During a the course of an exploratory work session, many R objects are often created to test ideas. At some point inspecting the workspace becomes difficult due to the number of objects displayed using <code>ls()</code>.
+</p>
+<p>
+To remove all objects from the workspace, use <code>rm(list = ls())</code>.
+</p>
+</div>
+<p>Errors will be an inevitable part of learning, but some errors can be avoided. The text will used the warning text block to highlight typical pitfalls and errors.</p>
+<div class="rmdwarning">
+<p>
+Hello world!<br />
+This is a warning.
+</p>
+</div>
+<p>Although this is not intended to be a in-depth introduction to statistical techniques, mathematical formulas will be included in the text. These formulas will appear either inline <span class="math inline">\(1 + 1 = 2\)</span> or as block equations.</p>
+<p><span class="math display" id="eq:example-formula">\[\begin{equation}
+  \hat{c} = \underset{c \in C} {\mathrm{argmax}} ~\hat{P}(c) \prod_i \hat{P}(w_i|c)
+  \tag{0.1}
+\end{equation}\]</span></p>
+<p>Data analysis leans heavily on graphical representations. Figures will appear numbered, as in Figure <a href="about-this-coursebook.html#fig:test-fig">0.2</a>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="about-this-coursebook.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># load graphics package</span></span>
+<span id="cb5-2"><a href="about-this-coursebook.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span> <span class="co"># map &#39;hp&#39; and &#39;mpg&#39; to coordinate space</span></span>
+<span id="cb5-3"><a href="about-this-coursebook.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># add points</span></span>
+<span id="cb5-4"><a href="about-this-coursebook.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> <span class="co"># draw linear trend line</span></span>
+<span id="cb5-5"><a href="about-this-coursebook.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Horsepower&quot;</span>, <span class="co"># label x axis</span></span>
+<span id="cb5-6"><a href="about-this-coursebook.html#cb5-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Miles per gallon&quot;</span>, <span class="co"># label y axis</span></span>
+<span id="cb5-7"><a href="about-this-coursebook.html#cb5-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Test plot&quot;</span>, <span class="co"># add title</span></span>
+<span id="cb5-8"><a href="about-this-coursebook.html#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;From mtcars dataset&quot;</span>) <span class="co"># add subtitle</span></span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure"><span id="fig:test-fig"></span>
+<img src="01-course_files/figure-html/test-fig-1.png" alt="Test plot from mtcars dataset" width="672" />
+<p class="caption">
+Figure 0.2: Test plot from mtcars dataset
+</p>
+</div>
+<p>Tables, such as Table <a href="about-this-coursebook.html#tab:test-tab">0.1</a> will be numbered separately from figures.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="about-this-coursebook.html#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb7-2"><a href="about-this-coursebook.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb7-3"><a href="about-this-coursebook.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-4"><a href="about-this-coursebook.html#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:test-tab">Table 0.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
             </section>
@@ -291,8 +519,8 @@ important text conventions employed in this textbook
           </div>
         </div>
       </div>
-<a href="understanding-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="framing-research.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="course-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-and-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -324,7 +552,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/lin380/coursebook/edit/master/04-statistical-approaches.Rmd",
+"link": "https://github.com/lin380/coursebook/edit/master/01-course.Rmd",
 "text": "Edit"
 },
 "history": {
