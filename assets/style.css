@@ -40,51 +40,6 @@ h1.title {
   font-weight: 600;
 }
 
-/* Notes */
-
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity {
-  border-radius: 10px;
-  border: 2px solid rgb(225,225,225);
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-}
-
-.rmdkey {
-  background: rgb(248,248,248) no-repeat 5px center/3em;
-}
-
-.rmdnote  {
-  background: rgb(235,249,144) no-repeat 5px center/3em;
-}
-
-.rmdtip  {
-  background: rgb(144,235,249) no-repeat 5px center/3em;
-}
-
-.rmdwarning  {
-  background: rgb(249,158,144) no-repeat 5px center/3em;
-}
-
-.rmdactivity {
-  background: rgb(144,249,158) no-repeat 5px center/3em;
-}
-
-.rmdkey {
-  background-image: url("images/key.png");
-}
-.rmdnote {
-  background-image: url("images/note.png");
-}
-.rmdtip {
-  background-image: url("images/tip.png");
-}
-.rmdwarning {
-  background-image: url("images/warning.png");
-}
-.rmdactivity {
-  background-image: url("../images/code.png");
-}
-
 /*-----Body Links-------*/
 
 .book .book-body .page-wrapper .page-inner section.normal a {
@@ -137,37 +92,82 @@ a.anchor {
 }
 
 .summary{
-    font-family: 'Muli', sans-serif;
-    }
+  font-family: 'Muli', sans-serif;
+}
 
 /* all TOC list items, basically */
-    .book .book-summary ul.summary li a,
-    .book .book-summary ul.summary li span {
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 15px;
-      padding-right: 15px;
-      color: #375669;
-    }
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li span {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #375669;
+}
 
-    .summary a:hover {
-      color: #778ca5 !important;
-    }
+.summary a:hover {
+  color: #778ca5 !important;
+}
 
-    .book .book-summary ul.summary li.active>a { /*active TOC links*/
-      color: #82231C !important;
-      border-left: solid 4px;
-      border-color: #82231C;
-      padding-left: 11px !important;
-    }
+.book .book-summary ul.summary li.active>a { /*active TOC links*/
+  color: #82231C !important;
+  border-left: solid 4px;
+  border-color: #82231C;
+  padding-left: 11px !important;
+}
 
-    li.appendix span, li.part span { /* for TOC part names */
-      margin-top: 1em;
-      color: #778ca5;
-      opacity: 1 !important;
-      text-transform: uppercase;
-    }
+li.appendix span, li.part span { /* for TOC part names */
+  margin-top: 1em;
+  color: #778ca5;
+  opacity: 1 !important;
+  text-transform: uppercase;
+}
 
-    .part + li[data-level=""] { /* grabs first .chapter immediately after .part...but only those ch without numbers */
-      text-transform: uppercase;
-    }
+.part + li[data-level=""] { /* grabs first .chapter immediately after .part...but only those ch without numbers */
+  text-transform: uppercase;
+}
+
+/* Notes */
+
+.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity {
+  border-radius: 10px;
+  border: 2px solid rgb(225,225,225);
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+}
+
+.rmdkey {
+  background: rgb(248,248,248) no-repeat 5px center/3em;
+}
+
+.rmdnote  {
+  background: rgb(235,249,144) no-repeat 5px center/3em;
+}
+
+.rmdtip  {
+  background: rgb(144,235,249) no-repeat 5px center/3em;
+}
+
+.rmdwarning  {
+  background: rgb(249,158,144) no-repeat 5px center/3em;
+}
+
+.rmdactivity {
+  background: rgb(144,249,158) no-repeat 5px center/3em;
+}
+
+.rmdkey {
+  background-image: url("images/key.png");
+}
+.rmdnote {
+  background-image: url("images/note.png");
+}
+.rmdtip {
+  background-image: url("images/tip.png");
+}
+.rmdwarning {
+  background-image: url("images/warning.png");
+}
+.rmdactivity {
+  background-image: url("../images/code.png");
+}

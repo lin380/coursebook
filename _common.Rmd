@@ -13,8 +13,10 @@ knitr::opts_chunk$set(
   tidy = TRUE
 )
 
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+
 options(digits = 3)
 
-pacman::p_load(tidyverse, rmarkdown, here, DT)
+pacman::p_load(tidyverse, rmarkdown, here, DT, webshot)
 ```
 

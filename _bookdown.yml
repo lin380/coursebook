@@ -1,7 +1,7 @@
 book_filename: "LIN380"
 delete_merged_file: true
 output_dir: "docs"
-new_session: true
+new_session: yes
 language:
   ui:
     chapter_name: "Chapter "

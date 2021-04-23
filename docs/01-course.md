@@ -2,6 +2,10 @@
 
 # Overview {-#course-overview}
 
+
+
+
+
 **WELCOME**
 
 ... overview text
@@ -26,8 +30,8 @@ No programming knowledge is assumed, either with R or otherwise.
 
 Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img).  to analysis and do not tend to encourage readers to lead with research questions. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings
 
-<div class="figure">
-<img src="images/preface-tidy-approach.png" alt="Wickham diagram..." width="601" />
+<div class="figure" style="text-align: center">
+<img src="images/preface-tidy-approach.png" alt="Wickham diagram..." width="70%" />
 <p class="caption">(\#fig:tidy-workflow-img)Wickham diagram...</p>
 </div>
 
@@ -46,10 +50,7 @@ For example, the following text block shows actual R code and the results that a
 ```r
 # Add 1 plus 1
 1 + 1
-```
-
-```
-## [1] 2
+#> [1] 2
 ```
 
 Inline code will be used when code blocks are short and the results are not needed for display. For example, the same code as above will sometimes appear as `1 + 1`. 
@@ -116,12 +117,8 @@ ggplot(mtcars, aes(x = hp, y = mpg)) + # map 'hp' and 'mpg' to coordinate space
        subtitle = "From mtcars dataset") # add subtitle
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-<div class="figure">
-<img src="01-course_files/figure-html/test-fig-1.png" alt="Test plot from mtcars dataset" width="672" />
+<div class="figure" style="text-align: center">
+<img src="01-course_files/figure-html/test-fig-1.png" alt="Test plot from mtcars dataset" width="70%" />
 <p class="caption">(\#fig:test-fig)Test plot from mtcars dataset</p>
 </div>
 
@@ -129,10 +126,7 @@ Tables, such as Table \@ref(tab:test-tab) will be numbered separately from figur
 
 
 ```r
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
+knitr::kable(head(iris, 20), caption = "Here is a nice table!", booktabs = TRUE)
 ```
 
 
@@ -165,11 +159,6 @@ Table: (\#tab:test-tab)Here is a nice table!
 # R and RStudio {-}
 
 
-```r
-knitr::include_url("https://jjallaire.shinyapps.io/learnr-tutorial-00-setup/#section-welcome", height = "600px")
-```
-
-<iframe src="https://jjallaire.shinyapps.io/learnr-tutorial-00-setup/#section-welcome" width="672" height="600px"></iframe>
 
 # Git and GitHub {-}
 
