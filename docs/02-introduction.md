@@ -40,7 +40,7 @@ In this section the aim is to (1) provide an overview of quantitative research a
 
 ### ...
 
-# Activities {-}
+## Activities {-}
 
 <div class="rmdactivity">
 <p>Here is an activity!</p>

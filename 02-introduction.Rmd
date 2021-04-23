@@ -39,7 +39,7 @@ Here is a note!
 
 ### ...
 
-# Activities {-}
+## Activities {-}
 
 ```{block, type="rmdactivity"}
 Here is an activity!

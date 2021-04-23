@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-]{book}
+]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
@@ -41,6 +41,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -104,6 +105,8 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -175,42 +178,128 @@
 \bibliographystyle{apalike}
 
 \title{LIN 380 Coursebook}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Text as Data: An introduction to quantative text analysis and reproducible research with R}
 \author{Jerid Francom}
-\date{2021-04-20}
+\date{April 22, 2021 (latest version)}
 
 \begin{document}
 \maketitle
 
 {
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \hypertarget{about}{%
-\chapter*{About}\label{about}}
-\addcontentsline{toc}{chapter}{About}
+\section*{About}\label{about}}
+\addcontentsline{toc}{section}{About}
 
 \ldots{}
+
+\hypertarget{todos}{%
+\subsection*{TODOs}\label{todos}}
+\addcontentsline{toc}{subsection}{TODOs}
+
+\begin{itemize}
+\tightlist
+\item
+  Consider creating an R cheat sheet for text analytics in R. \href{https://www.rstudio.com/resources/cheatsheets/how-to-contribute-a-cheatsheet/}{templates for creating cheat sheets}, \href{https://www.rstudio.com/resources/cheatsheets/}{examples}
+\item
+  \ldots{}
+\end{itemize}
+
+\hypertarget{build-and-session-information}{%
+\subsection*{Build and session information}\label{build-and-session-information}}
+\addcontentsline{toc}{subsection}{Build and session information}
+
+This coursebook was written in \href{http://bookdown.org/}{bookdown} inside \href{http://www.rstudio.com/ide/}{RStudio}. The website is hosted with \href{https://pages.github.com/}{GitHub Pages} and the complete source is available from \href{https://github.com/francojc}{GitHub}.
+
+This version of the coursebook was built with:
+
+\begin{verbatim}
+#> Finding R package dependencies ... Done!
+#>  setting  value                       
+#>  version  R version 4.0.2 (2020-06-22)
+#>  os       macOS  10.16                
+#>  system   x86_64, darwin17.0          
+#>  ui       X11                         
+#>  language (EN)                        
+#>  collate  en_US.UTF-8                 
+#>  ctype    en_US.UTF-8                 
+#>  tz       America/New_York            
+#>  date     2021-04-22
+\end{verbatim}
+
+And depends on these packages:
+
+\textbackslash begin\{center\}\includegraphics[width=0.7\linewidth]{index_files/figure-latex/unnamed-chunk-3-1}
 
 \hypertarget{part-welcome}{%
 \part{Welcome}\label{part-welcome}}
 
 \hypertarget{course-overview}{%
-\chapter*{Overview}\label{course-overview}}
-\addcontentsline{toc}{chapter}{Overview}
+\section*{Overview}\label{course-overview}}
+\addcontentsline{toc}{section}{Overview}
 
-\hypertarget{about-this-course}{%
-\chapter*{About this course}\label{about-this-course}}
-\addcontentsline{toc}{chapter}{About this course}
+\textbf{WELCOME}
 
-\hypertarget{description}{%
-\section*{Description}\label{description}}
-\addcontentsline{toc}{section}{Description}
+\ldots{} overview text
+
+\textbf{Learning outcomes}
+
+\begin{itemize}
+\tightlist
+\item
+  PS (2) demonstrate ability to produce collaborative and reproducible research using R, RStudio, and GitHub
+\end{itemize}
+
+\textbf{Learning goals}
+
+\begin{itemize}
+\tightlist
+\item
+  \ldots{}
+\end{itemize}
+
+\hypertarget{about-this-coursebook}{%
+\section*{About this coursebook}\label{about-this-coursebook}}
+\addcontentsline{toc}{section}{About this coursebook}
+
+In recent years there has been a growing buzz around the term `Data Science' and related terms; data analytics, data mining, \emph{etc}. In a nutshell data science is the process by which an investigator leverages statistical methods and computational power to uncover insight from large datasets. Driven in large part by the increase in computing power available to the average individual and the increasing amount of electronic data that is now available through the internet, interest in data science has expanded to virtually all fields in academia and areas in the public sector. Data scientists are in high demand and this trend is expected to continue into the foreseeable future, which means that undergraduate and post-graduate students will be increasingly seeking out resources and training in the area.
+
+This coursebook is an introduction to the fundamental concepts and practical programming skills from Data Science that are increasingly employed in a variety of language-centered fields and sub-fields. It is geared towards advanced undergraduates and graduate students of linguistics and related fields. As quantitative research skills are quickly becoming a core aspect of many language programs, this coursebook aims to provide a fundamental understanding of theoretical concepts, programming skills, and statistical methods for doing quantitative text analysis. Through these skills we will explore topics and replicate previous research in a variety of areas in language research (psycholinguistics, sociolinguistics, translation studies, \emph{etc.}) using common methods and authentic data sources.
+
+No programming knowledge is assumed, either with R or otherwise.
+
+\hypertarget{approach}{%
+\subsection*{Approach}\label{approach}}
+\addcontentsline{toc}{subsection}{Approach}
+
+Many textbooks on doing `Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic `tidy' approach, seen in Figure \ref{fig:tidy-workflow-img}. to analysis and do not tend to encourage readers to lead with research questions. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/preface-tidy-approach} 
+
+}
+
+\caption{Wickham diagram...}\label{fig:tidy-workflow-img}
+\end{figure}
+
+I think a central advantage to this coursebook for language researchers is to thread the project goals without technical implementation in mind first.
+
+Then, after a general idea about what the data should look like, how it should be analyzed, and how the analysis will contribute to knowledge in the field, we can move towards implementing these preliminary formulations in R code. In a way this is the classic separation between content and format --the content of our research should precede the format it should or will take.
 
 \hypertarget{conventions}{%
-\section*{Conventions}\label{conventions}}
-\addcontentsline{toc}{section}{Conventions}
+\subsection*{Conventions}\label{conventions}}
+\addcontentsline{toc}{subsection}{Conventions}
 
-This book is about the concepts for understanding and the techniques for doing quantitative language science. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself --specifically using an R language package called \texttt{bookdown} \citep{R-bookdown}. This R package makes it possible to write, execute (`run'), and display code and results within the text.
+This coursebook is about the concepts for understanding and the techniques for doing quantitative text analysis with R. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself --specifically using an R language package called \texttt{bookdown} \citep{R-bookdown}. This R package makes it possible to write, execute (`run'), and display code and results within the text.
 
 For example, the following text block shows actual R code and the results that are generated when running this code. Note that the hashtag \texttt{\#} signals a \textbf{code comment}. The code follows within the same text block and a subsequent text block displays the output of the code.
 
@@ -218,12 +307,9 @@ For example, the following text block shows actual R code and the results that a
 \begin{Highlighting}[]
 \CommentTok{\# Add 1 plus 1}
 \DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\CommentTok{\#\textgreater{} [1] 2}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] 2
-\end{verbatim}
 
 Inline code will be used when code blocks are short and the results are not needed for display. For example, the same code as above will sometimes appear as \texttt{1\ +\ 1}.
 
@@ -305,24 +391,20 @@ Data analysis leans heavily on graphical representations. Figures will appear nu
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## `geom_smooth()` using formula 'y ~ x'
-\end{verbatim}
-
 \begin{figure}
-\centering
-\includegraphics{01-course_files/figure-latex/test-fig-1.pdf}
-\caption{\label{fig:test-fig}Test plot from mtcars dataset}
+
+{\centering \includegraphics[width=0.7\linewidth]{01-course_files/figure-latex/test-fig-1} 
+
+}
+
+\caption{Test plot from mtcars dataset}\label{fig:test-fig}
 \end{figure}
 
 Tables, such as Table \ref{tab:test-tab} will be numbered separately from figures.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
-  \FunctionTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
-  \AttributeTok{booktabs =} \ConstantTok{TRUE}
-\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\AttributeTok{caption =} \StringTok{"Here is a nice table!"}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -362,24 +444,49 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 \end{table}
 
 \hypertarget{r-and-rstudio}{%
-\chapter*{R and RStudio}\label{r-and-rstudio}}
-\addcontentsline{toc}{chapter}{R and RStudio}
+\section*{R and RStudio}\label{r-and-rstudio}}
+\addcontentsline{toc}{section}{R and RStudio}
+
+\hypertarget{git-and-github}{%
+\section*{Git and GitHub}\label{git-and-github}}
+\addcontentsline{toc}{section}{Git and GitHub}
+
+\citep{Bryan2017a}
 
 \hypertarget{part-foundations}{%
 \part{Foundations}\label{part-foundations}}
 
 \hypertarget{foundations-overview}{%
-\chapter*{Overview}\label{foundations-overview}}
-\addcontentsline{toc}{chapter}{Overview}
+\section*{Overview}\label{foundations-overview}}
+\addcontentsline{toc}{section}{Overview}
 
-\hypertarget{foundations}{%
-\section*{Foundations}\label{foundations}}
-\addcontentsline{toc}{section}{Foundations}
+\textbf{FOUNDATIONS}
 
-In this section, \ldots.
+In this section the aim is to (1) provide an overview of quantitative research and their applications, by both highlighting visible applications and notable research in various fields. (2) We will under the hood a bit and consider how quantitative research contributes to language research. (3) I will layout the main types of research and situate quantitative text analysis inside these. Some attention will be given to the historical background to understand how theory (generative and usage-based grammar) has frame and to some degree continues to frame language research. (4) We will discuss how the programmatic approaches to language, which are fundamental for quantative text analysis, also provide the opportunity to further science through process documentation and research reproducibility.
+
+\textbf{Learning outcomes}
+
+\begin{itemize}
+\tightlist
+\item
+  DL (1) ability to understand and apply data analysis to derive insight from data
+\item
+  DL (2) ability to understand and apply data knowledge and skills across linguistic and language-related disciplines
+\item
+  PS (2) demonstrate ability to produce collaborative and reproducible research using R, RStudio, and GitHub
+\item
+  RS (1) identify an applicable area of investigation in a linguistic or language-related field
+\end{itemize}
+
+\textbf{Learning goals}
+
+\begin{itemize}
+\tightlist
+\item
+\end{itemize}
 
 \hypertarget{introduction-to-text-analysis}{%
-\chapter{Introduction to text analysis}\label{introduction-to-text-analysis}}
+\section{Introduction to text analysis}\label{introduction-to-text-analysis}}
 
 \begin{rmdkey}
 In this chapter you will learn:
@@ -396,30 +503,38 @@ In this chapter you will learn:
 \end{rmdkey}
 
 \hypertarget{quantitative-studies}{%
-\section{Quantitative studies}\label{quantitative-studies}}
+\subsection{Quantitative studies}\label{quantitative-studies}}
+
+\begin{rmdnote}
+Here is a note!
+\end{rmdnote}
 
 \hypertarget{quantitative-language-research}{%
-\section{Quantitative language research}\label{quantitative-language-research}}
+\subsection{Quantitative language research}\label{quantitative-language-research}}
 
 \hypertarget{text-analysis}{%
-\subsection{Text analysis}\label{text-analysis}}
+\subsubsection{Text analysis}\label{text-analysis}}
 
 \hypertarget{section}{%
-\subsection{\ldots{}}\label{section}}
+\subsubsection{\ldots{}}\label{section}}
 
 \hypertarget{activities}{%
-\chapter*{Activities}\label{activities}}
-\addcontentsline{toc}{chapter}{Activities}
+\subsection*{Activities}\label{activities}}
+\addcontentsline{toc}{subsection}{Activities}
+
+\begin{rmdactivity}
+Here is an activity!
+\end{rmdactivity}
 
 \hypertarget{part-orientation}{%
 \part{Orientation}\label{part-orientation}}
 
 \hypertarget{orientation-overview}{%
-\chapter*{Overview}\label{orientation-overview}}
-\addcontentsline{toc}{chapter}{Overview}
+\section*{Overview}\label{orientation-overview}}
+\addcontentsline{toc}{section}{Overview}
 
 \hypertarget{understanding-data}{%
-\chapter{Understanding data}\label{understanding-data}}
+\section{Understanding data}\label{understanding-data}}
 
 \begin{rmdkey}
 In this chapter you will learn:
@@ -436,10 +551,12 @@ In this chapter you will learn:
 \end{rmdkey}
 
 \hypertarget{section-1}{%
-\section{\ldots{}}\label{section-1}}
+\subsection{\ldots{}}\label{section-1}}
+
+\citep{Ackoff1989}
 
 \hypertarget{statistical-approaches}{%
-\chapter{Statistical approaches}\label{statistical-approaches}}
+\section{Statistical approaches}\label{statistical-approaches}}
 
 \begin{rmdkey}
 In this chapter you will learn:
@@ -456,10 +573,10 @@ In this chapter you will learn:
 \end{rmdkey}
 
 \hypertarget{section-2}{%
-\section{\ldots{}}\label{section-2}}
+\subsection{\ldots{}}\label{section-2}}
 
 \hypertarget{framing-research}{%
-\chapter{Framing research}\label{framing-research}}
+\section{Framing research}\label{framing-research}}
 
 \begin{rmdkey}
 In this chapter you will learn:
@@ -476,8 +593,83 @@ In this chapter you will learn:
 \end{rmdkey}
 
 \hypertarget{section-3}{%
-\section{\ldots{}}\label{section-3}}
+\subsection{\ldots{}}\label{section-3}}
 
-  \bibliography{book.bib,packages.bib}
+\hypertarget{part-preparation}{%
+\part{Preparation}\label{part-preparation}}
+
+\hypertarget{preparation-overview}{%
+\section*{Overview}\label{preparation-overview}}
+\addcontentsline{toc}{section}{Overview}
+
+\hypertarget{acquire-data}{%
+\section{Acquire data}\label{acquire-data}}
+
+\begin{rmdkey}
+In this chapter you will learn:
+
+\begin{itemize}
+\tightlist
+\item
+  the goals of this textbook
+\item
+  the reasoning for using the R programming language
+\item
+  important text conventions employed in this textbook
+\end{itemize}
+\end{rmdkey}
+
+\hypertarget{section-4}{%
+\subsection{\ldots{}}\label{section-4}}
+
+\hypertarget{acquire-data-packages}{%
+\subsubsection{Packages}\label{acquire-data-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rvest) }\CommentTok{\# full{-}fleged web scraping}
+\FunctionTok{library}\NormalTok{(datapasta) }\CommentTok{\# copy/paste approach to HTML tables}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{curate-data}{%
+\section{Curate data}\label{curate-data}}
+
+\begin{rmdkey}
+In this chapter you will learn:
+
+\begin{itemize}
+\tightlist
+\item
+  the goals of this textbook
+\item
+  the reasoning for using the R programming language
+\item
+  important text conventions employed in this textbook
+\end{itemize}
+\end{rmdkey}
+
+\hypertarget{section-5}{%
+\subsection{\ldots{}}\label{section-5}}
+
+\hypertarget{curate-data-packages}{%
+\subsubsection{Packages}\label{curate-data-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ...}
+\end{Highlighting}
+\end{Shaded}
+
+Data Organization in Spreadsheets \citep{Broman2018}. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.
+
+\hypertarget{appendix-appendix}{%
+\appendix}
+
+
+\hypertarget{section-6}{%
+\section{\ldots{}}\label{section-6}}
+
+  \bibliography{coursebook.bib,packages.bib}
 
 \end{document}

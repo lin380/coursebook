@@ -2,6 +2,9 @@
 
 # Overview {-#course-overview}
 
+```{r, child="_common.Rmd"}
+```
+
 **WELCOME**
 
 ... overview text
@@ -120,7 +123,7 @@ knitr::kable(
 
 # R and RStudio {-}
 
-```{r learnr-tutorial-setup}
+```{r learnr-tutorial-setup, include=FALSE}
 knitr::include_url("https://jjallaire.shinyapps.io/learnr-tutorial-00-setup/#section-welcome", height = "600px")
 ```
 
