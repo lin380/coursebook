@@ -28,11 +28,11 @@ No programming knowledge is assumed, either with R or otherwise.
 
 ## Approach {-}
 
-Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img).  to analysis and do not tend to encourage readers to lead with research questions. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings
+Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img) from @Wickham2017.  to analysis and do not tend to encourage readers to lead with research questions. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings
 
 <div class="figure" style="text-align: center">
-<img src="images/preface-tidy-approach.png" alt="Wickham diagram..." width="70%" />
-<p class="caption">(\#fig:tidy-workflow-img)Wickham diagram...</p>
+<img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="70%" />
+<p class="caption">(\#fig:tidy-workflow-img)Workflow diagram from R for Data Science.</p>
 </div>
 
 

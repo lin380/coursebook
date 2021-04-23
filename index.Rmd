@@ -22,16 +22,12 @@ favicon: assets/images/favicon.ico
 ```{r, child="_common.Rmd"}
 ```
 
-...
+<img src="assets/images/logo.png" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> This is the coursebook to accompany Linguistics 380 "Language Use and Technology" at Wake Forest University. The working title for this coursebook is *Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research in R*. The content is currently under development. Feedback is welcome and can be provided through the [hypothes.is](https://web.hypothes.is/) service. A toolbar interface to this service is located on the right sidebar. Note: you will need to register for a free account to make comments and suggestions.
 
-## TODOs {-}
-
-- Consider creating an R cheat sheet for text analytics in R. [templates for creating cheat sheets](https://www.rstudio.com/resources/cheatsheets/how-to-contribute-a-cheatsheet/), [examples](https://www.rstudio.com/resources/cheatsheets/)
-- ...
 
 ## Build and session information {-}
 
-This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio](http://www.rstudio.com/ide/). The website is hosted with [GitHub Pages](https://pages.github.com/) and the complete source is available from [GitHub](https://github.com/francojc).
+This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio](http://www.rstudio.com/ide/). The website is hosted with [GitHub Pages](https://pages.github.com/) and the complete source is available from [GitHub](https://github.com/lin380).
 
 <!-- and automatically updated after every commit by [Travis-CI](https://travis-ci.org).  -->
 
