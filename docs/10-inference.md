@@ -1,8 +1,4 @@
-# (PART) Orientation {-}
-
-# Overview {-#orientation-overview}
-
-# Understanding data
+# Inference {#inference}
 
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>
@@ -17,11 +13,11 @@ text
 
 ## ...
 
-text 
+text
+
+### Packages {#inference-packages}
 
 
 ```r
 # Packages
 ```
-
-[@Ackoff1989]

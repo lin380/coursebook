@@ -1,8 +1,4 @@
-# (PART) Orientation {-}
-
-# Overview {-#orientation-overview}
-
-# Understanding data
+# Inference {#inference}
 
 ```{block, type="rmdkey"}
 In this chapter you will learn:
@@ -16,10 +12,10 @@ text
 
 ## ...
 
-text 
+text
 
-```{r statistical-approaches-data-packages}
+### Packages {#inference-packages}
+
+```{r prediction-data-packages}
 # Packages
 ```
-
-[@Ackoff1989]

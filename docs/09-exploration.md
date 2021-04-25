@@ -1,8 +1,8 @@
-# (PART) Orientation {-}
+# (PART) Modeling {-}
 
-# Overview {-#orientation-overview}
+# Overview {-#modeling-overview}
 
-# Understanding data
+# Exploration
 
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>
@@ -19,9 +19,9 @@ text
 
 text 
 
+### Packages {#exploration-packages}
+
 
 ```r
 # Packages
 ```
-
-[@Ackoff1989]

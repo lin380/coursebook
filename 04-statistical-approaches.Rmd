@@ -8,4 +8,12 @@ In this chapter you will learn:
 - important text conventions employed in this textbook
 ```
 
+text
+
 ## ...
+
+text 
+
+```{r statistical-approaches-data-packages}
+# Packages
+```

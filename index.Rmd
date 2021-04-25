@@ -17,46 +17,20 @@ cover-image: assets/images/logo.png
 favicon: assets/images/favicon.ico
 ---
 
-# About {-}
+# Welcome {-}
 
 ```{r, child="_common.Rmd"}
 ```
 
 <img src="assets/images/logo.png" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> This is the coursebook to accompany Linguistics 380 "Language Use and Technology" at Wake Forest University. The working title for this coursebook is *Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research in R*. The content is currently under development. Feedback is welcome and can be provided through the [hypothes.is](https://web.hypothes.is/) service. A toolbar interface to this service is located on the right sidebar. Note: you will need to register for a free account to make comments and suggestions.
 
+**Author**
 
-## Build and session information {-}
+Dr. Jerid Francom is Associate Professor of Spanish and Linguistics at Wake Forest University. His research interests are focused around quantitative approaches to language variation. 
 
-This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio](http://www.rstudio.com/ide/). The website is hosted with [GitHub Pages](https://pages.github.com/) and the complete source is available from [GitHub](https://github.com/lin380).
+## License {-}
 
-<!-- and automatically updated after every commit by [Travis-CI](https://travis-ci.org).  -->
-
-
-This version of the coursebook was built with:
-
-```{r echo=FALSE}
-# needed because new_session is set to true in _bookdown.yml
-all_pkgs <- renv::dependencies(path = "DESCRIPTION") %>% 
-  pull(Package) 
-session <- devtools::session_info(pkgs = all_pkgs)
-session$platform
-```
-
-And depends on these packages:
-
-```{r echo=FALSE}
-session$packages %>% 
-  select(package, loadedversion, date, source) %>% 
-  DT::datatable(rownames = FALSE,
-                class = 'cell-border stripe',
-                filter = list(position = 'top'),
-                options = list(pageLength = nrow(session$packages), 
-                           autoWidth = TRUE,
-                           bInfo = FALSE,
-                           paging = FALSE))
-```
-
-
+...
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

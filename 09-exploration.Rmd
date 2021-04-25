@@ -1,8 +1,8 @@
-# (PART) Preparation {-}
+# (PART) Modeling {-}
 
-# Overview {-#preparation-overview}
+# Overview {-#modeling-overview}
 
-# Acquire data
+# Exploration
 
 ```{block, type="rmdkey"}
 In this chapter you will learn:
@@ -18,10 +18,8 @@ text
 
 text 
 
-### Packages {#acquire-data-packages}
+### Packages {#exploration-packages}
 
 ```{r acquire-data-packages}
-library(rvest) # full-fleged web scraping
-library(datapasta) # copy/paste approach to HTML tables
+# Packages
 ```
-
