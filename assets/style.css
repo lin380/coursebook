@@ -129,7 +129,7 @@ li.appendix span, li.part span { /* for TOC part names */
 
 /* Notes */
 
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity {
+.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdtodo {
   border-radius: 10px;
   border: 2px solid rgb(225,225,225);
   padding: 1em 1em 1em 4em;
@@ -156,6 +156,10 @@ li.appendix span, li.part span { /* for TOC part names */
   background: rgb(144,249,158) no-repeat 5px center/3em;
 }
 
+.rmdtodo {
+  background: rgb(168,219,67) no-repeat 5px center/3em;
+}
+
 .rmdkey {
   background-image: url("images/key.png");
 }
@@ -170,4 +174,7 @@ li.appendix span, li.part span { /* for TOC part names */
 }
 .rmdactivity {
   background-image: url("../images/code.png");
+}
+.rmdtodo {
+  background-image: url("../images/paper.png");
 }

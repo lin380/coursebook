@@ -9,7 +9,31 @@
 </ul>
 </div>
 
-text
+<!-- TUTORIALS:
+
+- ...
+
+-->
+
+<!-- SWIRL:
+
+- Packages and Functions
+- The Grammar of Graphics
+
+-->
+
+<!-- WORKED/ RECIPE:
+
+- Visualizing datasets in tabular and graphical form
+
+-->
+
+
+<!-- PROJECT:
+
+- Annotated references, goal(s), finding(s), statistical approach (EDA, PDA, or Inference), test or algorithm, and type of results (interpretative, accuracy, inference)
+
+-->
 
 ## ...
 

@@ -47,7 +47,7 @@ div.sidebar {
 
 /* Notes */
 
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity {
+.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdtodo {
   border-radius: 10px;
   border: 2px solid rgb(225,225,225);
   padding: 1em 1em 1em 4em;
@@ -74,6 +74,10 @@ div.sidebar {
   background: rgb(144,249,158) no-repeat 5px center/3em;
 }
 
+.rmdtodo {
+  background: rgb(168,219,67) no-repeat 5px center/3em;
+}
+
 .rmdkey {
   background-image: url("images/key.png");
 }
@@ -87,6 +91,8 @@ div.sidebar {
   background-image: url("images/warning.png");
 }
 .rmdactivity {
-  background-image: url("../images/code.png");
+  background-image: url("images/code.png");
 }
-
+.rmdtodo {
+  background-image: url("images/paper.png");
+}
