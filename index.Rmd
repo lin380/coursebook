@@ -28,6 +28,8 @@ favicon: assets/images/favicon.ico
 
 Dr. Jerid Francom is Associate Professor of Spanish and Linguistics at Wake Forest University. His research interests are focused around quantitative approaches to language variation. 
 
+
+
 ## License {-}
 
 ...
