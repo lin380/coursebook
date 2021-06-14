@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Understanding data | LIN 380 Coursebook</title>
+<meta name="author" content="Jerid Francom">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-57189160-3', 'auto');
+      ga('send', 'pageview');
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Text as Data: An introduction to quantative text analysis and reproducible research with R">LIN 380 Coursebook</a>:
+        <small class="text-muted">Text as Data: An introduction to quantative text analysis and reproducible research with R</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="course.html">Course</a></li>
+<li class="book-part">Foundations</li>
+<li><a class="" href="foundations-overview.html">Overview</a></li>
+<li><a class="" href="data-language-and-text-analysis.html"><span class="header-section-number">1</span> Data, language, and text analysis</a></li>
+<li class="book-part">Orientation</li>
+<li><a class="" href="orientation-overview.html">Overview</a></li>
+<li><a class="active" href="understanding-data.html"><span class="header-section-number">2</span> Understanding data</a></li>
+<li><a class="" href="statistical-approaches.html"><span class="header-section-number">3</span> Statistical approaches</a></li>
+<li><a class="" href="framing-research.html"><span class="header-section-number">4</span> Framing research</a></li>
+<li class="book-part">Preparation</li>
+<li><a class="" href="preparation-overview.html">Overview</a></li>
+<li><a class="" href="acquire-data.html"><span class="header-section-number">5</span> Acquire data</a></li>
+<li><a class="" href="curate-data.html"><span class="header-section-number">6</span> Curate data</a></li>
+<li><a class="" href="transform-data.html"><span class="header-section-number">7</span> Transform data</a></li>
+<li class="book-part">Modeling</li>
+<li><a class="" href="modeling-overview.html">Overview</a></li>
+<li><a class="" href="exploration.html"><span class="header-section-number">8</span> Exploration</a></li>
+<li><a class="" href="inference.html"><span class="header-section-number">9</span> Inference</a></li>
+<li><a class="" href="prediction.html"><span class="header-section-number">10</span> Prediction</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="section-8.html"><span class="header-section-number">A</span> …</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/lin380/coursebook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="understanding-data" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Understanding data<a class="anchor" aria-label="anchor" href="#understanding-data"><i class="fas fa-link"></i></a>
+</h1>
+<div class="rmdkey">
+<p>
+In this chapter you will learn:
+</p>
+<ul>
+<li>
+the goals of this textbook
+</li>
+<li>
+the reasoning for using the R programming language
+</li>
+<li>
+important text conventions employed in this textbook
+</li>
+</ul>
+</div>
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- R programming basics: https://lin380.github.io/tadr/tutorials/01-programming-basics.html
+
+ SWIRL:
+
+- Objects
+- Subsetting and combining
+
+WORKED/ RECIPE:
+
+- Reading/ Writing data
+- Data documentation (dictionary/ metadata)
+- Data summarization?
+
+PROJECT:
+
+- Annotated references, goal(s), finding(s), data/ dataset (sampling frame), measures (variables), how well the data address the goal/ research purpose?
+
+-->
+<div id="section" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> …<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+</h2>
+<p>text</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Packages</span></code></pre></div>
+</div>
+<div id="annotated-readings-1" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Annotated readings<a class="anchor" aria-label="anchor" href="#annotated-readings-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="data" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Egbert, J., Larsson, T., &amp; Biber, D. (2020). Doing Linguistics with a Corpus: Methodological Considerations for the Everyday User. Cambridge University Press.</strong> <span class="citation">(<a href="references.html#ref-Egbert2020" role="doc-biblioref">Egbert, Larsson, &amp; Biber, 2020</a>)</span></p>
+<p>Chapter 2 “Getting to know your corpus” (2.1 and 2.3)</p>
+<p>Section 2.1 considers the importance of representativeness for corpus-based research and the idea of generalization. It explores how “similar” data can vary in important ways and that the research question and data/ corpus selection are intertwined. In short the results are only as good as the data in. All samples are skewed (to some degree) and it is important to acknowledge and document the potential limitations.</p>
+<p>(Note: the concepts of sampling procedures are not covered.)</p>
+<p><strong>Biber, D. (1993). Representativeness in corpus design. Literary and Linguistic Computing, 8(4), 243–257.</strong> <span class="citation">(<a href="references.html#ref-Biber:1993" role="doc-biblioref">Biber, 1993</a>)</span></p>
+<p>Discusses representativeness in more detail. Includes target population, stratified and proportional sampling, sampling within texts, and issues regarding sample size.</p>
+<p>(Note: this article gets quite dense starting in section 4. Sections 1-3 might be good for this course.)</p>
+<p><strong>Atkins, S., Clear, J., &amp; Ostler, N. (1992). Corpus Design Criteria. Literary and Linguistic Computing, 7(1), 1–16.</strong>
+<span class="citation">(<a href="references.html#ref-atkins1992cdc" role="doc-biblioref">Atkins, Clear, &amp; Ostler, 1992</a>)</span></p>
+<p>There are some very good points made in this article. However, those points will need to be fished out of a very detailed write-up on corpus design. Key points: (1) problems and practical solutions for defining populations with language phenomena, (2) text/ corpus typologies, and (3) defining text collection types.</p>
+<p><strong>Ädel, A. (2020). Corpus Compilation. In M. Paquot &amp; S. Th. Gries (Eds.), A Practical Handbook of Corpus Linguistics (pp. 3–24). Springer.</strong> <span class="citation">(<a href="references.html#ref-Adel2020" role="doc-biblioref">Ädel, 2020</a>)</span></p>
+<p>Provides a good summary of issues related to representativeness, balance, size in corpus sampling. It also highlights the fact that generalized corpora are most often left to groups of researchers and most researchers that compile a corpus will work with more specialized and opportunistic samples. Yet, considerations for research are fundamental to document and report to provide context for the research. It also discusses the important role of annotation –linguistic and non-linguistic (metadata) and the formats that these often take.</p>
+</div>
+<div id="information" class="section level3" number="2.2.2">
+<h3>
+<span class="header-section-number">2.2.2</span> Information<a class="anchor" aria-label="anchor" href="#information"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Levshina, N. (2015). How to do linguistics with R: Data exploration and statistical analysis. John Benjamins Publishing Company.</strong> <span class="citation">(<a href="references.html#ref-Levshina2015" role="doc-biblioref">Levshina, 2015</a>)</span></p>
+<p>Chapter 1.4 “Types of variables”</p>
+<ul>
+<li>Deals with nominal, ordinal, interval, and ratio information levels of variables</li>
+<li>…</li>
+</ul>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="orientation-overview.html">Overview</a></div>
+<div class="next"><a href="statistical-approaches.html"><span class="header-section-number">3</span> Statistical approaches</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#understanding-data"><span class="header-section-number">2</span> Understanding data</a></li>
+<li><a class="nav-link" href="#section"><span class="header-section-number">2.1</span> …</a></li>
+<li>
+<a class="nav-link" href="#annotated-readings-1"><span class="header-section-number">2.2</span> Annotated readings</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data"><span class="header-section-number">2.2.1</span> Data</a></li>
+<li><a class="nav-link" href="#information"><span class="header-section-number">2.2.2</span> Information</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/lin380/coursebook/blob/master/03-understanding-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/lin380/coursebook/edit/master/03-understanding-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on June 14, 2021 (latest version).</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

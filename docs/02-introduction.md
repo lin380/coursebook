@@ -2,8 +2,9 @@
 
 # Overview {-#foundations-overview}
 
-```{r, child="_common.Rmd"}
-```
+
+
+
 
 **FOUNDATIONS**
 
@@ -21,13 +22,14 @@ Include these in the Canvas page for the day
 > Science walks forward on two feet, namely theory and experiment...Sometimes it is one foot which is put forward first, sometimes the other, but continuous progress is only made by the use of both.
 > ---[Robert A. Millikan](https://www.nobelprize.org/uploads/2018/06/millikan-lecture.pdf) [-@Millikan1923]
 
-```{block, type="rmdkey"}
-The essential questions for this chapter are:
-
-- what is the difference between quantitative and qualitative research? 
-- where does text analysis fit in language research?
-- what are the benefits of programming approaches to text analysis?
-```
+<div class="rmdkey">
+<p>The essential questions for this chapter are:</p>
+<ul>
+<li>what is the difference between quantitative and qualitative research?</li>
+<li>where does text analysis fit in language research?</li>
+<li>what are the benefits of programming approaches to text analysis?</li>
+</ul>
+</div>
 
 <!-- COURSE STRUCTURE
 TUTORIALS:
@@ -110,17 +112,19 @@ The interest in deriving insight from the available data is now almost ubiquitou
 
 These advances, however, are not predicated on data alone. As envisioned by researchers at Bell Labs, turning data into insight it takes computing skills (i.e. programming), knowledge of statistics, and, importantly, substantive/ domain expertise. This triad has been popularly represented by Drew Conway in a Venn diagram \@ref(fig:intro-data-science-venn). 
 
-```{r intro-data-science-venn, echo=FALSE, fig.cap='[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway'}
-knitr::include_graphics("images/02-introduction/Data_Science_VD.png")
-```
+<div class="figure" style="text-align: center">
+<img src="images/02-introduction/Data_Science_VD.png" alt="[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway" width="70%" />
+<p class="caption">(\#fig:intro-data-science-venn)[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway</p>
+</div>
 
 This same toolbelt underlies well-known public-facing language applications. From the language-capable personal assistant applications, plagarism detection software, machine translation and search, tangible results of quantitative approaches to language are becoming standard fixtures in our lives. 
 
 <!-- Highly visible applications in language -->
 
-```{r intro-language-applications, fig.cap='Well-known language applications', echo = FALSE}
-knitr::include_graphics("images/02-introduction/well-known-language-applications.png")
-```
+<div class="figure" style="text-align: center">
+<img src="images/02-introduction/well-known-language-applications.png" alt="Well-known language applications" width="70%" />
+<p class="caption">(\#fig:intro-language-applications)Well-known language applications</p>
+</div>
 
 The spread of quantitative data analysis too has taken root in academia. Even in areas that on first blush don't appear to be approached in a quantitative manner such as fields in the social sciences and humanities, data science is making important and sometimes disisplinary changes to the way that academic research is conducted. This coursebook focuses in on a domain that cuts across many of these fields; namely language. At this point let's turn to quantitative approaches to language.  
 
@@ -186,9 +190,15 @@ Work at Bell Labs consisted of what now is considered typical practices in data 
 
 That is, the practice required advanced statistical and computational techniques --these are the characteristics that distinguish 'data science' and other forms of traditional scientific research. 
 
-```{r ngram-viewer-data, out.width='100%', fig.cap='Google Ngram Viewer'}
+
+```r
 knitr::include_graphics("images/02-introduction/ngram-viewer-data.png")
 ```
+
+<div class="figure" style="text-align: center">
+<img src="images/02-introduction/ngram-viewer-data.png" alt="Google Ngram Viewer" width="100%" />
+<p class="caption">(\#fig:ngram-viewer-data)Google Ngram Viewer</p>
+</div>
 
 Data science, and related terms, are in large part applied statistics. But there is much more that falls under the umbrella which falls outside of what one would consider statistics proper (see @Donoho2017).
 
@@ -206,9 +216,12 @@ The author suggests what is coined "Data Science" is really six sub-divisions:
 
 **Gupta, A. (2020, August 19). Data, Information, Knowledge, and Insights. https://www.linkedin.com/pulse/data-information-knowledge-insights-achin-gupta** [@Gupta2020]
 
-```{r diki-conspiracy}
+
+```r
 knitr::include_graphics("images/02-introduction/dikw-conspiracy.jpg")
 ```
+
+<img src="images/02-introduction/dikw-conspiracy.jpg" width="70%" style="display: block; margin: auto;" />
 **Chen, M., Ebert, D., Hagen, H., Laramee, R. S., Van Liere, R., Ma, K.-L., Ribarsky, W., Scheuermann, G., & Silver, D. (2008). Data, information, and knowledge in visualization. IEEE Computer Graphics and Applications, 29(1), 12–19.** [@Chen2008]
 
 > __Data__: a representation of facts, concepts, or instructions in a formalized manner suitable for communication, interpretation, or processing by human beings or by automatic means.
@@ -230,9 +243,15 @@ From all this I infer that although we are able to develop computerized informat
 
 **Rowley, J. (2007). The wisdom hierarchy: Representations of the DIKW hierarchy. Journal of Information Science, 33(2), 163–180. https://doi.org/10.1177/0165551506070706** [@Rowley2007]
 
-```{r dikw-rowley, fig.cap='The wisdom hierarchy, Rowley(2007)'}
+
+```r
 knitr::include_graphics("images/02-introduction/Rowley-dikw.png")
 ```
+
+<div class="figure" style="text-align: center">
+<img src="images/02-introduction/Rowley-dikw.png" alt="The wisdom hierarchy, Rowley(2007)" width="70%" />
+<p class="caption">(\#fig:dikw-rowley)The wisdom hierarchy, Rowley(2007)</p>
+</div>
 
 
 ### Language analysis
@@ -271,9 +290,12 @@ __What__
 
 My modified DIKW to DIKI:
 
-```{r dikw-modification-diki}
+
+```r
 knitr::include_graphics("images/02-introduction/diki-hierarchy.png")
 ```
+
+<img src="images/02-introduction/diki-hierarchy.png" width="70%" style="display: block; margin: auto;" />
 
 NOTE: I would modify Insight to "Contributions" and "Connections". I leave off wisdom as it is the last extension which deals with "effectiveness" and ultimately is judgment-level knowledge.
 
