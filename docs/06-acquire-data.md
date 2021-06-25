@@ -2,7 +2,15 @@
 
 # Overview {-#preparation-overview}
 
+
+
+
+
 # Acquire data
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
 
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>
@@ -13,7 +21,33 @@
 </ul>
 </div>
 
-text
+
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+
+
+Overview...
 
 ## ...
 
@@ -23,7 +57,7 @@ text
 
 
 ```r
-library(rvest) # full-fleged web scraping
-library(datapasta) # copy/paste approach to HTML tables
+library(rvest)  # full-fleged web scraping
+library(datapasta)  # copy/paste approach to HTML tables
 ```
 

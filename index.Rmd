@@ -1,6 +1,6 @@
 --- 
 title: "LIN 380 Coursebook"
-subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research with R"
+subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research in R"
 author: "Jerid Francom"
 date: "`r format(Sys.Date(), '%B %d, %Y')` (latest version)"
 site: bookdown::bookdown_site
@@ -22,17 +22,19 @@ favicon: assets/images/favicon.ico
 ```{r, child="_common.Rmd"}
 ```
 
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+
 <img src="assets/images/logo.png" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> This is the coursebook to accompany Linguistics 380 "Language Use and Technology" at Wake Forest University. The working title for this coursebook is *Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research in R*. The content is currently under development. Feedback is welcome and can be provided through the [hypothes.is](https://web.hypothes.is/) service. A toolbar interface to this service is located on the right sidebar. Note: you will need to register for a free account to make comments and suggestions.
 
 **Author**
 
 Dr. Jerid Francom is Associate Professor of Spanish and Linguistics at Wake Forest University. His research interests are focused around quantitative approaches to language variation. 
 
-
-
 ## License {-}
 
-...
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by [Jerid C. Francom](https://francojc.github.io/) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
+
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

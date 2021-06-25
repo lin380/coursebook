@@ -4,6 +4,8 @@
 
 
 
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
 > The journey of a thousand miles begins with one step.
 > --[Lao Tzu](https://en.wikipedia.org/wiki/Laozi)
 
@@ -230,7 +232,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) + # map 'hp' and 'mpg' to coordinate space
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-course_files/figure-html/test-fig-1.png" alt="Test plot from mtcars dataset" width="70%" />
+<img src="01-course_files/figure-epub3/test-fig-1.png" alt="Test plot from mtcars dataset" width="70%" />
 <p class="caption">(\#fig:test-fig)Test plot from mtcars dataset</p>
 </div>
 

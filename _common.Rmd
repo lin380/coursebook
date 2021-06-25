@@ -17,6 +17,8 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 options(digits = 3)
 
-pacman::p_load(tidyverse, rmarkdown, here, DT, webshot)
+pacman::p_load(tidyverse, rmarkdown, here, DT, webshot, knitr, tidytext)
+
+theme_set(theme_minimal())
 ```
 

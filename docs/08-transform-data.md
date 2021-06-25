@@ -1,5 +1,13 @@
 # Transform data {#transform-data}
 
+
+
+
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
+
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>
 <ul>
@@ -20,3 +28,7 @@ text
 ```
 
 
+NOTE: 
+
+
+- Cover Corpus and Document-Term Matrices (DTM)s

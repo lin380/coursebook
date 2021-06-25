@@ -2,7 +2,14 @@
 
 # Overview {-#preparation-overview}
 
+```{r, child="_common.Rmd"}
+```
+
 # Acquire data
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
 
 ```{block, type="rmdkey"}
 In this chapter you will learn:
@@ -12,7 +19,33 @@ In this chapter you will learn:
 - important text conventions employed in this textbook
 ```
 
-text
+
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+
+
+Overview...
 
 ## ...
 

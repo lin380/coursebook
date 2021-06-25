@@ -1,5 +1,14 @@
 # Curate data
 
+
+
+
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
+
+
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>
 <ul>
@@ -9,18 +18,44 @@
 </ul>
 </div>
 
-text
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+`
+
+
+
+```r
+# Packages
+
+```
+
+
+Overview...
 
 ## ...
 
 text 
-
-### Packages {#curate-data-packages}
-
-
-```r
-# ...
-```
 
 
 Data Organization in Spreadsheets [@Broman2018]. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.

@@ -1,5 +1,12 @@
 # Prediction {#prediction}
 
+```{r, child="_common.Rmd"}
+```
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
+
 ```{block, type="rmdkey"}
 In this chapter you will learn:
 
