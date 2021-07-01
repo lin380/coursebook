@@ -5,6 +5,9 @@ body {
   font-size: .95rem;
 }
 
+.inline-table {
+  font-size: .75rem;
+}
 
 /* Default */
 
@@ -21,6 +24,7 @@ pre {
 }
 pre code {
   white-space: inherit;
+  font-size: .75rem; /* added to make code output smaller */
 }
 
 

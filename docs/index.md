@@ -2,7 +2,7 @@
 title: "LIN 380 Coursebook"
 subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research in R"
 author: "Jerid Francom"
-date: "June 25, 2021 (latest version)"
+date: "July 01, 2021 (latest version)"
 site: bookdown::bookdown_site
 bibliography: [coursebook.bib, packages.bib]
 biblio-style: apalike

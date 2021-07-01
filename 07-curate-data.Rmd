@@ -20,7 +20,9 @@ In this chapter you will learn:
 
 TUTORIALS:
 
-- ...
+- Primers: 
+  - Tidy Your Data: https://rstudio.cloud/learn/primers/4
+    - Reshape Data
 
 SWIRL:
 
@@ -39,7 +41,7 @@ GOALS:
 ...
 
 -->
-`
+
 
 
 ```{r curate-data-packages}

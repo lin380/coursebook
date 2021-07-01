@@ -6,6 +6,9 @@
 
 
 
+Overview...
+
+
 # Acquire data
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
@@ -26,7 +29,12 @@
 
 TUTORIALS:
 
-- ...
+- Primers: 
+  - Introduction to Iteration: https://rstudio.cloud/learn/primers/5.1
+  - Write Functions: https://rstudio.cloud/learn/primers/6
+    - Function basics
+    - How to Write a Function
+    - Arguments
 
 SWIRL:
 

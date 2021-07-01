@@ -22,7 +22,9 @@
 
 TUTORIALS:
 
-- ...
+- Primers: 
+  - Tidy Your Data: https://rstudio.cloud/learn/primers/4
+    - Reshape Data
 
 SWIRL:
 
@@ -41,7 +43,7 @@ GOALS:
 ...
 
 -->
-`
+
 
 
 

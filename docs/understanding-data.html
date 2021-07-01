@@ -47,7 +47,7 @@
 <li class="book-part">Orientation</li>
 <li><a class="" href="orientation-overview.html">Overview</a></li>
 <li><a class="active" href="understanding-data.html"><span class="header-section-number">2</span> Understanding data</a></li>
-<li><a class="" href="statistical-approaches.html"><span class="header-section-number">3</span> Statistical approaches</a></li>
+<li><a class="" href="approaching-analysis.html"><span class="header-section-number">3</span> Approaching analysis</a></li>
 <li><a class="" href="framing-research.html"><span class="header-section-number">4</span> Framing research</a></li>
 <li class="book-part">Preparation</li>
 <li><a class="" href="preparation-overview.html">Overview</a></li>
@@ -101,6 +101,8 @@ What is the importance of documentation in quantitative research?
 TUTORIALS:
 
 - R programming basics: https://lin380.github.io/tadr/tutorials/01-programming-basics.html
+- Primers
+  - Work with Data: https://rstudio.cloud/learn/primers/2
 
 SWIRL:
 
@@ -116,14 +118,6 @@ WORKED/ RECIPE:
 PROJECT:
 
 - Annotated references, goal(s), finding(s), data/ dataset (sampling frame), measures (variables), how well the data address the goal/ research purpose?
-
-GOALS:
-
-This chapter will cover the areas of data and information in the DIKI Hierarchy. 
-
-- Objective data: population
-- Subjective data: sample/ corpus
-- Relational data: datasets (curated/ transformed)
 
 -->
 <!-- Extracted from Chapter 1: Chapter 2 “Understanding data” will cover both Data and Information covering the conceptual topics of populations versus samples and how language data samples are converted to information and the forms that they can take. -->
@@ -157,7 +151,7 @@ The Brown Corpus is widely recognized as one of the first large, machine-readabl
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:brown-distribution"></span>
-<img src="03-understanding-data_files/figure-html/brown-distribution-1.png" alt="Brown Corpus of Written American English" width="70%"><p class="caption">
+<img src="03-understanding-data_files/figure-html/brown-distribution-1.png" alt="Brown Corpus of Written American English" width="90%"><p class="caption">
 Figure 2.1: Brown Corpus of Written American English
 </p>
 </div>
@@ -786,7 +780,7 @@ It is also of note that the column names should be balanced for meaningfulness a
 </tr>
 </tbody>
 </table></div>
-<p>In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as <strong>data curation</strong>. The process of data curation minimally involves creating a base dataset, or <em>derived dataset</em>, which establishes the main informational associations according to philosophical approach outlined by <span class="citation"><a href="references.html#ref-Wickham2014a" role="doc-biblioref">Wickham</a> (<a href="references.html#ref-Wickham2014a" role="doc-biblioref">2014</a>)</span>. In this work, a ‘tidy’ dataset refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each <em>row</em> is an observation and each <em>column</em> is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a <em>value</em> for the particular observation-feature pair.</p>
+<p>In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as <strong>data curation</strong>. The process of data curation minimally involves creating a base dataset, or <em>derived dataset</em>, which establishes the main informational associations according to philosophical approach outlined by <span class="citation"><a href="references.html#ref-Wickham2014a" role="doc-biblioref">Wickham</a> (<a href="references.html#ref-Wickham2014a" role="doc-biblioref">2014</a>)</span>. In this work, a ‘tidy’ dataset refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each <em>row</em> is an observation and each <em>column</em> is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a <em>value</em> which is a particular attribute of a particular observation for the particular observation-feature pair also known as a <em>data point</em>.</p>
 <p><em>Consider adding a visual to highlight these relationships</em></p>
 <p>Semantic value in a tidy dataset is derived from the association of this physical structure along the two dimensions of this rectangular format. First, each column is a <strong>variable</strong> which reflects measures for a particular attribute. In the Europarle Corpus dataset, in Table <a href="understanding-data.html#tab:structure-europarle">2.6</a>, for example, the <code>type</code> column measures the type of text, either <code>Source</code> or <code>Target</code>. Columns can contain measures which are qualitative or quantitative, that is character-based or numeric. Second, each row is an <strong>observation</strong> that contains all of the variables associated with the primary unit of observation. The primary unit of observation the variable that is the essential focus of the informational structure. In this same dataset the first observation contains the <code>type</code>, <code>sentence_id</code>, and the <code>sentence</code>. As this dataset is currently structured the primary unit of investigation is the <code>sentence</code> as each of the other variables have measures that characterize each value of <code>sentence</code>.</p>
 <p>The decision as to what the primary unit of observation is is fundamentally guided by the research question, and therefore highly specific to the particular research project. Say instead we wanted to focus on words instead of sentences. The dataset would need to be transformed such that a new variable (<code>words</code>) would be created to contain each word in the corpus.</p>
@@ -849,6 +843,11 @@ It is also of note that the column names should be balanced for meaningfulness a
 <p>The values for the variables <code>type</code> and <code>sentence_id</code> maintain the necessary description for each <code>word</code> to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for <code>type</code> and <code>sentence_id</code> are repeated numerous times but this ‘redundancy’ makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this coursebook.</p>
 <p>It is important to make clear that data in tabular format in itself does not constitute a dataset, in the tidy sense we will be using. Data can be organized in many ways which do not make relationships between variables and observations explicit.</p>
 <p><em>Consider adding some ‘messy’ data and/ or summary tables which do not reflect the relational structure we are aiming to create to base our research on.</em></p>
+<div class="rmdtip">
+<p>
+Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats when we dive into particular statistical approaches that require them later in the series (i.e. Corpus and Document-Term Matrix (DTM) objects in R).
+</p>
+</div>
 </div>
 <div id="transformation" class="section level3" number="2.2.2">
 <h3>
@@ -2076,6 +2075,7 @@ It is also of note that the column names should be balanced for meaningfulness a
 </table></div>
 <p>There is much more to explore with linguistic annotation, and syntactic parsing in particular, but at this point it will suffice to note that it is possible to augment a dataset with grammatical information automatically.</p>
 <p>There are strengths and shortcomings with automatic linguistic annotation that a research should be aware of. First, automatic linguistic annotation provides quick access to rich and highly reliable linguistic information for a large number of languages. However, part of speech taggers and syntactic parsers are not magic. They are resources that are built by training a computational algorithm to recognize patterns in manually annotated datasets producing a language model. This model is then used to predict the linguistic annotations for new language (as we just did in the previous examples). The shortcomings of automatic linguistic annotation is first, not all languages have trained language models and second, the data used to train the model inevitably reflect a particular variety, register, modality, etc. The accuracy of the linguistic annotation is highly dependent on alignment between the language sampling frame of the trained data and the language data to be automatically annotated. Many (most) of the language models available for automatic linguistic annotation are based on language that is most readily available and for most languages this has traditionally been newswire text. It is important to be aware of these characteristics when using linguistic annotation tools.</p>
+<p><em>Consider adding ‘creating measures’ here</em></p>
 </div>
 <div id="merging" class="section level4" number="2.2.2.4">
 <h4>
@@ -2284,7 +2284,7 @@ It is also of note that the column names should be balanced for meaningfulness a
 <span class="header-section-number">2.3</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
 </h2>
 <p>As we have seen in this chapter that acquiring data and converting that data into information involves a number of conscious decisions and implementation steps. As a favor to ourselves as researchers and to the research community, it is crucial to document these decisions and steps. This makes it both possible to retrace our own steps and also provides a guide for future researchers that want to reproduce and/ or build on your research. A programmatic approach to quantitative research helps ensure that the implementation steps are documented and reproducible but it is also vital that the decisions that are made are documented as well. This includes the creation/ selection of the corpus data, the description of the variables chosen from the corpus for the derived dataset, and the description of the variables created from the derived dataset for the analysis dataset.</p>
-<p><em>Consider adding more specifics on the characteristics and formats for documenting corpus data and datasets.</em></p>
+<p><em>Consider adding more specifics on the characteristics and formats for documenting corpus data and datasets; data dictionaries –examples in R packages and in spreadsheets, or Rmarkdown files</em></p>
 <!-- 
 - Selecting or developing a corpus
   - if you develop a corpus you should document your procedure, including the sampling frame
@@ -2312,7 +2312,7 @@ It is also of note that the column names should be balanced for meaningfulness a
 <p>In this chapter we have focused on data and information –the first two components of DIKI Hierarchy. This process is visualized in Figure <a href="understanding-data.html#fig:understanding-data-vis-sum">2.2</a>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:understanding-data-vis-sum"></span>
-<img src="images/03-understanding-data/understanding-data_visual-summary.png" alt="Understanding data: visual summary" width="70%"><p class="caption">
+<img src="images/03-understanding-data/understanding-data_visual-summary.png" alt="Understanding data: visual summary" width="90%"><p class="caption">
 Figure 2.2: Understanding data: visual summary
 </p>
 </div>
@@ -2373,7 +2373,7 @@ Chapter 1.4 "Types of variables"
 
   <div class="chapter-nav">
 <div class="prev"><a href="orientation-overview.html">Overview</a></div>
-<div class="next"><a href="statistical-approaches.html"><span class="header-section-number">3</span> Statistical approaches</a></div>
+<div class="next"><a href="approaching-analysis.html"><span class="header-section-number">3</span> Approaching analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -2410,7 +2410,7 @@ Chapter 1.4 "Types of variables"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on June 25, 2021 (latest version).</p>
+    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on July 01, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

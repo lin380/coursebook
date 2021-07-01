@@ -81,7 +81,7 @@ In each chapter of this coursebook specific learning objectives will be specifie
 Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img) from @Wickham2017.  However these resources tend to underrepresent the importance of  leading with a research question. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings.
 
 <div class="figure" style="text-align: center">
-<img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="70%" />
+<img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="90%" />
 <p class="caption">(\#fig:tidy-workflow-img)Workflow diagram from R for Data Science.</p>
 </div>
 
@@ -232,7 +232,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) + # map 'hp' and 'mpg' to coordinate space
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-course_files/figure-epub3/test-fig-1.png" alt="Test plot from mtcars dataset" width="70%" />
+<img src="01-course_files/figure-html/test-fig-1.png" alt="Test plot from mtcars dataset" width="90%" />
 <p class="caption">(\#fig:test-fig)Test plot from mtcars dataset</p>
 </div>
 

@@ -16,7 +16,34 @@
 </ul>
 </div>
 
-text
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- Primers: 
+  - Tidy Your Data: https://rstudio.cloud/learn/primers/4
+    - Separate and Unite Columns
+    - Join datasets
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+
+Overivew ...
 
 ## ...
 

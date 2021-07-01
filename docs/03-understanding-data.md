@@ -53,6 +53,8 @@ where we will discuss how to develop a research plan, or what I will call a ‘r
 TUTORIALS:
 
 - R programming basics: https://lin380.github.io/tadr/tutorials/01-programming-basics.html
+- Primers
+  - Work with Data: https://rstudio.cloud/learn/primers/2
 
 SWIRL:
 
@@ -68,14 +70,6 @@ WORKED/ RECIPE:
 PROJECT:
 
 - Annotated references, goal(s), finding(s), data/ dataset (sampling frame), measures (variables), how well the data address the goal/ research purpose?
-
-GOALS:
-
-This chapter will cover the areas of data and information in the DIKI Hierarchy. 
-
-- Objective data: population
-- Subjective data: sample/ corpus
-- Relational data: datasets (curated/ transformed)
 
 -->
 
@@ -119,7 +113,7 @@ A key feature of a sample is that it is purposely selected. Samples are not simp
 \BeginKnitrBlock{rmdnote}<div class="rmdnote">The Brown Corpus is widely recognized as one of the first large, machine-readable corpora. It was compiled by @Kucera1967. Consult the [documentation for this corpus](http://korpus.uib.no/icame/brown/bcm.html). Can you determine what language population this corpus aims to represent? Given the sampling frame for this corpus (in the documentation and summarized in Figure \@ref(fig:brown-distribution)), what types of research might this corpus support or not support?</div>\EndKnitrBlock{rmdnote}
 
 <div class="figure" style="text-align: center">
-<img src="03-understanding-data_files/figure-epub3/brown-distribution-1.png" alt="Brown Corpus of Written American English" width="70%" />
+<img src="03-understanding-data_files/figure-html/brown-distribution-1.png" alt="Brown Corpus of Written American English" width="90%" />
 <p class="caption">(\#fig:brown-distribution)Brown Corpus of Written American English</p>
 </div>
 
@@ -396,7 +390,7 @@ Table: (\#tab:structure-brown)First 10 words from the Brown Corpus.
 |01          |A        |investigation |NN  |
 |01          |A        |of            |IN  |
 
-In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a 'tidy' dataset refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ for the particular observation-feature pair. 
+In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a 'tidy' dataset refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
 
 *Consider adding a visual to highlight these relationships*
 
@@ -426,6 +420,10 @@ The values for the variables `type` and `sentence_id` maintain the necessary des
 It is important to make clear that data in tabular format in itself does not constitute a dataset, in the tidy sense we will be using. Data can be organized in many ways which do not make relationships between variables and observations explicit. 
 
 *Consider adding some 'messy' data and/ or summary tables which do not reflect the relational structure we are aiming to create to base our research on.*
+
+<div class="rmdtip">
+<p>Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats when we dive into particular statistical approaches that require them later in the series (i.e. Corpus and Document-Term Matrix (DTM) objects in R).</p>
+</div>
 
 ### Transformation
 
@@ -744,6 +742,8 @@ There is much more to explore with linguistic annotation, and syntactic parsing 
 
 There are strengths and shortcomings with automatic linguistic annotation that a research should be aware of. First, automatic linguistic annotation provides quick access to rich and highly reliable linguistic information for a large number of languages. However, part of speech taggers and syntactic parsers are not magic. They are resources that are built by training a computational algorithm to recognize patterns in manually annotated datasets producing a language model. This model is then used to predict the linguistic annotations for new language (as we just did in the previous examples). The shortcomings of automatic linguistic annotation is first, not all languages have trained language models and second, the data used to train the model inevitably reflect a particular variety, register, modality, etc. The accuracy of the linguistic annotation is highly dependent on alignment between the language sampling frame of the trained data and the language data to be automatically annotated. Many (most) of the language models available for automatic linguistic annotation are based on language that is most readily available and for most languages this has traditionally been newswire text. It is important to be aware of these characteristics when using linguistic annotation tools. 
 
+*Consider adding 'creating measures' here*
+
 #### Merging
 
 The process of merging aims to _join_ a variable or set of variables with another variable or set of variables from another dataset. The option to merge two (or more) datasets requires that there is a shared variable that indexes and aligns the datasets. 
@@ -807,7 +807,7 @@ In sum, the transformation steps described here collectively aim to produce high
 
 As we have seen in this chapter that acquiring data and converting that data into information involves a number of conscious decisions and implementation steps. As a favor to ourselves as researchers and to the research community, it is crucial to document these decisions and steps. This makes it both possible to retrace our own steps and also provides a guide for future researchers that want to reproduce and/ or build on your research. A programmatic approach to quantitative research helps ensure that the implementation steps are documented and reproducible but it is also vital that the decisions that are made are documented as well. This includes the creation/ selection of the corpus data, the description of the variables chosen from the corpus for the derived dataset, and the description of the variables created from the derived dataset for the analysis dataset. 
 
-*Consider adding more specifics on the characteristics and formats for documenting corpus data and datasets.*
+*Consider adding more specifics on the characteristics and formats for documenting corpus data and datasets; data dictionaries --examples in R packages and in spreadsheets, or Rmarkdown files*
 
 <!-- 
 - Selecting or developing a corpus
@@ -834,7 +834,7 @@ As we have seen in this chapter that acquiring data and converting that data int
 In this chapter we have focused on data and information --the first two components of DIKI Hierarchy. This process is visualized in Figure \@ref(fig:understanding-data-vis-sum). 
 
 <div class="figure" style="text-align: center">
-<img src="images/03-understanding-data/understanding-data_visual-summary.png" alt="Understanding data: visual summary" width="70%" />
+<img src="images/03-understanding-data/understanding-data_visual-summary.png" alt="Understanding data: visual summary" width="90%" />
 <p class="caption">(\#fig:understanding-data-vis-sum)Understanding data: visual summary</p>
 </div>
 

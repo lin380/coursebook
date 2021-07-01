@@ -11,12 +11,6 @@
 <!-- edit -->
 In this section the aims are to (1) provide an overview of quantitative research and their applications, by both highlighting visible applications and notable research in various fields. (2) We will under the hood a bit and consider how quantitative research contributes to language research. (3) I will layout the main types of research and situate quantitative text analysis inside these. Some attention will be given to the historical background to understand how theory (generative and usage-based grammar) has framed and to some degree continues to frame language research. (4) We will discuss how the programmatic approaches to language, which are fundamental for quantitative text analysis, also provide the opportunity to further science through process documentation and research reproducibility.  
 
-<!-- Learning outcomes/ goals
-
-Include these in the Canvas page for the day
-
--->
-
 # Data, language, and text analysis
 
 <p style="font-weight:bold; color:red;">DRAFT</p>
@@ -38,6 +32,10 @@ Include these in the Canvas page for the day
 TUTORIALS:
 
 - Git-it: https://github.com/jlord/git-it-electron (interactive app to learn the basics of Git)
+- Primers:
+  - Programming Basics: https://rstudio.cloud/learn/primers/1.2
+  - What is Rmarkdown? https://rmarkdown.rstudio.com/lesson-1.html
+  
 
 SWIRL:
 
@@ -52,6 +50,7 @@ WORKED/ RECIPE:
 PROJECT:
 
 - Interest statement, annotated references, goal(s), finding(s)
+
 -->
 
 
@@ -107,7 +106,7 @@ The interest in deriving insight from the available data is now almost ubiquitou
 These advances, however, are not predicated on data alone. As envisioned by researchers at Bell Labs, turning data into insight it takes computing skills (i.e. programming), knowledge of statistics, and, importantly, substantive/ domain expertise. This triad has been popularly represented by Drew Conway in a Venn diagram \@ref(fig:intro-data-science-venn). 
 
 <div class="figure" style="text-align: center">
-<img src="images/02-introduction/Data_Science_VD.png" alt="[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway" width="70%" />
+<img src="images/02-introduction/Data_Science_VD.png" alt="[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway" width="90%" />
 <p class="caption">(\#fig:intro-data-science-venn)[Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) by Drew Conway</p>
 </div>
 
@@ -116,7 +115,7 @@ This same toolbelt underlies well-known public-facing language applications. Fro
 <!-- Highly visible applications in language -->
 
 <div class="figure" style="text-align: center">
-<img src="images/02-introduction/well-known-language-applications.png" alt="Well-known language applications" width="70%" />
+<img src="images/02-introduction/well-known-language-applications.png" alt="Well-known language applications" width="90%" />
 <p class="caption">(\#fig:intro-language-applications)Well-known language applications</p>
 </div>
 
@@ -254,7 +253,7 @@ In Part II "Orientation" we will build our Data Literacy skills working from dat
 
 
 <div class="figure" style="text-align: center">
-<img src="images/02-introduction/diki-hierarchy-updated.png" alt="Data to Insight Hierarchy (DIKI)" width="70%" />
+<img src="images/02-introduction/diki-hierarchy-updated.png" alt="Data to Insight Hierarchy (DIKI)" width="90%" />
 <p class="caption">(\#fig:diki-hierarchy)Data to Insight Hierarchy (DIKI)</p>
 </div>
 
@@ -336,7 +335,7 @@ The author suggests what is coined "Data Science" is really six sub-divisions:
 knitr::include_graphics("images/02-introduction/dikw-conspiracy.jpg")
 ```
 
-<img src="images/02-introduction/dikw-conspiracy.jpg" width="70%" style="display: block; margin: auto;" />
+<img src="images/02-introduction/dikw-conspiracy.jpg" width="90%" style="display: block; margin: auto;" />
 **Chen, M., Ebert, D., Hagen, H., Laramee, R. S., Van Liere, R., Ma, K.-L., Ribarsky, W., Scheuermann, G., & Silver, D. (2008). Data, information, and knowledge in visualization. IEEE Computer Graphics and Applications, 29(1), 12–19.** [@Chen2008]
 
 > __Data__: a representation of facts, concepts, or instructions in a formalized manner suitable for communication, interpretation, or processing by human beings or by automatic means.
@@ -364,7 +363,7 @@ knitr::include_graphics("images/02-introduction/Rowley-dikw.png")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="images/02-introduction/Rowley-dikw.png" alt="The wisdom hierarchy, Rowley(2007)" width="70%" />
+<img src="images/02-introduction/Rowley-dikw.png" alt="The wisdom hierarchy, Rowley(2007)" width="90%" />
 <p class="caption">(\#fig:dikw-rowley)The wisdom hierarchy, Rowley(2007)</p>
 </div>
 
@@ -410,7 +409,7 @@ My modified DIKW to DIKI:
 knitr::include_graphics("images/02-introduction/diki-hierarchy.png")
 ```
 
-<img src="images/02-introduction/diki-hierarchy.png" width="70%" style="display: block; margin: auto;" />
+<img src="images/02-introduction/diki-hierarchy.png" width="90%" style="display: block; margin: auto;" />
 
 NOTE: I would modify Insight to "Contributions" and "Connections". I leave off wisdom as it is the last extension which deals with "effectiveness" and ultimately is judgment-level knowledge.
 
