@@ -49,7 +49,10 @@ fig:summaries-multivariate-barplot-belc
 fig:summaries-bivariate-boxplots-belc
 fig:summaries-multivariate-boxplots-belc
 tab:summaries-bivariate-categorical-table-belc
-tab:summaries-multivariate-categorical-table-belc
+fig:summaries-bivariate-categorical-barplot-belc
+tab:summaries-multivariate-categorical-table-belc-female
+tab:summaries-multivariate-categorical-table-belc-male
+fig:summaries-multivariate-mosaic-belc
 rationale
 learning-goals
 approach

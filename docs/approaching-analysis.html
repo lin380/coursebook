@@ -828,7 +828,7 @@ fem: 48, mal: 31
 <span class="header-section-number">3.1.2.2</span> Multiple variables<a class="anchor" aria-label="anchor" href="#multiple-variables"><i class="fas fa-link"></i></a>
 </h4>
 <p>In addition to the single variable summaries (univariate), it is very useful to understand how two (bivariate) or more variables (multivariate) are related to add to our understanding of the shape of the relationships in the dataset. Just as with univariate summaries, the informational values of the variables frame our approach.</p>
-<p>To explore the relationship between two continuous variables we can statistically summarize a relationship with a <strong>coefficient of correlation</strong>. If the continuous variables approximate the normal distribution <em>Pearson’s r</em> is used, if not <em>Kendall’s tau</em> is the appropriate measure. A correlation coefficient ranges from -1 to 1 where 0 is no correlation and -1 or 1 is perfect correlation (either negative or positive). Let’s assess the correlation coefficient for the variables <code>num_tokens</code> and <code>ttr</code>. Since these variables are not normally distributed, we use Kendall’s tau. Using this measure the correlation coefficient is <span class="math inline">\(-0.563\)</span> suggesting there is a correlation, but not a particularly strong one.</p>
+<p>To explore the relationship between two continuous variables we can statistically summarize a relationship with a <strong>coefficient of correlation</strong> which is a measure of <strong>effect size</strong> between continuous variables. If the continuous variables approximate the normal distribution <em>Pearson’s r</em> is used, if not <em>Kendall’s tau</em> is the appropriate measure. A correlation coefficient ranges from -1 to 1 where 0 is no correlation and -1 or 1 is perfect correlation (either negative or positive). Let’s assess the correlation coefficient for the variables <code>num_tokens</code> and <code>ttr</code>. Since these variables are not normally distributed, we use Kendall’s tau. Using this measure the correlation coefficient is <span class="math inline">\(-0.563\)</span> suggesting there is a correlation, but not a particularly strong one.</p>
 <p>Correlation measures are important for reporting but to really appreciate a relationship it is best to graphically represent the variables in a <em>scatterplot</em>. In Figure <a href="approaching-analysis.html#fig:summaries-bivariate-scatterplot-belc">3.7</a> we see the relationship between <code>num_tokens</code> and <code>ttr</code>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:summaries-bivariate-scatterplot-belc"></span>
@@ -836,7 +836,7 @@ fem: 48, mal: 31
 Figure 3.7: Scatterplot…
 </p>
 </div>
-<p>In both plots <code>ttr</code> is on the y-axis and <code>num_tokens</code> on the x-axis. The points correspond to the intersection between each of these variables for a single observation. In the left pane only the points are represented. Visually (and given the correlation coefficient) we can see that there is a negative relationship between the number of tokens and the Type-Token ratio: in other words, the more tokens a composition has the lower the Type-Token Ratio. In this case this trend is quite apparent, but in other cases is may not be. To provide an additional visual cue a trend line is often added to a scatterplot. In the right pane I’ve added a linear trend line. This line demarcates the optimal central tendency across the relationship, assuming a linear relationship. The steeper the line, or slope, the more likely the correlation is strong. The band, or ribbon, around this trend line indicates the confidence interval which means that real central tendency could fall anywhere within this space. The wider the ribbon, the larger the variation between the observations. In this case we see that the ribbon widens when the number of tokens is either low or high. This means that the trend line could be potentially be drawn either steeper (more strongly correlated) or flatter (less strongly correlated).</p>
+<p>In both plots <code>ttr</code> is on the y-axis and <code>num_tokens</code> on the x-axis. The points correspond to the intersection between each of these variables for a single observation. In the left pane only the points are represented. Visually (and given the correlation coefficient) we can see that there is a negative relationship between the number of tokens and the Type-Token ratio: in other words, the more tokens a composition has the lower the Type-Token Ratio. In this case this trend is quite apparent, but in other cases is may not be. To provide an additional visual cue a trend line is often added to a scatterplot. In the right pane I’ve added a linear trend line. This line demarcates the optimal central tendency across the relationship, assuming a linear relationship. The steeper the line, or slope, the more likely the correlation is strong. The band, or ribbon, around this trend line indicates the <strong>confidence interval</strong> which means that real central tendency could fall anywhere within this space. The wider the ribbon, the larger the variation between the observations. In this case we see that the ribbon widens when the number of tokens is either low or high. This means that the trend line could be potentially be drawn either steeper (more strongly correlated) or flatter (less strongly correlated).</p>
 <div class="rmdtip">
 <p>
 In plots comparing two or more variables, the choice of which variable to plot on the x- and y-axis is contingent on the research question and/ or the statistical approach. The language varies between statistical approaches: in inferential methods the x-axis is used to plot what is known as the dependent variable and the y-axis an independent variable. In predictive methods the dependent variable is known as the outcome and the independent variable a predictor. Exploratory methods do not draw distinctions between variables along these lines so the choice between which variable to plot along the x- and y-axis is often arbitrary.
@@ -850,7 +850,8 @@ Figure 3.8: Scatterplot visualizing the relationship between <code>num_tokens</c
 </p>
 </div>
 <p>In this multivariate case, the scatterplot without the trend line is more difficult to interpret. The trend lines for the levels of <code>sex</code> help visually understand the variation of the relationship of <code>num_tokens</code>and <code>ttr</code> much better. But it is important to note that when there are multiple trend lines there is more than one slope to evaluate. The correlation coefficient can be calculated for each level of <code>sex</code> (i.e. ‘male’ and ‘female’) independently but the relationship between the each slope can be visually inspected and provide important information regarding each level’s relative distribution. If the trend lines are parallel (ignoring the ribbons for the moment), as it appears in this case, this suggests that the relationship between the continuous variables is stable across the levels of the categorical variable, with males showing more lexical diversity than females declining at a similar rate. If the lines were to cross, or suggest that they would cross at some point, then there would be a potentially important difference between the levels of the categorical variable (known as an interaction). Now let’s consider the meaning of the ribbons. Since the ribbons reflect the range in which the real trend line could fall, and these ribbons overlap, the differences between the levels of our categorical variable are likely not distinct. So at a descriptive level, this visual summary would suggest that there are no differences between the relationship between <code>num_tokens</code> and <code>ttr</code> for the distinct levels of <code>sex</code>.</p>
-<p>Characterizing the relationship between two categorical variables, as we have seen is either performed through a correlation coefficient metric or visually. The approach for summarizing a bivariate relationship which combines a continuous and categorical variable is distinct. Since a categorical variable is by definition a class-oriented variable, a descriptive analysis can include a tabular representation, with some type of summary statistic. For example, if we consider the relationship between <code>num_tokens</code> and <code>age_group</code> we can calculate the mean for <code>num_tokens</code> for each level of <code>age_group</code>. To provide a metric of dispersion we can include either the Standard Error of the Mean (SEM) and/ or the Confidence Interval (CI). In Table <a href="approaching-analysis.html#tab:summarize-bivariate-cont-cat-table">3.3</a> we see each of these summary statistics.</p>
+<p>Characterizing the relationship between two continuous variables, as we have seen is either performed through a correlation coefficient metric or visually. The approach for summarizing a bivariate relationship which combines a continuous and categorical variable is distinct. Since a categorical variable is by definition a class-oriented variable, a descriptive analysis can include a tabular representation, with some type of summary statistic. For example, if we consider the relationship between <code>num_tokens</code> and <code>age_group</code> we can calculate the mean for <code>num_tokens</code> for each level of <code>age_group</code>. To provide a metric of dispersion we can include either the standard error of the mean (SEM) and/ or the confidence interval (CI).</p>
+<p>In Table <a href="approaching-analysis.html#tab:summarize-bivariate-cont-cat-table">3.3</a> we see each of these summary statistics.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:summarize-bivariate-cont-cat-table">Table 3.3: </span>Summary table for <code>tokens</code> by <code>age_group</code>.
@@ -929,27 +930,28 @@ ci
 </tbody>
 </table></div>
 <p>The SEM is a metric which summarizes variation based on the number of values and the CI, as we have seen, summarizes the potential range of in which the mean may fall given a likelihood criterion (usually the same as the <span class="math inline">\(p\)</span>-value, .05).</p>
-<p>Because we are assessing a categorical variable in combination with a continuous variable a table is an available visual summary. But as I have said before, a graphic summary is hard to beat. In the following figure (<a href="approaching-analysis.html#fig:summaries-bivariate-barplot-belc">3.9</a>) a barplot is provided which inlcudes the means of <code>num_tokens</code> for each level of <code>age_group</code>. The overlaid bars represent the confidence interval for each mean score.</p>
+<p>Because we are assessing a categorical variable in combination with a continuous variable a table is an available visual summary. But as I have said before, a graphic summary is hard to beat. In the following figure (<a href="approaching-analysis.html#fig:summaries-bivariate-barplot-belc">3.9</a>) a barplot is provided which includes the means of <code>num_tokens</code> for each level of <code>age_group</code>. The overlaid bars represent the confidence interval for each mean score.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:summaries-bivariate-barplot-belc"></span>
-<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-barplot-belc-1.png" alt="Barplot..." width="90%"><p class="caption">
-Figure 3.9: Barplot…
+<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num_tokens` by `age_group` from the BELC dataset." width="90%"><p class="caption">
+Figure 3.9: Barplot comparing the mean <code>num_tokens</code> by <code>age_group</code> from the BELC dataset.
 </p>
 </div>
 <p>When CI ranges overlap, just as with ribbons in scatterplots, the likelihood that the differences between levels are ‘real’ is diminished.</p>
-<p>If we want to explore a multivariate relationship and add <code>sex</code> to the current descriptive summary, we can create a table, but let’s jump to a barplot.</p>
+<p>To gauge the effect size of this relationship we can use <em>Spearman’s rho</em> for rank-based coefficients. The score is 0.708 indicating that the relationship between <code>age_group</code> and <code>num_tokens</code> is quite strong.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To calculate effect sizes for the difference between two means, &lt;em&gt;Cohen’s d&lt;/em&gt; is used.&lt;/p&gt;"><sup>8</sup></a></p>
+<p>Now, if we want to explore a multivariate relationship and add <code>sex</code> to the current descriptive summary, we can create a summary table, but let’s jump straight to a barplot.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:summaries-multivariate-barplot-belc"></span>
-<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-barplot-belc-1.png" alt="Barplot of the relationship between `age_group`, `num_tokens` and `sex` from the BELC dataset." width="90%"><p class="caption">
-Figure 3.10: Barplot of the relationship between <code>age_group</code>, <code>num_tokens</code> and <code>sex</code> from the BELC dataset.
+<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num_tokens` by `age_group` and `sex` from the BELC dataset." width="90%"><p class="caption">
+Figure 3.10: Barplot comparing the mean <code>num_tokens</code> by <code>age_group</code> and <code>sex</code> from the BELC dataset.
 </p>
 </div>
-<p>We see in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-barplot-belc">3.10</a> that on the whole, the appears to be general trend towards more tokens in a composition for more advanced learner levels. However, the non-overlap in CI bars for the ‘12-year-olds’ for the levels of <code>sex</code> (‘male’ and ‘female’) suggest that 12-year-old females may produce more tokens per composition than males –a divergence from the overall trend.</p>
+<p>We see in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-barplot-belc">3.10</a> that on the whole, the appears to be general trend towards more tokens in a composition for more advanced learner levels. However, the non-overlap in CI bars for the ‘12-year-olds’ for the levels of <code>sex</code> (‘male’ and ‘female’) suggest that 12-year-old females may produce more tokens per composition than males –a potential divergence from the overall trend.</p>
 <p>Barplots are a familiar and common visualization for summaries of continuous variables across levels of categorical variables, but a boxplot is another useful visualization of this type of relationship.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:summaries-bivariate-boxplots-belc"></span>
-<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-boxplots-belc-1.png" alt="Boxplot..." width="90%"><p class="caption">
-Figure 3.11: Boxplot…
+<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-boxplots-belc-1.png" alt="Boxplot of the relationship between `age_group` and `num_tokens` from the BELC dataset." width="90%"><p class="caption">
+Figure 3.11: Boxplot of the relationship between <code>age_group</code> and <code>num_tokens</code> from the BELC dataset.
 </p>
 </div>
 <p>As seen when summarizing single continuous variables, boxplots provide a rich set of information concerning the distribution of a continuous variable. In this case we can visually compare the continuous variable <code>num_tokens</code> with the categorical variable <code>age_group</code>. The plot in the right pane includes ‘notches.’ Notches represent the confidence interval, in boxplots this interval surrounds the median. When compared horizontally across levels of a categorical variable the overlap of notched spaces suggest that the true median may be within the same range.
@@ -957,336 +959,334 @@ Additionally, when the confidence interval goes outside the interquantile range 
 <p>We can also add a third variable to our exploration. As in the barplot in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-barplot-belc">3.10</a>, the boxplot in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-boxplots-belc">3.12</a> suggests that there is an overall trend towards more tokens per composition as a learner advances in experience, except at the ‘12-year-old’ level where there appears to be a difference between ‘males’ and ‘females.’</p>
 <div class="figure" style="text-align: center">
 <span id="fig:summaries-multivariate-boxplots-belc"></span>
-<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-boxplots-belc-1.png" alt="Boxplot for multivariate relationship between `age_group`, `num_tokens`, and `sex`." width="90%"><p class="caption">
-Figure 3.12: Boxplot for multivariate relationship between <code>age_group</code>, <code>num_tokens</code>, and <code>sex</code>.
+<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-boxplots-belc-1.png" alt="Boxplot of the relationship between `age_group`, `num_tokens` and `sex` from the BELC dataset." width="90%"><p class="caption">
+Figure 3.12: Boxplot of the relationship between <code>age_group</code>, <code>num_tokens</code> and <code>sex</code> from the BELC dataset.
 </p>
 </div>
-<ul>
-<li>categorical, categorical
-<ul>
-<li>cross-tabulations
-<ul>
-<li>counts</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ...</span>
-<span class="va">belc</span> <span class="op">%&gt;%</span>
-    <span class="fu">tabyl</span><span class="op">(</span><span class="va">sex</span>, <span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"Crosstabulation table for `age_group` and `sex`."</span><span class="op">)</span></code></pre></div>
+<p>Up to this point in our exploration of multiple variables we have always included at least one continuous variable. The central tendency for continuous variables can be summarized in multiple ways (mean, median, and mode) and when calculating means and medians, measures of dispersion are also provide helpful information summarize variability. When working with categorical variables, however, measures of central tendency and dispersion are more limited. For ordinal variables central tendency can be summarized by the median or mode and dispersion can be assessed with an interquantile range. For nominal variables the mode is the only measure of central tendency and dispersion is not applicable. For this reason relationships between categorical variables are typically summarized using <strong>contingency tables</strong> which provide cross-variable counts for each level of the target categorical variables.</p>
+<p>Let’s explore the relationship between the categorical variables <code>sex</code> and <code>age_group</code>. In Table <a href="approaching-analysis.html#tab:summaries-bivariate-categorical-table-belc">3.4</a> we see the contingency table with summary counts and percentages.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:summaries-bivariate-categorical-table-belc">Table 3.4: </span>Crosstabulation table for <code>age_group</code> and <code>sex</code>.
+<span id="tab:summaries-bivariate-categorical-table-belc">Table 3.4: </span>Contingency table for <code>age_group</code> and <code>sex</code>.
 </caption>
 <thead><tr>
 <th style="text-align:left;">
-sex
+sex/age_group
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 10-year-olds
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 12-year-olds
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 16-year-olds
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 17-year-olds
 </th>
+<th style="text-align:left;">
+Total
+</th>
 </tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
 female
 </td>
-<td style="text-align:right;">
-14
+<td style="text-align:left;">
+58% (14)
 </td>
-<td style="text-align:right;">
-11
+<td style="text-align:left;">
+69% (11)
 </td>
-<td style="text-align:right;">
-13
+<td style="text-align:left;">
+54% (13)
 </td>
-<td style="text-align:right;">
-10
+<td style="text-align:left;">
+67% (10)
+</td>
+<td style="text-align:left;">
+61% (48)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 male
 </td>
-<td style="text-align:right;">
-10
+<td style="text-align:left;">
+42% (10)
 </td>
-<td style="text-align:right;">
-5
+<td style="text-align:left;">
+31% (5)
 </td>
-<td style="text-align:right;">
-11
+<td style="text-align:left;">
+46% (11)
 </td>
-<td style="text-align:right;">
-5
+<td style="text-align:left;">
+33% (5)
+</td>
+<td style="text-align:left;">
+39% (31)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+100% (24)
+</td>
+<td style="text-align:left;">
+100% (16)
+</td>
+<td style="text-align:left;">
+100% (24)
+</td>
+<td style="text-align:left;">
+100% (15)
+</td>
+<td style="text-align:left;">
+100% (79)
 </td>
 </tr>
 </tbody>
 </table></div>
-<ul>
-<li>association (Cramer’s V?)</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ...</span>
-
-<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">belc</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age_group</span>, fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">belc</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age_group</span>, fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
-
-<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
-
-<span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="04-approaching-analysis_files/figure-html/summaries-bivariate-categorical-barplot-belc-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ...</span>
-
-<span class="va">belc</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>rank_tokens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">num_tokens</span>, breaks <span class="op">=</span> <span class="fl">3</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">participant_id</span>, <span class="va">age_group</span>, <span class="va">sex</span>, <span class="va">rank_tokens</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">tabyl</span><span class="op">(</span><span class="va">sex</span>, <span class="va">rank_tokens</span>, <span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"Crosstabulation table for `age_group`, `rank_tokens`, and `sex`."</span><span class="op">)</span></code></pre></div>
-<div class="inline-table"><table class="kable_wrapper">
+<p>As the size of the contingency table increases, visual inspection becomes more difficult. As we have seen, a graphical summary often proves more helpful to detect patterns.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:summaries-bivariate-categorical-barplot-belc"></span>
+<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-categorical-barplot-belc-1.png" alt="Barplot..." width="90%"><p class="caption">
+Figure 3.13: Barplot…
+</p>
+</div>
+<p>In Figure <a href="approaching-analysis.html#fig:summaries-bivariate-categorical-barplot-belc">3.13</a> the left pane shows the counts. Counts alone can be tricky to evaluate and adjusting the barplot to account for the proportions of males to females in each group, as shown in the right pane, provides a clearer picture of the relationship. From these barplots we can see there were more females in the study overall and particularly in the 12-year-olds and 17-year-olds groups. To gauge the association strength between <code>sex</code> and <code>age_group</code> we can calculate <em>Cramer’s V</em> which, in spirit, is like our correlation coefficients for the relationship between continuous variables. The Cramer’s V score for this relationship is 0.12 which is low, suggesting that there is not a strong association between <code>sex</code> and <code>age_group</code> –in other words, the relationship is stable.</p>
+<p>Let’s look at a more complex case in which we have three categorical variables. Now the dataset, as is, does not have a third categorical variable for us to explore but we can recast the continuous <code>num_tokens</code> variable as a categorical variable if we bin the scores into groups. I’ve binned tokens into three score groups with equal ranges in a new variable called <code>rank_tokens</code>.</p>
+<p>Adding a second categorical independent variable ups the complexity of our analysis and as a result our visualization strategy will change. Our numerical summary will include individual two-way cross-tabulations for each of the levels for the third variable. In this case it is often best to use the variable with the fewest levels as the third variable, in this case <code>sex</code>.</p>
+<div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:summaries-multivariate-categorical-table-belc">Table 3.5: </span>Crosstabulation table for <code>age_group</code>, <code>rank_tokens</code>, and <code>sex</code>.
+<span id="tab:summaries-multivariate-categorical-table-belc-female">Table 3.5: </span>Contingency table for <code>age_group</code>, <code>rank_tokens</code>, and <code>sex</code> (female).
 </caption>
-<tbody><tr>
-<td>
-<table class="table table-sm">
 <thead><tr>
 <th style="text-align:left;">
-sex
+rank_tokens/age_group
 </th>
-<th style="text-align:right;">
-low
+<th style="text-align:left;">
+10-year-olds
 </th>
-<th style="text-align:right;">
-mid
+<th style="text-align:left;">
+12-year-olds
 </th>
-<th style="text-align:right;">
-high
+<th style="text-align:left;">
+16-year-olds
+</th>
+<th style="text-align:left;">
+17-year-olds
+</th>
+<th style="text-align:left;">
+Total
 </th>
 </tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-<table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:right;">
 low
-</th>
-<th style="text-align:right;">
-mid
-</th>
-<th style="text-align:right;">
-high
-</th>
-</tr></thead>
-<tbody>
-<tr>
+</td>
 <td style="text-align:left;">
-female
+27% (13)
 </td>
-<td style="text-align:right;">
-5
+<td style="text-align:left;">
+10% (5)
 </td>
-<td style="text-align:right;">
-6
+<td style="text-align:left;">
+4% (2)
 </td>
-<td style="text-align:right;">
-0
+<td style="text-align:left;">
+6% (3)
+</td>
+<td style="text-align:left;">
+48% (23)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-male
+mid
 </td>
-<td style="text-align:right;">
-4
+<td style="text-align:left;">
+2% (1)
 </td>
-<td style="text-align:right;">
-1
+<td style="text-align:left;">
+13% (6)
 </td>
-<td style="text-align:right;">
-0
+<td style="text-align:left;">
+21% (10)
+</td>
+<td style="text-align:left;">
+6% (3)
+</td>
+<td style="text-align:left;">
+42% (20)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+2% (1)
+</td>
+<td style="text-align:left;">
+8% (4)
+</td>
+<td style="text-align:left;">
+10% (5)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+29% (14)
+</td>
+<td style="text-align:left;">
+23% (11)
+</td>
+<td style="text-align:left;">
+27% (13)
+</td>
+<td style="text-align:left;">
+21% (10)
+</td>
+<td style="text-align:left;">
+100% (48)
 </td>
 </tr>
 </tbody>
-</table>
-</td>
-<td>
-<table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:right;">
-low
-</th>
-<th style="text-align:right;">
-mid
-</th>
-<th style="text-align:right;">
-high
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-<table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:right;">
-low
-</th>
-<th style="text-align:right;">
-mid
-</th>
-<th style="text-align:right;">
-high
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr></tbody>
 </table></div>
-<ul>
-<li>mosaic plots</li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ...</span>
-
-<span class="va">belc</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>rank_tokens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">num_tokens</span>, breaks <span class="op">=</span> <span class="fl">3</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">participant_id</span>, <span class="va">age_group</span>, <span class="va">sex</span>, <span class="va">rank_tokens</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="04-approaching-analysis_files/figure-html/summaries-multivariate-mosaic-belc-1.png" width="90%" style="display: block; margin: auto;"></div>
-<!-- 
-Distributions
-
-- ? include as part of Summaries?
-
-Correction
-
-- Missing data
-- Skew
-  - Continuous variables
-- Outliers
-  - Trimming
--->
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:summaries-multivariate-categorical-table-belc-male">Table 3.6: </span>Contingency table for <code>age_group</code>, <code>rank_tokens</code>, and <code>sex</code> (male).
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+rank_tokens/age_group
+</th>
+<th style="text-align:left;">
+10-year-olds
+</th>
+<th style="text-align:left;">
+12-year-olds
+</th>
+<th style="text-align:left;">
+16-year-olds
+</th>
+<th style="text-align:left;">
+17-year-olds
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:left;">
+32% (10)
+</td>
+<td style="text-align:left;">
+13% (4)
+</td>
+<td style="text-align:left;">
+13% (4)
+</td>
+<td style="text-align:left;">
+3% (1)
+</td>
+<td style="text-align:left;">
+61% (19)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mid
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+3% (1)
+</td>
+<td style="text-align:left;">
+23% (7)
+</td>
+<td style="text-align:left;">
+6% (2)
+</td>
+<td style="text-align:left;">
+32% (10)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+0% (0)
+</td>
+<td style="text-align:left;">
+6% (2)
+</td>
+<td style="text-align:left;">
+6% (2)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+32% (10)
+</td>
+<td style="text-align:left;">
+16% (5)
+</td>
+<td style="text-align:left;">
+35% (11)
+</td>
+<td style="text-align:left;">
+16% (5)
+</td>
+<td style="text-align:left;">
+100% (31)
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contingency tables with this many levels are notoriously difficult to interpret. A plot that is often used for three-way contingency table summaries is a mosaic plot. In Figure <a href="approaching-analysis.html#fig:summaries-multivariate-mosaic-belc">3.14</a> I have created a mosaic plot for the three categorical variables in the previous contingency tables.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:summaries-multivariate-mosaic-belc"></span>
+<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-mosaic-belc-1.png" alt="Mosaic plot for three categorical variables `age_group`, `rank_tokens`, and `sex` in the BELC dataset." width="90%"><p class="caption">
+Figure 3.14: Mosaic plot for three categorical variables <code>age_group</code>, <code>rank_tokens</code>, and <code>sex</code> in the BELC dataset.
+</p>
+</div>
+<p>The mosaic plot suggests that the number of tokens per composition increase as the learner age group increases and that females show more tokens earlier.</p>
 <!-- Section summary: -->
 <p>In sum, a dataset is information but when the observations become numerous or complex they are visually difficult to inspect and understand at a pattern level. Descriptive statistics are useful to provide the researcher an overview of the variables and (potential) relationships between variables in a dataset. The understanding derived from this exploration will prove useful in analytically approaching the dataset.</p>
-<ul>
-<li>? add missing cases, distributions (parametric/ non-parametric), dealing with outliers</li>
-</ul>
+<p><em>Consider adding a table with informational level, central tendency measure, dispersion measure, visualization??</em></p>
 </div>
 </div>
 </div>
@@ -1414,7 +1414,7 @@ Correction
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on July 01, 2021 (latest version).</p>
+    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on July 02, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
