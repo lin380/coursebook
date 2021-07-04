@@ -2,7 +2,7 @@
 title: "LIN 380 Coursebook"
 subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research in R"
 author: "Jerid Francom"
-date: "July 02, 2021 (latest version)"
+date: "July 04, 2021 (latest version)"
 site: bookdown::bookdown_site
 bibliography: [coursebook.bib, packages.bib]
 biblio-style: apalike
@@ -35,6 +35,10 @@ Dr. Jerid Francom is Associate Professor of Spanish and Linguistics at Wake Fore
 ## License {-}
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br />This work by [Jerid C. Francom](https://francojc.github.io/) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
+
+## Other {-}
+
+<div>Icons made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> are licensed by CC BY 3.0</div>
 
 
 

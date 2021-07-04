@@ -110,7 +110,7 @@ To help mitigate these issues, there are two more strategies that can be applied
 A key feature of a sample is that it is purposely selected. Samples are not simply a collection or set of data from the population. Samples are rigorously selected with an explicit target population in mind. In text analysis a purposely sampled collection of texts, of the type defined here, is known as a __corpus.__ For this same reason a set of texts or documents which have not been selected along a purposely selected sampling frame is not a corpus. The sampling frame, and therefore the populations modeled, in any given corpus most likely will vary and for this reason it is not a safe assumption that any given corpus is equally applicable for any and every research question. Corpus development (i.e. sampling) is purposeful, and the characteristics of the corpus development process should be made explicit through documentation. Therefore vetting a corpus sample for its applicability to a research goal is a key step in that a research must take to ensure the integrity of the research findings.
 
 
-\BeginKnitrBlock{rmdnote}<div class="rmdnote">The Brown Corpus is widely recognized as one of the first large, machine-readable corpora. It was compiled by @Kucera1967. Consult the [documentation for this corpus](http://korpus.uib.no/icame/brown/bcm.html). Can you determine what language population this corpus aims to represent? Given the sampling frame for this corpus (in the documentation and summarized in Figure \@ref(fig:brown-distribution)), what types of research might this corpus support or not support?</div>\EndKnitrBlock{rmdnote}
+\BeginKnitrBlock{rmdquestion}<div class="rmdquestion">The Brown Corpus is widely recognized as one of the first large, machine-readable corpora. It was compiled by @Kucera1967. Consult the [documentation for this corpus](http://korpus.uib.no/icame/brown/bcm.html). Can you determine what language population this corpus aims to represent? Given the sampling frame for this corpus (in the documentation and summarized in Figure \@ref(fig:brown-distribution)), what types of research might this corpus support or not support?</div>\EndKnitrBlock{rmdquestion}
 
 <div class="figure" style="text-align: center">
 <img src="03-understanding-data_files/figure-html/brown-distribution-1.png" alt="Brown Corpus of Written American English" width="90%" />
@@ -392,7 +392,11 @@ Table: (\#tab:structure-brown)First 10 words from the Brown Corpus.
 
 In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a 'tidy' dataset refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
 
-*Consider adding a visual to highlight these relationships*
+<div class="figure" style="text-align: center">
+<img src="images/03-understanding-data/tidy-format-paper.png" alt="Visual summary of the tidy format." width="90%" />
+<p class="caption">(\#fig:tidy-format-image)Visual summary of the tidy format.</p>
+</div>
+
 
 Semantic value in a tidy dataset is derived from the association of this physical structure along the two dimensions of this rectangular format. First, each column is a __variable__ which reflects measures for a particular attribute. In the Europarle Corpus dataset, in Table \@ref(tab:structure-europarle), for example, the `type` column measures the type of text, either `Source` or `Target`. Columns can contain measures which are qualitative or quantitative, that is character-based or numeric. Second, each row is an __observation__ that contains all of the variables associated with the primary unit of observation. The primary unit of observation the variable that is the essential focus of the informational structure. In this same dataset the first observation contains the `type`, `sentence_id`, and the `sentence`. As this dataset is currently structured the primary unit of investigation is the `sentence` as each of the other variables have measures that characterize each value of `sentence`. 
 
@@ -834,7 +838,7 @@ As we have seen in this chapter that acquiring data and converting that data int
 In this chapter we have focused on data and information --the first two components of DIKI Hierarchy. This process is visualized in Figure \@ref(fig:understanding-data-vis-sum). 
 
 <div class="figure" style="text-align: center">
-<img src="images/03-understanding-data/understanding-data_visual-summary.png" alt="Understanding data: visual summary" width="90%" />
+<img src="images/03-understanding-data/understanding-data_visual-summary-paper.png" alt="Understanding data: visual summary" width="90%" />
 <p class="caption">(\#fig:understanding-data-vis-sum)Understanding data: visual summary</p>
 </div>
 

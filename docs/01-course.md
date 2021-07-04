@@ -99,14 +99,14 @@ This coursebook is divided into four parts:
 
 ## Prerequisites {#prerequisites}
 
-<div class="rmdtodo">
-<p>Change this subsection:</p>
-<ul>
-<li>Move the R, RStudio, Packages, Git, GitHub to the <code>tadr</code> package vignettes/ articles</li>
-<li>Make reference here to the <code>tadr</code> package (Coursebook support package)</li>
-<li></li>
-</ul>
-</div>
+**TODOS:**
+
+Change this subsection:
+
+- Move the R, RStudio, Packages, Git, GitHub to the `tadr` package vignettes/ articles
+- Make reference here to the `tadr` package (Coursebook support package)
+- 
+
 
 Before we continue, make sure you have all the software you need for this book:
 
@@ -177,7 +177,7 @@ When necessary meta-description of code will appear. This is particularly releva
 ```
 ````
 
-In terms of prose, key concepts will be signaled using **_bold italics_**. Terms that appear in this typeface will also appear in the [glossary] at the end of the text. Furthermore, there are four pose text blocks that will be used to signal the reader's attention: *key points*, *notes*, *tips*, and *warnings*.  
+In terms of prose, key concepts will be signaled using **_bold italics_**. Terms that appear in this typeface will also appear in the [glossary] at the end of the text. Furthermore, there are four pose text blocks that will be used to signal the reader's attention: *key points*, *notes*, *tips*, *questions*, and *warnings*.  
 
 Key points summarize the main points to be covered in a chapter or a subsection of the text.
 
@@ -201,6 +201,12 @@ Tips are used to signal helpful hints that might otherwise be overlooked.
 <div class="rmdtip">
 <p>During a the course of an exploratory work session, many R objects are often created to test ideas. At some point inspecting the workspace becomes difficult due to the number of objects displayed using <code>ls()</code>.</p>
 <p>To remove all objects from the workspace, use <code>rm(list = ls())</code>.</p>
+</div>
+
+From time to time there will be points for you to consider and questions to explore. 
+
+<div class="rmdquestion">
+<p>Consider the objectives in this course: what ways can the knowledge and skills you will learn benefit you in your academic studies and/ or professional and personal life?</p>
 </div>
 
 Errors will be an inevitable part of learning, but some errors can be avoided. The text will used the warning text block to highlight typical pitfalls and errors.

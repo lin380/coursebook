@@ -14,6 +14,7 @@ tab:pinboard-listings
 tab:structure-europarle
 tab:structure-swda
 tab:structure-brown
+fig:tidy-format-image
 tab:tidy-words-europarle
 tab:normalize-non-speech-identify-europarle
 tab:normalize-non-speech-remove-europarle
@@ -85,15 +86,15 @@ merging
 documentation
 summary-1
 approaching-analysis
-descriptive-statistics
+description
 information-values
 summaries
 single-variables
 multiple-variables
-analytic-statistics
-exploratory-data-analysis-eda
+analysis
 inferential-data-analysis-ida
 predictive-data-analysis-pda
+exploratory-data-analysis-eda
 reporting
 framing-research
 chapter-subsection

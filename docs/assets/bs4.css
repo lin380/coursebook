@@ -51,7 +51,7 @@ div.sidebar {
 
 /* Notes */
 
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdtodo {
+.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdquestion, .rmdstudy {
   border-radius: 10px;
   border: 2px solid rgb(225,225,225);
   padding: 1em 1em 1em 4em;
@@ -78,8 +78,12 @@ div.sidebar {
   background: rgb(144,249,158) no-repeat 5px center/3em;
 }
 
-.rmdtodo {
-  background: rgb(168,219,67) no-repeat 5px center/3em;
+.rmdquestion {
+  background: rgb(171,249,114) no-repeat 5px center/3em;
+}
+
+.rmdstudy {
+  background: rgb(249,219,174) no-repeat 5px center/3em;
 }
 
 .rmdkey {
@@ -97,6 +101,9 @@ div.sidebar {
 .rmdactivity {
   background-image: url("images/code.png");
 }
-.rmdtodo {
+.rmdstudy {
   background-image: url("images/paper.png");
+}
+.rmdquestion {
+  background-image: url("images/question.png");
 }

@@ -13,8 +13,8 @@
 <p>The essential questions for this chapter are:</p>
 <ul>
 <li>What is the role of statistics in data analysis?</li>
-<li>What is the importance of descriptive statistics in data analysis?</li>
-<li>What are the main goals of the three statistical approaches to data analysis?</li>
+<li>What is the importance of descriptive assessment in data analysis?</li>
+<li>In what ways are main approaches to data analysis similar and different?</li>
 </ul>
 </div>
 
@@ -45,7 +45,7 @@ PROJECT:
 
 
 
-In this chapter I will build on the notions of data and information from the previous chapter. The aim of statistics in quantitative analysis is to uncover patterns in datasets. Thus statistics is aimed at deriving knowledge from information, the next step in the DIKI Hierarchy (Figure \@ref(fig:understanding-data-vis-sum)). Where the creation of information from data involves human intervention and conscious decisions, as we have seen, deriving knowledge from information involves even more conscious subjective decisions on how to assess and interrogate the information available and ultimately how to interpret the findings. The first step is to conduct a descriptive assessment of the information, both at the individual variable level and also between variables, the second is to interrogate the dataset either through exploratory, inferential, or predictive methods, and the third is to interpret and report the findings.
+In this chapter I will build on the notions of data and information from the previous chapter. The aim of statistics in quantitative analysis is to uncover patterns in datasets. Thus statistics is aimed at deriving knowledge from information, the next step in the DIKI Hierarchy (Figure \@ref(fig:understanding-data-vis-sum)). Where the creation of information from data involves human intervention and conscious decisions, as we have seen, deriving knowledge from information involves even more conscious subjective decisions on what information to assess, and what method to select to interrogate the information, and ultimately how to interpret the findings. The first step is to conduct a descriptive assessment of the information, both at the individual variable level and also between variables, the second is to interrogate the dataset either through inferential, predictive, or exploratory analysis methods, and the third is to interpret and report the findings.
 
 <!--
 - ? include that I will provide examples of statistical methods and procedures that are associated with each of these main statistical approaches.
@@ -55,9 +55,9 @@ In this chapter I will build on the notions of data and information from the pre
 - ...
 -->
 
-## Descriptive statistics
+## Description
 
-Descriptive statistics include a set of diagnostic measures and tabular and visual summaries which provide researchers a better understanding of the structure of a dataset, prepare the researcher to make decisions about which statistical methods and/ or tests are most appropriate, and to safeguard against false assumptions (missing data, data distributions, etc.). In this section we will first cover the importance of understanding the informational value that variables can represent and then move to use this understanding to approach summarizing individual variables and relationships between variables. 
+A descriptive assessment of the dataset includes a set of diagnostic measures and tabular and visual summaries which provide researchers a better understanding of the structure of a dataset, prepare the researcher to make decisions about which statistical methods and/ or tests are most appropriate, and to safeguard against false assumptions (missing data, data distributions, etc.). In this section we will first cover the importance of understanding the informational value that variables can represent and then move to use this understanding to approach summarizing individual variables and relationships between variables. 
 
 To ground this discussion I will introduce a new dataset. This dataset is drawn from the [Barcelona English Language Corpus (BELC)](https://slabank.talkbank.org/access/English/BELC.html), which is found in the [TalkBank repository](http://talkbank.org/). I've selected the "Written composition" task from this corpus which contains writing samples from second language learners of English at different ages. Participants were given the task of writing for 15 minutes on the topic of "Me: my past, present and future". Data was collected for many (but not all) participants up to four times over the course of seven years. In Table \@ref(tab:belc-overview) I've included the first 10 observations from the dataset which reflects structural and transformational steps I've done so we start with a tidy dataset. 
 
@@ -174,7 +174,7 @@ Turning to continuous variables, another subdivision can be made which hinges on
 An hierarchical overview of the relationship between the two main and four sub-types of levels of measurement appear in Figure \@ref(fig:info-values-graphic).
 
 <div class="figure" style="text-align: center">
-<img src="images/04-approaching-analysis/Informational-values.png" alt="Levels of measurement graphic representation." width="90%" />
+<img src="images/04-approaching-analysis/Informational-values-paper.png" alt="Levels of measurement graphic representation." width="90%" />
 <p class="caption">(\#fig:info-values-graphic)Levels of measurement graphic representation.</p>
 </div>
 
@@ -374,10 +374,10 @@ In Figure \@ref(fig:summaries-histograms-belc) I've plotted histograms in the to
 <p class="caption">(\#fig:summaries-histograms-belc)Histograms and density plots for the continuous variables in the BELC dataset.</p>
 </div>
 
-Histograms provide insight into the distribution of the data. For our three continuous variables, the distributions happen not to be too strikingly distinct. They are, however, not the same either. When we explore continuous variables with histograms we are often trying to assess whether there is skew or not. There are three general types of skew, visualized in Figure \@ref(fig:summaries-skew-graphic) [@Bobbitt2021]. 
+Histograms provide insight into the distribution of the data. For our three continuous variables, the distributions happen not to be too strikingly distinct. They are, however, not the same either. When we explore continuous variables with histograms we are often trying to assess whether there is skew or not. There are three general types of skew, visualized in Figure \@ref(fig:summaries-skew-graphic). 
 
 <div class="figure" style="text-align: center">
-<img src="images/04-approaching-analysis/skew.png" alt="Examples of skew types in density plots." width="100%" />
+<img src="images/04-approaching-analysis/skew-types-paper.png" alt="Examples of skew types in density plots." width="100%" />
 <p class="caption">(\#fig:summaries-skew-graphic)Examples of skew types in density plots.</p>
 </div>
 
@@ -433,7 +433,7 @@ In Figure \@ref(fig:summarize-ecdf-belc) we see ECDF plots for our three continu
 
 Take, for example, the number of tokens (`num_tokens`) per composition. The ECDF plot tells us that 50% of the values in this variable are 56 words or less. In the three variables plotted, the cumulative growth is quite steady. In some cases it is not. When it is not, an ECDF goes a long way to provide us a glimpse into key bends in the proportions of values in a variable.
 
-Now let's turn to descriptive statistics for categorical variables. For categorical variables, central tendency can be calculated as well but only a subset of measures given the reduced informational value of categorical variables. For nominal variables where there is no relationship between the levels the central tendency is simply the mode. The levels of ordinal variables, however, are relational and therefore the median, in addition to the mode, can also be used as a measure of central tendency. Note that a variable with one mode is unimodal, two modes, bimmodal, and in variables that have two or more modes multimodal.
+Now let's turn to the descriptive assessment of categorical variables. For categorical variables, central tendency can be calculated as well but only a subset of measures given the reduced informational value of categorical variables. For nominal variables where there is no relationship between the levels the central tendency is simply the mode. The levels of ordinal variables, however, are relational and therefore the median, in addition to the mode, can also be used as a measure of central tendency. Note that a variable with one mode is unimodal, two modes, bimmodal, and in variables that have two or more modes multimodal.
 
 <div class="rmdwarning">
 <p>To get numeric value of the median for an ordinal variable the levels of the variable will need to be numeric as well. Non-numeric levels can be recoded to numeric for this purpose if necessary.</p>
@@ -513,7 +513,7 @@ Let's add another variable to the mix, in this case the categorical variable `se
 
 In this multivariate case, the scatterplot without the trend line is more difficult to interpret. The trend lines for the levels of `sex` help visually understand the variation of the relationship of `num_tokens`and `ttr` much better. But it is important to note that when there are multiple trend lines there is more than one slope to evaluate. The correlation coefficient can be calculated for each level of `sex` (i.e. 'male' and 'female') independently but the relationship between the each slope can be visually inspected and provide important information regarding each level's relative distribution. If the trend lines are parallel (ignoring the ribbons for the moment), as it appears in this case, this suggests that the relationship between the continuous variables is stable across the levels of the categorical variable, with males showing more lexical diversity than females declining at a similar rate. If the lines were to cross, or suggest that they would cross at some point, then there would be a potentially important difference between the levels of the categorical variable (known as an interaction). Now let's consider the meaning of the ribbons. Since the ribbons reflect the range in which the real trend line could fall, and these ribbons overlap, the differences between the levels of our categorical variable are likely not distinct. So at a descriptive level, this visual summary would suggest that there are no differences between the relationship between `num_tokens` and `ttr` for the distinct levels of `sex`.
 
-Characterizing the relationship between two continuous variables, as we have seen is either performed through a correlation coefficient metric or visually. The approach for summarizing a bivariate relationship which combines a continuous and categorical variable is distinct. Since a categorical variable is by definition a class-oriented variable, a descriptive analysis can include a tabular representation, with some type of summary statistic. For example, if we consider the relationship between `num_tokens` and `age_group` we can calculate the mean for `num_tokens` for each level of `age_group`. To provide a metric of dispersion we can include either the standard error of the mean (SEM) and/ or the confidence interval (CI). 
+Characterizing the relationship between two continuous variables, as we have seen is either performed through a correlation coefficient metric or visually. The approach for summarizing a bivariate relationship which combines a continuous and categorical variable is distinct. Since a categorical variable is by definition a class-oriented variable, a descriptive evaluation can include a tabular representation, with some type of summary statistic. For example, if we consider the relationship between `num_tokens` and `age_group` we can calculate the mean for `num_tokens` for each level of `age_group`. To provide a metric of dispersion we can include either the standard error of the mean (SEM) and/ or the confidence interval (CI). 
 
 In Table \@ref(tab:summarize-bivariate-cont-cat-table) we see each of these summary statistics.
 
@@ -758,32 +758,138 @@ The mosaic plot suggests that the number of tokens per composition increase as t
 
 <!-- Section summary: -->
 
-In sum, a dataset is information but when the observations become numerous or complex they are visually difficult to inspect and understand at a pattern level. Descriptive statistics are useful to provide the researcher an overview of the variables and (potential) relationships between variables in a dataset. The understanding derived from this exploration will prove useful in analytically approaching the dataset. 
+In sum, a dataset is information but when the observations become numerous or complex they are visually difficult to inspect and understand at a pattern level. The descriptive methods described in this section are indispensable for providing the researcher an overview of the nature of each variable and any (potential) relationships between variables in a dataset. Importantly, the understanding derived from this exploration underlies all subsequent investigation and will counted on to frame your approach to analysis regardless of the research goals and the methods employed to derive more substantial knowledge.
 
 
 *Consider adding a table with informational level, central tendency measure, dispersion measure, visualization??*
 
-## Analytic statistics
+## Analysis
 
 Overview...
 
-Statistical approaches have different aims which can be broken into three categories: exploratory, inferential, or predictive.
+From identifying a target population, selecting a data sample that represents that population, and to structuring the sample into a dataset, the goals of a research project inform and frame the process. So it will be unsurprising to know that the process of selecting an approach to analysis is also intimately linked with a researcher's objectives. In this section we will cover three main analysis types: inferential, predictive, and exploratory analysis. The contrasts between the three hinge on (1) how to _identify_ the variables of interest, (2) how to _interrogate_ these variables, and (3) how to _interpret_ the results. I will structure the discussion of these analysis types moving from the most structured (deductive) to least structured (inductive) approach to deriving knowledge from information. 
 
+Goals of analysis: identify variables that characterize the population in relevant ways, statistically interrogate these variables evaluating and assessing relationships, and interpret the results from the statistical procedures in terms of the research design and research goals.
 
-<!-- Structure:
+<!--
 
-- goals
-- methods
-- results
-- reporting/ interpretation
+- build knowledge from information
+  - information makes relationships in data explicit and increase its informative potential
+  - descriptive methods aim to perform preliminary diagnostics and form preliminary understanding of the information for use in deriving more specific knowledge (know your data)
+  - analysis methods aim juxtapose and summarize information through targeted statistical analysis to allow humans to digest, understand, and draw conclusions from patterns within and between these relationships (understand your data)
 
 -->
 
+### Inferential data analysis (IDA)
+
+(deductive)
+
+Statistical hypothesis testing/ Null-Hypothesis Significance Testing Procedure (NHSTP)
+
+- Top-down approach, hypothesis testing, deriving verifying insight from data
+
+- Inferential: aim to infer conclusions about a particular relationship in the dataset that can be generalized, under some assumption of reliability, to the target population
+
+
+pattern testing, top-down, (deductive), 
+
+_Identify_: pre-determined and operationalized (practically measured) set of variables, to provide confirmatory evidence regarding a hypothesis. 
+
+- observational unit
+- variable roles: dependent variable, independent variable(s)
+
+_Interrogate_: use statistical procedures to deduce/ evaluate the likelihood that the patterns in the data represent true patterns in the sample
+
+- choose appropriate statistical procedure: 
+  - number and informational values of the variables
+  - assumptions about the nature of the variables (independence, normality, etc.)
+- use of the data
+  - entire dataset
+  - may include boostrapping (resampling with replacement)
+
+_Interpret_:  conclude whether the patterns are reliably generalizable to the population
+
+- parameter estimates
+- confidence measure (p-value, confidence intervals)
+- effect size (association strength)
+
+
+Also commonly known as hypothesis testing or confirmation, statistical inference aims to establish whether there is a reliable and generalizable relationship given patterns in the data. The approach makes the starting assumption that there is no relationship, or that the null hypothesis ($H_0$) is true. A relationship is only reliable, or *significant*, if the chance that the null hypothesis is false is less than some predetermined threshold; in which case we accept the alternative hypothesis ($H_1$). The standard threshold used in the Social Sciences, Linguistic included, is the famous p-value $p < .05$. Without digging into the deeper meaning of a p-value, in a nutshell a p-value is a confidence measure to suggest that the relationship you are investigating is robust and reliable given the data. 
+
+There are two considerations to keep in mind when conducting IDA. First, in this approach all the data is used and is used *only* once. This is not the case for the other two categories fo statistical approaches. For this reason it is vital to identify your statistical approach from the outset of your research project. Second, failing to establish a clear hypothesis and testable hypothesis and then sticking to that hypothesis can lead researchers to engage in "p-hacking"; a practice of running multiple tests and/or parameters on the same data (i.e. reusing the data) until evidence for the alternative hypothesis appears. 
+
+- ? Include methods, visualizations, examples/ applications/ studies?
+
+### Predictive data analysis (PDA)
+
+(deductive/ inductive)
+
+- Mixed approach, can be used for the generation of hypotheses or to test hypotheses, deriving intelligent action from data, discovering and leveraging patterns
+
+- Predictive: pattern associating (deductive) and leveraging (inductive)
+
+
+_Identify_: 
+
+- observational unit
+- variable roles: outcome variable, predictor variable(s)
+
+_Interrogate_: 
+
+- choose appropriate statistical procedure: 
+  - number and informational values of the variables
+- use of the data
+  - training/ testing split
+  - may inlcude boostrapping (resampling with replacement) or cross-validation (resampling without replacement)
+
+_Interpret_:
+
+- accuracy
+  - contingency table
+  - precision and recall
+
+
+
+
+
+The other statistical learning approach, Prediction, aims to uncover relationships in our data as they pertain to a particular outcome variable. This approach is known as **supervised learning**. Similar to Exploration in many ways, this approach also makes no assumptions about the potential relationships between variables in our data and the data can be used multiple times to refine our statistical tests in order to tease out the most effective method for our goals. Where an exploratory analysis aims to uncover meaningful patterns of any sort, prediction, however, is more focused in that the main aim is to ascertain the extent to which the variables in the data pattern, individually or together, in such a way to make reliable associations to a particular outcome variable in unseen data. To evaluate the robustness of a prediction model the data is partitioned into training and validation sets. Depending on the application and the amount of available data, a third 'development' set is sometimes created as a pseudo test set to facilitate the testing of multiple approaches before the final evaluation. The proportions vary, but it a good rule of thumb is to reserve 60\% of the data for training, 20\% for development, and 20\% for validation.
+
+- ? Include methods, visualizations, examples/ applications/ studies?
+
+- ? overfitting, a model that captures noise in training data obscuring the target pattern that is revealed when the model makes systematic errors on the testing data (new data)
+
 ### Exploratory data analysis (EDA)
 
+(inductive)
+
+- Bottom-up approach, hypothesis generating, deriving tentative insight from data, discovering patterns
+
+- Exploratory: pattern discovery, bottom-up, (inductive)
+  - reduce, summarize, sort
+  - can be seen as an extension of descriptive methods
 
 
-- Bottom-up approach, hypothesis generating, deriving novel insight from data, discovering patterns
+_Identify_: 
+
+- observational unit
+- variable roles: predictor variable(s)
+
+_Interrogate_: 
+
+- choose appropriate statistical procedure: 
+  - number and informational values of the variables
+- use of the data
+  - training/ testing split
+  - may inlcude boostrapping (resampling with replacement) or cross-validation (resampling without replacement)
+
+_Interpret_: 
+
+- quantitatively informed qualitative assessment
+- supervised reassessment (semi-supervised)
+
+
+
+
 
 One of two statistical learning approaches, this statistical approach is used to uncover potential relationships in the data and gain new insight in an area where predictions and hypotheses cannot be clearly made. In statistical learning, exploration is a type of **unsupervised learning**. Supervision here, and for Prediction, refers to the presence or absence of an outcome variable. By choosing exploration as our approach we make no assumptions (or hypotheses) about the relationships between any of the particular variables in the data. Rather we aims to investigate the extent to which we can induce meaningful patterns wherever they may lie. 
 
@@ -799,33 +905,23 @@ While it is not strictly required, data for exploratory analysis is often partit
   - Topic modeling
 - Note that these methods are document-level, or in terms of @Egbert2020 "linguistic descriptive" in nature.
 
-### Inferential data analysis (IDA)
-
-- Top-down approach, hypothesis testing, deriving confirmational insight from data
-
-Also commonly known as hypothesis testing or confirmation, statistical inference aims to establish whether there is a reliable and generalizable relationship given patterns in the data. The approach makes the starting assumption that there is no relationship, or that the null hypothesis ($H_0$) is true. A relationship is only reliable, or *significant*, if the chance that the null hypothesis is false is less than some predetermined threshold; in which case we accept the alternative hypothesis ($H_1$). The standard threshold used in the Social Sciences, Linguistic included, is the famous p-value $p < .05$. Without digging into the deeper meaning of a p-value, in a nutshell a p-value is a confidence measure to suggest that the relationship you are investigating is robust and reliable given the data. 
-
-There are two considerations to keep in mind when conducting IDA. First, in this approach all the data is used and is used *only* once. This is not the case for the other two categories fo statistical approaches. For this reason it is vital to identify your statistical approach from the outset of your research project. Second, failing to establish a clear hypothesis and testable hypothesis and then sticking to that hypothesis can lead researchers to engage in "p-hacking"; a practice of running multiple tests and/or parameters on the same data (i.e. reusing the data) until evidence for the alternative hypothesis appears. 
-
-- ? Include methods, visualizations, examples/ applications/ studies?
-
-### Predictive data analysis (PDA)
-
-- Mixed approach, can be used for the generation of hypotheses or to test hypotheses, deriving intelligent action from data, discovering and leveraging patterns
-
-The other statistical learning approach, Prediction, aims to uncover relationships in our data as they pertain to a particular outcome variable. This approach is known as **supervised learning**. Similar to Exploration in many ways, this approach also makes no assumptions about the potential relationships between variables in our data and the data can be used multiple times to refine our statistical tests in order to tease out the most effective method for our goals. Where an exploratory analysis aims to uncover meaningful patterns of any sort, prediction, however, is more focused in that the main aim is to ascertain the extent to which the variables in the data pattern, individually or together, in such a way to make reliable associations to a particular outcome variable in unseen data. To evaluate the robustness of a prediction model the data is partitioned into training and validation sets. Depending on the application and the amount of available data, a third 'development' set is sometimes created as a pseudo test set to facilitate the testing of multiple approaches before the final evaluation. The proportions vary, but it a good rule of thumb is to reserve 60\% of the data for training, 20\% for development, and 20\% for validation.
-
-- ? Include methods, visualizations, examples/ applications/ studies?
-
-- ? overfitting, a model that captures noise in training data obscuring the target pattern that is revealed when the model makes systematic errors on the testing data (new data)
-
 ## Reporting
 
-- Descriptive analysis
+Much of the necessary reporting for an analysis features in prose as part of the write-up of a report or article. 
+
+- Descriptive assessment
+  - Key summaries
   - Procedures to diagnose and correct
-- Analytic analysis
-  - Communicate findings in statistical appropriate forms
-    - Depends on the analytic statistic(s) applied
+- Analysis results
+  - Statistical procedures
+    - in appropriate forms
+  - Statistical results
+    - in appropriate forms
+
+(include the fact that although this reporting should be detailed in prose, some decisions and many implementation steps are not. Replicable and documented code fills this gap [code book vs. data dictionary from Chapter 2])
+
+
+
 
 
 
