@@ -1,13 +1,16 @@
-# Approaching analysis
+# Approaching analysis {#approaching-analysis}
 
 
 
 
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > Lies, damn lies, and statistics  
-> ---Benjamin Disraeli, popularized by Mark Twain
+> ---Benjamin Disraeli (popularized by Mark Twain)
+
+> Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write. 
+> --H.G. Wells
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>
@@ -180,102 +183,6 @@ An hierarchical overview of the relationship between the two main and four sub-t
 
 A few notes of practical importance; First, the distinction between interval and ratio variables is often not applicable in text analysis and therefore often treated together as continuous variables. Second, the distinction between ordinal and interval/continuous variables is not as clear cut as it may seem. Both variables contain values which have an ordered relationship. By definition the values of an ordinal variable do not reflect regular intervals between the units of measurement. But in practice interval/continuous variables with a defined number of values (say from a Likert scale used on a survey) may be treated as an ordinal variable as they may be better understood as reflecting class membership. Third, all continuous variables can be converted to categorical variables, but the reverse is not true. We could, for example, define a criterion for binning the word counts in `num_tokens` for each composition into ordered classes such as "low", "mid", "high". On the other hand, `sex` (as it has been measured here) cannot take intermediate values on a unfixed range. The upshot is that variables can be down-typed but not up-typed. In most cases it is preferred to treat continuous variables as such, if the nature of the variable permits it, as the down-typing of continuous data to categorical data results in a loss of information --which will result in a loss of information and hence statistical power which may lead to results that obscure meaningful patterns in the data [@Baayen2004]. 
 
-<!--
-
-As we established, an observation is a set of measurements associated with a unit of observation. The unit of observation establishes the basis for determining the informational value of each of the associated variables. 
-
-In the BELC dataset the unit of observation was learner compositions and therefore each variable characterized this unit. So, for example, the word count (`num_tokens`) for each composition reflected a measurement along a continuum and as such it's level of measurement was continuous. However, if the unit of observation were different, say we were looking at specific language constructions, instead of compositions, then the words in those texts may potentially take on a different level of measurement. 
-
-To illustrate this point, let's look at another dataset: the Datives dataset. This dataset is drawn from both the Switchboard Corpus and Wall Street Journal Corpus and was compiled by (cite) to investigate what is known as the Dative Alternation. 
-
-
-<table>
-<caption>(\#tab:datives-overview)First 10 observations of the Datives dataset for demonstration.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> RealizationOfRec </th>
-   <th style="text-align:left;"> Verb </th>
-   <th style="text-align:left;"> AnimacyOfRec </th>
-   <th style="text-align:left;"> AnimacyOfTheme </th>
-   <th style="text-align:right;"> LengthOfTheme </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> feed </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 2.639 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> give </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 1.099 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> give </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 2.565 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> give </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 1.609 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> offer </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 1.099 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> give </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 1.386 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> pay </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 1.386 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> bring </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 0.000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> teach </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 2.398 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NP </td>
-   <td style="text-align:left;"> give </td>
-   <td style="text-align:left;"> animate </td>
-   <td style="text-align:left;"> inanimate </td>
-   <td style="text-align:right;"> 0.693 </td>
-  </tr>
-</tbody>
-</table>
-
--->
-
 ### Summaries
 
 It is always key to gain insight into shape of the information through numeric, tabular and/ or visual summaries before jumping in to analytic statistical approaches. The most appropriate form of summarizing information will depend on the number and informational value(s) of our target variables. To get a sense of how this looks, let’s continue to work with the BELC dataset and pose different questions to the data with an eye towards seeing how various combinations of variables are descriptively explored.
@@ -284,7 +191,7 @@ It is always key to gain insight into shape of the information through numeric, 
 
 <!-- Exploring: single variables (univariate) -->
 
-The way to statistically summarize a variable into a single measure is to derive a __measure of central tendency__. For a continuous variable the most common measure is the (arithmetic) _mean_, or avergage, which is simply the sum of all the values divided by the number of values. As a measure of central tendency, however, the mean can be less-than-reliable as it is sensitive to outliers which is to say that data points in the variable that are extreme relative to the overall distribution of the other values in the variable affect the value of the mean depending on how extreme the deviate. One way to assess the effects of outliers is to calculate a __measure of dispersion__. The most common of these is the _standard deviation_ which estimates the average amount of variability between the values in a continuous variable. Another way to assess, or rather side-step, outliers is to calculate another measure of central tendency, the _median_. A median is calculated by sorting all the values in the variable and then selecting the value which falls in the middle of all the other values. A median is less sensitive to outliers as extreme values (if there are few) only indirectly affect the selection of the middle value. Another measure of dispersion is to calculate quantiles. A _quantile_ slices the data in four percentile ranges providing a five value numeric summary of the spread of the values in a continuous variable. The spread between the first and third quantile is known as the Interquartile Range (IQR) and is also used as a single statistic to summarize variability between values in a continuous variable.
+The way to statistically summarize a variable into a single measure is to derive a __measure of central tendency__. For a continuous variable the most common measure is the (arithmetic) _mean_, or average, which is simply the sum of all the values divided by the number of values. As a measure of central tendency, however, the mean can be less-than-reliable as it is sensitive to outliers which is to say that data points in the variable that are extreme relative to the overall distribution of the other values in the variable affect the value of the mean depending on how extreme the deviate. One way to assess the effects of outliers is to calculate a __measure of dispersion__. The most common of these is the _standard deviation_ which estimates the average amount of variability between the values in a continuous variable. Another way to assess, or rather side-step, outliers is to calculate another measure of central tendency, the _median_. A median is calculated by sorting all the values in the variable and then selecting the value which falls in the middle of all the other values. A median is less sensitive to outliers as extreme values (if there are few) only indirectly affect the selection of the middle value. Another measure of dispersion is to calculate quantiles. A _quantile_ slices the data in four percentile ranges providing a five value numeric summary of the spread of the values in a continuous variable. The spread between the first and third quantile is known as the Interquartile Range (IQR) and is also used as a single statistic to summarize variability between values in a continuous variable.
 
 Below is a list of central tendency and dispersion scores for the continuous variables in the BELC dataset.
 
@@ -420,7 +327,7 @@ A visual inspection can often be enough to detect non-normality, but in cases wh
 </tbody>
 </table>
 
-Downstream in the analytic analysis, the distribution of continuous variables will need to be taken into account for certain statistical tests. Tests that assume 'normality' are parametric tests, those that do not are non-parametric. Distributions which approximate the normal distribution can sometimes be transformed to conform to the normal distribution either by outlier trimming or through statistical procedures (i.e. square root, log, or inverse transformation), if necessary. At this stage, however, the most important thing is to recognize whether the distributions approximate or wildly diverge from the normal distribution.
+Downstream in the analytic analysis, the distribution of continuous variables will need to be taken into account for certain statistical tests. Tests that assume 'normality' are parametric tests, those that do not are non-parametric. Distributions which approximate the normal distribution can sometimes be transformed to conform to the normal distribution either by outlier trimming or through statistical procedures (e.g. square root, log, or inverse transformation), if necessary. At this stage, however, the most important thing is to recognize whether the distributions approximate or wildly diverge from the normal distribution.
 
 Before we leave continuous variables, let's consider another approach for visually summarizing a single continuous variable. The Empirical Cumulative Distribution Frequency, or _ECDF_, is a summary of the cumulative proportion of each of the values of a continuous variable. An ECDF plot can be useful in determining what proportion of the values fall above or below a certain percentage of the data.
 
@@ -498,7 +405,7 @@ Correlation measures are important for reporting but to really appreciate a rela
 <p class="caption">(\#fig:summaries-bivariate-scatterplot-belc)Scatterplot...</p>
 </div>
 
-In both plots `ttr` is on the y-axis and `num_tokens` on the x-axis. The points correspond to the intersection between each of these variables for a single observation. In the left pane only the points are represented. Visually (and given the correlation coefficient) we can see that there is a negative relationship between the number of tokens and the Type-Token ratio: in other words, the more tokens a composition has the lower the Type-Token Ratio. In this case this trend is quite apparent, but in other cases is may not be. To provide an additional visual cue a trend line is often added to a scatterplot. In the right pane I've added a linear trend line. This line demarcates the optimal central tendency across the relationship, assuming a linear relationship. The steeper the line, or slope, the more likely the correlation is strong. The band, or ribbon, around this trend line indicates the __confidence interval__ which means that real central tendency could fall anywhere within this space. The wider the ribbon, the larger the variation between the observations. In this case we see that the ribbon widens when the number of tokens is either low or high. This means that the trend line could be potentially be drawn either steeper (more strongly correlated) or flatter (less strongly correlated). 
+In both plots `ttr` is on the y-axis and `num_tokens` on the x-axis. The points correspond to the intersection between these variables for each single observation. In the left pane only the points are represented. Visually (and given the correlation coefficient) we can see that there is a negative relationship between the number of tokens and the Type-Token ratio: in other words, the more tokens a composition has the lower the Type-Token Ratio. In this case this trend is quite apparent, but in other cases is may not be. To provide an additional visual cue a trend line is often added to a scatterplot. In the right pane I've added a linear trend line. This line demarcates the optimal central tendency across the relationship, assuming a linear relationship. The steeper the line, or slope, the more likely the correlation is strong. The band, or ribbon, around this trend line indicates the __confidence interval__ which means that real central tendency could fall anywhere within this space. The wider the ribbon, the larger the variation between the observations. In this case we see that the ribbon widens when the number of tokens is either low or high. This means that the trend line could be potentially be drawn either steeper (more strongly correlated) or flatter (less strongly correlated). 
 
 <div class="rmdtip">
 <p>In plots comparing two or more variables, the choice of which variable to plot on the x- and y-axis is contingent on the research question and/ or the statistical approach. The language varies between statistical approaches: in inferential methods the x-axis is used to plot what is known as the dependent variable and the y-axis an independent variable. In predictive methods the dependent variable is known as the outcome and the independent variable a predictor. Exploratory methods do not draw distinctions between variables along these lines so the choice between which variable to plot along the x- and y-axis is often arbitrary.</p>
@@ -765,11 +672,9 @@ In sum, a dataset is information but when the observations become numerous or co
 
 ## Analysis
 
-Overview...
+From identifying a target population, to selecting a data sample that represents that population, and then to structuring the sample into a dataset, the goals of a research project inform and frame the process. So it will be unsurprising to know that the process of selecting an approach to analysis is also intimately linked with a researcher's objectives. The goal of analysis, generally, is to generate knowledge from information. The type of knowledge generated and the process by which it is generated, however, differ and can be broadly grouped into three analysis types: inferential, predictive, and exploratory. In this section I will provide an overview of how each of these analysis types are tied to research goals and how the general goals of teach type affect: (1) how to _identify_ the variables of interest, (2) how to _interrogate_ these variables, and (3) how to _interpret_ the results. I will structure the discussion of these analysis types moving from the most structured (deductive) to least structured (inductive) approach to deriving knowledge from information with the aim to provide enough information to the would-be-researcher to identify these research approaches in the literature and to make appropriate decisions as to which approach their research should adopt.
 
-From identifying a target population, selecting a data sample that represents that population, and to structuring the sample into a dataset, the goals of a research project inform and frame the process. So it will be unsurprising to know that the process of selecting an approach to analysis is also intimately linked with a researcher's objectives. In this section we will cover three main analysis types: inferential, predictive, and exploratory analysis. The contrasts between the three hinge on (1) how to _identify_ the variables of interest, (2) how to _interrogate_ these variables, and (3) how to _interpret_ the results. I will structure the discussion of these analysis types moving from the most structured (deductive) to least structured (inductive) approach to deriving knowledge from information. 
-
-Goals of analysis: identify variables that characterize the population in relevant ways, statistically interrogate these variables evaluating and assessing relationships, and interpret the results from the statistical procedures in terms of the research design and research goals.
+<!-- Goals of analysis: identify variables that characterize the population in relevant ways, statistically interrogate these variables evaluating and assessing relationships, and interpret the results from the statistical procedures in terms of the research question and study design. -->
 
 <!--
 
@@ -780,148 +685,452 @@ Goals of analysis: identify variables that characterize the population in releva
 
 -->
 
-### Inferential data analysis (IDA)
+### Inferential data analysis
 
-(deductive)
+<!-- Overview: goal to draw conclusions and generalize to the population -->
 
-Statistical hypothesis testing/ Null-Hypothesis Significance Testing Procedure (NHSTP)
+The most commonly recognized of the three data analysis approaches, inferential data analysis (IDA) is the bread-and-butter of science. IDA is a deductive, or top-down, approach to investigation in which every step in research stems from a premise, or hypothesis, about the nature of a relationship in the world and then aims to test whether this relationship is statistically supported given the evidence. The aim is to infer conclusions about a certain relationship in the population based on a statistical evaluation of a (corpus) sample. So, if a researcher's aim is to draw conclusions that generalize, then, this is the analysis approach a researcher will take. 
 
-- Top-down approach, hypothesis testing, deriving verifying insight from data
+<!-- Key methodological restrictions: hypothesis formulation and sample data alignment -->
 
-- Inferential: aim to infer conclusions about a particular relationship in the dataset that can be generalized, under some assumption of reliability, to the target population
+Given the fact that this approach aims at making claims that can be generalized to the larger population, the IDA approach has the most rigorous set of methodological restrictions.  First and foremost of these is the fact that a testable hypothesis must be formulated *before* research begins. The hypothesis guides the collection of data, the organization of the data into a dataset and the transformation, selection of the variables to be used to address the hypothesis, and the interpretation of the results. To conduct an analysis and then draw a hypothesis which conforms to the results is known as "Hypothesis After Result is Known" (HARKing) [@Kerr1998] and this practice violates the principles of significance testing.  A second key stipulation is that the reliability of the sample data, the corpus in text analysis, to provide evidence to test the hypothesis must be representative of the population. A corpus used in a study which is misaligned with the hypothesis undermines the ability of the researcher to make valid claims about the population. In essence, IDA is only as good as the primary data is is based on. 
+
+<!-- Key note on hypothesis formulation-->
+
+At this point, let me elaborate on the potentially counterintuitive nature of hypothesis formulation and testing. The IDA, or Null-Hypothesis Significance Testing (NHST), paradigm is in fact approached by proposing two mutually exclusive hypotheses. The first is the **Alternative Hypothesis** ($H_1$). $H_1$ is a precise statement grounded in the previous literature outlining a predicted relationship (and in some cases the directionality of a relationship). This is the effect that the research aims to investigate. The second hypothesis is the **Null Hypothesis** ($H_0$). $H_0$ is the flip-side of the hypothesis testing coin and states that there is no difference or relationship. Together $H_1$ and $H_0$ cover all logical outcomes. 
+
+So to provide an example consider a hypothetical study which is aimed at investigating the claim that men and women differ in terms of the number of questions they use in spontaneous conversations. The Alternative Hypothesis would be formulated in this way: 
+
+$H_1$: Men and women differ in the frequency of the use of questions in spontaneous conversations.
+
+The Null Hypothesis, then, would be a statement describing the remaining logical outcomes. Formally:
+
+$H_0$: There is no difference between how men and women use questions in spontaneous conversations.
+
+Note that stated in this way our hypothesis makes no prediction about the directionality of the difference between men and women, only that there is a difference. It is a likely scenario that a hypothesis will stake a claim on the direction of the difference. A directional hypothesis would look like this:
+
+$H_1$: Women use more questions than men in spontaneous conversations.
+
+$H_0$: There is no difference between how men and women use questions in spontaneous conversations or men use more questions than women. 
+
+<!-- Key note on hypothesis testing and likelihood estimates -->
+
+A further aspect which may run counter to expectations is that the aim of hypothesis testing is not to find evidence in support of $H_1$, but rather the aim is to assess the likelihood that we can reliably reject $H_0$. The default assumption is that $H_0$ is true until there is sufficient evidence to reject it and accept $H_1$, the *alternative*. The metric used to determine if there is sufficient evidence is based on the probability that given the nature of the relationship and the characteristics of the data, the likelihood of there being no difference or relationship is low. The threshold for likelihood has traditionally been summarized in the p-value statistic. In the Social Sciences, a p-value lower that .05 is considered *statistically significant* which when interpreted correctly means that there is more than a 95% chance that the observed relationship would not be predicted by $H_0$. Note that we are working in the realm of probability, not in absolutes, therefore an analysis that produces a significant result does not prove $H_1$ is correct or that $H_0$ is incorrect, for that matter. A margin of error is always present. *(--consider making reference to returning to this point later)*
+
+<!-- variables, stats, and results -->
+
+Let's now turn to the identification of variables, the statistical interrogation of these variables, and the interpretation of the statistical results. First, since a clearly defined and testable hypothesis is at the center of the IDA approach, the variables are in some sense pre-defined. The goal of the researcher is to select data and curate that data to produce variables that are operationalized (practically measured) to test the hypothesis. A second consideration are the roles that the variables will play in the analysis. In standard IDA one variable will be the **dependent variable** and one or more variables will be **independent variables**. The dependent variable, sometimes referred to as the outcome or response variable, is the variable which contains the information which is predicted to depend on the information in the independent variable(s). It is the variable whose variation a research study seeks to explain. An independent variable, sometimes referred to as a predictor or explanatory variable, is a variable whose variation is predicted to explain the variation in the dependent variable.
+
+Returning to our hypothetical study on the use of questions between men and women in spontaneous conversation, the frequency of questions used by each speaker would be our dependent variable and the biological sex of the speakers our independent variable. This is so because hypothesis ($H_1$) states the proposition that a speaker's sex will predict the frequency of questions used.
+
+In our hypothetical study we've identified two variables, one dependent and one independent. It is important keep in mind that there can be multiple independent variables in cases where the dependent variable's variation is predicted to be related to multiple variables. This relationship would need to be explicitly part of the original hypothesis, however. 
+
+Say we formulate a more complex relationship where the educational level of our speakers is also related to the number of questions. We can update our hypothesis to reflect such a scenario. 
+
+$H_1$: Less educated women use more questions than men in spontaneous conversations.
+
+$H_0$: There is no difference between how men and women use questions in spontaneous conversations regardless of educational level, or more educated women use more questions than less educated women, or men use more questions than women. 
+
+The hypothesis we have described predicts what is known as an *interaction*; the relationship between our independent variables predict different variational patterns in the dependent variable. As you most likely can appreciate the more independent variables we include in our hypothesis, and by extension our analysis, the more difficult it becomes to interpret. Due to the increasing difficulty for interpretation, in practice, IDA studies rarely include more than two or three independent variables in the same analysis. 
+
+Independent variables add to the complexity of a study because they are part of our research focus, specifically our hypothesis. It is, however, common to include other variables which are not of central focus, but are commonly assumed to contribute to the explanation of the variation of the dependent variable. Let's assume that the background literature suggests that the age of speakers also plays a role in the number of questions that men and women use in spontaneous conversation. Let's also assume that the data we have collected includes information about the age of speakers. If we would like to factor out the potential influence of age on the use of questions and focus on the particular independent variables we've defined in our hypothesis, we can include the age of speakers as a **control variable**. A control variable will be added to the statistical analysis and documented in our report but it will not be included in the hypothesis nor interpreted in our results.
+
+At this point let's look at the main characteristics that need to be taken into account to statistically interrogate the variables we have chosen to test our hypothesis. The type of statistical test that one chooses is based on (1) the informational value of the dependent variable and (2) the number of independent variables included in the analysis. Together these two characteristics go a long way in determining the appropriate class of statistical test, but other considerations about the distribution of particular variables (i.e. normality), relationships between variables (i.e. independence), and expected directionality of the predicted effect may condition the appropriate method to be applied.
+
+As you can imagine, there are a host of combinations and statistical tests that apply in particular scenarios, too many to consider in given the scope of this coursebook (see @Gries2013a and @Paquot2020a for a more exhaustive description).  Below I've summarized some common statistical scenarios and their associated tests which focus on the juxtaposition of informational values and the number of variables, leaving aside alternative tests which deal with non-normal distributions, ordinal variables, non-independent variables, etc.
+
+In Table \@ref(tab:ida-statistical-monofactorial-listing) we see **monofactorial tests**, tests with only one independent variable.   
+
+<table>
+<caption>(\#tab:ida-statistical-monofactorial-listing)Common monofactorial tests.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Variable roles</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Dependent </th>
+   <th style="text-align:left;"> Independent </th>
+   <th style="text-align:left;"> Test </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Categorical </td>
+   <td style="text-align:left;"> Categorical </td>
+   <td style="text-align:left;"> Pearson's Chi-squared test </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Continuous </td>
+   <td style="text-align:left;"> Categorical </td>
+   <td style="text-align:left;"> Student's t-Test </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Continuous </td>
+   <td style="text-align:left;"> Continuous </td>
+   <td style="text-align:left;"> Pearson's correlation test </td>
+  </tr>
+</tbody>
+</table>
+
+Table \@ref(tab:ida-statistical-multifactorial-listing) includes a listing of **multifactorial tests**, tests with more than one independent and/ or control variables. 
+
+<table>
+<caption>(\#tab:ida-statistical-multifactorial-listing)Common multifactorial tests.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Variable roles</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Dependent </th>
+   <th style="text-align:left;"> Independent </th>
+   <th style="text-align:left;"> Control </th>
+   <th style="text-align:left;"> Test </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Categorical </td>
+   <td style="text-align:left;font-style: italic;"> varied </td>
+   <td style="text-align:left;font-style: italic;"> varied </td>
+   <td style="text-align:left;"> Logistic regression </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Continuous </td>
+   <td style="text-align:left;font-style: italic;"> varied </td>
+   <td style="text-align:left;font-style: italic;"> varied </td>
+   <td style="text-align:left;"> Linear regression </td>
+  </tr>
+</tbody>
+</table>
+
+One key point to make before we turn to how to interpret the statistical results is concerns the use of the data in IDA. In contrast to the other two analysis methods we will cover, the data in IDA is only used once. That is to say, that the entire dataset is used a single time to statistically interrogate the relationship(s) of interest. The resulting confidence metrics (p-values, etc.) are evaluated and the findings are interpreted. The practice of running multiple tests until a statistically significant result is found is called "p-hacking" [@Head2015] and like HARKing (described earlier) violates statistical hypothesis testing practice. For this reason it is vital to identify your statistical approach from the outset of your research project.
+
+Now let's consider how to approach interpreting the results from a statistical test. As I have now made reference to multiple times, the results of statistical procedure in hypothesis testing will result in a confidence metric. The most standard and widely used of these confidence metrics is the p-value. The p-value provides a probability that the results of our statistical test could be explained by the null hypothesis. When this probability crosses below the threshold of .05, the result is considered statistically significant, otherwise we have a 'null result' (i.e. non-significant). However, this sets up a binary distinction that can be problematic. On the one hand what is one to do if a test returns a p-value of .051 or something 'marginally significant'? According to standard practice these results would not be statistically significant. But it is important to note that a p-value is sensitive to the sample size. A small sample may return a non-significant result, but a larger sample size with the same underlying characteristics may very well return a significant result. On the other hand, if we get a statistically significant result, do we move on --case closed? As I just pointed out the sample size plays a role in finding statistically significant results, but that does not mean that the results are 'important' for even small effects in large samples can return a significant p-value. 
+
+It is important to underscore that the purpose of IDA is to draw conclusions from a dataset which are generalizable to the population. These conclusions require that there are rigorous measures to ensure that the results of the analysis do not overgeneralize (suggest there is a relationship when there is not one) and balance that with the fact that we don't want to undergeneralize (miss the fact that there is an relationship in the population, but our analysis was not capable of detecting it). Overgeneralization is known as __Type I error__ or false positive and undergeneralization is a __Type II error__ or false negative.
+
+For these reasons it is important to calculate the size and magnitude of the result to gauge the uncertainty of our result in standardized, sample size-independent way. This is performed by analyzing the **effect size** and reporting a **confidence interval (CI)** for the results. The wider the CI the more uncertainty surrounds our statistical result, and therefore the more likely that our significant p-value could be the result of Type I error. A non-significant p-value and large effect size could be the result of Type II error. In addition to vetting our p-value, the CI and effect size can help determine if a significant result is reliable and 'important'. Together effect size and CIs aid in our ability to realistically interpret confidence metrics in statistical hypothesis testing.
+
+<!-- - ? Include methods, visualizations, examples/ applications/ studies? -->
+
+### Predictive data analysis
+
+<!-- outline the goal of each of the analysis approaches -->
+
+Predictive data analysis (PDA) is the first of the two types of statistical approaches we will cover that fall under __machine learning__. A branch of artificial intelligence (AI), machine learning aims to develop computer algorithms that can essentially learn patterns from data automatically. In the case of PDA, also known as __supervised learning__, the learning process is guided (supervised) by directing an algorithm to associate patterns in a variable or set of variables to single particular variable. The particular variable is analogous to some degree to a dependent variable in IDA, but in the machine learning literature this variable is known as the __target__ variable. The other variable or (more often than not) variables are known as __features__. The goal of PDA is to develop a statistical generalization that can accurately predict the values of a target variable using the values of the feature variables. PDA can be seen as a mix of deductive (top-down) and inductive (bottom-up) methods in that the target variable is determined by a research goal but the feature variables and choice of statistical method (algorithm) are not fixed and can vary depending on their usefulness in effectively predicting the target variable. PDA is a versatile method that often employed to derive intelligent action from data, but it can also be used for hypothesis generation and even hypothesis testing, under certain conditions. If a researcher's aim is to create model that can perform a language related task, explore association strength between a target variable and various types and combinations of features, or to perform emerging alternative approaches to hypothesis testing ^[see @Deshors2016 and @Baayen2011], this is the analysis approach a researcher will take.
+
+<!-- elaborate on key points: 
+research question, data usage, and  variable and statistical approach selection 
+-->
+
+At this point let's consider some departures from the inferential data analysis (IDA) approach we covered in the last subsection that are important to highlight to orient our overview of PDA. First, while the cornerstone of IDA is the hypothesis, in PDA this is typically not the case. A research question which identifies a source of potential uncertainty in an area and outlines a strategy for addressing this uncertainty is sufficient groundwork to embark on an analysis. A second divergence, is the fact that the data is used in a very distinct way. In IDA the entire dataset is statistically interrogated once and only once. In PDA the dataset is (minimally) partitioned into a __training set__ and a __test set__. The training set is used to train a statistical model and the test set is left to test the accuracy of the statistical model. The training set typically constitutes a larger portion of the data (typically around 75\%) and serves as the test bed for iteratively applying one or more algorithms and/ or feature combinations to produce the most successful learning model. The test set is reserved for a final evaluation of the model's performance. Depending on the application and the amount of available data, a third *development set* is sometimes created as a pseudo test set to facilitate the testing of multiple approaches on data outside the training set before the final evaluation on the test set is performed. In this scenario the proportions of the partitions vary, but a good rule of thumb is to reserve 60\% of the data for training, 20\% for development, and 20\% for testing. 
+
+Let’s now turn to the identification of variables, the statistical interrogation of these variables, and the interpretation of the statistical results. In IDA the variables (features) are pre-determined by the hypothesis and the informational values and number of these variables plays a significant role in selecting a statistical procedure (algorithm). Lacking a hypothesis, a PDA approach's main goal is to make accurate predictions on the target variable and is free to explore any number of features and feature combinations to that end. The target variable is the only variable which necessarily fixed and in this light pre-determined. 
 
 
-pattern testing, top-down, (deductive), 
 
-_Identify_: pre-determined and operationalized (practically measured) set of variables, to provide confirmatory evidence regarding a hypothesis. 
+To give an example, let's consider a language task in which the goal is to take text messages (SMS) and develop a language model that predict if a message is spam or not. Minimally we would need data which includes individual text messages and each of these text message will need to be labeled as being either spam or legitimate messages ('ham' in this case). In Table \@ref(tab:pda-sms-preview) we see the first ten of 4837 observations from the SMS Spam Collection (v.1) dataset collected by @Almeida2011a.  
 
-- observational unit
-- variable roles: dependent variable, independent variable(s)
+<table>
+<caption>(\#tab:pda-sms-preview)First ten observations from the SMS Spam Collection (v.1)</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sms_type </th>
+   <th style="text-align:left;"> message </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> Ok lar... Joking wif u oni... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:left;"> Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&amp;C's apply 08452810075over18's </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> U dun say so early hor... U c already then say... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> Nah I don't think he goes to usf, he lives around here though </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:left;"> FreeMsg Hey there darling it's been 3 week's now and no word back! I'd like some fun you up for it still? Tb ok! XxX std chgs to send, £1.50 to rcv </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> Even my brother is not like to speak with me. They treat me like aids patent. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ham </td>
+   <td style="text-align:left;"> As per your request 'Melle Melle (Oru Minnaminunginte Nurungu Vettam)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:left;"> WINNER!! As a valued network customer you have been selected to receivea £900 prize reward! To claim call 09061701461. Claim code KL341. Valid 12 hours only. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:left;"> Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030 </td>
+  </tr>
+</tbody>
+</table>
 
-_Interrogate_: use statistical procedures to deduce/ evaluate the likelihood that the patterns in the data represent true patterns in the sample
+As it stands we have two variables; `sms_type` is clearly the target and `message` contain the full messages. The question is how best to transform the information in the `message` variable such that it will provide an algorithm useful information to predict each value of `sms_type`. Since the informational value of `sms_type` is categorical we will call the values **classes**. The process of deciding on how to transform the information in `message` into useful features is called **feature engineering** and it is a process which is much an art as a science. On the creative side of things it is often helpful to have a mixture of relevant domain knowledge and clever hacking skills to envision what features may work best. The more logistic side of things requires some knowledge about the strengths and weaknesses of various learning algorithms when dealing with certain number and informational value feature combinations. 
 
-- choose appropriate statistical procedure: 
-  - number and informational values of the variables
-  - assumptions about the nature of the variables (independence, normality, etc.)
-- use of the data
-  - entire dataset
-  - may include boostrapping (resampling with replacement)
+Leaving the choice of algorithm aside, let's focus on feature engineering. Since each `message` value is a unique message, the chance that using `message` as it is, is not likely to help us make reliable predictions about the status of new message ('spam' or 'ham'). A simple first-pass approach to decomposing `message` to draw out similarities and distinctions between the classes may be to break each message into words. Now SMS messages are not your average type of text --there are many non-standard forms. So our definition of word may simply be character groupings broken apart by whitespace. To avoid confusion between our common-sense understanding of word and the types of character strings, it is often the case that language feature values are called **terms**. Other term types may work better, n-grams, character sequences, stems/lemmas, or even combinations of these. Certain terms may be removed that are potentially uninformative either based on their class (stopwords, numerals, punctuation, etc.) or due to their distribution. The process of systematic isolation of terms which are more informative than others is called **dimensionality reduction** [@Kowsari2019]. With experience a research will become more adept a recognizing advantages and potential issues and alternative ways of approaching the creation of features but there is almost always some level of trial and error in the process. Feature engineering is very much an exploratory process. It is also iterative. You can try a set of features with an algorithm and produce a language model and test it on the training set --if is accurate, great. If not, you can brainstorm some more  --you are free to try further engineer the features trying new features or feature measures (term weights) and/ or change the learning algorithm. 
 
-_Interpret_:  conclude whether the patterns are reliably generalizable to the population
+<!-- Informational value of the target variable -->
 
-- parameter estimates
-- confidence measure (p-value, confidence intervals)
-- effect size (association strength)
+Let's now turn to some considerations to take into account when selecting a statistical algorithm. First, just as in IDA, variable informational value plays a role in algorithm selection, specifically the informational value of the target variable. If the target variable is categorical, then we are looking for a **classification** algorithm. If the target variable is continuous, we will employ a **regression** algorithm. ^[The name regression can be a bit confusing given a very common classification algorithm is "Logistic Regression".] Some common classification algorithms are listed in Table \@ref(tab:pda-algorithms).
 
-
-Also commonly known as hypothesis testing or confirmation, statistical inference aims to establish whether there is a reliable and generalizable relationship given patterns in the data. The approach makes the starting assumption that there is no relationship, or that the null hypothesis ($H_0$) is true. A relationship is only reliable, or *significant*, if the chance that the null hypothesis is false is less than some predetermined threshold; in which case we accept the alternative hypothesis ($H_1$). The standard threshold used in the Social Sciences, Linguistic included, is the famous p-value $p < .05$. Without digging into the deeper meaning of a p-value, in a nutshell a p-value is a confidence measure to suggest that the relationship you are investigating is robust and reliable given the data. 
-
-There are two considerations to keep in mind when conducting IDA. First, in this approach all the data is used and is used *only* once. This is not the case for the other two categories fo statistical approaches. For this reason it is vital to identify your statistical approach from the outset of your research project. Second, failing to establish a clear hypothesis and testable hypothesis and then sticking to that hypothesis can lead researchers to engage in "p-hacking"; a practice of running multiple tests and/or parameters on the same data (i.e. reusing the data) until evidence for the alternative hypothesis appears. 
-
-- ? Include methods, visualizations, examples/ applications/ studies?
-
-### Predictive data analysis (PDA)
-
-(deductive/ inductive)
-
-- Mixed approach, can be used for the generation of hypotheses or to test hypotheses, deriving intelligent action from data, discovering and leveraging patterns
-
-- Predictive: pattern associating (deductive) and leveraging (inductive)
-
-
-_Identify_: 
-
-- observational unit
-- variable roles: outcome variable, predictor variable(s)
-
-_Interrogate_: 
-
-- choose appropriate statistical procedure: 
-  - number and informational values of the variables
-- use of the data
-  - training/ testing split
-  - may inlcude boostrapping (resampling with replacement) or cross-validation (resampling without replacement)
-
-_Interpret_:
-
-- accuracy
-  - contingency table
-  - precision and recall
-
-
-
-
-
-The other statistical learning approach, Prediction, aims to uncover relationships in our data as they pertain to a particular outcome variable. This approach is known as **supervised learning**. Similar to Exploration in many ways, this approach also makes no assumptions about the potential relationships between variables in our data and the data can be used multiple times to refine our statistical tests in order to tease out the most effective method for our goals. Where an exploratory analysis aims to uncover meaningful patterns of any sort, prediction, however, is more focused in that the main aim is to ascertain the extent to which the variables in the data pattern, individually or together, in such a way to make reliable associations to a particular outcome variable in unseen data. To evaluate the robustness of a prediction model the data is partitioned into training and validation sets. Depending on the application and the amount of available data, a third 'development' set is sometimes created as a pseudo test set to facilitate the testing of multiple approaches before the final evaluation. The proportions vary, but it a good rule of thumb is to reserve 60\% of the data for training, 20\% for development, and 20\% for validation.
-
-- ? Include methods, visualizations, examples/ applications/ studies?
-
-- ? overfitting, a model that captures noise in training data obscuring the target pattern that is revealed when the model makes systematic errors on the testing data (new data)
-
-### Exploratory data analysis (EDA)
-
-(inductive)
-
-- Bottom-up approach, hypothesis generating, deriving tentative insight from data, discovering patterns
-
-- Exploratory: pattern discovery, bottom-up, (inductive)
-  - reduce, summarize, sort
-  - can be seen as an extension of descriptive methods
-
-
-_Identify_: 
-
-- observational unit
-- variable roles: predictor variable(s)
-
-_Interrogate_: 
-
-- choose appropriate statistical procedure: 
-  - number and informational values of the variables
-- use of the data
-  - training/ testing split
-  - may inlcude boostrapping (resampling with replacement) or cross-validation (resampling without replacement)
-
-_Interpret_: 
-
-- quantitatively informed qualitative assessment
-- supervised reassessment (semi-supervised)
-
+<table>
+<caption>(\#tab:pda-algorithms)Some common supervised learning algorithms.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Classification </th>
+   <th style="text-align:left;"> Regression </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Logistic Regression </td>
+   <td style="text-align:left;"> Linear Regression </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Support Vector Machine </td>
+   <td style="text-align:left;"> Support Vector Regression </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Naïve Bayes Classifier </td>
+   <td style="text-align:left;"> Poisson Regression </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neural Network </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Decision Tree </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+</tbody>
+</table>
 
 
 
 
-One of two statistical learning approaches, this statistical approach is used to uncover potential relationships in the data and gain new insight in an area where predictions and hypotheses cannot be clearly made. In statistical learning, exploration is a type of **unsupervised learning**. Supervision here, and for Prediction, refers to the presence or absence of an outcome variable. By choosing exploration as our approach we make no assumptions (or hypotheses) about the relationships between any of the particular variables in the data. Rather we aims to investigate the extent to which we can induce meaningful patterns wherever they may lie. 
 
-Findings from exploratory analyses can provide valuable insight for future study but they cannot be safely used to generalize to the larger population, which is why exploratory analyses are often known as hypothesis generating analyses (rather than hypothesis confirming). Given our generalizing power is curtailed, the data *can* be reused multiple times trying out various tests. 
 
-While it is not strictly required, data for exploratory analysis is often partitioned into two sets, training and validation, at roughly an 80\%/20\% split. The training set is used for refining statistical measures and the test set is used to evaluate the refined measures. Although the evaluation results still cannot be used to generalize, the insight can be taken as stronger evidence that there is a potential relationship, or set of relationships, worthy of further study. 
 
-*Although quantitative in nature, exploratory methods involve a high level of human interpretation. Human interpretation is a part of each stage of data analysis, and each statistical approach, in particular, but exploratory methods produce results that require associative thinking and pattern detection which is distinct from the other two statistical approaches, in particular, IDA.*
 
-- ? Include methods, visualizations, examples/ applications/ studies?
-  - Keyword analysis
-  - Clustering
-  - Topic modeling
-- Note that these methods are document-level, or in terms of @Egbert2020 "linguistic descriptive" in nature.
+<!-- Interpretability of the model, feature importance -->
+
+Another consideration to take into account is the whether the researcher aims to go beyond simply using an algorithm to make accurate predictions, but also wants to understand how the algorithm made its predictions and what contribution features made in the process. There are algorithms that produce models that allow the researcher to peer into and understand its inner workings (e.g. logistic regression, naïve bayes classifiers, inter alia) and those that do not (e.g. neural networks, support vector machines, inter alia). Those that do not are called **'black-box' algorithms**. Neither type assures the best prediction accuracy. Important trade-offs need to be considered, however, if the best prediction comes from a black-box method, but the goal of the research is to understand the contribution of the features to the model's predictions.
+
+<!-- use of the data: training, development, test splits -->
+
+Once we have identified our target variable, engineered a promising set of features, and selected an algorithm to employ that meets our research goals, it is now time to interrogate the dataset. The first step is to partition the dataset into a training and test set. The training set is the dataset we will use to try out different features and/ or algorithms with the aim of developing a model which can most accurately predict the target variable values in this training set. This is the second step and it's done by first training an algorithm to associate the features with the (actual) target values. Next, the resulting model is then applied to the same training data, yet with the target variable removed, or hidden, from the machine learner. The target values predicted by the model for each observation are compared to the actual target values. The more predicted and actual values for the target variable coincide, the more accurate the model. If the model shows high accuracy, then we are ready to move to evaluate this model on the test set (again removing the target variable). If the model accuracy is low, it's back to the drawing board either returning to feature engineering and/ or algorithm selection in hopes to improve model performance. In this way, the training data can be used multiple times, a clear divergence from standard IDA methods in which the data is interrogated and analyzed once and only once.
+
+[training, test, and development sets graphic]
+
+
+<!-- Note on hypothesis testing?
+
+MuPDAR approach (Multifactorial Prediction and Deviation Analysis with Regressions)
+
+- Training on group
+- Testing on another group 
+
+[@Deshors2016; @Gries2014]
+
+-->
+
+For all applications of PDA the interpretation of the prediction model includes some metric or metrics of accuracy comparing the extent to which the models predictions and the actual targets align. In cases in which the inner workings of the model are of interest, a researcher can dive into features and their contributions to the prediction model in an exploratory fashion according to the research goals. The exploration of features, then, varies, so at this time let's focus on the metrics of prediction accuracy.
+
+The standard form for evaluating a model's performance differs between classification models (naive bayes) and regression models (linear regression). For classification models, a cross-tabulation of the predicted and actual classes results in a **contingency table** which can be used to calculate **accuracy** which is the sum of all the correctly predicted observations divided by the total number of observations in the test set. In addition to accuracy, there are various other measures which aim to assess a model's performance to gain more insight into the potential over- or under-generalization of the model (*Precision* and *Recall*). For regression models, differences between predicted and actual values can be assessed using a **coefficient of correlation** (typically $R^2$). Again, more fine-grained detail about the model's performance can be calculated (*Root Mean Square Error*). 
+
+Another component worthy of consideration when evaluating a model's performance is how do we determine if the performance is actually good. One the one hand, accuracy rates into the 90+% range on the test set is usually a good sign that the model is performing well. No model will perform with perfect accuracy, however, and depending on the goal of the research particular error patterns may be more important, and problematic, than the overall prediction accuracy. On the other hand, another eventuality is that the model performs very well on the training set but that on the test set (new data) the performance drops significantly. This is a sign that during the training phrase the machine learning algorithm learned nuances in the data ('noise') that obscure the signal pattern to be learned. This problem is called **overfitting** and to avoid it researchers iteratively run evaluations of the training data using resampling. The two most common resampling methods are **bootstrapping** (resampling with replacement) and **cross-validation** (resampling without replacement). The performance of these multiple models are summarized and the error between them is assessed. The goal is to minimize the performance differences between the models while maximizing the overall performance. These measures go a long way to avoiding overfitting and therefore maximizing the chance that the training phase will produce a model which is robust.
+
+
+### Exploratory data analysis
+
+The last of the three analysis types, exploratory data analysis (EDA) includes a wide range of methods whose objective is to identify structure in datasets using only the data itself. In this way, EDA is an inductive, bottom-up approach to data analysis, which does not make any formal assumptions about the relationship(s) between variables. EDA can be roughly broken into two subgroups of analysis. **Unsupervised learning**, like supervised learning (PDA), is a subtype of machine learning. However, unlike prediction, unsupervised learning does not include a target variable to guide associations. The second subgroup of EDA methods can be seen as a (more robust) extension of the **descriptive analysis methods** covered earlier in this chapter. Either through unsupervised learning or descriptive methods, EDA employs quantitative methods to summarize, reduce, and sort complex datasets and statistically and visually interrogate a dataset in order to provide the researcher novel perspective to be qualitatively assessed. These qualitative assessments may prove useful to generate hypotheses or to generate groupings to be used in predictive analyses. So, if a researcher's aim is to probe a dataset in order to explore potential relationships in an area where predictions and/ or hypotheses cannot be clearly made, this is the analysis approach to choose.
+
+<!-- keys: no generalizations beyond the (corpus sample), use of data -->
+
+In contrast to both IDA and even PDA in which there are assumptions made about what relationship(s) to explore, EDA makes no such assumptions. Furthermore, given the exploratory nature of the process, EDA is not an approach which can in itself be used to make conclusive generalizations about the populations from which the (corpus) sample in which it is drawn. For IDA the fidelity of the sample and the process of selection of the variables is of utmost importance to ensure that the statistical results are reliably generalizable. Even in the case of PDA, the sample and variables selected are key to building a robust predictive model. However, in contrast to IDA, but similar to PDA, EDA methods may reuse the data selecting different variables and/or methods as research goals dictate. If a machine learning approach to EDA is adopted, the dataset can be partitioned into training and test sets, in a similar fashion to PDA. And as with PDA, the training set is used for refining statistical measures and the test set is used to evaluate the refined measures. Although the evaluation results still cannot be used to generalize, the insight can be taken as stronger evidence that there is a potential relationship, or set of relationships, worthy of further study. 
+
+Another notable point of contrast concerns the interpretation of EDA results. Although quantitative in nature, exploratory methods involve a high level of human interpretation. Human interpretation is a part of each stage of data analysis, and each statistical approach, in particular, but exploratory methods produce results that require associative thinking and pattern detection which is distinct from the other two analysis approaches, in particular, IDA.
+
+Again, as we have done for the other two analysis approaches, let's turn to the process of variable identification, data interrogation, and interpretation methods. As in the case of PDA, EDA only requires a research goal. But in PDA, the research goal centered around predicting a target variable. In EDA, there is no such focus. The research goal may in fact be less defined and a researcher may consider various relationships in turn or simultaneously. The curation of the variables, however, does overlap in spirit to the process of **feature engineering** that we touched on for creating variables for predictive models. But in EDA the measure to gauge whether the engineered variables are good, is left to the qualitative evaluation of the researcher. 
+
+For illustrative purposes let's consider the State of the Union Corpus (SOTU) [@R-quanteda-corpora]. The presidential addresses and a set of meta-data variables are included in the corpus. I've subsetted this corpus to only include U.S. presidents since 1946. A tabular preview of the first 10 addresses (truncated for display) can be found in Table \@ref(tab:eda-sotu-corpus). 
+
+<table>
+<caption>(\#tab:eda-sotu-corpus)First ten addresses from the SOTU Corpus.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> president </th>
+   <th style="text-align:left;"> date </th>
+   <th style="text-align:left;"> delivery </th>
+   <th style="text-align:left;"> party </th>
+   <th style="text-align:left;"> addresses </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1946-01-21 </td>
+   <td style="text-align:left;"> written </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> To the Congress of the United States:
+
+A quarte... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1947-01-06 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Cong... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1948-01-07 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, and Members of the ... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1949-01-05 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Cong... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1950-01-04 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Cong... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1951-01-08 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Cong... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1952-01-09 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Cong... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Truman </td>
+   <td style="text-align:left;"> 1953-01-07 </td>
+   <td style="text-align:left;"> written </td>
+   <td style="text-align:left;"> Democratic </td>
+   <td style="text-align:left;"> To the Congress of the United States:
+
+I have t... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eisenhower </td>
+   <td style="text-align:left;"> 1953-02-02 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Republican </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Eigh... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eisenhower </td>
+   <td style="text-align:left;"> 1954-01-07 </td>
+   <td style="text-align:left;"> spoken </td>
+   <td style="text-align:left;"> Republican </td>
+   <td style="text-align:left;"> Mr. President, Mr. Speaker, Members of the Eigh... </td>
+  </tr>
+</tbody>
+</table>
+
+A dataset such as this one could be leveraged to explore many different types of research questions. Key to guiding the engineering of features, however, is to clarify from the outset of the research project what the entity of study is, or **unit of analysis**. In IDA and PDA approaches, the unit of analysis forms an explicit part of the research hypothesis or goal. In EDA the research question may have multiple fronts, which may be reflected in differing units of analysis. For example, based on the SOTU dataset, we could be interested in political rhetoric, language of particular presidents, party ideology, etc. Depending on the perspective we are interested in investigating, the choice of how to approach engineering features to gain insight will vary. 
+
+By the same token, approaches for interrogating the dataset can vary widely, between and within the same research project, but for instructive purposes we can draw a distinction between descriptive methods and unsupervised learning methods.
+
+<table>
+<caption>(\#tab:eda-approaches-table)Some common EDA analysis methods.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Descriptive </th>
+   <th style="text-align:left;"> Unsupervised learning </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Term frequency analysis </td>
+   <td style="text-align:left;"> Cluster analysis </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Term keyness analysis </td>
+   <td style="text-align:left;"> Topic Modeling </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Collocation analysis </td>
+   <td style="text-align:left;"> Dimensionality reduction </td>
+  </tr>
+</tbody>
+</table>
+
+EDA leans heavily on visual representations of both descriptive and unsupervised learning methods. Visualizations enable humans to identify and extrapolate associative patterns. Visualizations range from standard barplots and scatterplots to network graphs and dendrograms and more. Some sample visualizations based on the SOTU Corpus are found in Figure \@ref(fig:eda-visualizations-grid).  
+
+
+
+
+
+
+
+
+
+
+
+<div class="figure" style="text-align: center">
+<img src="04-approaching-analysis_files/figure-html/eda-visualizations-grid-1.png" alt="Sample visualizations from the SOTU Corpus (1946-2020)." width="90%" />
+<p class="caption">(\#fig:eda-visualizations-grid)Sample visualizations from the SOTU Corpus (1946-2020).</p>
+</div>
+
+Just as feature selection and analysis method, the interpretation of the results in EDA are much more varied than in the other analysis methods. EDA methods provide information which requires much more human intervention and associative interpretation. In this way, EDA can be seen as a quantitatively informed qualitative assessment approach. The results from one approach can be used as the input to another. Findings can lead to further exploration and probing of nuances in the data. Speculative as they are the results from exploratory methods can be highly informative and lead to new insight and inspire further study in directions that may not have been expected.
 
 ## Reporting
 
-Much of the necessary reporting for an analysis features in prose as part of the write-up of a report or article. 
+Much of the necessary reporting for an analysis features in prose as part of the write-up of a report or article. This will include descriptive summaries, a blueprint of the method(s) used, and the results. Descriptive summaries will often include assessments of individual variables and/ or relationships between variables (central tendency, dispersion, association strength, etc.). Any procedures applied to diagnose or to correct the data should also be included in the final report. This information is key to helping readers assess the results from the analysis. A blueprint of the methods used will describe the variable selection process, how the variables were used in the statistical analysis, and any other information that is relevant for a reader to understand what was done and why it was done. Reporting results from an analysis will depend on the type of analysis and the particular method(s) employed. For inferential analyses this will include the test statistic(s) ($X^2$, $R^2$, etc.) and some measure of confidence ($p$-value, confidence interval, effect size). In predictive analyses accuracy results and related information will need to be reported. For exploratory analyses, the reporting of results will vary and often include visualizations and metrics that require more human interpretation than the other analysis types.
 
-- Descriptive assessment
-  - Key summaries
-  - Procedures to diagnose and correct
-- Analysis results
-  - Statistical procedures
-    - in appropriate forms
-  - Statistical results
-    - in appropriate forms
+While a good article write-up will include the most vital information to understand the procedures taken in an analysis, there are many more details which do not traditionally appear in prose. If a research project was conducted programmatically, however, the programming files (scripts) used to generate the analysis can (and should) be shared. While the scripts themselves are highly useful for other researchers to consult and understand in fine-grained detail the steps that were taken, it is important to also recognize that the research project should be well documented --through organized project directory and file structure as well as through code commenting. This description and instructions on how to run the analysis form a **research compendium** which ensure that the research conducted is easily understood and able to be reproduced and/ or enhanced by other researchers. 
 
-(include the fact that although this reporting should be detailed in prose, some decisions and many implementation steps are not. Replicable and documented code fills this gap [code book vs. data dictionary from Chapter 2])
+## Summary {-}
 
+In this chapter we have focused on description and analysis –the third component of DIKI Hierarchy. This process is visually summarized in Figure \@ref(fig:approaching-analysis-visual-summary-graphic). 
 
+<div class="figure" style="text-align: center">
+<img src="images/04-approaching-analysis/approaching-analysis-visual-summary-paper.png" alt="Approaching analysis: visual summary" width="90%" />
+<p class="caption">(\#fig:approaching-analysis-visual-summary-graphic)Approaching analysis: visual summary</p>
+</div>
 
+Building on the strategies covered in [Chapter 2 "Understanding data"](#understanding-data) to derive a rich relational dataset, in this chapter we outlined key points in approaching analysis. The first key step in any analysis is to perform a descriptive assessment of the individual variables and relationships between variables. To select the appropriate descriptive measures we covered the various informational values that a variable can take. In addition to providing key information for reporting purposes, descriptive measures are important to explore so the researcher can get a better feel for the dataset before conducting an analysis.
+
+We covered three data analysis types in this chapter: inferential, predictive, and exploratory. Each of these embodies very distinct approaches to deriving knowledge from data. Ultimately the choice of analysis type is highly dependent on the goals of the research. Inferential analysis is centered around the goal of testing a hypothesis, and for this reason it is the most highly structured approach to analysis. This structure is aimed at providing the mechanisms to draw conclusions from the results that can be generalized to the target population. Predictive analysis has a less-ambitious but at times more relevant goal of discovering the extent to which a given relationship can be extrapolated from the data to provide a model of language that can accurately predict an outcome using new data. While many times predictive analysis is used to perform language tasks, it can also be a highly effective methodology for applying different algorithmic approaches and exploring relationships a target variable and various configurations of variables. The ability to explore the data in multiple ways, is also a key strength of employing an exploratory analysis. The least structured and most variable of the analysis types, exploratory analyses are a powerful approach to deriving knowledge from data in an area where clear predictions cannot be made. 
+
+I rounded out this chapter with a short description of the importance of reporting the metrics, procedures, and results from analysis. Reporting, in its traditional form, is documented in prose in an article. This reporting aims to provide the key information that a reader will need to understand what was done, how it was done, and why it was done. This information also provides the necessary information for reader's with a critical eye to understand the analysis in more detail. Yet even the most detailed reporting in a write-up still leaves many practical, but key, points of the analysis obscured. A programming approach provides the procedural steps taken that when shared provide the exact methods applied. Together with the write-up a research compendium which provides the scripts to run the analysis and documentation on how to run the analysis forms an integral part of creating reproducible research. 
 
 
 

@@ -5,11 +5,12 @@
 ```{r, child="_common.Rmd"}
 ```
 
-# Exploration
+# Inference {#inference}
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > ...
+
 
 ```{block, type="rmdkey"}
 In this chapter you will learn:
@@ -23,10 +24,10 @@ text
 
 ## ...
 
-text 
+text
 
-### Packages {#exploration-packages}
+### Packages {#inference-packages}
 
-```{r acquire-data-packages}
+```{r prediction-data-packages}
 # Packages
 ```

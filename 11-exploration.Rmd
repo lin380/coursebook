@@ -1,4 +1,4 @@
-# Prediction {#prediction}
+# Exploration
 
 ```{r, child="_common.Rmd"}
 ```
@@ -19,10 +19,10 @@ text
 
 ## ...
 
-text
+text 
 
-### Packages {#prediction-packages}
+### Packages {#exploration-packages}
 
-```{r prediction-data-packages}
+```{r acquire-data-packages}
 # Packages
 ```

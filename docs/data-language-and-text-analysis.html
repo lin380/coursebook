@@ -4,12 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Data, language, and text analysis | LIN 380 Coursebook</title>
+<title>Chapter 1 Data, language, and text analysis | Coursebook</title>
 <meta name="author" content="Jerid Francom">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,8 +27,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Text as Data: An introduction to quantative text analysis and reproducible research in R">LIN 380 Coursebook</a>:
-        <small class="text-muted">Text as Data: An introduction to quantative text analysis and reproducible research in R</small>
+        <a href="index.html" title="Text as Data: An introduction to quantative text analysis and reproducible research with R">Coursebook</a>:
+        <small class="text-muted">Text as Data: An introduction to quantative text analysis and reproducible research with R</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -56,9 +57,9 @@
 <li><a class="" href="transform-data.html"><span class="header-section-number">7</span> Transform data</a></li>
 <li class="book-part">Modeling</li>
 <li><a class="" href="modeling-overview.html">Overview</a></li>
-<li><a class="" href="exploration.html"><span class="header-section-number">8</span> Exploration</a></li>
-<li><a class="" href="inference.html"><span class="header-section-number">9</span> Inference</a></li>
-<li><a class="" href="prediction.html"><span class="header-section-number">10</span> Prediction</a></li>
+<li><a class="" href="inference.html"><span class="header-section-number">8</span> Inference</a></li>
+<li><a class="" href="prediction.html"><span class="header-section-number">9</span> Prediction</a></li>
+<li><a class="" href="exploration.html"><span class="header-section-number">10</span> Exploration</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="section-6.html"><span class="header-section-number">A</span> …</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -292,13 +293,12 @@ In this section I will provide an overview of the coursebook. Specifically I wil
 Figure 1.3: Data to Insight Hierarchy (DIKI)
 </p>
 </div>
-<p>The DIKI Hierarchy highlights the stages and intermediate steps required to derive insight from data. Chapter 2 “Understanding data” will cover both Data and Information covering the conceptual topics of populations versus samples and how language data samples are converted to information and the forms that they can take. In Chapter 3 “Statistical approaches” I will discuss the distinction between descriptive and analytic statistics. In brief they are important for data analysis, but descriptive statistics serve as a sanity check on the dataset before submitting it to interrogation –which is the goal of analytic statistics. We will also cover some of the main distinctions between analytics approaches including inference-, exploration-, and prediction-based methods. With a fundamental understanding of data, information, and knowledge we will then move to Chapter 4 “Framing research” where we will discuss how to develop a research plan, or what I will call a ‘research blueprint.’ At this point we will directly address Research Skills and elaborate on how research really comes together; how to bring yourself up to speed with the literature on a topic, how to develop a research goal or hypothesis, how to select data which is viable to address the research goal or hypothesis, how to determine the necessary information and appropriate measures to prepare for analysis, how to perform diagnostic statistics on the data and make adjustments before analysis, how to select and perform the relevant analytic statistics given the research goals, how to report your findings, and finally, how to structure your project so that it is well-documented and reproducible.</p>
-<p>Part III “Preparation” and Part IV “Modeling” serve as practical and more detailed guides to the R programming strategies to conduct text analysis research and as such develop your Programming Skills. In Chapter 5 “Acquire data” I will discuss three main strategies for accessing data: direct downloads, Automatic Programming Interfaces (APIs), and web scraping. In Chapter 6 “Curate data” I will outline the process for converting or augmenting the acquired data into a structured format, therefore creating information. This will include organizing linguistic and non-linguistic metadata into one dataset. In Chapter 7 “Transform data” I describe how to work with a curated dataset to derive more detailed information and appropriate dataset structures that are appropriate for the upcoming analysis.</p>
-<p>Chapters 8 “Exploration,” 9 “Inference,” and 10 “Prediction” focus on different categories of statistical analysis each associated with distinct research goals. Exploration covers ‘bottom-up’-style, or ‘unsupervised learning,’ analysis methods such as association measures, clustering, topic modeling, and vector-space models. These methods are aligned with research goals that aim to interpret patterns that arise in from the data itself. Inference deals with analysis methods associated with standard hypothesis-testing. This will include some common statistical models employed in text analysis: chi-squared, logistic regression, and linear regression. Prediction explores a set of statistical methods known as ‘supervised learning.’ Similar to unsupervised learning, prediction models are employed in a bottom-up fashion. However, the key distinction is that the dataset includes an organizing ‘class’ variable which the statistical methods aim to model in order to formulate a generalization that can correctly classify new textual data. I will cover some standard methods for text classification including Näive Bayes, <em>k</em>-nearest neighbors (<em>k</em>-NN), and decisions tree and random forest models.</p>
+<p>The DIKI Hierarchy highlights the stages and intermediate steps required to derive insight from data. <a href="understanding-data.html#understanding-data">Chapter 2 “Understanding data”</a> will cover both Data and Information covering the conceptual topics of populations versus samples and how language data samples are converted to information and the forms that they can take. In <a href="approaching-analysis.html#approaching-analysis">Chapter 3 “Approaching analysis”</a> I will discuss the distinction between descriptive and analytic statistics. In brief they are important for data analysis, but descriptive statistics serve as a sanity check on the dataset before submitting it to interrogation –which is the goal of analytic statistics. We will also cover some of the main distinctions between analytics approaches including inference-, exploration-, and prediction-based methods. With a fundamental understanding of data, information, and knowledge we will then move to <a href="framing-research.html#framing-research">Chapter 4 “Framing research”</a> where we will discuss how to develop a research plan, or what I will call a ‘research blueprint.’ At this point we will directly address Research Skills and elaborate on how research really comes together; how to bring yourself up to speed with the literature on a topic, how to develop a research goal or hypothesis, how to select data which is viable to address the research goal or hypothesis, how to determine the necessary information and appropriate measures to prepare for analysis, how to perform diagnostic statistics on the data and make adjustments before analysis, how to select and perform the relevant analytic statistics given the research goals, how to report your findings, and finally, how to structure your project so that it is well-documented and reproducible.</p>
+<p>Part III “Preparation” and Part IV “Modeling” serve as practical and more detailed guides to the R programming strategies to conduct text analysis research and as such develop your Programming Skills. In <a href="">Chapter 5 “Acquire data”</a> I will discuss three main strategies for accessing data: direct downloads, Automatic Programming Interfaces (APIs), and web scraping. In <a href="">Chapter 6 “Curate data”</a> I will outline the process for converting or augmenting the acquired data into a structured format, therefore creating information. This will include organizing linguistic and non-linguistic metadata into one dataset. In <a href="">Chapter 7 “Transform data”</a> I describe how to work with a curated dataset to derive more detailed information and appropriate dataset structures that are appropriate for the upcoming analysis.</p>
+<p><a href="">Chapters 8 “Inference”</a>, <a href="">9 “Prediction”</a>, and <a href="">10 “Exploration”</a> focus on different categories of statistical analysis each associated with distinct research goals. Inference deals with analysis methods associated with standard hypothesis-testing. This will include some common statistical models employed in text analysis: chi-squared, logistic regression, and linear regression. Prediction covers methods for modeling associations in data with the aim to accurately predict outcomes on new textual data. I will cover some standard methods for text classification including Näive Bayes, <em>k</em>-nearest neighbors (<em>k</em>-NN), and decisions tree and random forest models. Exploration covers a variety of analysis methods such as association measures, clustering, topic modeling, and vector-space models. These methods are aligned with research goals that aim to interpret patterns that arise in from the data itself.</p>
 </div>
-<div id="summary" class="section level2" number="1.6">
-<h2>
-<span class="header-section-number">1.6</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+<div id="summary" class="section level2 unnumbered">
+<h2>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this chapter I started with some general observations about the difficulty of making sense of a complex world. The standard approach to overcoming inherent human limitations in sense making is science. In the 21st century the toolbelt for doing scientific research and exploration has grown in terms of the amount of data available, the statistical methods for analyzing the data, and the computational power to manage, store, and share the data, methods, and results from quantitative research. The methods and tools for deriving insight from data have made significant inroads in and outside academia, and increasingly figure in the quantitative investigation of language. Text analysis is a particular branch of this enterprise based on observational data from real-world language and is used in a wide variety of fields. This coursebook aims to develop your knowledge and skills in three fundamental areas: Data Literacy, Research Skills, and Programming Skills.</p>
 <p>In the end I hope that you enjoy this exploration into text analysis. Although learning curve at times may seem steep –the experience you will gain will not only improve your data literacy, research skills, and programmings skills but also enhance your appreciation for the richness of human language and its important role in our everyday lives.</p>
@@ -473,7 +473,7 @@ __How__
 <li><a class="nav-link" href="#language-analysis"><span class="header-section-number">1.3</span> Language analysis</a></li>
 <li><a class="nav-link" href="#text-analysis"><span class="header-section-number">1.4</span> Text analysis</a></li>
 <li><a class="nav-link" href="#coursebook-overview"><span class="header-section-number">1.5</span> Coursebook overview</a></li>
-<li><a class="nav-link" href="#summary"><span class="header-section-number">1.6</span> Summary</a></li>
+<li><a class="nav-link" href="#summary">Summary</a></li>
 </ul>
 
       <div class="book-extra">
@@ -491,7 +491,7 @@ __How__
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on July 04, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 12, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,0 +1,86 @@
+# Prediction {#prediction}
+
+```{r, child="_common.Rmd"}
+```
+
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+
+> ...
+
+```{block, type="rmdkey"}
+In this chapter you will learn:
+
+- the goals of this textbook
+- the reasoning for using the R programming language
+- important text conventions employed in this textbook
+```
+
+```{r prediction-data-packages}
+# Packages
+```
+
+
+text
+
+## ...
+
+text
+
+
+In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.
+
+```{r pred-sms-terms-freq, echo=TRUE, eval=FALSE}
+sms_f <- 
+  sms %>% 
+  unnest_tokens(terms, message, token = "regex", pattern = " ") %>% 
+  count(sms_type, terms) 
+
+sms_f %>% 
+  arrange(sms_type, desc(n)) %>% 
+  group_by(sms_type) %>%
+  slice_head(n = 5) %>% 
+  select(sms_type, terms, frequency = n) %>% 
+  kable(booktabs = TRUE,
+        caption = "Top five most frequent terms for 'ham' and 'spam'.")
+```
+
+<!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
+
+```{r pred-sms-dtm, echo=TRUE, eval=FALSE}
+library(tidymodels)
+
+sms_split <- initial_split(sms, strata = "sms_type")
+train_data <- training(sms_split)
+test_data <- testing(sms_split)
+
+library(textrecipes)
+```
+
+
+The In Figure () Let's consider the results from a hypothetical model of text classification on the SMS dataset I introduced at in this subsection. 
+
+
+```{r pda-contigency-table, echo=FALSE}
+# Simulated table
+# sms observations (testing 25%): 1210
+
+knitr::include_graphics("images/10-prediction/pda-sms-contingency-table.png")
+
+```
+
+
+
+  - accuracy (measure of overall correct predictions)
+  - precision (measure of the quality of the predictions)
+    - Percentage of predicted 'ham' messages that were correct
+  - recall (measure of the quantity of the predictions)
+    - Percentage of actual 'ham' messages that were correct
+  - F1-score (summarizes the balance between precision and recall)
+
+
+## Summary
+
+...
+
+
+

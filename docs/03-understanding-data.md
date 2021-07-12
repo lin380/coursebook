@@ -8,7 +8,7 @@
 
 **ORIENTATION**
 
-Before we begin working on the specifics of our data project, it is important to establish a fundamental understanding of the characteristics of each of the levels in the DIKI Hierarchy (Figure \@ref(fig:diki-hierarchy)) and the roles each of these levels have in deriving insight from data. In Chapter 2 we will explore the Data and Information levels drawing a distinction between two main types of data (populations and samples) and then cover how data is structured and transformed to generate information (datasets) that is fit for statistical analysis. In Chapter 3 I will outline the importance and distinct types of statistical procedures (descriptive and analytic) that are commonly used in text analysis. Chapter 4 aims to tie these concepts together and cover the required steps for preparing a research blueprint to conduct an original text analysis project. 
+Before we begin working on the specifics of our data project, it is important to establish a fundamental understanding of the characteristics of each of the levels in the DIKI Hierarchy (Figure \@ref(fig:diki-hierarchy)) and the roles each of these levels have in deriving insight from data. In [Chapter 2](#understanding-data) we will explore the Data and Information levels drawing a distinction between two main types of data (populations and samples) and then cover how data is structured and transformed to generate information (datasets) that is fit for statistical analysis. In [Chapter 3](#approaching-analysis) I will outline the importance and distinct types of statistical procedures (descriptive and analytic) that are commonly used in text analysis. [Chapter 4](#framing-research) aims to tie these concepts together and cover the required steps for preparing a research blueprint to conduct an original text analysis project. 
 
 <!-- By the end of this section you will have the knowledge to prepare a blueprint for an original text analysis project. This will include a solid grasp on the key concepts of which comprise any data analysis project and you will be in a position to make informed choices about how to select a topic, choose appropriate data, structure and prepare that data for analysis, prep that can be researched via text analysis 
 
@@ -31,7 +31,7 @@ where we will discuss how to develop a research plan, or what I will call a ‘r
 
 -->
 
-# Understanding data
+# Understanding data {#understanding-data}
 
 <p style="font-weight:bold; color:red;">DRAFT</p>
 
@@ -833,7 +833,7 @@ As we have seen in this chapter that acquiring data and converting that data int
 - Transformed data: analysis dataset (description of the procedures to prepare for analysis)
 -->
 
-## Summary
+## Summary {-}
 
 In this chapter we have focused on data and information --the first two components of DIKI Hierarchy. This process is visualized in Figure \@ref(fig:understanding-data-vis-sum). 
 

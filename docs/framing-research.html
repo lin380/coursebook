@@ -4,12 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Framing research | LIN 380 Coursebook</title>
+<title>Chapter 4 Framing research | Coursebook</title>
 <meta name="author" content="Jerid Francom">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,8 +27,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Text as Data: An introduction to quantative text analysis and reproducible research in R">LIN 380 Coursebook</a>:
-        <small class="text-muted">Text as Data: An introduction to quantative text analysis and reproducible research in R</small>
+        <a href="index.html" title="Text as Data: An introduction to quantative text analysis and reproducible research with R">Coursebook</a>:
+        <small class="text-muted">Text as Data: An introduction to quantative text analysis and reproducible research with R</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -56,9 +57,9 @@
 <li><a class="" href="transform-data.html"><span class="header-section-number">7</span> Transform data</a></li>
 <li class="book-part">Modeling</li>
 <li><a class="" href="modeling-overview.html">Overview</a></li>
-<li><a class="" href="exploration.html"><span class="header-section-number">8</span> Exploration</a></li>
-<li><a class="" href="inference.html"><span class="header-section-number">9</span> Inference</a></li>
-<li><a class="" href="prediction.html"><span class="header-section-number">10</span> Prediction</a></li>
+<li><a class="" href="inference.html"><span class="header-section-number">8</span> Inference</a></li>
+<li><a class="" href="prediction.html"><span class="header-section-number">9</span> Prediction</a></li>
+<li><a class="" href="exploration.html"><span class="header-section-number">10</span> Exploration</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="section-6.html"><span class="header-section-number">A</span> …</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -128,10 +129,65 @@ GOALS:
 <p>text</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Packages</span></code></pre></div>
+<p><strong>Characteristics of research: </strong> <span class="citation">(<a href="references.html#ref-Cross2006" role="doc-biblioref">Cross, 2006</a>)</span></p>
+<ul>
+<li><p>Purposive: Based on identification of an issue or problem worthy and capable of investigation</p></li>
+<li><p>Inquisitive: Seeking to acquire new knowledge</p></li>
+<li><p>Informed: Conducted from an awareness of previous, related research</p></li>
+<li><p>Methodical: Planned and carried out in a disciplined manner</p></li>
+<li><p>Communicable: Generating and reporting results which are feasible and accessible by others</p></li>
+<li><p><em>Research question</em>: identification of a particular area of uncertainty/ debate in knowledge</p></li>
+<li><p><em>Unit of analysis</em>: entity of study which the research aims to use to investigate (determined by the research question)</p></li>
+<li><p><em>Unit of observation</em>: component(s) which are collected to derive insight into the topic of study (unit of analysis) (determined by the data collection method). The primary unit of investigation is the essential focus of the informational structure of the dataset.</p></li>
+</ul>
+<p>Literature review sources:</p>
+<p><a href="https://guides.zsr.wfu.edu/linguistics">WFU Linguistics Research Guide</a></p>
+<ul>
+<li><a href="http://databases.zsr.wfu.edu/?purl=28783">Linguistics and Language Behavior Abstracts (LLBA)</a></li>
+<li><a href="">ERIC</a></li>
+<li>[PsycINFO]</li>
+<li>
+</ul>
+<p><a href="https://guides.zsr.wfu.edu/c.php?g=922386&amp;p=6648279">WFU Digital Humanties Research Guide</a></p>
+<p>Journals:</p>
+<p>Organizing references and citations:</p>
+<ul>
+<li>
+<a href="https://www.zotero.org/">Zotero</a>
+<ul>
+<li><a href="https://guides.zsr.wfu.edu/zotero">Zotero Guide</a></li>
+<li>
+<a href="https://zbib.org/">zoterobib</a> quick browser-based citation manager</li>
+</ul>
+</li>
+</ul>
 </div>
-<div id="annotated-readdings" class="section level2" number="4.2">
+<div id="research-questions" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">4.2</span> Annotated readdings<a class="anchor" aria-label="anchor" href="#annotated-readdings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Research questions<a class="anchor" aria-label="anchor" href="#research-questions"><i class="fas fa-link"></i></a>
+</h2>
+<p>ONE: predict dialect differences, find keywords/ phrases,</p>
+<ul>
+<li>Data: direct download, ACTIV-ES</li>
+<li>Curation:</li>
+<li>Modeling:</li>
+</ul>
+<p>TWO:</p>
+<ul>
+<li>Data: API, tweetR</li>
+<li>Curation:</li>
+<li>Modeling:</li>
+</ul>
+<p>THREE:</p>
+<ul>
+<li>Data:</li>
+<li>Curation:</li>
+<li>Modeling:</li>
+</ul>
+</div>
+<div id="annotated-readdings" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Annotated readdings<a class="anchor" aria-label="anchor" href="#annotated-readdings"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>Ignatow, G., &amp; Mihalcea, R. (2017). An introduction to text mining: Research design, data collection, and analysis. Sage Publications.</strong>
 <span class="citation">(<a href="references.html#ref-Ignatow2017" role="doc-biblioref">Ignatow &amp; Mihalcea, 2017</a>)</span></p>
@@ -169,7 +225,8 @@ linguistic theory to guide their interpretation of quantitative corpus findings.
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#framing-research"><span class="header-section-number">4</span> Framing research</a></li>
 <li><a class="nav-link" href="#chapter-subsection"><span class="header-section-number">4.1</span> …chapter subsection</a></li>
-<li><a class="nav-link" href="#annotated-readdings"><span class="header-section-number">4.2</span> Annotated readdings</a></li>
+<li><a class="nav-link" href="#research-questions"><span class="header-section-number">4.2</span> Research questions</a></li>
+<li><a class="nav-link" href="#annotated-readdings"><span class="header-section-number">4.3</span> Annotated readdings</a></li>
 </ul>
 
       <div class="book-extra">
@@ -187,7 +244,7 @@ linguistic theory to guide their interpretation of quantitative corpus findings.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LIN 380 Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research in R" was written by Jerid Francom. It was last built on July 04, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 12, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

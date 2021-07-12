@@ -66,7 +66,28 @@ saveRDS(data_listings, "data/data_listings.rds")
 
 
 
+# RESEARCH ----------------------------------------------------------------
 
+# Journals in Linguistics
+# Specify: textbook, journals, linguistics
+url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:linguistics/"
+
+journals_linguistics <- get_pinboard_info(url)
+saveRDS(journals_linguistics, "data/journals_linguistics.rds")
+
+# Journals in Digital Humanities
+# Specify: textbook, journals, digital-humanities
+url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:digital-humanities/"
+
+journals_humanities <- get_pinboard_info(url)
+saveRDS(journals_humanities, "data/journals_humanities.rds")
+
+# Journals in Computational Linguistics
+# Specify: textbook, journals, computational-linguistics
+url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:computational-linguistics/"
+
+journals_cl <- get_pinboard_info(url)
+saveRDS(journals_cl, "data/journals_cl.rds")
 
 
 

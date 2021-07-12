@@ -1,4 +1,4 @@
-# Framing research
+# Framing research {#framing-research}
 
 
 
@@ -55,6 +55,71 @@ text
 ```r
 # Packages
 ```
+
+
+__Characteristics of research: __ [@Cross2006]
+
++ Purposive: Based on identification of an issue or problem worthy and capable of investigation
++ Inquisitive: Seeking to acquire new knowledge
++ Informed: Conducted from an awareness of previous, related research
++ Methodical: Planned and carried out in a disciplined manner
++ Communicable: Generating and reporting results which are feasible and accessible by others
+ 
+
+
+- _Research question_: identification of a particular area of uncertainty/ debate in knowledge
+- _Unit of analysis_: entity of study which the research aims to use to investigate (determined by the research question)
+- _Unit of observation_: component(s) which are collected to derive insight into the topic of study (unit of analysis) (determined by the data collection method). The primary unit of investigation is the essential focus of the informational structure of the dataset.
+
+
+
+
+Literature review sources:
+
+[WFU Linguistics Research Guide](https://guides.zsr.wfu.edu/linguistics)
+
+- [Linguistics and Language Behavior Abstracts (LLBA)](http://databases.zsr.wfu.edu/?purl=28783)
+- [ERIC]()
+- [PsycINFO]
+- 
+
+[WFU Digital Humanties Research Guide](https://guides.zsr.wfu.edu/c.php?g=922386&p=6648279)
+
+
+
+
+Journals: 
+
+
+
+Organizing references and citations:
+
+- [Zotero](https://www.zotero.org/)
+  - [Zotero Guide](https://guides.zsr.wfu.edu/zotero)
+  - [zoterobib](https://zbib.org/) quick browser-based citation manager
+
+## Research questions
+
+ONE: predict dialect differences, find keywords/ phrases, 
+
+- Data: direct download, ACTIV-ES
+- Curation: 
+- Modeling:
+
+TWO: 
+
+- Data: API, tweetR
+- Curation: 
+- Modeling: 
+
+THREE:
+
+- Data: 
+- Curation: 
+- Modeling:
+
+
+
 
 
 ## Annotated readdings
