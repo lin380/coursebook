@@ -36,7 +36,8 @@ where we will discuss how to develop a research plan, or what I will call a ‘r
 <p style="font-weight:bold; color:red;">DRAFT</p>
 
 > The plural of anecdote is not data.
-> ―-- Marc Bekoff
+> 
+> --- Marc Bekoff
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>
@@ -64,8 +65,8 @@ SWIRL:
 WORKED/ RECIPE:
 
 - Reading/ Writing data
+- Data structure inspection
 - Data documentation (dictionary/ metadata)
-- Data summarization?
 
 PROJECT:
 

@@ -6,11 +6,13 @@
 
 <p style="font-weight:bold; color:red;">DRAFT</p>
 
-> Lies, damn lies, and statistics  
-> ---Benjamin Disraeli (popularized by Mark Twain)
+> Lies, damn lies, and statistics 
+> 
+> --- Benjamin Disraeli (popularized by Mark Twain)
 
-> Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write. 
-> --H.G. Wells
+> Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write.
+> 
+> --- H.G. Wells
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>
@@ -35,9 +37,7 @@ SWIRL:
 WORKED/ RECIPE:
 
 - Descriptive stats: Visualizing datasets in tabular and graphical form (univariate, bivariate, multivariate)
-- Descriptive stats: 
-- Analytic stats: 
-- Reporting: 
+- Coding conventions, comments, ...
 
 PROJECT:
 

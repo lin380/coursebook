@@ -7,7 +7,8 @@
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > The journey of a thousand miles begins with one step.
-> --[Lao Tzu](https://en.wikipedia.org/wiki/Laozi)
+>
+> --- [Lao Tzu](https://en.wikipedia.org/wiki/Laozi)
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>

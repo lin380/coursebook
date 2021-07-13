@@ -16,7 +16,8 @@ In this section the aims are to: (1) provide an overview of quantitative researc
 <p style="font-weight:bold; color:red;">DRAFT</p>
 
 > Science walks forward on two feet, namely theory and experiment...Sometimes it is one foot which is put forward first, sometimes the other, but continuous progress is only made by the use of both.
-> ---[Robert A. Millikan](https://www.nobelprize.org/uploads/2018/06/millikan-lecture.pdf) [-@Millikan1923]
+>
+> --- [Robert A. Millikan](https://www.nobelprize.org/uploads/2018/06/millikan-lecture.pdf) [-@Millikan1923]
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>
@@ -36,7 +37,6 @@ TUTORIALS:
   - Programming Basics: https://rstudio.cloud/learn/primers/1.2
   - What is Rmarkdown? https://rmarkdown.rstudio.com/lesson-1.html
   
-
 SWIRL:
 
 - Variables and vectors
@@ -45,6 +45,7 @@ SWIRL:
 WORKED/ RECIPE:
 
 - Literate programming
+  - RMarkdown: Rmd, Yaml, markdown formatting, code chunks, Bibliography/ references
 - GitHub collaboration
 
 PROJECT:
