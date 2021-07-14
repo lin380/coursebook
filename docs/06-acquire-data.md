@@ -55,17 +55,18 @@ GOALS:
 -->
 
 
+
 Overview...
 
-## ...
+## Direct downloads
 
-text 
+## APIs
 
-### Packages {#acquire-data-packages}
+## Web scraping
+
+## Documentation
 
 
-```r
-library(rvest)  # full-fleged web scraping
-library(datapasta)  # copy/paste approach to HTML tables
-```
+
+
 

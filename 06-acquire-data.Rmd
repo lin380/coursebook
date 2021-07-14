@@ -52,17 +52,22 @@ GOALS:
 
 -->
 
-
-Overview...
-
-## ...
-
-text 
-
-### Packages {#acquire-data-packages}
-
-```{r acquire-data-packages}
+```{r acquire-data-packages, echo=FALSE}
 library(rvest) # full-fleged web scraping
 library(datapasta) # copy/paste approach to HTML tables
 ```
+
+Overview...
+
+## Direct downloads
+
+## APIs
+
+## Web scraping
+
+## Documentation
+
+
+
+
 

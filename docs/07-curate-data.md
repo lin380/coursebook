@@ -47,18 +47,29 @@ GOALS:
 
 
 
-```r
-# Packages
-
-```
-
 
 Overview...
 
-## ...
+## Structured
 
-text 
+...
 
+## Semi-structured
+
+...
+
+## Unstructured
+
+...
+
+
+## Documentation
+
+...
+
+---
+
+__Notes:__
 
 Data Organization in Spreadsheets [@Broman2018]. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.
 

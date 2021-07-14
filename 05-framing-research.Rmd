@@ -43,59 +43,56 @@ PROJECT:
 
 ```
 
-In this chapter ... note to thread this by starting with 'connect' over 'findings', as the contribution guides the process of deriving insight...
 
-Before jumping into the code, every researcher must come to a project with a clear idea about the purpose of the analysis. This means doing your homework in order to understand what it is exactly that you want to achieve; that is, you need to identify a research question. The first step is become versed in the previous literature on the topic. What has been written? What are the main findings? Secondly, it is important to become familiar with the standard methods for approaching the topic of interest. How has the topic been approached methodologically? What are the types, sources, and quality of data employed? What have been the statistical approaches employed? What particular statistical tests have been chosen? Getting an overview not only of the domain-specific findings in the literature but also the methodological choices will help you identify promising plan for carrying out your research.
-
-
-discuss how to develop a research plan, or what I will call a ‘research blueprint.’ At this point we will directly address Research Skills and elaborate on how research really comes together; how to bring yourself up to speed with the literature on a topic, how to develop a research goal or hypothesis, how to select data which is viable to address the research goal or hypothesis, how to determine the necessary information and appropriate measures to prepare for analysis, how to perform diagnostic statistics on the data and make adjustments before analysis, how to select and perform the relevant analytic statistics given the research goals, how to report your findings, and finally, how to structure your project so that it is well-documented and reproducible.
+At this point in this part of the coursebook, we have covered Data, Information, and Knowledge from the Data to Insight Hierarchy. The goal has been to provide an orientation to the main building blocks of doing text analysis. Insight is the last component of the hierarchy. However, in practical terms, it is the first step to address in an research project as goals of a research project influence all subsequent steps. In this chapter we discuss how to frame research, that is how to position your research project's findings to contribute insight to understanding of the world. We will cover how to connect with the literature, selecting a research area and identifying a research problem, and how to design research best positioned to return relevant findings that will connect with this literature, establishing a research aim and research question.  We will round out this chapter with a guide on developing a research blueprint --a working plan to organize the conceptual and practical steps to implement the research effectively and in a way that supports communicating the research findings and the process by which the findings were obtained. 
 
 
-Build a blueprint: identify an area, determine/ access/ evaluate sources, annotated bibliography, research question
+Together a research area, topic, problem, and question and the research blueprint that forms the conceptual and practical scaffolding of the project ensure from the outset that the project is solidly grounded in the main characteristics of good research. These characteristics, summarized by @Cross2006, are found in Table \@ref(tab:fr-cross-research-char-table).
 
-__Characteristics of research: __ [@Cross2006]
+```{r fr-cross-research-char-table, echo=FALSE}
+research_chars <- 
+  tribble(
+    ~"Characteristic", ~"Description",
+    "Purposive", "Based on identification of an issue or problem worthy and capable of investigation",
+    "Inquisitive", "Seeking to acquire new knowledge",
+    "Informed", "Conducted from an awareness of previous, related research",
+    "Methodical", "Planned and carried out in a disciplined manner",
+    "Communicable", "Generating and reporting results which are feasible and accessible by others"
+  )
+research_chars %>% 
+  kable(booktabs = TRUE,
+        caption = "Characteristics of research (Cross, 2006).")
+```
 
-+ Purposive: Based on identification of an issue or problem worthy and capable of investigation
-+ Inquisitive: Seeking to acquire new knowledge
-+ Informed: Conducted from an awareness of previous, related research
-+ Methodical: Planned and carried out in a disciplined manner
-+ Communicable: Generating and reporting results which are feasible and accessible by others
+With these characteristics in mind, let's get started with the first component --connecting with the literature.
+
+<!-- Before jumping into the code, every researcher must come to a project with a clear idea about the purpose of the analysis. This means doing your homework in order to understand what it is exactly that you want to achieve; that is, you need to identify a research question. The first step is become versed in the previous literature on the topic. What has been written? What are the main findings? Secondly, it is important to become familiar with the standard methods for approaching the topic of interest. How has the topic been approached methodologically? What are the types, sources, and quality of data employed? What have been the statistical approaches employed? What particular statistical tests have been chosen? Getting an overview not only of the domain-specific findings in the literature but also the methodological choices will help you identify promising plan for carrying out your research. -->
 
 
-Here is a reference to the Exercise \@ref(exr:test).
-
-::: {.exercise #test}
-This is an exercise
-:::
+<!-- discuss how to develop a research plan, or what I will call a ‘research blueprint.’ At this point we will directly address Research Skills and elaborate on how research really comes together; how to bring yourself up to speed with the literature on a topic, how to develop a research goal or hypothesis, how to select data which is viable to address the research goal or hypothesis, how to determine the necessary information and appropriate measures to prepare for analysis, how to perform diagnostic statistics on the data and make adjustments before analysis, how to select and perform the relevant analytic statistics given the research goals, how to report your findings, and finally, how to structure your project so that it is well-documented and reproducible. -->
 
 
 ## Connect
 
 ### Research area
 
-Area of interest
+The area of research is the first decision to make in terms of where to make a contribution to understanding. At this point, the aim is to identify a general area of interest where a researcher wants to derive insight. For those with an established research trajectory in language, the area of research to address through text analysis will likely be an extension of their prior work. For others, which include new researchers or researcher's that want to explore new areas of language research or approach an area through a language-based lens, the choice of area may be less obvious. In either case, the choice of a research area should be guided by a desire to contribute something relevant to a theoretical, social, and/ or practical matter of personal interest. Personal relevance goes a long way to developing and carrying out __purposive__ and __inquisitive__ research. 
 
-- _Research area_: the identification of a broad area of interest
+So how do we get started? The first step is to reflect on your own areas of interest and knowledge, be it academic, professional, or personal. Language is at the heart of the human experience and therefore found in some fashion anywhere one seeks to find it. But it is a big world and more often than not the general questions are some of the most difficult. To get an overview of an academic field it can be helpful to consult disciplinary encyclopedias. 
 
-Your areas of knowledge and interest
+- Encyclopedia of Linguistics, other resources for language and language related fields [resources]
 
-Perceived relevance for theoretical, social, or practical inquiry
+A more personal, less academic, approach is to consult online forums, blogs, etc. that one already frequents or can be accessed via an online search. ... Perusing these resources can help spark ideas and highlight the kinds of questions that interest you. 
+
+- Online forums, reddit, or blogs, with discussions about language [examples]
+
+Regardless of whether your inquiry stems from academic, professional, or personal interest, try to connect these findings to academic areas of research. Academic research is highly structured and well-documented and making associations with this network will aid in subsequent steps in developing a research project.
 
 ### Research problem
 
-Literature review: The main goals of a literature review are to discover, interpret, and evaluate sources of information from the primary literature.
+Once you've made a rough-cut decision about the area of research, it is now time to take a deeper dive into the subject area and jump into the literature. This is where the rich structure of disciplinary research will provide aid to traverse the vast world of academic knowledge and identify a research problem. A research problem highlights a particular topic of debate or uncertainty in existing knowledge which is worthy of study. 
 
-__Purposive and inquisitive__ (Cross)
-
-- _Research problem_: identification of a particular area of uncertainty/ debate in knowledge worthy of study
-
-Viable given the availability of data, technical skills, or time frame
-
-__Sources__
-
-Strategies for finding the relevant literature
-
-Literature review sources:
+Surveying the relevant literature is key to ensuring that your research is __informed__, that is, connected to previous work. Identifying relevant research to consult can be a bit of a 'chicken or the egg' problem --some knowledge of the area is necessary to find relevant topics, some knowledge of the topics is necessary to narrow the area of research. Many times the only way forward is to jump in conducting searches. These can be world-accessible resources (Google Scholar, ..., etc.) or limited-access resources that are provided through an academic institution. Some organizations and academic institutions provide research guides to help researcher's consult the primary literature. 
 
 [WFU Linguistics Research Guide](https://guides.zsr.wfu.edu/linguistics)
 
@@ -108,32 +105,50 @@ Literature review sources:
 
 Journals: 
 
-Organizing references and citations:
+To explore research related to text analysis it is helpful to start with the (sub)discipline name(s) you identified in when selecting your research area, more specific terms that occur to you or key terms from the literature, and terms such as 'corpus study' or 'corpus-based'. The results from first searches may not turn out to be sources that end up figuring explicitly in your research, but it is important to skim these results and the publications themselves to mine information that can be useful to formulate better and more targeted searches. Relevant information for honing your searches can be found throughout an academic publication (article or book). However, pay particular attention to the abstract, in articles, and the table of contents, in books, and the cited references. Abstracts and tables of contents often include discipline-specific jargon that is commonly used in the field. In some articles there is even a short list of key terms listed below the abstract which can be extremely useful to seed better and more precise search results. The references section will contain relevant and influential research. Scan these references for publications which appear to narrowing in on topic of interest and treat it like a search in its own right.
 
-- [Zotero](https://www.zotero.org/)
-  - [Zotero Guide](https://guides.zsr.wfu.edu/zotero)
-  - [zoterobib](https://zbib.org/) quick browser-based citation manager
 
-__Investigation__
+Once your searches begin to show promising results it is time to keep track and organize these references. Whether you plan to collect thousands of references over a lifetime of academic research or your aim is centered around one project, software such as [Zotero](https://www.zotero.org/)^[[Zotero Guide](https://guides.zsr.wfu.edu/zotero)], [Mendeley](https://www.mendeley.com/reference-management/reference-manager), or [BibDesk](https://bibdesk.sourceforge.io/) provide powerful, flexible, and easy-to-use tools to collect, organize, annotate, search, and export references. Citation management software is indispensable for modern research --and often free! 
 
-Objectives when considering the literature
+As your list of relevant references grows, you will want to start the investigation process in earnest. Begin skimming (not reading) the contents of each of these publications, starting with the most relevant first. Annotate these publications using highlighting features of the citation management software to identify: (1) the stated goal(s) of the research, (2) the data source(s) used, (3) the information drawn from the data source(s), (4) the analysis approach employed, and (5) the main finding(s) of the research as they pertain to the stated goal(s). Next, in your own words, summarize these five key areas in prose adding your summary to the notes feature of the citation management software. This process will allow you to efficiently gather and document references with the relevant information to guide the identification of a research problem, to guide the formation of your problem statement, and ultimately, to support the literature review that will figure in your project write-up.
 
-- Research questions
-- Data sources
-- Information
-- Findings
+... research problem ... identifies a gap in the literature. From your preliminary annotated summaries you will have undoubtedly started to recognize overlapping and contrasting aspects in the research literature... these may be...
+
+- types of gaps
+  - topical
+  - theoretical
+  - methodological
+  - replicability
+
+At this point it is time to focus energy on detailed reading of those references which appear most relevant highlighting the potential gap(s) in the literature.
+
+
+The next step is to formulate a problem statement. A problem statement puts a finer point on the nature and relevance of the problem. 
+
+Literature review: The main goals of a literature review are to discover, interpret, and evaluate sources of information from the primary literature. 
+
+
+
 
 __Problem statement__
 
-__Informed__ (Cross)
+Use annotated references to triangulate ...
+
+... and should culminate with a research statement...
+
+A research statement puts a finer point on the nature and relevance of the problem. 
 
 Identify a gap in the literature
 
 - types of gaps
   - topical
+  - theoretical
   - methodological
-  - target population
   - replicability
+
+Important to balance ... Viable given the availability of data, technical skills, or time frame
+
+
 
 ## Findings
 

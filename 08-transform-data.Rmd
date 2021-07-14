@@ -42,18 +42,38 @@ GOALS:
 
 -->
 
-Overivew ...
-
-## ...
-
-text 
-
-```{r transform-data-packages}
+```{r transform-data-packages, echo=FALSE}
 # Packages
+
 ```
 
+Overview...
 
-NOTE: 
+## Normalize
+
+...
+
+## Recode
+
+...
+
+## Generate
+
+...
+
+## Merge
+
+...
+
+## Documentation
+
+...
+
+
+
+---
+
+__Notes:__
 
 
 - Cover Corpus and Document-Term Matrices (DTM)s

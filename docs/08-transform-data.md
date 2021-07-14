@@ -43,19 +43,35 @@ GOALS:
 
 -->
 
-Overivew ...
-
-## ...
-
-text 
 
 
-```r
-# Packages
-```
+Overview...
+
+## Normalize
+
+...
+
+## Recode
+
+...
+
+## Generate
+
+...
+
+## Merge
+
+...
+
+## Documentation
+
+...
 
 
-NOTE: 
+
+---
+
+__Notes:__
 
 
 - Cover Corpus and Document-Term Matrices (DTM)s
