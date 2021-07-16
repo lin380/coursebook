@@ -110,117 +110,117 @@ To explore research related to text analysis it is helpful to start with the (su
 
 Once your searches begin to show promising results it is time to keep track and organize these references. Whether you plan to collect thousands of references over a lifetime of academic research or your aim is centered around one project, software such as [Zotero](https://www.zotero.org/)^[[Zotero Guide](https://guides.zsr.wfu.edu/zotero)], [Mendeley](https://www.mendeley.com/reference-management/reference-manager), or [BibDesk](https://bibdesk.sourceforge.io/) provide powerful, flexible, and easy-to-use tools to collect, organize, annotate, search, and export references. Citation management software is indispensable for modern research --and often free! 
 
-As your list of relevant references grows, you will want to start the investigation process in earnest. Begin skimming (not reading) the contents of each of these publications, starting with the most relevant first. Annotate these publications using highlighting features of the citation management software to identify: (1) the stated goal(s) of the research, (2) the data source(s) used, (3) the information drawn from the data source(s), (4) the analysis approach employed, and (5) the main finding(s) of the research as they pertain to the stated goal(s). Next, in your own words, summarize these five key areas in prose adding your summary to the notes feature of the citation management software. This process will allow you to efficiently gather and document references with the relevant information to guide the identification of a research problem, to guide the formation of your problem statement, and ultimately, to support the literature review that will figure in your project write-up.
+As your list of relevant references grows, you will want to start the investigation process in earnest. Begin skimming (not reading) the contents of each of these publications, starting with the most relevant first^[Or what appears to be most relevant. This may change as you start to take a closer look.]. Annotate these publications using highlighting features of the citation management software to identify: (1) the stated goal(s) of the research, (2) the data source(s) used, (3) the information drawn from the data source(s), (4) the analysis approach employed, and (5) the main finding(s) of the research as they pertain to the stated goal(s). Next, in your own words, summarize these five key areas in prose adding your summary to the notes feature of the citation management software. This process will allow you to efficiently gather and document references with the relevant information to guide the identification of a research problem, to guide the formation of your problem statement, and ultimately, to support the literature review that will figure in your project write-up.
 
-... research problem ... identifies a gap in the literature. From your preliminary annotated summaries you will have undoubtedly started to recognize overlapping and contrasting aspects in the research literature... these may be...
-
-- types of gaps
-  - topical
-  - theoretical
-  - methodological
-  - replicability
-
-At this point it is time to focus energy on detailed reading of those references which appear most relevant highlighting the potential gap(s) in the literature.
-
-
-The next step is to formulate a problem statement. A problem statement puts a finer point on the nature and relevance of the problem. 
-
-Literature review: The main goals of a literature review are to discover, interpret, and evaluate sources of information from the primary literature. 
-
-
-
-
-__Problem statement__
-
-Use annotated references to triangulate ...
-
-... and should culminate with a research statement...
-
-A research statement puts a finer point on the nature and relevance of the problem. 
-
-Identify a gap in the literature
-
-- types of gaps
-  - topical
-  - theoretical
-  - methodological
-  - replicability
-
-Important to balance ... Viable given the availability of data, technical skills, or time frame
-
+From your preliminary annotated summaries you will undoubtedly start to recognize overlapping and contrasting aspects in the research literature. These aspects may be topical, theoretical, methodological, or appear along other lines. Note these aspects and continue to conduct more refine searches, annotate new references, and monitor for any  emerging patterns of uncertainty or debate (gaps) which align with your research interest(s). When a promising pattern takes shape, it is time to engage with a more detailed reading of those references which appear most relevant highlighting the potential gap(s) in the literature. At this point you can focus energy on more nuanced aspects of a particular gap in the literature with the goal to formulate a problem statement. A problem statement directly acknowledges a gap in the literature and puts a finer point on the nature and relevance of this gap for understanding. This statement reflects your first deliberate attempt to establish a line of inquiry. It will be a targeted, but still somewhat general, statement framing the gap in the literature that will guide subsequent research design decisions.
 
 
 ## Findings
 
-Aim of considering the insight that can be gained ...
-
-
 ### Research aim
 
-_Research aim_: a statement which identifies the analysis approach to be taken. This statement frames the form of the research question
+With a problem statement in hand, it is now time to consider the goal(s) of the research. A research aim frames the type of inquiry to be conducted. Will the research aim to explain, evaluate, or explore? In other words, will the research seek to test a particular relationship, assess the potential strength of a particular relationship, or uncover novel relationships? As you can appreciate, the research aim is directly related to the analysis methods we touched upon in [Chapter 3](#approaching-analysis).
 
-- Explaining
-- Evaluating
-- Exploring
+To gauge how to frame your research aim, reflect on the literature that led you to your problem statement and the nature of the problem statement itself. If the gap at the center of the problem statement is a lack of knowledge, your research aim may be exploratory. If the gap concerns a conjecture about a relationship, then your research may take a predictive approach. When the gap points to the validation of a relationship, then your research will likely be inferential in nature. Before selecting your research aim it is also helpful to consult the research aims of the primary literature that led you to your research statement. Consider how your research statement relates the previous literature. Do you aim to test a hypothesis based on previous exploratory analyses? Are you looking to generate new knowledge in an (apparently) uncharted area? 
+
+In general, a problem statement which addresses a smaller, nuanced gap will tend to adopt similar research aims as the previous literature while a larger, more divergent gap will tend to adopt a distinct research aim. This is not a hard rule, but more of a heuristic, however, and it is important to be familiar with both the previous literature, the nature of different types of analysis, and the goals of the research to ensure that the research is best-positioned to generate findings that will contribute to the existing body of understanding in a principled way.
 
 ### Research question
 
-Thesis statement
+The next step in research design is to craft the research question. A research question is clearly defined statement which identifies an aspect of uncertainty and the particular relationships that this uncertainty concerns. The research question extends and narrows the line of inquiry established in the research statement and research aim. The research statement can be seen as the content and the research aim as the form. 
 
-- _Research question_: a clearly defined statement which identifies an aspect of uncertainty and the particular relationships that this uncertainty concerns
-  - _Unit of analysis_: entity of study which the research aims to use to investigate (determined by the research question)
-  - _Unit of observation_: component(s) which are collected to derive insight into the topic of study (unit of analysis) (determined by the data collection method). The primary unit of investigation is the essential focus of the informational structure of the dataset.
+The form of a research question will vary based on the analysis approach. For inferential-based research, the research question will actually be a statement, not a question. This statement makes a testable claim about the nature of a particular relationship --i.e. asserts a hypothesis. For illustration, let's return to one of the hypotheses we previously sketched out in [Chapter 3](#approaching-analysis), leaving aside the implicit null hypothesis.
 
 
-Will take distinct forms for different research aims: 
+Women use more questions than men in spontaneous conversations.
 
-- Explaining: hypothesis statement
-- Evaluation: prediction goals, potential features
-- Exploring: potential insight gained, ...
+
+For predictive- and exploratory-based research, the research question is in fact a question. A reframing of the example hypothesis for a predictive-based research question might looks something like this. 
+
+
+Can the number of questions used in spontaneous conversations predict if a speaker is male or female?
+
+
+And a similar exploratory-based research question would take this form.
+
+Do men and women differ in terms of the number of questions they use in spontaneous conversations?
+
+The central research interest behind these hypothetical research questions is, admittedly, quite basic. But from these simplified examples, we are able to appreciate the similarities and differences between the forms of research statements that correspond to distinct research aims.
+
+In terms of content, the research question will make reference to two key components. First, is the __unit of analysis__. The unit of analysis is the entity which the research aims to investigate. For our three example research aims, the unit of analysis is the same, namely men and women. Note, however, that the current unit of analysis is somewhat vague in the example research questions. A more precise unit of analysis would include more information about the population from which the men and women are drawn (e.g English speakers, American English speakers, American English speakers of the Southeast, etc.).
+
+The second key component is the __unit of observation__. The unit of observation is the primary element on which the insight into the unit of analysis is derived and in this way constitutes the essential organization unit of the data to be collected. In our examples, the unit of observation, again, is unchanged and is spontaneous conversations. Note that while the unit of observation is key to identify as it forms the organizational backbone of the research, it is very common for the research to derive variables from this unit to provide evidence to investigate the research question. In the previous examples, we identified the number of conversations as part of the research question. But in other cases a researcher may seek to understand other aspects of questions in spontaneous conversations (i.e type of question, features of questions, etc.). The unit of observation, however, would remain the same.
 
 ## Blueprint
 
-Overview of the goals of a research blueprint
+Efforts to craft a research question are a very important aspect of developing purposive, inquisitive, and informed research (returning to Cross's characteristics of research). Moving beyond the research question in the project means developing and laying out the research design in a way such that the research is __Methodical__ and __Communicable__. In this coursebook, the method to achieve these goals is through the development of a research blueprint. The blueprint includes two components: (1) the process of identifying the data, information, and methods to be used and (2) the creation of a plan to structure and document the project. 
+
+As @Ignatow2017 point out:
+
+> Research design is essentially concerned with the basic architecture of research projects, with designing projects as systems that allow theory, data, and research methods to interface in such a way as to maximize a project’s ability to achieve its goals [...]. Research design involves a sequence of decisions that have to be taken in a project’s early stages, when one oversight or poor decision can lead to results that are ultimately trivial or untrustworthy. Thus, it is critically important to think carefully and systematically about research design before committing time and resources to acquiring texts or mastering software packages or programming languages for your text mining project.
+
 
 ### Identify
 
-__Methodical__ (Cross)
+Importance of identifying and documenting the key aspects required to conduct the research cannot be understated. On the one hand this process links concept to implementation. In doing so, a researcher is better-positioned to conduct research with a clear view of what will be entailed. On the other hand, a promising research question, on paper, may present challenges that may require modification or reevaluation of the viability of the project. It is not uncommon to encounter roadblocks or even dead-ends for moving a well-founded research question forward when considering the available data, a researcher's (current) technical and/ or research skills, and the given time frame for the project. In practice, the process of identifying the data, information, and methods of analysis are considered in tandem with the investigative work to develop a research aim and research question. In this subsection I will cover the main characteristics to consider when developing a research blueprint. 
 
-Importance of identifying key aspects to conduct the research
+<!-- Data -->
 
-__Data__
+The first, and most important, part of establishing a research blueprint is to __identify a viable data source__. Regardless of how you find and access the data, it is essential to vet the corpus sample in light of the research question. In the case that research is inferential in nature, the sampling frame of the corpus is of primary importance as the goal is to generalize the findings to a target population. A corpus resource should align, to the extent feasible, with this target population. For predictive and exploratory research, the goal to generalize a claim is not central and for this reason the there is some freedom in terms of how representative a corpus sample is of a target population. Ideally a researcher will find and be able to model a language population of target interest. Since the goal, however, is not to test a hypothesis, but rather to explore particular or potential relationships, either in an predictive or exploratory fashion, the research can often continue with the stipulation that the results are interpreted in the light of the characteristic of the available corpus sample.
 
-Aligning data with the target population
+<!-- Consider: examples of research questions and corpus resources that do and do not align -->
 
-__Information__
+<!-- Information -->
 
-Aligning/ assessing the viability of the information that can be harnessed
+The second step is to __identify the key variables__ need to conduct the research are and then ensure that this information can be derived from the corpus data. The research question will reference the unit of analysis and the unit of observation, but it is important at this point to then pinpoint what the key variables will be. If the unit of observation is spontaneous conversations. The question as to what aspects of these conversations will be used in the analysis. In the research questions presented in this chapter, we will want to envision what needs to be done to generate a variable which measures the number of questions in each of the conversations. In other research, their may be features that need to be extracted and recoded to address the research question. Other variables of importance may be non-linguistic in nature. Provided the corpus has the required meta-data for the research, variables can be normalized, recoded, and generated from the corpus itself to fit research needs. In cases where there the meta-data is incomplete for the goals of the research, it is sometimes possible to merge meta-data from other sources. 
 
-__Analysis__
 
-Identify the appropriate method(s) for conducting the analysis given the information and research aims
+<!-- Analysis -->
 
-Determine the evaluation methods and expectations for the results
+The third step is to __identify a method of analysis__. The selection of the analysis approach that was part of the research aim and then the research question goes a long way to narrowing the methods that a researcher must consider. But there are a number of factors which will make some methods more appropriate than others. In inferential research, the number and information values of the variables to be analyzed will be of key importance [@Gries2013a]. The informational value of the dependent variable will again narrow the search for the appropriate method. The number of independent variables also plays an important role. For example, a study with a categorical dependent variable with a single categorical independent variable will lead the researcher to the Chi-squared test. A study with a continuous dependent variable with multiple independent variables will lead to linear regression. Another aspect of note for inference studies is the consideration of the distribution of continuous variables --a normal distribution will use a parametric test where a non-normal distribution will use a non-parametric test. These details need not be nailed down at this point, but it is helpful to have them on your radar to ensure that when the time comes to analyze the data, the appropriate steps are taken to test for normality and then apply the correct test. 
+
+For predictive-based research, the informational value of the target variable is key to deciding whether the prediction will be a classification task or a numeric prediction task. This has downstream effects when it comes time to evaluate and interpret the results. Although the feature engineering process in predictive analyses means that the features do not need to be specified from the outset and can be tweaked and changed as needed during an analysis, it is a good idea to start with a basic sense of what features most likely will be helpful in developing a robust predictive model. Furthermore, while the number and informational values of the features (predictor variables) are not as important to selecting a prediction method (algorithm) as they are in inferential analysis methods, it is important to recognize that algorithms have strengths and shortcomings when working large numbers and/ or types of features [@Lantz2013]. 
+
+
+Exploratory research is the least restricted of the three types of analysis approaches. Although it may be the case that a research will not be able to specify from the outset of a project what the exact analysis methods will be, an attempt to consider what types of analysis methods will be most promising to provide results to address the research question goes a long way to steering a project in the right direction and grounding the research. As with the other analysis approaches, it is important to be aware of what the analysis methods available and what type of information they produce in light of the research question. 
+
+
+In sum, the identification of the data, information, and analysis methods that will be used in the proposed research are key to ensuring the research is viable. Be sure to document this process in prose and describe the strengths and potential shortcomings of (1) the corpus data selected, (2) the information to be extracted for analysis, and (3) the analysis method(s) that are appropriate for the research aim and what the evaluation method will be. Furthermore, not every eventuality can be foreseen. It is helpful to include a description of aspects of this process which may pose challenges and to include potential contingency plans as part of this prose description. 
+
 
 ### Plan
 
-Overview of the importance of establishing an implementation plan
-
-__Communicable__ (Cross)
-
-
-> Research design is essentially concerned with the basic architecture of research projects, with designing projects as systems that allow theory, data, and research methods to interface in such a way as to maximize a project’s ability to achieve its goals (see Figure 5.1). Research design involves a sequence of decisions that have to be taken in a project’s early stages, when one oversight or poor decision can lead to results that are ultimately trivial or untrustworthy. Thus, it is critically important to think carefully and systematically about research design before committing time and resources to acquiring texts or mastering software packages or programming languages for your text mining project.
-
-[@Ignatow2017]
-
-```{r fr-design-triad, echo=FALSE}
-knitr::include_graphics("images/05-framing-research/Ignatow2017-research-design.png")
-```
-
+The next step in creating a research blueprint is to consider how to physically implement your project. This includes how to organize files and directories in a fashion that both provides the researcher a logical and predictable structure to work with but also ensures that the research is __Communicable__. On the one hand, communicable research includes a strong write-up of the research, but, on the other hand, it is also important that the research is reproducible. Reproducibility strategies are a benefit to the researcher (in the moment and in the future) as it leads to better work habits and to better teamwork and it makes changes to the project easier. Reproducibility is also of benefit to the scientific community as shared reproducible research enhances replicability and encourages cumulative knowledge development [@Gandrud2015]. 
 
 __Organization__
 
 Directories and files that will serve as the scaffolding for the research project
+
+Principles: 
+
+- Directories represent semantic distinctions
+- Files represent
+  - Code files, individual steps in the preparation, analysis, and reporting 
+    - Should not depend on the other files (packages, data, functions, objects, etc.)
+  - Data files, represent the data at different stages in the research
+    - Original data should not be modified
+    - Derived data should be the necessary output to feed the next input step in the research
+- Tie your files together (`_pipeline.R`)
+- Document everything
+  - README
+    - describe the project in general terms including the purpose of the project, data sources, analysis methods, and other relevant information to help clarify how to reproduce the research with these project files.
+  - Data dictionaries
+    - ...
+  - Code comments
+  - Environment information (OS/ R version/ packages and versions)
+  - Reproducibility instructions
+
+
+```{r fr-project-template-tree, echo=FALSE}
+fs::dir_tree("../project_template/")
+```
+
+
 
 __Documentation__
 
@@ -228,9 +228,6 @@ __Documentation__
 - Coding practices
 - Reproducibility instructions
 
-__Contingencies__
-
-Considerations for unexpected snags in the research plan
 
 ## Summary {-}
 

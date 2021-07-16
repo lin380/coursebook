@@ -268,32 +268,37 @@ Figure 2.1: Brown Corpus of Written American English
 <td align="left">Google web corpus</td>
 </tr>
 <tr class="odd">
+<td align="left"><a href="http://ice-corpora.net/ice/">International Corpus of English (ICE)</a></td>
+<td align="left">The International Corpus of English (ICE) began in 1990 with the primary aim of collecting material for comparative studies of English worldwide.</td>
+</tr>
+<tr class="even">
 <td align="left"><a href="http://opus.lingfil.uu.se/OpenSubtitles_v2.php">OpenSubtitles2011</a></td>
 <td align="left">A collection of documents from <a href="http://www.opensubtitles.org/" class="uri">http://www.opensubtitles.org/</a>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://www.ruscorpora.ru/en/">Russian National Corpus</a></td>
 <td align="left">A corpus of modern Russian language incorporating over 300 million words.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://quantumstat.com//dataset">The Big Bad NLP Database - Quantum Stat</a></td>
 <td align="left">NLP datasets</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://catalog.ldc.upenn.edu/docs/LDC97S62/">The Switchboard Dialog Act Corpus</a></td>
 <td align="left">A corpus of 1155 5-minute conversations in American English, comprising 205,000 utterances and 1.4 million words, from the Switchboard corpus of telephone conversations.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://langsnap.soton.ac.uk/">Welcome to LANGSNAP - LANGSNAP</a></td>
 <td align="left">The aim of this repository is to promote research on the learning of French and Spanish as L2, by making parallel learner corpora for each language freely available to the research community.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://www.psych.ualberta.ca/~westburylab/downloads/usenetcorpus.download.html">Westbury Lab Web Site: Usenet Corpus Download</a></td>
 <td align="left">This corpus is a collection of public USENET postings. This corpus was collected between Oct 2005 and Jan 2011, and covers 47,860 English language, non-binary-file news groups (see list of newsgroups included with the corpus for details)</td>
 </tr>
 </tbody>
 </table></div>
-<p>If your corpus search ends in a dead-end, either because a suitable resource does not appear to exist or an existing resource is unattainable given licensing restrictions or fees, it may be time to compile your own corpus. Turning to machine readable texts on the internet is usually the logical first step to access language for a new corpus. Language texts may be found on sites as uploaded files, such as pdf or doc (Word) documents, or found displayed as the primary text of a site. Given the wide variety of documents uploaded and language behavior recorded daily on social media, news sites, blogs and the like, compiling a corpus has never been easier. Having said that, how the data is structured and how much data needs to be retrieved can pose practical obstacles to collecting data from the web, particularly if the approach is to acquire the data by hand instead of automating the task. Our approach here, however, will be to automate the process as much as possible whether that means leveraging R package interfaces to language data, converting hundreds of pdf documents to plain text, or scraping content from web documents.</p>
+<p>Language corpora prepared by researchers and research groups listed on repositories or hosted by the researchers themselves is often the first place to look for data. The web, however, contains a wealth of language and language-related data that can be accessed by researcher to compile their own corpus. There are two primary ways to attain language data from the web. The first is through the process of web scraping. Web scraping is the process of harvesting data from the web either manually or (semi-)automatically from the actual public-facing web. The second way to acquire data from the web is through an Application Programming Interface (API). APIs are, as the title suggests, programming interfaces which allow access, under certain conditions, to information that a website or database accessible via the web contains.</p>
+<!-- If your corpus search ends in a dead-end, either because a suitable resource does not appear to exist or an existing resource is unattainable given licensing restrictions or fees, it may be time to compile your own corpus. Turning to machine readable texts on the internet is usually the logical first step to access language for a new corpus. Language texts may be found on sites as uploaded files, such as pdf or doc (Word) documents, or found displayed as the primary text of a site. Given the wide variety of documents uploaded and language behavior recorded daily on social media, news sites, blogs and the like, compiling a corpus has never been easier. Having said that, how the data is structured and how much data needs to be retrieved can pose practical obstacles to collecting data from the web, particularly if the approach is to acquire the data by hand instead of automating the task. Our approach here, however, will be to automate the process as much as possible whether that means leveraging R package interfaces to language data, converting hundreds of pdf documents to plain text, or scraping content from web documents.  -->
 <p>The table below lists some R packages that serve to interface language data directly through R.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -342,6 +347,10 @@ Figure 2.1: Brown Corpus of Written American English
 <tr class="odd">
 <td align="left"><a href="https://github.com/ropensci/rfigshare">rfigshare</a></td>
 <td align="left">R package interface to query the data sharing platform FigShare.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/ropensci/rtweet">rtweet</a></td>
+<td align="left">R client for interacting with Twitter’s APIs</td>
 </tr>
 </tbody>
 </table></div>
@@ -1237,7 +1246,7 @@ Note in some cases we may convert our tidy tabular dataset to other data formats
 </tr>
 </tbody>
 </table></div>
-<p>A few things to note here. First there are a number of stemming algorithms both for individual languages and distinct languages.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://snowballstem.org/algorithms/" class="uri"&gt;https://snowballstem.org/algorithms/&lt;/a&gt;&lt;/p&gt;'><sup>4</sup></a> Second not all words can be stemmed as they do not have derivative forms (i.e. “The,” “of,” etc.). This generally related to the distinction between closed-class (articles, prepositions, conjunctions, etc.) and open-class (nouns, verbs, adjectives, etc.) grammatical categories. Third the stem generated for those words that can be stemmed result in forms that are not words themselves. Nonetheless, stems can be very useful for more easily extracting a set of related word forms.</p>
+<p>A few things to note here. First there are a number of stemming algorithms both for individual languages and distinct languages.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://snowballstem.org/algorithms/" class="uri"&gt;https://snowballstem.org/algorithms/&lt;/a&gt;&lt;/p&gt;'><sup>4</sup></a> Second not all words can be stemmed as they do not have alternate morphological forms (i.e. “The,” “of,” etc.). This generally related to the distinction between closed-class (articles, prepositions, conjunctions, etc.) and open-class (nouns, verbs, adjectives, etc.) grammatical categories. Third the stem generated for those words that can be stemmed result in forms that are not words themselves. Nonetheless, stems can be very useful for more easily extracting a set of related word forms.</p>
 <p>As an example, let’s identify all the word forms for the stem ‘investig.’</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -1322,7 +1331,7 @@ Note in some cases we may convert our tidy tabular dataset to other data formats
 </tr>
 </tbody>
 </table></div>
-<p>We can see from the results in Table <a href="understanding-data.html#tab:recoding-stemming-brown-search">2.16</a> that searching for <code>word_stems</code> that match ‘investig’ returns a set of stem-related forms. But it is worth noting that these forms cut across a number of grammatical categories. If instead you want to draw a distinction between grammatical categories, we can apply lemmatization. This process is distinct from stemming in two important ways: (1) derivative forms are grouped by grammatical category and (2) the resulting forms are lemmas or ‘base’ forms of words.</p>
+<p>We can see from the results in Table <a href="understanding-data.html#tab:recoding-stemming-brown-search">2.16</a> that searching for <code>word_stems</code> that match ‘investig’ returns a set of stem-related forms. But it is worth noting that these forms cut across a number of grammatical categories. If instead you want to draw a distinction between grammatical categories, we can apply lemmatization. This process is distinct from stemming in two important ways: (1) inflectional forms are grouped by grammatical category and (2) the resulting forms are lemmas or ‘base’ forms of words.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:recoding-lemmatization-brown-example">Table 2.17: </span>Results for lemmatization of the first words in the Brown Corpus.</caption>
@@ -2289,7 +2298,8 @@ Note in some cases we may convert our tidy tabular dataset to other data formats
 <span class="header-section-number">2.3</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
 </h2>
 <p>As we have seen in this chapter that acquiring data and converting that data into information involves a number of conscious decisions and implementation steps. As a favor to ourselves as researchers and to the research community, it is crucial to document these decisions and steps. This makes it both possible to retrace our own steps and also provides a guide for future researchers that want to reproduce and/ or build on your research. A programmatic approach to quantitative research helps ensure that the implementation steps are documented and reproducible but it is also vital that the decisions that are made are documented as well. This includes the creation/ selection of the corpus data, the description of the variables chosen from the corpus for the derived dataset, and the description of the variables created from the derived dataset for the analysis dataset.</p>
-<p><em>Consider adding more specifics on the characteristics and formats for documenting corpus data and datasets; data dictionaries –examples in R packages and in spreadsheets, or Rmarkdown files</em></p>
+<p>For an existing corpus sample acquired from a repository (e.g. <a href="https://catalog.ldc.upenn.edu/LDC97S62">Switchboard Dialog Act Corpus</a>, Language Data Consortium), a research group (e.g. <a href="http://cedel2.learnercorpora.com/">CEDEL2</a>), or an individual researcher (e.g. <a href="https://www.dt.fee.unicamp.br/~tiago/smsspamcollection/">SMS Spam Collection</a>), there is often documentation provided describing key attributes of the resource. This documentation should be included with the acquisition of the corpus and added to the research project. For a corpus that a researcher compiles themselves, they will need to generate this documentation.</p>
+<p>The curation and transformation steps conducted on the original corpus data to produce the datasets should also be documented. The steps themselves can be included in the programming scripts as code comments (or in prose if using a literate programming strategy (e.g. RMarkdown)). The structure of each resulting dataset should include what is called a <strong>data dictionary</strong>. This is a table which includes the variable names, the values they contain, and a short prose description of each variable (e.g. <a href="https://osf.io/9jafz/">ACTIV-ES Corpus</a>).</p>
 <!-- 
 - Selecting or developing a corpus
   - if you develop a corpus you should document your procedure, including the sampling frame
@@ -2414,7 +2424,7 @@ Chapter 1.4 "Types of variables"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 14, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 16, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
