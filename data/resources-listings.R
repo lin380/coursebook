@@ -68,6 +68,13 @@ saveRDS(data_listings, "data/data_listings.rds")
 
 # RESEARCH ----------------------------------------------------------------
 
+# Encyclopedias
+# Specify: textbook, reference, research
+url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:reference/t:research/"
+
+reference_linguistics <- get_pinboard_info(url)
+saveRDS(reference_linguistics, "data/reference_linguistics.rds")
+
 # Journals in Linguistics
 # Specify: textbook, journals, linguistics
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:linguistics/"

@@ -3,25 +3,25 @@
 ```{r, child="_common.Rmd"}
 ```
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.
 >
 > ―-- Sir Arthur Conan Doyle, Sherlock Holmes
 
 ```{block, type="rmdkey"}
-In this chapter you will learn:
+The essential questions for this chapter are:
 
-- the goals of this textbook
-- the reasoning for using the R programming language
-- important text conventions employed in this textbook
+- What are the strategies for selecting a research area and identifying a research problem?
+- How does a research problem and research aim frame the development of a research statement?
+- What is a 'research blueprint' and how do the conceptual and practical steps involved in developing it aid the researcher as well as the scientific community? 
 ```
 
 <!-- COURSE STRUCTURE
 
 TUTORIALS:
 
-- ...
+- ...? Research strategies (video tutorial)?
 
 SWIRL:
 
@@ -31,10 +31,11 @@ SWIRL:
 WORKED/ RECIPE:
 
 - ...
+- Fork, Clone GitHub Project Template, configure, connect Zotero (BetterBibTex extension) to bibliography. (will this have taken place earlier?)
 
 PROJECT:
 
-- Literature review (LIN 330 description), research statement/ hypothesis, methods blueprint, annotated bibliography
+- Literature review (LIN 330 description, modified), research area, problem, aim, statement, blueprint (identification steps and implementation plan), annotated bibliography
 
 -->
 
@@ -47,7 +48,7 @@ PROJECT:
 At this point in this part of the coursebook, we have covered Data, Information, and Knowledge from the Data to Insight Hierarchy. The goal has been to provide an orientation to the main building blocks of doing text analysis. Insight is the last component of the hierarchy. However, in practical terms, it is the first step to address in an research project as goals of a research project influence all subsequent steps. In this chapter we discuss how to frame research, that is how to position your research project's findings to contribute insight to understanding of the world. We will cover how to connect with the literature, selecting a research area and identifying a research problem, and how to design research best positioned to return relevant findings that will connect with this literature, establishing a research aim and research question.  We will round out this chapter with a guide on developing a research blueprint --a working plan to organize the conceptual and practical steps to implement the research effectively and in a way that supports communicating the research findings and the process by which the findings were obtained. 
 
 
-Together a research area, topic, problem, and question and the research blueprint that forms the conceptual and practical scaffolding of the project ensure from the outset that the project is solidly grounded in the main characteristics of good research. These characteristics, summarized by @Cross2006, are found in Table \@ref(tab:fr-cross-research-char-table).
+Together a research area, problem, aim and question and the research blueprint that forms the conceptual and practical scaffolding of the project ensure from the outset that the project is solidly grounded in the main characteristics of good research. These characteristics, summarized by @Cross2006, are found in Table \@ref(tab:fr-cross-research-char-table).
 
 ```{r fr-cross-research-char-table, echo=FALSE}
 research_chars <- 
@@ -64,7 +65,7 @@ research_chars %>%
         caption = "Characteristics of research (Cross, 2006).")
 ```
 
-With these characteristics in mind, let's get started with the first component --connecting with the literature.
+With these characteristics in mind, let's get started with the first component to address --connecting with the literature.
 
 <!-- Before jumping into the code, every researcher must come to a project with a clear idea about the purpose of the analysis. This means doing your homework in order to understand what it is exactly that you want to achieve; that is, you need to identify a research question. The first step is become versed in the previous literature on the topic. What has been written? What are the main findings? Secondly, it is important to become familiar with the standard methods for approaching the topic of interest. How has the topic been approached methodologically? What are the types, sources, and quality of data employed? What have been the statistical approaches employed? What particular statistical tests have been chosen? Getting an overview not only of the domain-specific findings in the literature but also the methodological choices will help you identify promising plan for carrying out your research. -->
 
@@ -78,13 +79,9 @@ With these characteristics in mind, let's get started with the first component -
 
 The area of research is the first decision to make in terms of where to make a contribution to understanding. At this point, the aim is to identify a general area of interest where a researcher wants to derive insight. For those with an established research trajectory in language, the area of research to address through text analysis will likely be an extension of their prior work. For others, which include new researchers or researcher's that want to explore new areas of language research or approach an area through a language-based lens, the choice of area may be less obvious. In either case, the choice of a research area should be guided by a desire to contribute something relevant to a theoretical, social, and/ or practical matter of personal interest. Personal relevance goes a long way to developing and carrying out __purposive__ and __inquisitive__ research. 
 
-So how do we get started? The first step is to reflect on your own areas of interest and knowledge, be it academic, professional, or personal. Language is at the heart of the human experience and therefore found in some fashion anywhere one seeks to find it. But it is a big world and more often than not the general questions are some of the most difficult. To get an overview of an academic field it can be helpful to consult disciplinary encyclopedias. 
+So how do we get started? The first step is to reflect on your own areas of interest and knowledge, be it academic, professional, or personal. Language is at the heart of the human experience and therefore found in some fashion anywhere one seeks to find it. But it is a big world and more often than not the general question about what area to explore language use is sometimes the most difficult. To get the ball rolling, it is helpful to peruse disciplinary encyclopedias or handbooks of linguistics and language-related an academic fields (e.g. Encyclopedia of Language and Linguistics (cite), A Practical Guide to Electronic Resources in the Humanities (cite), Routledge encyclopedia of translation technology (cite))
 
-- Encyclopedia of Linguistics, other resources for language and language related fields [resources]
-
-A more personal, less academic, approach is to consult online forums, blogs, etc. that one already frequents or can be accessed via an online search. ... Perusing these resources can help spark ideas and highlight the kinds of questions that interest you. 
-
-- Online forums, reddit, or blogs, with discussions about language [examples]
+A more personal, less academic, approach is to consult online forums, blogs, etc. that one already frequents or can be accessed via an online search. For example, [Reddit](https://www.reddit.com/) has a wide variety of active subreddits ([r/LanguageTechnology](https://www.reddit.com/r/LanguageTechnology/), [r/Linguistics](https://www.reddit.com/r/linguistics/), [r/corpuslinguistics](https://www.reddit.com/r/corpuslinguistics/), [r/DigitalHumanities](https://www.reddit.com/r/DigitalHumanities/), etc.). Twitter and Facebook also have interesting posts on linguistics and language-related fields worth following. Through one of these social media site you may find particular people that maintain a blog worth browsing. For example, I follow [Julia Silge](https://juliasilge.com/), [Rachel Tatman](http://www.rctatman.com/), and [Ted Underwood](https://tedunderwood.com/), inter alia. Perusing these resources can help spark ideas and highlight the kinds of questions that interest you. 
 
 Regardless of whether your inquiry stems from academic, professional, or personal interest, try to connect these findings to academic areas of research. Academic research is highly structured and well-documented and making associations with this network will aid in subsequent steps in developing a research project.
 
@@ -92,18 +89,24 @@ Regardless of whether your inquiry stems from academic, professional, or persona
 
 Once you've made a rough-cut decision about the area of research, it is now time to take a deeper dive into the subject area and jump into the literature. This is where the rich structure of disciplinary research will provide aid to traverse the vast world of academic knowledge and identify a research problem. A research problem highlights a particular topic of debate or uncertainty in existing knowledge which is worthy of study. 
 
-Surveying the relevant literature is key to ensuring that your research is __informed__, that is, connected to previous work. Identifying relevant research to consult can be a bit of a 'chicken or the egg' problem --some knowledge of the area is necessary to find relevant topics, some knowledge of the topics is necessary to narrow the area of research. Many times the only way forward is to jump in conducting searches. These can be world-accessible resources (Google Scholar, ..., etc.) or limited-access resources that are provided through an academic institution. Some organizations and academic institutions provide research guides to help researcher's consult the primary literature. 
+Surveying the relevant literature is key to ensuring that your research is __informed__, that is, connected to previous work. Identifying relevant research to consult can be a bit of a 'chicken or the egg' problem --some knowledge of the area is necessary to find relevant topics, some knowledge of the topics is necessary to narrow the area of research. Many times the only way forward is to jump in conducting searches. These can be world-accessible resources (e.g. [Google Scholar](https://scholar.google.com/)) or limited-access resources that are provided through an academic institution (e.g. [Linguistics and Language Behavior Abstracts](https://about.proquest.com/en/products-services/llba-set-c)), [ERIC](https://eric.ed.gov/), [PsycINFO](https://www.ebsco.com/products/research-databases/apa-psycinfo), etc.). Some organizations and academic institutions provide [research guides](https://guides.zsr.wfu.edu/linguistics) to help researcher's access the primary literature. 
 
-[WFU Linguistics Research Guide](https://guides.zsr.wfu.edu/linguistics)
+Another avenue to explore are journals dedicated to areas in which linguistics and language-related research is published. In the following tables I've listed a number of highly visable journals in linguistics, digital humanities, and computational linguistics.
 
-- [Linguistics and Language Behavior Abstracts (LLBA)](http://databases.zsr.wfu.edu/?purl=28783)
-- [ERIC]()
-- [PsycINFO]
-- ...
+```{r pinboard-journals-linguistics, echo=FALSE, cache=FALSE}
+readRDS("data/journals_linguistics.rds") %>% 
+  kable(caption = "A list of some linguistics journals.")
+```
 
-[WFU Digital Humanties Research Guide](https://guides.zsr.wfu.edu/c.php?g=922386&p=6648279)
+```{r pinboard-journals-humanities, echo=FALSE, cache=FALSE}
+readRDS("data/journals_humanities.rds") %>% 
+  kable(caption = "A list of some humanities journals.")
+```
 
-Journals: 
+```{r pinboard-journals-cl, echo=FALSE, cache=FALSE}
+readRDS("data/journals_cl.rds") %>% 
+  kable(caption = "A list of some computational linguistics journals.")
+```
 
 To explore research related to text analysis it is helpful to start with the (sub)discipline name(s) you identified in when selecting your research area, more specific terms that occur to you or key terms from the literature, and terms such as 'corpus study' or 'corpus-based'. The results from first searches may not turn out to be sources that end up figuring explicitly in your research, but it is important to skim these results and the publications themselves to mine information that can be useful to formulate better and more targeted searches. Relevant information for honing your searches can be found throughout an academic publication (article or book). However, pay particular attention to the abstract, in articles, and the table of contents, in books, and the cited references. Abstracts and tables of contents often include discipline-specific jargon that is commonly used in the field. In some articles there is even a short list of key terms listed below the abstract which can be extremely useful to seed better and more precise search results. The references section will contain relevant and influential research. Scan these references for publications which appear to narrowing in on topic of interest and treat it like a search in its own right.
 
@@ -192,47 +195,74 @@ In sum, the identification of the data, information, and analysis methods that w
 
 The next step in creating a research blueprint is to consider how to physically implement your project. This includes how to organize files and directories in a fashion that both provides the researcher a logical and predictable structure to work with but also ensures that the research is __Communicable__. On the one hand, communicable research includes a strong write-up of the research, but, on the other hand, it is also important that the research is reproducible. Reproducibility strategies are a benefit to the researcher (in the moment and in the future) as it leads to better work habits and to better teamwork and it makes changes to the project easier. Reproducibility is also of benefit to the scientific community as shared reproducible research enhances replicability and encourages cumulative knowledge development [@Gandrud2015]. 
 
-__Organization__
+There are a set of guiding principles to accomplish these goals [@Gentleman2007; @Marwick2018]. 
 
-Directories and files that will serve as the scaffolding for the research project
+1. All files should be plain text which means they contain no formatting information other than whitespace.
+2. There should be a clear separation between the data, method, and output of research. This should be apparent from the directory structure. 
+3. A separation between original data and derived data should be made. Original data should be treated as 'read-only'. Any changes to the original data should be justified, generated by the code, and documented (see point 6).
+4. Each analysis file (script) should represent a particular, well-defined step in the research process. 
+5. Each analysis script should be modular --that is, each file should correspond to a specific goal in the analysis procedure with input and output only corresponding to this step. 
+6. All analysis scripts should be tied together by a 'master' script that is used to coordinate the execution of all the analysis steps. 
+7. Everything should be documented. This includes analysis steps, script code comments, data description in data dictionaries, information about the computing environment and packages used to conduct the analysis, and detailed instructions on how to reproduce the research. 
 
-Principles: 
+These seven principles can be physically implemented in countless ways. In recent years, there has been a growing number of efforts to create R packages and templates to quickly generate the scaffolding and tools to facilitate reproducible research. Some notable R packages include [workflowr](https://jdblischak.github.io/workflowr/) and [ProjectTemplate](http://projecttemplate.net/) but there are many other resources for R included on the [CRAN Task View for Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html). There are many advantages to working with pre-existing frameworks for the savvy R programmer. 
 
-- Directories represent semantic distinctions
-- Files represent
-  - Code files, individual steps in the preparation, analysis, and reporting 
-    - Should not depend on the other files (packages, data, functions, objects, etc.)
-  - Data files, represent the data at different stages in the research
-    - Original data should not be modified
-    - Derived data should be the necessary output to feed the next input step in the research
-- Tie your files together (`_pipeline.R`)
-- Document everything
-  - README
-    - describe the project in general terms including the purpose of the project, data sources, analysis methods, and other relevant information to help clarify how to reproduce the research with these project files.
-  - Data dictionaries
-    - ...
-  - Code comments
-  - Environment information (OS/ R version/ packages and versions)
-  - Reproducibility instructions
-
+In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginner and intermediate R programmers, the directory structure is provided below.
 
 ```{r fr-project-template-tree, echo=FALSE}
-fs::dir_tree("../project_template/")
+fs::dir_tree("../project_template/", recurse = 1, regex = "(*.Rproj|functions)", invert = TRUE)
 ```
 
+Let me now describe how this template structure aligns with the seven principles of quality reproducible research. 
 
+1. All files are plain text (e.g. `.R`, `.Rmd`, `.csv`, `.txt`, etc.).
+2. There are three main directories `analysis/`, `data/`, and `ouput/`. 
+3. The `data/` directory contains sub-directories for `original` ('read-only') data and `derived` data. 
+4. The `analysis/` directory contains five scripts which are numbered to correspond with their sequential role in the research process.
+5. Each of these analysis scripts are designed to be modular; input and output must be explicit and no intermediate objects are carried over to other analysis scripts. Dataset output should be written to and read from the `data/derived/` directory. Figures and statistical results should be written to and read from `output/figures/` and `output/results` respectively.
+6. All of the analysis scripts, and therefore the entire project, are tied to the `_pipeline.R` script. To reproduce the entire project only this script need be run.
+7. Documentation takes place at many levels. The `README.md` file is the first file that a researcher will consult. It contains a brief description of the project goals and how to reproduce the analysis. Analysis scripts use the Rmarkdown format (`.Rmd`). This format allows researchers to interleave prose description and executable code in the same script. This ensures that the rationale for the steps taken are described in prose, the code is made available to consult, and that code comments can be added to every line. The `_sesssion-info.Rmd` script is merged with each analysis script to provide information about the computing environment and packages used to conduct each step analysis. As this is a template, no data or datasets appear. However, once data is acquired and that data is curated and transformed, documentation for these resources should be documented for each resource in a data dictionary along side the data(set) itself.
 
-__Documentation__
+The aspects of the project template described in points 1-7 together form the backbone for reproducible research. This template, however, includes additional functionality to enhance efficient and communicable research. The `_pipeline.R` script executes the analysis scripts in the `analysis` directory, but as a side effect also produces a working website and a journal-ready article for publishing your analysis, results, and findings to the web. The `index.Rmd` file is the splash page for the website and is a good place to house your pre-analysis investigative work including your research area, problem, aim, and question and to document your research blueprint including the identification of viable data resource(s), the key variables for the analysis, the analysis method, and the method of assessment. All Rmarkdown files provide functionality for citing and organizing references. The `references.bib` file is where references are stored and can be used to include citations that support your research throughout your project.
 
-- Data dictionaries
-- Coding practices
-- Reproducibility instructions
+### Prepare
+
+This template will allow you to organize your research design and align it with implementation steps to conduct quality reproducible research. To prepare for your analysis, you will need to download or fork and clone this template from the GitHub repository and then make some adjustments to personalize this template for your research. 
+
+To create a local copy of this project template either:
+
+1. Download and decompress the [.zip file](https://github.com/lin380/project_template/archive/refs/heads/main.zip)
+2. If you have [git](https://github.com/git-guides/install-git) installed on your machine and a [GitHub account](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home), [fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) to your own GitHub account. Then open a terminal in the desired location and [clone the repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository). If you are using RStudio, you can setup a new RStudio Project with the clone using the 'New Project...' dialog, choosing 'Version Control', and following the steps.
+
+Before you begin configuring and adding your project-specific details to this template. Reproduce this project 'as-is' to confirm that it builds on your local machine. 
+
+In RStudio or in R session in a Terminal application, open the console in the root directory of the project. Then run: 
+
+```r
+source("_pipeline.R")
+```
+
+It will take some time to complete, when it does the prompt (`>`) in the console will return. Then navigate to and open `docs/index.html` in a browser.
+
+Once you have confirmed that the project template builds, then you can begin to configure the template to reflect your project. There a few files to consider first. These files are places where the title of your project should appear. 
+
+- `README.md` 
+- `_pipeline.R`
+- `analysis/index.Rmd` 
+
+After updating these files, build the project again and make sure that the new changes appear as you would like them. You are now ready to start your research project! 
 
 
 ## Summary {-}
 
-- Round-up of the chapter
+- Round-up of the chapter ...
 - Heads-up for the upcoming parts, implementation: preparation and modeling
+
+```{r framing-research-visual-summary-graphic, echo=FALSE, fig.cap='Framing research: visual summary'}
+knitr::include_graphics("images/05-framing-research/framing-research-visual-summary.png")
+```
+
+
 
 <!--
 ## Annotated readings {-}

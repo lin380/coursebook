@@ -497,7 +497,7 @@ brown %>%
         caption = 'Results for a `word_lemmas` filter for "be" in the Brown Corpus.')
 ```
 
-Again only words of the same grammatical category are returned. In this case the verb 'be' has many more derivative forms than 'investigate'.
+Again only words of the same grammatical category are returned. In this case the verb 'be' has many more inflectional forms than 'investigate'.
 
 <!-- - Match and extract -->
 

@@ -628,7 +628,7 @@ Table: (\#tab:recoding-lemmatization-brown-be)Results for a `word_lemmas` filter
 |01          |A        |was   |BEDZ |be          |
 |01          |A        |be    |BE   |be          |
 
-Again only words of the same grammatical category are returned. In this case the verb 'be' has many more derivative forms than 'investigate'.
+Again only words of the same grammatical category are returned. In this case the verb 'be' has many more inflectional forms than 'investigate'.
 
 <!-- - Match and extract -->
 
