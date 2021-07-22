@@ -6,7 +6,9 @@
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
-> ...
+> The hardest bit of information to extract is the first piece.
+>
+> ―--Robert Ferrigno
 
 
 <div class="rmdkey">

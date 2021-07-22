@@ -6,9 +6,9 @@
 
 <p style="font-weight:bold; color:red;">DRAFT</p>
 
-> It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.
+> If we knew what it was we were doing, it would not be called research, would it?
 >
-> ―-- Sir Arthur Conan Doyle, Sherlock Holmes
+> ―--Albert Einstein
 
 <div class="rmdkey">
 <p>The essential questions for this chapter are:</p>

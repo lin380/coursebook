@@ -92,7 +92,7 @@ Data is data, right? The term 'data' is so common in popular vernacular it is ea
 
 ### Populations
 
-The first thing that comes to many people's mind when the term population is used is human populations. <!-- etymology of the word population --> Say for example --What's the population of Milwuakee? When we speak of a population in these terms we are talking about the total sum of people living within the geographical boundaries of Milwaukee. In concrete terms, a __population__ is the objective make up of an idealized set of objects and events in reality (cite). Key terms here are objective and idealized. Although we can look up the US Census report for Milwaukee and retrieve a figure for the population, this cannot truly be the population. Why is that? Well, whatever method that was used to derive this numerical figure was surely incomplete. If not incomplete, by the time someone recorded the figure some number of residents of Milwaukee moved out, moved in, were born, or passed away --the figure is no longer the true population. 
+The first thing that comes to many people's mind when the term population is used is human populations. <!-- etymology of the word population --> Say for example --What's the population of Milwuakee? When we speak of a population in these terms we are talking about the total sum of people living within the geographical boundaries of Milwaukee. In concrete terms, a __population__ is the objective make up of an idealized set of objects and events in reality. Key terms here are objective and idealized. Although we can look up the US Census report for Milwaukee and retrieve a figure for the population, this cannot truly be the population. Why is that? Well, whatever method that was used to derive this numerical figure was surely incomplete. If not incomplete, by the time someone recorded the figure some number of residents of Milwaukee moved out, moved in, were born, or passed away --the figure is no longer the true population. 
 
 Likewise when we talk about populations in terms of language we dealing with an objective and idealized aspect of reality. Let's take the words of the English language as an analog to our previous example population. In this case the words are the people and English is the bounding characteristic. Just as people, words move out, move in, are born, and pass away. Any compendium of the words of English at any moment is almost instananeously incomplete. This is true for all populations, save those in which the bounding characteristics select a narrow slice of reality which is objectively measurable and whose membership is fixed (the complete works of Shakespeare, for example). 
 
@@ -122,11 +122,11 @@ A key feature of a sample is that it is purposely selected. Samples are not simp
 
 #### Types
 
-With the notion of sampling frames in mind, some corpora are compiled with the aim to be of general purpose (general or __reference corpora__), and some with much more specialized sampling frames (__specialized corpora__). For example, the [American National Corpus (ANC)]() or the [British National Corpus (BNC)]() are corpora which aim to model (represent/ reflect) the general characteristics of the English language, the former of American English and the later British English. These are ambitious projects, and require significant investments of time in corpus design and then in implementation (and continued development) that are usually undertaken by research teams [@Adel2020]. 
+With the notion of sampling frames in mind, some corpora are compiled with the aim to be of general purpose (general or __reference corpora__), and some with much more specialized sampling frames (__specialized corpora__). For example, the [American National Corpus (ANC)](https://www.anc.org/) or the [British National Corpus (BNC)](http://www.natcorp.ox.ac.uk/) are corpora which aim to model (represent/ reflect) the general characteristics of the English language, the former of American English and the later British English. These are ambitious projects, and require significant investments of time in corpus design and then in implementation (and continued development) that are usually undertaken by research teams [@Adel2020]. 
 
-Specialized corpora aim to represent more specific populations. The [Santa Barbara Corpus of Spoken American English (SBCSAE)](), as you can imagine from the name of the resource, aims to model spoken American English. No claim to written English is included. There are even more specific types of corpora which attempt to model other types of sub-populations such as scientific writing, [computer-mediated communication (CMC)](https://www.clarin.eu/resource-families/cmc-corpora), language use in specific [regions of the world](http://ice-corpora.net/ice/index.html), or [a country](https://cesa.arizona.edu), etc. 
+Specialized corpora aim to represent more specific populations. The [Santa Barbara Corpus of Spoken American English (SBCSAE)](https://www.linguistics.ucsb.edu/research/santa-barbara-corpus), as you can imagine from the name of the resource, aims to model spoken American English. No claim to written English is included. There are even more specific types of corpora which attempt to model other types of sub-populations such as scientific writing, [computer-mediated communication (CMC)](https://www.clarin.eu/resource-families/cmc-corpora), language use in specific [regions of the world](http://ice-corpora.net/ice/index.html), a [country](https://cesa.arizona.edu), or a [region](https://cesa.arizona.edu), etc. 
 
-Another set of specialized corpora are resources which aim to compile texts from different languages or different language varieties for direct or indirect comparison. Corpora that are directly comparable, that is they include source and translated texts, are called __parallel corpora__. Parallel corpora include different languages or language varieties that are indexed and aligned at some linguistic level (i.e. word, phrase, sentence, paragraph, or document) [OPUS example](). Corpora that are compiled with different languages or language varieties but are not directly aligned are called __comparable corpora__. The comparable language or language varieties are sampled with the same or similar sampling frame [Brown and LOB example]().  
+Another set of specialized corpora are resources which aim to compile texts from different languages or different language varieties for direct or indirect comparison. Corpora that are directly comparable, that is they include source and translated texts, are called __parallel corpora__. Parallel corpora include different languages or language varieties that are indexed and aligned at some linguistic level (i.e. word, phrase, sentence, paragraph, or document), see [OPUS](https://opus.nlpl.eu/). Corpora that are compiled with different languages or language varieties but are not directly aligned are called __comparable corpora__. The comparable language or language varieties are sampled with the same or similar sampling frame, for example [Brown](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/0402) and [LOB](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/0167) corpora.
 
 The aim of the quantitative text researcher is to select the corpus or corpora (plural of corpus) which best aligns with the purpose of the research. Therefore a general corpus such as the ANC may be better suited to address a question dealing with the way American English works, but this general resource may lack detail in certain areas, such as [medical language](http://www.hd.uib.no/icame/ij22/vihla.pdf), that may be vital for a research project aimed at understanding changes in medical terminology.
 
@@ -223,9 +223,8 @@ Table: (\#tab:pinboard-listings)Lists of corpus resources.
 |<a href="http://nlp.stanford.edu/links/statnlp.html#Corpora">Stanford NLP corpora</a>                                                                      |Listing of corpora and language resources aimed at the NLP community.               |
 |<a href="https://makingnoiseandhearingthings.com/2017/09/20/where-can-you-find-language-data-on-the-web/">Where can you find language data on the web?</a> |Listing of various corpora and language datasets.                                   |
 
-<div class="rmdnote">
-<p>Here I can work with real or simplified research questions and have students consider which of set of corpus resources would most likely be the better resource.</p>
-</div>
+\BeginKnitrBlock{rmdquestion}<div class="rmdquestion">Explore some of the resources listed above and consider their sampling frames. Can you think of a research question or questions that this resource may be well-suited to support research into? What types of questions would be less-than-adequate for a given resource? </div>\EndKnitrBlock{rmdquestion}
+
 
 #### Formats
 
@@ -428,10 +427,10 @@ The values for the variables `type` and `sentence_id` maintain the necessary des
 
 It is important to make clear that data in tabular format in itself does not constitute a dataset, in the tidy sense we will be using. Data can be organized in many ways which do not make relationships between variables and observations explicit. 
 
-*Consider adding some 'messy' data and/ or summary tables which do not reflect the relational structure we are aiming to create to base our research on.*
+<!-- *Consider adding some 'messy' data and/ or summary tables which do not reflect the relational structure we are aiming to create to base our research on.* -->
 
-<div class="rmdtip">
-<p>Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats when we dive into particular statistical approaches that require them later in the series (i.e. Corpus and Document-Term Matrix (DTM) objects in R).</p>
+<div class="rmdquestion">
+<p>All tabular data does not have the ‘tidy’ format that I have described here. Can you think of examples of tabular information that would not be in a tidy format?</p>
 </div>
 
 ### Transformation
@@ -751,7 +750,7 @@ There is much more to explore with linguistic annotation, and syntactic parsing 
 
 There are strengths and shortcomings with automatic linguistic annotation that a research should be aware of. First, automatic linguistic annotation provides quick access to rich and highly reliable linguistic information for a large number of languages. However, part of speech taggers and syntactic parsers are not magic. They are resources that are built by training a computational algorithm to recognize patterns in manually annotated datasets producing a language model. This model is then used to predict the linguistic annotations for new language (as we just did in the previous examples). The shortcomings of automatic linguistic annotation is first, not all languages have trained language models and second, the data used to train the model inevitably reflect a particular variety, register, modality, etc. The accuracy of the linguistic annotation is highly dependent on alignment between the language sampling frame of the trained data and the language data to be automatically annotated. Many (most) of the language models available for automatic linguistic annotation are based on language that is most readily available and for most languages this has traditionally been newswire text. It is important to be aware of these characteristics when using linguistic annotation tools. 
 
-*Consider adding 'creating measures' here*
+<!-- *Consider adding 'creating measures' here* -->
 
 #### Merging
 
@@ -811,6 +810,10 @@ In this example case the dataset that was merged was already in a structured for
 In some cases a researcher would like to merge information that does not already accompany the corpus resource. This is possible as long as a dataset can be created that contains a variable that is shared. Without a shared variable to index the datasets the merge cannot take place. 
 
 In sum, the transformation steps described here collectively aim to produce higher quality datasets that are relevant in content and structure to submit to analysis. The process may include one or more of the previous transformations but is rarely linear and is most often iterative. It is typical to do some normalization then generation, then recoding, and then return to normalizing, and so forth. This process is highly idiosyncratic given the characteristics of the derived dataset and the ultimate goals for the analysis dataset. 
+
+<div class="rmdtip">
+<p>Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats (e.g. Corpus and Document-Term Matrix (DTM) objects in R) when we dive into particular statistical approaches that require them later in the coursebook.</p>
+</div>
 
 ## Documentation
 

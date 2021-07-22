@@ -17,7 +17,29 @@
 </ul>
 </div>
 
-text
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
 
 ## ...
 
@@ -27,5 +49,5 @@ text
 
 
 ```r
-# Packages
+# Packages pacman::p_load(quanteda)
 ```

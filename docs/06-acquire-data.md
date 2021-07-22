@@ -13,7 +13,9 @@ Overview...
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
-> ...
+> The scariest moment is always just before you start.
+>
+> ―--Stephen King
 
 <div class="rmdkey">
 <p>In this chapter you will learn:</p>

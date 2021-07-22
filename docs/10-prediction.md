@@ -17,9 +17,34 @@
 </ul>
 </div>
 
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+
+
 
 ```r
-# Packages
+# Packages pacman::p_load(caret)
 ```
 
 
