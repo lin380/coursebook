@@ -15,7 +15,29 @@ In this chapter you will learn:
 - important text conventions employed in this textbook
 ```
 
-text
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
 
 ## ...
 
@@ -25,4 +47,5 @@ text
 
 ```{r acquire-data-packages}
 # Packages
+# pacman::p_load(quanteda)
 ```
