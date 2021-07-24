@@ -218,7 +218,7 @@ There are a set of guiding principles to accomplish these goals [@Gentleman2007;
 
 These seven principles can be physically implemented in countless ways. In recent years, there has been a growing number of efforts to create R packages and templates to quickly generate the scaffolding and tools to facilitate reproducible research. Some notable R packages include [workflowr](https://jdblischak.github.io/workflowr/) and [ProjectTemplate](http://projecttemplate.net/) but there are many other resources for R included on the [CRAN Task View for Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html). There are many advantages to working with pre-existing frameworks for the savvy R programmer. 
 
-In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginner and intermediate R programmers, the directory structure is provided below.
+In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginning and intermediate R programmers, the directory structure is provided below.
 
 
 ```

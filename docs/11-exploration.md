@@ -43,7 +43,13 @@ GOALS:
 
 ## ...
 
-text 
+Idea....
+
+Get [Meditations by Marcus Aurelius](https://en.wikipedia.org/wiki/Meditations) from `gutenbergr` (`gutenberg_id == 2680`). 
+
+- The 12 books are not believed to be in chronological order. It may be interesting to look at whether there is some book-level similarities/ differences that might suggest that some books are more similar than others. 
+- A sentiment analysis would be interesting as well --do the books show similar/ different patterns in terms of sentiment?
+- Topic modeling to uncover themes in the books?
 
 ### Packages {#exploration-packages}
 

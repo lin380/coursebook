@@ -28,7 +28,7 @@ get_pinboard_info <- function(url) {
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:repository/t:corpora/"
 
 data_repositories <- get_pinboard_info(url)
-saveRDS(data_repositories, "data/data_repositories.rds")
+saveRDS(data_repositories, "resources/data_repositories.rds")
 
 # Corpora -----------------------------------------------------------------
 
@@ -36,7 +36,7 @@ saveRDS(data_repositories, "data/data_repositories.rds")
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:data/t:corpora/"
 
 data_corpora <- get_pinboard_info(url)
-saveRDS(data_corpora, "data/data_corpora.rds")
+saveRDS(data_corpora, "resources/data_corpora.rds")
 
 
 # R API interfaces --------------------------------------------------------
@@ -45,7 +45,7 @@ saveRDS(data_corpora, "data/data_corpora.rds")
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:language/t:api/"
 
 data_apis <- get_pinboard_info(url)
-saveRDS(data_apis, "data/data_apis.rds")
+saveRDS(data_apis, "resources/data_apis.rds")
 
 
 # Experimental ------------------------------------------------------------
@@ -54,7 +54,7 @@ saveRDS(data_apis, "data/data_apis.rds")
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:data/t:experimental/"
 
 data_experimental <- get_pinboard_info(url)
-saveRDS(data_experimental, "data/data_experimental.rds")
+saveRDS(data_experimental, "resources/data_experimental.rds")
 
 # Corpus listings ---------------------------------------------------------
 
@@ -62,7 +62,7 @@ saveRDS(data_experimental, "data/data_experimental.rds")
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:data/t:listing/"
 
 data_listings <- get_pinboard_info(url)
-saveRDS(data_listings, "data/data_listings.rds")
+saveRDS(data_listings, "resources/data_listings.rds")
 
 
 
@@ -73,28 +73,28 @@ saveRDS(data_listings, "data/data_listings.rds")
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:reference/t:research/"
 
 reference_linguistics <- get_pinboard_info(url)
-saveRDS(reference_linguistics, "data/reference_linguistics.rds")
+saveRDS(reference_linguistics, "resources/reference_linguistics.rds")
 
 # Journals in Linguistics
 # Specify: textbook, journals, linguistics
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:linguistics/"
 
 journals_linguistics <- get_pinboard_info(url)
-saveRDS(journals_linguistics, "data/journals_linguistics.rds")
+saveRDS(journals_linguistics, "resources/journals_linguistics.rds")
 
 # Journals in Digital Humanities
 # Specify: textbook, journals, digital-humanities
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:digital-humanities/"
 
 journals_humanities <- get_pinboard_info(url)
-saveRDS(journals_humanities, "data/journals_humanities.rds")
+saveRDS(journals_humanities, "resources/journals_humanities.rds")
 
 # Journals in Computational Linguistics
 # Specify: textbook, journals, computational-linguistics
 url <- "https://feeds.pinboard.in/json/secret:c2bbe3d128210109bb00/u:jerid.francom/t:textbook/t:journals/t:computational-linguistics/"
 
 journals_cl <- get_pinboard_info(url)
-saveRDS(journals_cl, "data/journals_cl.rds")
+saveRDS(journals_cl, "resources/journals_cl.rds")
 
 
 

@@ -41,7 +41,6 @@ PROJECT:
 
 ```{r framing-research-packages, echo=FALSE}
 # Packages
-
 ```
 
 
@@ -94,17 +93,17 @@ Surveying the relevant literature is key to ensuring that your research is __inf
 Another avenue to explore are journals dedicated to areas in which linguistics and language-related research is published. In the following tables I've listed a number of highly visable journals in linguistics, digital humanities, and computational linguistics.
 
 ```{r pinboard-journals-linguistics, echo=FALSE, cache=FALSE}
-readRDS("data/journals_linguistics.rds") %>% 
+readRDS("resources/journals_linguistics.rds") %>% 
   kable(caption = "A list of some linguistics journals.")
 ```
 
 ```{r pinboard-journals-humanities, echo=FALSE, cache=FALSE}
-readRDS("data/journals_humanities.rds") %>% 
+readRDS("resources/journals_humanities.rds") %>% 
   kable(caption = "A list of some humanities journals.")
 ```
 
 ```{r pinboard-journals-cl, echo=FALSE, cache=FALSE}
-readRDS("data/journals_cl.rds") %>% 
+readRDS("resources/journals_cl.rds") %>% 
   kable(caption = "A list of some computational linguistics journals.")
 ```
 
@@ -207,7 +206,7 @@ There are a set of guiding principles to accomplish these goals [@Gentleman2007;
 
 These seven principles can be physically implemented in countless ways. In recent years, there has been a growing number of efforts to create R packages and templates to quickly generate the scaffolding and tools to facilitate reproducible research. Some notable R packages include [workflowr](https://jdblischak.github.io/workflowr/) and [ProjectTemplate](http://projecttemplate.net/) but there are many other resources for R included on the [CRAN Task View for Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html). There are many advantages to working with pre-existing frameworks for the savvy R programmer. 
 
-In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginner and intermediate R programmers, the directory structure is provided below.
+In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginning and intermediate R programmers, the directory structure is provided below.
 
 ```{r fr-project-template-tree, echo=FALSE}
 fs::dir_tree("../project_template/", recurse = 1, regex = "(*.Rproj|functions)", invert = TRUE)

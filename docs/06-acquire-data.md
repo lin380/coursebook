@@ -58,13 +58,621 @@ GOALS:
 
 
 
-Overview...
+Overview... (edit)
+
+I will provide an overview of the first of three common strategies for acquiring corpus data in R: accessing corpus data from data repositories and individual sites. I will cover acquiring data from different sources and introduce you to the R code that will help speed the process, maintain consistency in our data, and set the stage for a reproducible workflow.
+
+There are three main ways to acquire corpus data using R that I will introduce you to: **direct download**, **package interfaces**, and **web scraping**. In this chapter we will start by directly downloading a corpus as it is the most straightforward process for the novice R programmer and incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions.
+
 
 ## Direct downloads
 
+Scenarios
+
+1. File download
+2. Compressed file download
+
+------
+
+
+Let's take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the [NLTK data repository site](http://www.nltk.org/nltk_data/). More often than not this file will be some type of compressed archive file with an extension such  as `.zip` or `.tz`, which is the case here. Archive files make downloading multiple files easy by grouping files and directories into one file. In R we can used the `download.file()` function from the base R library^[Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.]. There are a number of **arguments** that a function may require or provide optionally. The `download.file()` function minimally requires two: `url` and `destfile`. That is the file to download and the location where it is to be saved to disk.
+
+
+
+```r
+# Download .zip file and write to disk
+download.file(url = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/switchboard.zip",
+    destfile = "../data/original/switchboard.zip")
+```
+
+As we can see looking at the directory structure for `data/` the `switchboard.zip` file has been downloaded. 
+
+```bash
+data
+├── derived
+└── original
+    └── switchboard.zip
+```
+
+Once an archive file is downloaded, however, the file needs to be 'decompressed' to reveal the file structure. To decompress this file we use the `unzip()` function with the arguments `zipfile` pointing to the `.zip` file and `exdir` specifying the directory where we want the files to be extracted to. 
+
+
+```r
+# Decompress .zip file and extract to our target directory
+unzip(zipfile = "../data/original/switchboard.zip", exdir = "../data/original/")
+```
+
+The directory structure of `data/` now should look like this:
+
+```bash
+data
+├── derived
+└── original
+    ├── switchboard
+    │   ├── README
+    │   ├── discourse
+    │   ├── disfluency
+    │   ├── tagged
+    │   ├── timed-transcript
+    │   └── transcript
+    └── switchboard.zip
+```
+
+At this point we have acquired the data programmatically and with this code as part of our workflow anyone could run this code and reproduce the same results. The code as it is, however, is not ideally efficient. Firstly the `switchboard.zip` file is not strictly needed after we decompress it and it occupies disk space if we keep it. And second, each time we run this code the file will be downloaded from the remote serve leading to unnecessary data transfer and server traffic. Let's tackle each of these issues in turn.
+
+To avoid writing the `switchboard.zip` file to disk (long-term) we can use the `tempfile()` function to open a temporary holding space for the file. This space can then be used to store the file, unzip it, and then the temporary file will be destroyed. We assign the temporary space to an R object we will name `temp` with the `tempfile()` function. This object can now be used as the value of the argument `destfile` in the `download.file()` function. Let's also assign the web address to another object `url` which we will use as the value of the `url` argument. 
+
+
+```r
+# Create a temporary file space for our .zip file
+temp <- tempfile()
+# Assign our web address to `url`
+url <- "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/switchboard.zip"
+# Download .zip file and write to disk
+download.file(url, temp)
+```
+
+<div class="rmdtip">
+<p>In the previous code I’ve used the values stored in the objects <code>url</code> and <code>temp</code> in the <code>download.file()</code> function without specifying the argument names –only providing the names of the objects. R will assume that values of a function map to the ordering of the arguments. If your values do not map to ordering of the arguments you are required to specify the argument name and the value. To view the ordering of objects hit <code>TAB</code> after entering the function name or consult the function documentation by prefixing the function name with <code>?</code> and hitting <code>ENTER</code>.</p>
+</div>
+
+At this point our downloaded file is stored temporarily on disk and can be accessed and decompressed to our target directory using `temp` as the value for the argument `zipfile` from the `unzip()` function. I've assigned our target directory path to `target_dir` and used it as the value for the argument `exdir` to prepare us for the next tweak on our approach.
+
+
+```r
+# Assign our target directory to `target_dir`
+target_dir <- "../data/original/"
+# Decompress .zip file and extract to our target directory
+unzip(zipfile = temp, exdir = target_dir)
+```
+
+Our directory structure now looks like this:
+
+```bash
+data
+├── derived
+└── original
+    └── switchboard
+        ├── README
+        ├── discourse
+        ├── disfluency
+        ├── tagged
+        ├── timed-transcript
+        └── transcript
+```
+
+The second issue I raised concerns the fact that running this code as part of our project will repeat the download each time. Since we would like to be good citizens and avoid unnecessary traffic on the web it would be nice if our code checked to see if we already have the data on disk and if it exists, then skip the download, if not then download it. 
+
+To achieve this we need to introduce two new functions `if()` and `dir.exists()`. `dir.exists()` takes a path to a directory as an argument and returns the logical value, `TRUE`, if that directory exists, and `FALSE` if it does not. `if()` evaluates logical statements and processes subsequent code based on the logical value it is passed as an argument. Let's look at a toy example.
+
+
+```r
+num <- 1
+if (num == 1) {
+    cat(num, "is 1")
+} else {
+    cat(num, "is not 1")
+}
+#> 1 is 1
+```
+
+I assigned `num` to the value `1` and created a logical evaluation `num == ` whose result is passed as the argument to `if()`. If the statement returns `TRUE` then the code withing the first set of curly braces `{...}` is run. If `num == 1` is false, like in the code below, the code withing the braces following the `else` will be run.
+
+
+```r
+num <- 2
+if (num == 1) {
+    cat(num, "is 1")
+} else {
+    cat(num, "is not 1")
+}
+#> 2 is not 1
+```
+
+The function `if()` is one of various functions that are called **control statements**. Theses functions provide a lot of power to make dynamic choices as code is run. 
+
+Before we get back to our key objective to avoid downloading resources that we already have on disk, let me introduce another strategy to making code more powerful and ultimately more efficient and as well as more legible --the **custom function**. Custom functions are functions that the user writes to create a set of procedures that can be run in similar contexts. I've created a custom function named `eval_num()` below.
+
+
+```r
+eval_num <- function(num) {
+    if (num == 1) {
+        cat(num, "is 1")
+    } else {
+        cat(num, "is not 1")
+    }
+}
+```
+
+Let's take a closer look at what's going on here. The function `function()` creates a function in which the user decides what arguments are necessary for the code to perform its task. In this case the only necessary argument is the object to store a numeric value to be evaluated. I've called it `num` because it reflects the name of the object in our toy example, but there is nothing special about this name. It's only important that the object names be consistently used. I've included our previous code (except for the hard-coded assignment of `num`) inside the curly braces and assigned the entire code chunk to `eval_num`. 
+
+We can now use the function `eval_num()` to perform the task of evaluating whether a value of `num` is or is not equal to `1`.
+
+
+```r
+eval_num(num = 1)
+#> 1 is 1
+eval_num(num = 2)
+#> 2 is not 1
+eval_num(num = 3)
+#> 3 is not 1
+```
+
+I've put these coding strategies together with our previous code in a custom function I named `get_zip_data()`. There is a lot going on here. Take a look first and see if you can follow the logic involved given what you now know.
+
+
+
+```r
+get_zip_data <- function(url, target_dir) {
+    # Function: to download and decompress a .zip file to a target directory
+
+    # Check to see if the data already exists if data does not exist, download/
+    # decompress
+    if (!dir.exists(target_dir)) {
+        cat("Creating target data directory \n")  # print status message
+        dir.create(path = target_dir, recursive = TRUE, showWarnings = FALSE)  # create target data directory
+        cat("Downloading data... \n")  # print status message
+        temp <- tempfile()  # create a temporary space for the file to be written to
+        download.file(url = url, destfile = temp)  # download the data to the temp file
+        unzip(zipfile = temp, exdir = target_dir, junkpaths = TRUE)  # decompress the temp file in the target directory
+        cat("Data downloaded! \n")  # print status message
+    } else {
+        # if data exists, don't download it again
+        cat("Data already exists \n")  # print status message
+    }
+}
+```
+
+OK. You should have recognized the general steps in this function: the argument `url` and `target_dir` specify where to get the data and where to write the decompressed files, the `if()` statement evaluates whether the data already exists, if not (`!dir.exists(target_dir)`) then the data is downloaded and decompressed, if it does exist (`else`) then it is not downloaded. 
+<div class="rmdtip">
+<p>The prefixed <code>!</code> in the logical expression <code>dir.exists(target_dir)</code> returns the opposite logical value. This is needed in this case so when the target directory exists, the expression will return <code>FALSE</code>, not <code>TRUE</code>, and therefore not proceed in downloading the resource.</p>
+</div>
+
+There are a couple key tweaks I've added that provide some additional functionality. For one I've included the function `dir.create()` to create the target directory where the data will be written. I've also added an additional argument to the `unzip()` function, `junkpaths = TRUE`. Together these additions allow the user to create an arbitrary directory path where the files, and only the files, will be extracted to on our disk. This will discard the containing directory of the `.zip` file which can be helpful when we want to add multiple `.zip` files to the same target directory. 
+
+A practical scenario where this applies is when we want to download data from a corpus that is contained in multiple `.zip` files but still maintain these files in a single primary data directory. Take for example the [Santa Barbara Corpus](http://www.linguistics.ucsb.edu/research/santa-barbara-corpus). This corpus resource includes a series of interviews in which there is one `.zip` file, `SBCorpus.zip` which contains the [transcribed interviews](http://www.linguistics.ucsb.edu/sites/secure.lsit.ucsb.edu.ling.d7/files/sitefiles/research/SBC/SBCorpus.zip) and another `.zip` file, `metadata.zip` which organizes the [meta-data](http://www.linguistics.ucsb.edu/sites/secure.lsit.ucsb.edu.ling.d7/files/sitefiles/research/SBC/metadata.zip) associated with each speaker. Applying our initial strategy to download and decompress the data will lead to the following directory structure:
+
+```bash
+data
+├── derived
+└── original
+    ├── SBCorpus
+    │   ├── TRN
+    │   └── __MACOSX
+    │       └── TRN
+    └── metadata
+        └── __MACOSX
+```
+
+By applying our new custom function `get_zip_data()` to the transcriptions and then the meta-data we can better organize the data.
+
+
+```r
+# Download corpus transcriptions
+get_zip_data(url = "http://www.linguistics.ucsb.edu/sites/secure.lsit.ucsb.edu.ling.d7/files/sitefiles/research/SBC/SBCorpus.zip",
+    target_dir = "../data/original/sbc/transcriptions/")
+
+# Download corpus meta-data
+get_zip_data(url = "http://www.linguistics.ucsb.edu/sites/secure.lsit.ucsb.edu.ling.d7/files/sitefiles/research/SBC/metadata.zip",
+    target_dir = "../data/original/sbc/meta-data/")
+```
+
+
+```bash
+data
+├── derived
+└── original
+    └── sbc
+        ├── meta-data
+        └── transcriptions
+```
+
+If we add data from other sources we can keep them logical separate and allow our data collection to scale without creating unnecessary complexity. Let's add the Switchboard Corpus sample using our `get_zip_data()` function to see this in action.
+
+
+
+```r
+# Download corpus
+get_zip_data(url = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/switchboard.zip",
+    target_dir = "../data/original/scs/")
+```
+
+
+```bash
+data
+├── derived
+└── original
+    ├── sbc
+    │   ├── meta-data
+    │   └── transcriptions
+    └── scs
+        ├── README
+        ├── discourse
+        ├── disfluency
+        ├── tagged
+        ├── timed-transcript
+        └── transcript
+```
+
+At this point we have what we need to continue to the next step in our data analysis project. But before we go, we should do some housekeeping to document and organize this process to make our work reproducible. We will take advantage of the `project-template` directory structure, seen below.
+
+```bash
+├── README.md
+├── _pipeline.R
+├── analysis
+│   ├── 1_acquire_data.Rmd
+│   ├── 2_curate_dataset.Rmd
+│   ├── 3_transform_dataset.Rmd
+│   ├── 4_analyze_dataset.Rmd
+│   ├── 5_generate_article.Rmd
+│   ├── _session-info.Rmd
+│   ├── _site.yml
+│   ├── index.Rmd
+│   └── references.bib
+├── data
+│   ├── derived
+│   └── original
+│       ├── sbc
+│       └── scs
+├── functions
+└── output
+    ├── figures
+    └── results
+```
+
+First it is good practice to separate custom functions from our processing scripts. We can create a file in our `functions/` directory named `acquire_functions.R` and add our custom function `get_zip_data()` there. 
+
+<div class="rmdtip">
+<p>Note that that the <code>acquire_functions.R</code> file is an R script, not an Rmarkdown document. Therefore code chunks that are used in <code>.Rmd</code> files are not used, only the R code itself.</p>
+</div>
+
+We then use the `source()` function to read that function into our current script to make it available to use as needed. It is good practice to source your functions in the SETUP section of your script.
+
+
+```r
+# Load custom functions for this project
+source(file = "../functions/acquire_functions.R")
+```
+
+In this section, to sum up, we've covered how to access, download, and organize data contained in .zip files; the most common format for language data found on repositories and individual sites. This included an introduction to a few key R programming concepts and strategies including using functions, writing custom functions, and controlling program flow with control statements. Our approach was to gather data while also keeping in mind the reproducibility of the code. To this end I introduced programming strategies for avoiding unnecessary web traffic (downloads), scalable directory creation, and data documentation. 
+
+<div class="rmdnote">
+<p>The custom function <code>get_zip_data()</code> works with <code>.zip</code> files. There are many other compressed file formats (e.g. <code>.gz</code>, <code>.tar</code>, <code>.tgz</code>), however. In the R package <code>tadr</code> that accompanies this coursebook, a modified version of the <code>get_zip_data()</code> function, <code>get_compressed_data()</code>, extends the same logic to deal with a wider range of compressed file formats, including <code>.zip</code> files.</p>
+<p>Explore this function’s documentation (<code>?tadr::get_compressed_data()</code>) and/ or view the code (<code>tadr::get_compressed_data</code>) to better understand this function.</p>
+</div>
+
 ## APIs
 
+A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through **Automatic Programming Interfaces** (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, [gutenbergr](https://CRAN.R-project.org/package=gutenbergr) provides access to Project Gutenberg, [rtweet](https://CRAN.R-project.org/package=rtweet) to Twitter, and [Rfacebook](https://CRAN.R-project.org/package=Rfacebook) to Facebook. 
+
+Using R package interfaces, however, often requires some more knowledge about R objects and functions. Let's take a look at how to access data from Project Gutenberg through the `gutenbergr` package. Along the way we will touch upon various functions and concepts that are key to working with the R data types vectors and data frames including filtering and writing tabular data to disk in plain-text format. 
+
+To get started let's install and/ or load the `gutenbergr` package. If a package is not part of the R base library, we cannot assume that the user will have the package in their library. The standard approach for installing and then loading a package is by using the `install.packages()` function and then calling `library()`. 
+
+
+```r
+install.packages("gutenbergr")  # install `gutenbergr` package
+library(gutenbergr)  # load the `gutenbergr` package
+```
+
+This approach works just fine, but luck has it that there is an R package for installing and loading packages! The [pacman](https://CRAN.R-project.org/package=pacman) package includes a set of functions for managing packages. A very useful one is `p_load()` which will look for a package on a system, load it if it is found, and install and then load it if it is not found. This helps potentially avoid using unnecessary bandwidth to install packages that may already exist on a user's system. But, to use `pacman` we need to include the code to install and load it with the functions `install.packages()` and `library()`. I've included some code that will mimic the behavior of `p_load()` for installing `pacman` itself, but as you can see it is not elegant, luckily it's only used once as we add it to the SETUP section of our master file, `_pipeline.R`.
+
+
+```r
+# Load `pacman`. If not installed, install then load.
+if (!require("pacman", character.only = TRUE)) {
+    install.packages("pacman")
+    library("pacman", character.only = TRUE)
+}
+```
+
+
+Now that we have `pacman` installed and loaded into our R session, let's use the `p_load()` function to make sure to install/ load the two packages we will need for the upcoming tasks. If you are following along with the `project_template`, add this code within the SETUP section of the `1_acquire_data.Rmd` file. 
+
+
+```r
+# Script-specific options or packages
+pacman::p_load(tidyverse, gutenbergr)
+```
+
+<div class="rmdwarning">
+<p>Note that the arguments <code>tidyverse</code> and <code>gutenbergr</code> are comma-separated but not quoted when using <code>p_load()</code>. When using <code>install.packages()</code> to install, package names need to be quoted (character strings). <code>library()</code> can take quotes or no quotes, but only one package at a time.</p>
+</div>
+
+Project Gutenberg provides access to thousands of texts in the public domain. The `gutenbergr` package contains a set of tables, or **data frames** in R speak, that index the meta-data for these texts broken down by text (`gutenberg_metadata`), author (`gutenberg_authors`), and subject (`gutenberg_subjects`). I'll use the `glimpse()` function loaded in the [tidyverse](https://CRAN.R-project.org/package=tidyverse) package ^[`tidyverse` is not a typical package. It is a set of packages: `ggplot2`, `dplyr`, `tidyr`, `readr`, `purrr`, and `tibble`. These packages are all installed/ loaded with `tidyverse` and form the backbone for the type of work you will typically do in most analyses.] to summarize the structure of these data frames.
+
+
+```r
+glimpse(gutenberg_metadata)  # summarize text meta-data
+#> Rows: 51,997
+#> Columns: 8
+#> $ gutenberg_id        <int> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, …
+#> $ title               <chr> NA, "The Declaration of Independence of the United…
+#> $ author              <chr> NA, "Jefferson, Thomas", "United States", "Kennedy…
+#> $ gutenberg_author_id <int> NA, 1638, 1, 1666, 3, 1, 4, NA, 3, 3, NA, 7, 7, 7,…
+#> $ language            <chr> "en", "en", "en", "en", "en", "en", "en", "en", "e…
+#> $ gutenberg_bookshelf <chr> NA, "United States Law/American Revolutionary War/…
+#> $ rights              <chr> "Public domain in the USA.", "Public domain in the…
+#> $ has_text            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…
+glimpse(gutenberg_authors)  # summarize authors meta-data
+#> Rows: 16,236
+#> Columns: 7
+#> $ gutenberg_author_id <int> 1, 3, 4, 5, 7, 8, 9, 10, 12, 14, 16, 17, 18, 20, 2…
+#> $ author              <chr> "United States", "Lincoln, Abraham", "Henry, Patri…
+#> $ alias               <chr> NA, NA, NA, NA, "Dodgson, Charles Lutwidge", NA, "…
+#> $ birthdate           <int> NA, 1809, 1736, NA, 1832, NA, 1819, 1860, 1805, 17…
+#> $ deathdate           <int> NA, 1865, 1799, NA, 1898, NA, 1891, 1937, 1844, 18…
+#> $ wikipedia           <chr> NA, "http://en.wikipedia.org/wiki/Abraham_Lincoln"…
+#> $ aliases             <chr> NA, "United States President (1861-1865)/Lincoln, …
+glimpse(gutenberg_subjects)  # summarize subjects meta-data
+#> Rows: 140,173
+#> Columns: 3
+#> $ gutenberg_id <int> 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, …
+#> $ subject_type <chr> "lcc", "lcsh", "lcsh", "lcc", "lcc", "lcsh", "lcsh", "lcc…
+#> $ subject      <chr> "E201", "United States. Declaration of Independence", "Un…
+```
+
+
+\BeginKnitrBlock{rmdtip}<div class="rmdtip">The `gutenberg_metadata`, `gutenberg_authors`, and `gutenberg_subjects` are periodically updated. To check to see when each data frame was last updated run:
+  
+`attr(gutenberg_metadata, "date_updated")`
+</div>\EndKnitrBlock{rmdtip}
+
+To download the text itself we use the `gutenberg_download()` function which takes one required argument, `gutenberg_id`. The `gutenberg_download()` function is what is known as 'vectorized', that is, it can take a single value or multiple values for the argument `gutenberg_id`. Vectorization refers to the process of applying a function to each of the elements stored in a **vector** --a primary object type in R. A vector is a grouping of values of one of various types including character (`chr`), integer (`int`), double (`dbl`), and logical (`lgl`) and a data frame is a grouping of vectors. The `gutenberg_download()` function takes an integer vector which can be manually added or selected from the `gutenberg_metadata` or `gutenberg_subjects` data frames using the `$` operator (e.g. `gutenberg_metadata$gutenberg_id`). 
+
+Let's first add them manually here as a toy example by generating a vector of integers from 1 to 5 assigned to the variable name `ids`. 
+
+
+```r
+ids <- 1:5  # integer vector of values 1 to 5
+ids
+#> [1] 1 2 3 4 5
+```
+
+To download the works from Project Gutenberg corresponding to the `gutenberg_id`s 1 to 5, we pass the `ids` object to the `gutenberg_download()` function.
+
+
+```r
+works_sample <- gutenberg_download(gutenberg_id = ids)  # download works with `gutenberg_id` 1-5
+glimpse(works_sample)  # summarize `works` dataset
+#> Rows: 2,959
+#> Columns: 2
+#> $ gutenberg_id <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+#> $ text         <chr> "December, 1971  [Etext #1]", "", "", "The Project Gutenb…
+```
+
+
+Two attributes are returned: `gutenberg_id` and `text`. The `text` column contains values for each line of text (delimited by a carriage return) for each of the 5 works we downloaded. There are many more attributes available from the Project Gutenberg API that can be accessed by passing a character vector of the attribute names to the argument `meta_fields`. The column names of the `gutenberg_metadata` data frame contains the available attributes. 
+
+
+```r
+names(gutenberg_metadata)  # print the column names of the `gutenberg_metadata` data frame
+#> [1] "gutenberg_id"        "title"               "author"             
+#> [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
+#> [7] "rights"              "has_text"
+```
+
+Let's augment our previous download with the title and author of each of the works. To create a character vector we use the `c()` function, then, quote and delimit the individual elements of the vector with a comma.
+
+
+```r
+# download works with `gutenberg_id` 1-5 including `title` and `author` as
+# attributes
+works_sample <- gutenberg_download(gutenberg_id = ids, meta_fields = c("title", "author"))
+glimpse(works_sample)  # summarize dataset
+#> Rows: 2,959
+#> Columns: 4
+#> $ gutenberg_id <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+#> $ text         <chr> "December, 1971  [Etext #1]", "", "", "The Project Gutenb…
+#> $ title        <chr> "The Declaration of Independence of the United States of …
+#> $ author       <chr> "Jefferson, Thomas", "Jefferson, Thomas", "Jefferson, Tho…
+```
+
+Now, in a more practical scenario we would like to select the values of `gutenberg_id` by some principled query such as works from a specific author, language, or subject. To do this we first query either the `gutenberg_metadata` data frame or the `gutenberg_subjects` data frame. Let's say we want to download a random sample of 10 works from English Literature (Library of Congress Classification, "PR"). Using the `filter()` function (part of the `tidyverse` package set) we first extract all the Gutenberg ids from `gutenberg_subjects` where `subject_type == "lcc"` and `subject == "PR"` assigning the result to `ids`.^[See [Library of Congress Classification](https://www.loc.gov/catdir/cpso/lcco/) documentation for a complete list of subject codes.]
+
+
+```r
+# filter for only English literature
+ids <- filter(gutenberg_subjects, subject_type == "lcc", subject == "PR")
+glimpse(ids)
+#> Rows: 7,100
+#> Columns: 3
+#> $ gutenberg_id <int> 11, 12, 13, 16, 20, 26, 27, 35, 36, 42, 43, 46, 58, 60, 8…
+#> $ subject_type <chr> "lcc", "lcc", "lcc", "lcc", "lcc", "lcc", "lcc", "lcc", "…
+#> $ subject      <chr> "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR…
+```
+
+<div class="rmdwarning">
+<p>The operators <code>=</code> and <code>==</code> are not equivalents. <code>==</code> is used for logical evaluation and <code>=</code> is an alternate notation for variable assignment (<code>&lt;-</code>).</p>
+</div>
+
+The `gutenberg_subjects` data frame does not contain information as to whether a `gutenberg_id` is associated with a plain-text version. To limit our query to only those English Literature works with text, we filter the `gutenberg_metadata` data frame by the ids we have selected in `ids` and the attribute `has_text` in the `gutenberg_metadata` data frame. 
+
+
+```r
+# Filter for only those works that have text
+ids_has_text <- filter(gutenberg_metadata, gutenberg_id %in% ids$gutenberg_id, has_text ==
+    TRUE)
+glimpse(ids_has_text)
+#> Rows: 6,724
+#> Columns: 8
+#> $ gutenberg_id        <int> 11, 12, 13, 16, 20, 26, 27, 35, 36, 42, 43, 46, 58…
+#> $ title               <chr> "Alice's Adventures in Wonderland", "Through the L…
+#> $ author              <chr> "Carroll, Lewis", "Carroll, Lewis", "Carroll, Lewi…
+#> $ gutenberg_author_id <int> 7, 7, 7, 10, 17, 17, 23, 30, 30, 35, 35, 37, 17, 4…
+#> $ language            <chr> "en", "en", "en", "en", "en", "en", "en", "en", "e…
+#> $ gutenberg_bookshelf <chr> "Children's Literature", "Children's Literature/Be…
+#> $ rights              <chr> "Public domain in the USA.", "Public domain in the…
+#> $ has_text            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…
+```
+
+\BeginKnitrBlock{rmdtip}<div class="rmdtip">A couple R programming notes on the code phrase `gutenberg_id %in% ids$gutenberg_id`. First, the `$` symbol in `ids$gutenberg_id` is the programmatic way to target a particular column in an R data frame. In this example we select the `ids` data frame and the column `gutenberg_id`, which is a integer vector. The `gutenberg_id` variable that precedes the `%in%` operator does not need an explicit reference to a data frame because the primary argument of the `filter()` function is this data frame (`gutenberg_metadata`). Second, the `%in%` operator logically evaluates whether the vector elements in `gutenberg_metadata$gutenberg_ids` are also found in the vector `ids$gutenberg_id` returning `TRUE` and `FALSE` accordingly. This effectively filters those ids which are not in both vectors.</div>\EndKnitrBlock{rmdtip}
+
+As we can see the number of works with text is fewer than the number of works listed, 7100 versus 6724. Now we can safely do our random selection of 10 works, with the function `slice_sample()` and be confident that the ids we select will contain text when we take the next step by downloading the data. 
+
+
+```r
+set.seed(123)  # make the sampling reproducible
+ids_sample <- slice_sample(ids_has_text, n = 10)  # sample 10 works
+glimpse(ids_sample)  # summarize the dataset
+#> Rows: 10
+#> Columns: 8
+#> $ gutenberg_id        <int> 10564, 10784, 9316, 1540, 24450, 13821, 7595, 3818…
+#> $ title               <chr> "Fairy Gold\nShip's Company, Part 4.", "Sentence D…
+#> $ author              <chr> "Jacobs, W. W. (William Wymark)", "Jacobs, W. W. (…
+#> $ gutenberg_author_id <int> 1865, 1865, 2364, 65, 999, 2685, 761, 1317, 3564, …
+#> $ language            <chr> "en", "en", "en", "en", "en", "en", "en", "en", "e…
+#> $ gutenberg_bookshelf <chr> NA, NA, NA, NA, "Adventure", "Fantasy", NA, NA, NA…
+#> $ rights              <chr> "Public domain in the USA.", "Public domain in the…
+#> $ has_text            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…
+```
+
+
+```r
+works_pr <- gutenberg_download(gutenberg_id = ids_sample$gutenberg_id, meta_fields = c("author",
+    "title"))
+glimpse(works_pr)  # summarize the dataset
+#> Rows: 47,515
+#> Columns: 4
+#> $ gutenberg_id <int> 1540, 1540, 1540, 1540, 1540, 1540, 1540, 1540, 1540, 154…
+#> $ text         <chr> "cover ", "", "", "", "THE TEMPEST", "", "", "", "by Will…
+#> $ author       <chr> "Shakespeare, William", "Shakespeare, William", "Shakespe…
+#> $ title        <chr> "The Tempest", "The Tempest", "The Tempest", "The Tempest…
+```
+
+At this point we have data and could move on to processing this data in preparation for analysis. However, we are aiming for a reproducible workflow and this code does not conform to our principle of modularity: each subsequent step in our analysis will depend on running this code first. Furthermore, running this code as it is creates issues with bandwidth, as in our previous examples from direct downloads. To address modularity we will write the data to disk in **plain-text format**. In this way each subsequent step in our analysis can access the data locally. To address bandwidth concerns, we will devise a method for checking to see if the data is already downloaded and skip the download, if possible, to avoid accessing the Project Gutenberg server unnecessarily.
+
+To write our data frame to disk we will export it into a standard plain-text format for two-dimensional data: a CSV file (comma-separated value). The CSV structure for this data will look like this:
+
+
+```r
+works_pr %>%
+    head() %>%
+    format_csv() %>%
+    cat()
+#> gutenberg_id,text,author,title
+#> 1540,cover ,"Shakespeare, William",The Tempest
+#> 1540,,"Shakespeare, William",The Tempest
+#> 1540,,"Shakespeare, William",The Tempest
+#> 1540,,"Shakespeare, William",The Tempest
+#> 1540,THE TEMPEST,"Shakespeare, William",The Tempest
+#> 1540,,"Shakespeare, William",The Tempest
+```
+
+The first line contains the names of the columns and subsequent lines the observations. Data points that contain commas themselves (e.g. "Shaw, Bernard") are quoted to avoid misinterpreting these commas a deliminators in our data. To write this data to disk we will use the `write_csv()` function. 
+
+
+```r
+write_csv(works_pr, file = "../data/original/gutenberg_works_pr.csv")
+```
+
+To avoid downloading data that already resides on disk, let's implement a similar strategy to the one used for direct downloads (`get_zip_data()`). I've incorporated the code for sampling and downloading data for a particular subject from Project Gutenberg with a control statement to check if the data file already exists into a function I named `get_gutenberg_subject()`. Take a look at this function below. 
+
+
+```r
+get_gutenberg_subject <- function(subject, target_file, sample_size = 10) {
+  # Function: to download texts from Project Gutenberg with 
+  # a specific LCC subject and write the data to disk.
+  
+  pacman::p_load(tidyverse, gutenbergr) # install/load necessary packages
+  
+  # Check to see if the data already exists
+  if(!file.exists(target_file)) { # if data does not exist, download and write
+    target_dir <- dirname(target_file) # generate target directory for the .csv file
+    dir.create(path = target_dir, recursive = TRUE, showWarnings = FALSE) # create target data directory
+    cat("Downloading data... \n") # print status message
+    # Select all records with a particular LCC subject
+    ids <- 
+      filter(gutenberg_subjects, 
+             subject_type == "lcc", subject == subject) # select subject
+    # Select only those records with plain text available
+    set.seed(123) # make the sampling reproducible
+    ids_sample <- 
+      filter(gutenberg_metadata, 
+             gutenberg_id %in% ids$gutenberg_id, # select ids in both data frames 
+             has_text == TRUE) %>% # select those ids that have text
+      slice_sample(sample_size, n = 10) # sample N works 
+    # Download sample with associated `author` and `title` metadata
+    works_sample <- 
+      gutenberg_download(gutenberg_id = ids_sample$gutenberg_id, 
+                         meta_fields = c("author", "title"))
+    # Write the dataset to disk in .csv format
+    write_csv(works_sample, file = target_file)
+    cat("Data downloaded! \n") # print status message
+  } else { # if data exists, don't download it again
+    cat("Data already exists \n") # print status message
+  }
+}
+```
+
+Adding this function to our function script `functions/acquire_functions.R`, we can now source this function in our `analysis/1_acquire_data.Rmd` script to download multiple subjects and store them in on disk in their own file. 
+
+Let's download American Literature now (LCC code "PQ"). 
+
+
+```r
+# Download Project Gutenberg text for subject 'PQ' (American Literature) and
+# then write this dataset to disk in .csv format
+get_gutenberg_subject(subject = "PQ", target_file = "../data/original/gutenberg/works_pq.csv")
+```
+
+Applying this function to both the English and American Literature datasets, our data directory structure now looks like this:
+
+```bash
+data
+├── derived
+└── original
+    ├── gutenberg
+    │   ├── works_pq.csv
+    │   └── works_pr.csv
+    ├── sbc
+    │   ├── meta-data
+    │   └── transcriptions
+    └── scs
+        ├── README
+        ├── discourse
+        ├── disfluency
+        ├── documentation
+        ├── tagged
+        ├── timed-transcript
+        └── transcript
+```
+
+In sum, this subsection provided an overview to acquiring data from web service APIs through R packages. We took at closer look at the `gutenbergr` package which provides programmatic access to works available on Project Gutenberg. Working with package interfaces requires more knowledge of R including loading/ installing packages, working with vectors and data frames, and exporting data from an R session. We touched on these programming concepts and also outlined a method to create a reproducible workflow. 
+
+<!-- Consider:
+
+- TBDBr package for getting the BELC data
+- rtweet package for getting tweet data (Corona virus?)
+
+-->
+
+
+
 ## Web scraping
+
+There are many resources available through direct downloads from repositories and individual sites and R package interfaces to web resources with APIs, but these resources are relatively limited to the amount of public-facing textual data recorded on the web. In the case that you want to acquire data from webpages R can be used to access the web programmatically through a process known as web scraping. The complexity of web scrapes can vary but in general it requires more advanced knowledge of R as well as the structure of the language of the web: HTML (Hypertext Markup Language).
+
 
 ## Documentation
 

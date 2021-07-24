@@ -155,7 +155,7 @@ The most common source of data used in contemporary quantitative research is the
 In the table below I've compiled a list of some corpus repositories to help you get started.
 
 ```{r pinboard-repositories, echo=FALSE, cache=FALSE}
-readRDS("data/data_repositories.rds") %>% 
+readRDS("resources/data_repositories.rds") %>% 
   kable(caption = "A list of some corpus repositories")
 ```
 
@@ -164,7 +164,7 @@ Repositories are by no means the only source of corpora on the web. Researchers 
 In the table below you will find a list of corpus resources and datasets. 
 
 ```{r pinboard-corpora, echo=FALSE, cache=FALSE}
-readRDS("data/data_corpora.rds") %>% 
+readRDS("resources/data_corpora.rds") %>% 
   kable(caption = "Corpora and language datasets.")
 ```
 
@@ -175,7 +175,7 @@ Language corpora prepared by researchers and research groups listed on repositor
 The table below lists some R packages that serve to interface language data directly through R.
 
 ```{r pinboard-apis, echo=FALSE, cache=FALSE}
-readRDS("data/data_apis.rds") %>% 
+readRDS("resources/data_apis.rds") %>% 
   kable(caption = "R Package interfaces to language corpora and datasets.")
 ```
 
@@ -184,14 +184,14 @@ Data for language research is not limited to (primary) text sources. Other sourc
 Below I've included some processed language resources. 
 
 ```{r pinboard-experimental, echo=FALSE, cache=FALSE}
-readRDS("data/data_experimental.rds") %>% 
+readRDS("resources/data_experimental.rds") %>% 
   kable(caption = "Language data from previous research and meta-studies.")
 ```
 
 The list of data available for language research is constantly growing. I've document very few of the wide variety of resources. Below I've included attempts by others to provide a summary of the corpus data and language resources available.
 
 ```{r pinboard-listings, echo=FALSE, cache=FALSE}
-readRDS("data/data_listings.rds") %>% 
+readRDS("resources/data_listings.rds") %>% 
   kable(caption = "Lists of corpus resources.")
 ```
 
@@ -209,7 +209,7 @@ Corpora come in various formats, the main three being: running text, structured 
 Running text sample from the [Europarle Parallel Corpus](https://www.statmt.org/europarl/).
 
 ```{r formats-europarle, comment=">", echo=FALSE}
-readtext::readtext("data/formats_europarle-en_sample.txt") %>% 
+readtext::readtext("resources/formats_europarle-en_sample.txt") %>% 
   pull(text) %>% 
   cat(fill = TRUE)
 ```
@@ -219,7 +219,7 @@ In corpora with more meta-data, a header may be appended to the top of each runn
 Meta-data header sample from the [Switchboard Dialog Act Corpus]().
 
 ```{r formats-swda, comment=">", echo=FALSE}
-readtext::readtext("data/formats_swda_sample.txt") %>% 
+readtext::readtext("resources/formats_swda_sample.txt") %>% 
   pull(text) %>% 
   cat(fill = TRUE)
 ```
@@ -229,7 +229,7 @@ When meta-data and/ or linguistic annotation increases in complexity it is commo
 XML format for meta-data (and linguistic annotation) from the [Brown Corpus](http://www.nltk.org/nltk_data/).
 
 ```{r formats-brown, comment=">", echo=FALSE}
-readtext::readtext("data/formats_brown-xml_sample.txt") %>% 
+readtext::readtext("resources/formats_brown-xml_sample.txt") %>% 
   pull(text) %>% 
   cat(fill = TRUE)
 ```
@@ -257,13 +257,13 @@ It is also of note that the column names should be balanced for meaningfulness a
 
 ```{r structure-europarle, echo=FALSE}
 europarle_en <-  
-  readtext::readtext("data/formats_europarle-en_sample.txt") %>% 
+  readtext::readtext("resources/formats_europarle-en_sample.txt") %>% 
   as_tibble() %>% 
   rename(type = doc_id, original_text = text) %>% 
   mutate(type = "Target")
 
 europarle_es <- 
-  readtext::readtext("data/formats_europarle-es_sample.txt") %>% 
+  readtext::readtext("resources/formats_europarle-es_sample.txt") %>% 
   as_tibble() %>% 
   rename(type = doc_id, original_text = text) %>% 
   mutate(type = "Source")
