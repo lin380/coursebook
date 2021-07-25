@@ -72,8 +72,6 @@ Scenarios
 1. File download
 2. Compressed file download
 
-------
-
 
 Let's take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the [NLTK data repository site](http://www.nltk.org/nltk_data/). More often than not this file will be some type of compressed archive file with an extension such  as `.zip` or `.tz`, which is the case here. Archive files make downloading multiple files easy by grouping files and directories into one file. In R we can used the `download.file()` function from the base R library^[Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.]. There are a number of **arguments** that a function may require or provide optionally. The `download.file()` function minimally requires two: `url` and `destfile`. That is the file to download and the location where it is to be saved to disk.
 
@@ -488,7 +486,7 @@ glimpse(works_sample)  # summarize dataset
 #> $ author       <chr> "Jefferson, Thomas", "Jefferson, Thomas", "Jefferson, Tho…
 ```
 
-Now, in a more practical scenario we would like to select the values of `gutenberg_id` by some principled query such as works from a specific author, language, or subject. To do this we first query either the `gutenberg_metadata` data frame or the `gutenberg_subjects` data frame. Let's say we want to download a random sample of 10 works from English Literature (Library of Congress Classification, "PR"). Using the `filter()` function (part of the `tidyverse` package set) we first extract all the Gutenberg ids from `gutenberg_subjects` where `subject_type == "lcc"` and `subject == "PR"` assigning the result to `ids`.^[See [Library of Congress Classification](https://www.loc.gov/catdir/cpso/lcco/) documentation for a complete list of subject codes.]
+Now, in a more practical scenario we would like to select the values of `gutenberg_id` by some principled query such as works from a specific author, language, or subject. To do this we first query either the `gutenberg_metadata` data frame or the `gutenberg_subjects` data frame. Let's say we want to download a random sample of 10 works from English Literature (Library of Congress Classification, "PR"). Using the `dplyr::filter()` function (`dplyr` is part of the `tidyverse` package set) we first extract all the Gutenberg ids from `gutenberg_subjects` where `subject_type == "lcc"` and `subject == "PR"` assigning the result to `ids`.^[See [Library of Congress Classification](https://www.loc.gov/catdir/cpso/lcco/) documentation for a complete list of subject codes.]
 
 
 ```r
@@ -511,8 +509,10 @@ The `gutenberg_subjects` data frame does not contain information as to whether a
 
 ```r
 # Filter for only those works that have text
-ids_has_text <- filter(gutenberg_metadata, gutenberg_id %in% ids$gutenberg_id, has_text ==
-    TRUE)
+ids_has_text <- 
+  filter(gutenberg_metadata, 
+         gutenberg_id %in% ids$gutenberg_id, 
+         has_text == TRUE)
 glimpse(ids_has_text)
 #> Rows: 6,724
 #> Columns: 8
@@ -611,7 +611,7 @@ get_gutenberg_subject <- function(subject, target_file, sample_size = 10) {
       filter(gutenberg_metadata, 
              gutenberg_id %in% ids$gutenberg_id, # select ids in both data frames 
              has_text == TRUE) %>% # select those ids that have text
-      slice_sample(sample_size, n = 10) # sample N works 
+      slice_sample(n = sample_size) # sample N works 
     # Download sample with associated `author` and `title` metadata
     works_sample <- 
       gutenberg_download(gutenberg_id = ids_sample$gutenberg_id, 
@@ -672,6 +672,60 @@ In sum, this subsection provided an overview to acquiring data from web service 
 ## Web scraping
 
 There are many resources available through direct downloads from repositories and individual sites and R package interfaces to web resources with APIs, but these resources are relatively limited to the amount of public-facing textual data recorded on the web. In the case that you want to acquire data from webpages R can be used to access the web programmatically through a process known as web scraping. The complexity of web scrapes can vary but in general it requires more advanced knowledge of R as well as the structure of the language of the web: HTML (Hypertext Markup Language).
+
+### A toy example
+
+HTML is a cousin of XML and as such organizes web documents in a hierarchical format that is read by your browser as you navigate the web. Take for example the toy webpage I created for this demonstration in Figure \@ref(fig:ad-example-webpage).
+
+<div class="figure" style="text-align: center">
+<img src="images/06-acquire-data/example-webpage.png" alt="Example web page." width="90%" />
+<p class="caption">(\#fig:ad-example-webpage)Example web page.</p>
+</div>
+
+The file accessed by my browser to render this webpage is `test.html` and in plain-text format looks like this:
+
+
+
+```
+
+<html>
+  <head>
+    <title>My website</title>
+  </head>
+  <body>
+    <div class="intro">
+      <p>Welcome!</p>
+      <p>This is my first website. </p>
+    </div>
+    <table>
+      <tr>
+        <td>Contact me:</td>
+        <td>
+          <a href="mailto:francojc@wfu.edu">francojc@wfu.edu</a>
+        </td>
+      </tr>
+    </table>
+    <div class="conc">
+      <p>Good-bye!</p>
+    </div>
+  </body>
+</html>
+```
+
+
+Each element in this file is delineated by an opening and closing tag, `<head></head>`. Tags are nested within other tags to create the structural hierarchy. Tags can take class and id labels to distinguish them from other tags and often contain other attributes that dictate how the tag is to behave when rendered visually by a browser. For example, there are two `<div>` tags in our toy example: one has the label `class = "intro"` and the other `class = "conc"`. `<div>` tags are often used to separate sections of a webpage that may require special visual formatting. The `<a>` tag, on the other hand, creates a web link. As part of this tag's function, it requires the attribute `href=` and a web protocol --in this case it is a link to an email address `mailto:francojc@wfu.edu`. More often than not, however, the `href=` contains a URL (Uniform Resource Locator). A working example might look like this: `<a href="https://francojc.github.io/">My homepage</a>`.
+
+The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let's attempt to extract some information from our toy example. To do this we will need the [rvest](https://CRAN.R-project.org/package=rvest) package. First, install/load the package, then, read and parse the HTML from the character vector named `web_file` assigning the result to `html`.
+
+
+
+
+
+
+
+
+
+
 
 
 ## Documentation

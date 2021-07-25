@@ -136,7 +136,6 @@ GOALS:
 <li>File download</li>
 <li>Compressed file download</li>
 </ol>
-<hr>
 <p>Let’s take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the <a href="http://www.nltk.org/nltk_data/">NLTK data repository site</a>. More often than not this file will be some type of compressed archive file with an extension such as <code>.zip</code> or <code>.tz</code>, which is the case here. Archive files make downloading multiple files easy by grouping files and directories into one file. In R we can used the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function from the base R library<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.&lt;/p&gt;"><sup>14</sup></a>. There are a number of <strong>arguments</strong> that a function may require or provide optionally. The <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function minimally requires two: <code>url</code> and <code>destfile</code>. That is the file to download and the location where it is to be saved to disk.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Download .zip file and write to disk</span>
@@ -436,7 +435,7 @@ Note that the arguments <code>tidyverse</code> and <code>gutenbergr</code> are c
 <span class="co">#&gt; $ text         &lt;chr&gt; "December, 1971  [Etext #1]", "", "", "The Project Gutenb…</span>
 <span class="co">#&gt; $ title        &lt;chr&gt; "The Declaration of Independence of the United States of …</span>
 <span class="co">#&gt; $ author       &lt;chr&gt; "Jefferson, Thomas", "Jefferson, Thomas", "Jefferson, Tho…</span></code></pre></div>
-<p>Now, in a more practical scenario we would like to select the values of <code>gutenberg_id</code> by some principled query such as works from a specific author, language, or subject. To do this we first query either the <code>gutenberg_metadata</code> data frame or the <code>gutenberg_subjects</code> data frame. Let’s say we want to download a random sample of 10 works from English Literature (Library of Congress Classification, “PR”). Using the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function (part of the <code>tidyverse</code> package set) we first extract all the Gutenberg ids from <code>gutenberg_subjects</code> where <code>subject_type == "lcc"</code> and <code>subject == "PR"</code> assigning the result to <code>ids</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;See &lt;a href="https://www.loc.gov/catdir/cpso/lcco/"&gt;Library of Congress Classification&lt;/a&gt; documentation for a complete list of subject codes.&lt;/p&gt;'><sup>16</sup></a></p>
+<p>Now, in a more practical scenario we would like to select the values of <code>gutenberg_id</code> by some principled query such as works from a specific author, language, or subject. To do this we first query either the <code>gutenberg_metadata</code> data frame or the <code>gutenberg_subjects</code> data frame. Let’s say we want to download a random sample of 10 works from English Literature (Library of Congress Classification, “PR”). Using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> function (<code>dplyr</code> is part of the <code>tidyverse</code> package set) we first extract all the Gutenberg ids from <code>gutenberg_subjects</code> where <code>subject_type == "lcc"</code> and <code>subject == "PR"</code> assigning the result to <code>ids</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;See &lt;a href="https://www.loc.gov/catdir/cpso/lcco/"&gt;Library of Congress Classification&lt;/a&gt; documentation for a complete list of subject codes.&lt;/p&gt;'><sup>16</sup></a></p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># filter for only English literature</span>
 <span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_subjects</span>, <span class="va">subject_type</span> <span class="op">==</span> <span class="st">"lcc"</span>, <span class="va">subject</span> <span class="op">==</span> <span class="st">"PR"</span><span class="op">)</span>
@@ -454,8 +453,10 @@ The operators <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>
 <p>The <code>gutenberg_subjects</code> data frame does not contain information as to whether a <code>gutenberg_id</code> is associated with a plain-text version. To limit our query to only those English Literature works with text, we filter the <code>gutenberg_metadata</code> data frame by the ids we have selected in <code>ids</code> and the attribute <code>has_text</code> in the <code>gutenberg_metadata</code> data frame.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter for only those works that have text</span>
-<span class="va">ids_has_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_metadata</span>, <span class="va">gutenberg_id</span> <span class="op">%in%</span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, <span class="va">has_text</span> <span class="op">==</span>
-    <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">ids_has_text</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_metadata</span>, 
+         <span class="va">gutenberg_id</span> <span class="op">%in%</span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, 
+         <span class="va">has_text</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">ids_has_text</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 6,724</span>
 <span class="co">#&gt; Columns: 8</span>
@@ -536,7 +537,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
       <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_metadata</span>, 
              <span class="va">gutenberg_id</span> <span class="op">%in%</span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, <span class="co"># select ids in both data frames </span>
              <span class="va">has_text</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># select those ids that have text</span>
-      <span class="fu">slice_sample</span><span class="op">(</span><span class="va">sample_size</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># sample N works </span>
+      <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="va">sample_size</span><span class="op">)</span> <span class="co"># sample N works </span>
     <span class="co"># Download sample with associated `author` and `title` metadata</span>
     <span class="va">works_sample</span> <span class="op">&lt;-</span> 
       <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download</a></span><span class="op">(</span>gutenberg_id <span class="op">=</span> <span class="va">ids_sample</span><span class="op">$</span><span class="va">gutenberg_id</span>, 
@@ -585,6 +586,44 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <span class="header-section-number">5.3</span> Web scraping<a class="anchor" aria-label="anchor" href="#web-scraping"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are many resources available through direct downloads from repositories and individual sites and R package interfaces to web resources with APIs, but these resources are relatively limited to the amount of public-facing textual data recorded on the web. In the case that you want to acquire data from webpages R can be used to access the web programmatically through a process known as web scraping. The complexity of web scrapes can vary but in general it requires more advanced knowledge of R as well as the structure of the language of the web: HTML (Hypertext Markup Language).</p>
+<div id="a-toy-example" class="section level3" number="5.3.1">
+<h3>
+<span class="header-section-number">5.3.1</span> A toy example<a class="anchor" aria-label="anchor" href="#a-toy-example"><i class="fas fa-link"></i></a>
+</h3>
+<p>HTML is a cousin of XML and as such organizes web documents in a hierarchical format that is read by your browser as you navigate the web. Take for example the toy webpage I created for this demonstration in Figure <a href="acquire-data.html#fig:ad-example-webpage">5.1</a>.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:ad-example-webpage"></span>
+<img src="images/06-acquire-data/example-webpage.png" alt="Example web page." width="90%"><p class="caption">
+Figure 5.1: Example web page.
+</p>
+</div>
+<p>The file accessed by my browser to render this webpage is <code>test.html</code> and in plain-text format looks like this:</p>
+<pre><code>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="intro"&gt;
+      &lt;p&gt;Welcome!&lt;/p&gt;
+      &lt;p&gt;This is my first website. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Contact me:&lt;/td&gt;
+        &lt;td&gt;
+          &lt;a href="mailto:francojc@wfu.edu"&gt;francojc@wfu.edu&lt;/a&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;div class="conc"&gt;
+      &lt;p&gt;Good-bye!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Each element in this file is delineated by an opening and closing tag, <code>&lt;head&gt;&lt;/head&gt;</code>. Tags are nested within other tags to create the structural hierarchy. Tags can take class and id labels to distinguish them from other tags and often contain other attributes that dictate how the tag is to behave when rendered visually by a browser. For example, there are two <code>&lt;div&gt;</code> tags in our toy example: one has the label <code>class = "intro"</code> and the other <code>class = "conc"</code>. <code>&lt;div&gt;</code> tags are often used to separate sections of a webpage that may require special visual formatting. The <code>&lt;a&gt;</code> tag, on the other hand, creates a web link. As part of this tag’s function, it requires the attribute <code>href=</code> and a web protocol –in this case it is a link to an email address <code>mailto:francojc@wfu.edu</code>. More often than not, however, the <code>href=</code> contains a URL (Uniform Resource Locator). A working example might look like this: <code>&lt;a href="https://francojc.github.io/"&gt;My homepage&lt;/a&gt;</code>.</p>
+<p>The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let’s attempt to extract some information from our toy example. To do this we will need the <a href="https://CRAN.R-project.org/package=rvest">rvest</a> package. First, install/load the package, then, read and parse the HTML from the character vector named <code>web_file</code> assigning the result to <code>html</code>.</p>
+</div>
 </div>
 <div id="documentation-1" class="section level2" number="5.4">
 <h2>
@@ -603,7 +642,9 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <li><a class="nav-link" href="#acquire-data"><span class="header-section-number">5</span> Acquire data</a></li>
 <li><a class="nav-link" href="#direct-downloads"><span class="header-section-number">5.1</span> Direct downloads</a></li>
 <li><a class="nav-link" href="#apis"><span class="header-section-number">5.2</span> APIs</a></li>
-<li><a class="nav-link" href="#web-scraping"><span class="header-section-number">5.3</span> Web scraping</a></li>
+<li>
+<a class="nav-link" href="#web-scraping"><span class="header-section-number">5.3</span> Web scraping</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#a-toy-example"><span class="header-section-number">5.3.1</span> A toy example</a></li></ul>
+</li>
 <li><a class="nav-link" href="#documentation-1"><span class="header-section-number">5.4</span> Documentation</a></li>
 </ul>
 
@@ -622,7 +663,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 24, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on July 25, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

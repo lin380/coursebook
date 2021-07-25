@@ -67,6 +67,7 @@ tab:pinboard-journals-linguistics
 tab:pinboard-journals-humanities
 tab:pinboard-journals-cl
 fig:framing-research-visual-summary-graphic
+fig:ad-example-webpage
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis
@@ -115,6 +116,7 @@ acquire-data
 direct-downloads
 apis
 web-scraping
+a-toy-example
 documentation-1
 curate-data
 structured
