@@ -1,0 +1,6545 @@
+
+
+
+
+
+
+<!doctype html>
+<html
+    lang="en"
+    class="
+        no-js
+        playbar-masthead-release-shim
+        youtube-provider-not-ready
+    "
+>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UwYPV15QGwYFXFlXDgU=",licenseKey:"0ed0ce50b0",applicationID:"5588594"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(25),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(26),a=t(25);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||c(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(22),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(18),m=t(17),w=t(14),v=NREUM.o.REQ,g=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;"string"==typeof o?n=o:"object"==typeof o&&o instanceof v?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n);var s=(""+(o&&o instanceof v&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}),u.on("fetch-done",function(t,e){this.params||(this.params={}),this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime])})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(17);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],17:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],18:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],19:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(27);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],20:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function s(t){"hidden"===t&&d("pageHide",[l.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),l=t("loader"),p=t(24),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(s)}},{}],22:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],23:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],24:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return l[t]=l[t]||i(n)}function v(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(25),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(19),s=t("handle"),c=t(25),f=t("ee"),u=t(23),d=t(20),l=t(16),p=l.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,w="addEventListener",v="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},R=g&&y&&y[w]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(15),t(21),m[w]?(m[w]("DOMContentLoaded",o,!1),h[w]("load",r,!1)):(m[v]("onreadystatechange",i),h[v]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(26),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,12,4,3]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","errorBeacon":"bam-cell.nr-data.net","licenseKey":"0ed0ce50b0","applicationID":"5588594","transactionName":"Y1BRbUUFWkMEWxYMV1oadUxZB0BZClZNCV5ZG0RcVUpDRxIWAxVIRxteTEQNVx4TUQcSSxpWUk1WCFtXEF1YMUpVVlh1ThZdUxYWBQBM","queueTime":0,"applicationTime":455,"agent":""}</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title aria-live="assertive">Karma Police lyrics - Radiohead | Last.fm</title>
+
+        
+    <link rel="canonical" href="https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+    
+        <link rel="alternate" hreflang="en" href="https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="de" href="https://www.last.fm/de/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="es" href="https://www.last.fm/es/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="fr" href="https://www.last.fm/fr/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="it" href="https://www.last.fm/it/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="ja" href="https://www.last.fm/ja/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="pl" href="https://www.last.fm/pl/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="pt" href="https://www.last.fm/pt/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="ru" href="https://www.last.fm/ru/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="sv" href="https://www.last.fm/sv/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="tr" href="https://www.last.fm/tr/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+        <link rel="alternate" hreflang="zh" href="https://www.last.fm/zh/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    
+    <link rel="alternate" hreflang="x-default" href="https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+
+
+        
+            
+                
+                
+                
+    <meta name="description" content="Find Radiohead – Karma Police lyrics and search for Radiohead. Listen online and get new recommendations, only at Last.fm" data-replaceable-head-tag>
+
+    <meta property="og:title"           content="Karma Police lyrics - Radiohead | Last.fm" data-replaceable-head-tag>
+    <meta property="og:description"     content="Find Radiohead – Karma Police lyrics and search for Radiohead. Listen online and get new recommendations, only at Last.fm" data-replaceable-head-tag>
+    <meta property="og:type"            content="website" data-replaceable-head-tag>
+    <meta property="og:site_name"       content="Last.fm" data-replaceable-head-tag>
+    <meta property="og:url"             content="https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics" data-replaceable-head-tag />
+    <meta property="og:image"           content="https://lastfm.freetls.fastly.net/i/u/ar0/4128a6eb29f94943c9d206c08e625904.jpg" data-replaceable-head-tag>
+    <meta property="og:image:width"     content="1200" data-replaceable-head-tag>
+    <meta property="og:image:height"    content="630" data-replaceable-head-tag>
+
+    <meta name="twitter:title"          content="Karma Police lyrics - Radiohead | Last.fm" data-replaceable-head-tag>
+    <meta name="twitter:description"    content="Find Radiohead – Karma Police lyrics and search for Radiohead. Listen online and get new recommendations, only at Last.fm" data-replaceable-head-tag>
+    <meta name="twitter:image"          content="https://lastfm.freetls.fastly.net/i/u/ar0/4128a6eb29f94943c9d206c08e625904.jpg" data-replaceable-head-tag>
+    <meta name="twitter:card"           content="summary" data-replaceable-head-tag>
+    <meta name="twitter:site"           content="@lastfm" data-replaceable-head-tag>
+
+    <link rel="apple-music-app-icon" href="https://www.last.fm/static/images/lastfm_avatar_applemusic.b06eb8ad89be.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://www.last.fm/static/images/lastfm_avatar_applemusic.b06eb8ad89be.png" />
+    <link rel="apple-touch-icon" href="https://www.last.fm/static/images/lastfm_avatar_applemusic.b06eb8ad89be.png" />
+
+    
+
+            
+        
+
+        
+
+        <script>(function(e) { e.className = e.className.replace(/\bno-js\b/,'js'); })(document.documentElement)</script>
+
+        
+
+        
+            
+<div
+    id="initial-tealium-data"
+    data-require="tracking/tealium-utag-set"
+    data-tealium-data="{&#34;siteSection&#34;: &#34;music&#34;, &#34;pageType&#34;: &#34;track_lyrics&#34;, &#34;pageName&#34;: &#34;music/track/lyrics&#34;, &#34;nativeEventTracking&#34;: true, &#34;userState&#34;: &#34;not authenticated&#34;, &#34;userType&#34;: &#34;anon&#34;, &#34;deviceType&#34;: &#34;desktop&#34;, &#34;musicSongTitle&#34;: &#34;Karma Police&#34;, &#34;musicArtistName&#34;: &#34;Radiohead&#34;, &#34;artist&#34;: &#34;radiohead&#34;, &#34;ar&#34;: &#34;radiohead&#34;, &#34;tag&#34;: &#34;alternative,alternativerock,rock,indie,radiohead&#34;, &#34;ipGeo&#34;: &#34;US&#34;}"
+    data-tealium-environment="prod"
+></div>
+        
+
+        <link rel="icon" href="/static/images/favicon.702b239b6194.ico">
+
+        <link rel="stylesheet" href="/static/styles/build/anhv2-defaults-c317032780.c31703278066.css" data-stylesheet-name="defaults" charset="utf-8">
+
+        
+            <link rel="stylesheet" href="/static/styles/build/app-reduced-4670362fc3.3fdb40691cce.css" data-stylesheet-name="app" charset="utf-8">
+        
+
+        
+    
+    
+        <link rel="stylesheet" href="/static/styles/build/track-subpage-02516bae26.4be5411aed62.css" data-stylesheet-name="page-specific" charset="utf-8">
+    
+
+    
+        <link rel="stylesheet" href="/static/styles/build/track-lyrics-subpage-858fa5f0a0.272041903ff6.css" data-stylesheet-name="page-specific" charset="utf-8">
+    
+
+
+        <script
+            src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+            
+                data-domain-script="d9f750da-0271-4142-9b0e-43d9a3b334d1"
+            
+        ></script>
+
+        
+            
+    
+    
+        <script async data-main="/static/js-build/init.5d084080b102" src="/static/js-build/lib/require/require.53bc64c729e9.js"></script>
+    
+
+        
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body
+        class="
+            
+    catalogue-subpage
+
+            anhv2
+            namespace--music_track_lyrics
+            
+        "
+        data-require="ads/page-ads,ads/searchlinks,player/playlink-handler,dev/grid-overlay,dev/toggle-version,dev/debug-log,dev/debug-image-analysis,dev/js-log,dev/ads-toggle,components/link-block,components/ajax-form,core/media-size-events-v2"
+        data-player-supported="true"
+        data-country-code="US"data-cbsi-player-config="/static/config/video-player.015786d691c2.xml"data-sensitive-path-regex="^/(../)?(googlec3ea1b252774e1ab\.html|account_deleted|inbox|join|login|lostpassword(/confirm)?|staff|subscribe|support(?!/images|/shouts|/shout)|settings/(account|website|subscription|password|lostpassword)|user/.+?/support)(/.*)?/?$"
+        data-facebook-placement-id="195612451022080_220502155199776"
+        data-google-maps-api-key="AIzaSyBX6-IE3lz4PpJUSBVIo_dPb0BAyMgi-VE"
+        
+            data-onetrust-prod
+        
+    >
+        <div
+            data-require="components/loading-indicator"
+            data-loading-indicator-copy="Loading…"
+        ></div>
+        <div
+            data-require="components/open-modal,components/submit-to-modal,components/show-alert"
+            data-show-alert-ok-copy="Okay"
+        ></div>
+        
+
+    
+        <div class="top-bar">
+            
+                
+                    
+    <section
+        data-require="player/controls,player/status,player/tracking"
+        data-player-status-ad-playing="Ad playing"
+        data-player-status-inactive="&nbsp;"
+        data-player-status-loading-spotify="Connecting Spotify…"
+        data-player-status-spotify-auth-error="Could not authenticate with Spotify."
+
+        data-player-error-cannot-play-item="Cannot play that item."
+        data-player-error-track-unavailable="Track unavailable."
+        data-player-modal-title="Play video"
+
+        
+
+        class="
+            player-bar
+            inactive
+        "
+        aria-label="audio player"
+        aria-disabled="true"
+    >
+        <div class="player-bar-inner-wrap">
+            <a class="player-bar-artwork js-artwork">
+                <img class="" src="/static/images/defaults/player_default_album.430223706b14.png" alt="" loading="lazy"/>
+            </a>
+
+            <span class="
+                player-bar-source
+                player-bar-source--spotify
+            ">Playing via Spotify</span>
+
+            <span class="
+                player-bar-source
+                player-bar-source--youtube
+            ">Playing via YouTube</span>
+
+            <div class="source-info">
+                <button
+                    class="player-bar-playback-options-button"
+                    data-disclose-hover
+                    aria-controls="player-bar-playback-options"
+                >
+                    Playback options
+                </button>
+                <div
+                    id="player-bar-playback-options"
+                    class="
+                        player-bar-playback-options-wrap
+                        disclose-hide
+                    "
+                >
+                    <ul class="
+                        dropdown-menu-dark
+                        player-bar-playback-options-spotify
+                    ">
+                        <li class="dropdown-menu-non-interactive-item-dark">
+                            <span class="player-bar-listening-on-heading">Listening on…</span>
+                            <span class="
+                                player-bar-listening-on
+                                js-player-bar-listening-on
+                            "></span>
+                        </li>
+                        <li><button class="
+                            dropdown-menu-item-dark
+                            js-switch-device
+                            player-bar-playback-options-switch-device
+                        ">Switch Spotify device</button></li>
+                        <li><a
+                            class="
+                                js-source
+                                dropdown-menu-item-dark
+                                player-bar-playback-options-external-link
+                            "
+                            target="_blank"
+                        >Open in Spotify Web Player</a></li>
+                        
+    <li class="menu-separator--dark">
+        <a
+            
+                href="/login?next=/settings/website"
+            
+            class="
+                dropdown-menu-item-dark
+                player-bar-playback-options-settings
+            "
+        >
+            Change playback source
+        </a>
+    </li>
+
+                    </ul>
+                    <ul class="
+                        dropdown-menu-dark
+                        player-bar-playback-options-youtube
+                    ">
+                        <li><a
+                            class="
+                                dropdown-menu-item-dark
+                                js-source
+                                player-bar-playback-options-external-link
+                            "
+                            target="_blank"
+                        >Open on YouTube website</a></li>
+                        
+    <li class="menu-separator--dark">
+        <a
+            
+                href="/login?next=/settings/website"
+            
+            class="
+                dropdown-menu-item-dark
+                player-bar-playback-options-settings
+            "
+        >
+            Change playback source
+        </a>
+    </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="player-bar-controls">
+
+                <ul aria-label="controls" class="media-controls">
+                    <li>
+                        <button
+                            disabled
+                            class="
+                                js-previous
+                                player-bar-btn
+                                player-bar-btn--previous
+                            "
+                            data-analytics-action="PlaybarBackTrack"
+                        >
+                            Previous
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            disabled
+                            class="
+                                js-play-pause
+                                player-bar-btn
+                                player-bar-btn--play
+                            "
+                            data-string-pause="Pause"
+                            data-analytics-action="PlaybarResumeTrack"
+                            data-analytics-action-pause="PlaybarPauseTrack"
+                        >
+                            Play
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            disabled
+                            class="
+                                js-next
+                                player-bar-btn
+                                player-bar-btn--next
+                            "
+                            data-analytics-action="PlaybarSkipTrack"
+                        >
+                            Next
+                        </button>
+                    </li>
+                    
+                </ul>
+
+                <a class="
+                        player-bar-skiplink
+                        player-bar-skiplink--youtube
+                    "
+                    href="#youtube-video"
+                >Skip to YouTube video</a>
+
+            </div>
+
+            <div class="player-bar-now-playing">
+                <div class="player-bar-now-playing-inner-wrap">
+                    <p
+                        class="player-bar-track js-player-status"
+                        aria-label="now playing"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    >
+                        Loading player…
+                    </p>
+
+                    <p class="player-bar-error js-player-error player-bar-status--hide">
+                        <span class="player-bar-error-message js-player-error-message"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="player-bar-progress-wrap">
+            <div
+                class="player-bar-progress"
+                aria-label="progress"
+                role="timer"
+            >
+                <div
+                    class="
+                        js-progress-slug
+                        player-bar-progress-slug
+                    "
+                >
+                    <span
+                        class="
+                            js-progress-remaining
+                            player-bar-progress-remaining
+                        "
+                        aria-label="remaining"
+                    ></span>
+                </div>
+            </div>
+        </div>
+
+        <div data-require="player/scrobble-client"></div>
+    </section>
+
+                    
+    <div
+        class="
+            masthead-popup
+            masthead-popup--spotify-scrobbling
+            masthead-popup--hidden
+        "
+        data-require="components/spotify-scrobbling-prompt,components/alert-dismissable,components/spotify-scrobbling-banner"
+        data-spotify-scobbling-success-modal="/socialmodal/spotify-scrobbling-success"
+        data-spotify-scobbling-fail-modal="/socialmodal/spotify-scrobbling-fail"
+    >
+        <div class="masthead-popup-inner">
+            <h3>Scrobble from Spotify?</h3>
+            <p>Connect your Spotify account to your Last.fm account and scrobble everything you listen to, from any Spotify app on any device or platform.</p>
+            <p>
+                <a
+                    class="btn-primary js-setup-spotify-scrobbling"
+                    href="/settings/applications"
+                >
+                    Connect to Spotify
+                </a>
+            </p>
+            <a
+                href="/nagbar/dismiss/spotify-scrobbling-prompt?period=permanent"
+                class="masthead-popup-close js-alert-dismissable-close"
+                data-close-ajax
+            >
+                Dismiss
+            </a>
+        </div>
+    </div>
+
+                
+            
+        </div>
+    
+
+    <div id="content" class="main-content" role="main" aria-live="polite">
+        
+    
+
+    <div id="tlmdata" hidden class="hidden"
+         data-tealium-data='{&#34;siteSection&#34;: &#34;music&#34;, &#34;pageType&#34;: &#34;track_lyrics&#34;, &#34;pageName&#34;: &#34;music/track/lyrics&#34;, &#34;nativeEventTracking&#34;: true, &#34;userState&#34;: &#34;not authenticated&#34;, &#34;userType&#34;: &#34;anon&#34;, &#34;deviceType&#34;: &#34;desktop&#34;, &#34;musicSongTitle&#34;: &#34;Karma Police&#34;, &#34;musicArtistName&#34;: &#34;Radiohead&#34;, &#34;artist&#34;: &#34;radiohead&#34;, &#34;ar&#34;: &#34;radiohead&#34;, &#34;tag&#34;: &#34;alternative,alternativerock,rock,indie,radiohead&#34;, &#34;ipGeo&#34;: &#34;US&#34;}'>
+     </div>
+
+        <div
+            
+                
+            
+            
+    data-page-resource-type="track"
+    data-page-resource-name="Karma Police"
+    
+        data-page-resource-artist-name="Radiohead"
+    
+    data-page-resource-blacklist-level=""
+
+            >
+            
+    <div
+        data-require="components/disclose-base,components/disclose-autoclose-v2,components/disclose-dropdown-v2,components/disclose-dropdown-location-picker-v2,components/disclose-collapsing-nav-v2,components/disclose-artwork,components/disclose-remove,components/disclose-search,components/disclose-hover-v3,components/disclose-select,components/disclose-lazy-buylinks,components/focus-controls,components/prevent-resubmit-v2,components/edit-scrobble,components/toggle-buttons,components/click-proxy,components/bookmark-notification,components/tourguide"
+    ></div>
+
+    
+        
+
+    <nav class="masthead"><div class="masthead-inner-wrap"><div class="masthead-logo"><span class="masthead-logo-loading"></span><a href="/"> Last.fm</a></div><a
+        class="masthead-search-toggle" href="/search" data-disclose-search aria-controls="masthead-search">Search</a><form
+        class=" masthead-search-form disclose-hide disclose-hide--js-only " id="masthead-search" action="/search" method="get"><div class="masthead-search-inner-wrap"><label for="masthead-search-field" class="sr-only">Search</label><input
+                id="masthead-search-field" class="masthead-search-field" type="text" name="q" placeholder="Search for music…" /><button class="masthead-search-submit" type="submit">Search</button></div></form><div class="visible-xs"><button
+                        class=" masthead-hamburger-toggle " data-disclose-autoclose aria-controls="masthead-nav">Toggle navigation</button><ul
+                        class=" masthead-nav disclose-hide disclose-hide--js-only " aria-label="Primary navigation" id="masthead-nav"><li class="masthead-nav-item masthead-nav-pro"><a
+                class="masthead-nav-control masthead-pro-text" href="/pro" data-analytics-label="subscribe" data-analytics-action="UserMenuClick">Upgrade to Pro</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/dashboard" data-analytics-action="NavigationLink" data-analytics-label="live">Live</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control masthead-nav-control--active" href="/music" data-analytics-action="NavigationLink" data-analytics-label="music">Music</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/charts" data-analytics-action="NavigationLink" data-analytics-label="charts">Charts</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/events" data-analytics-action="NavigationLink" data-analytics-label="events">Events</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/features" data-analytics-action="NavigationLink" data-analytics-label="features">Features</a></li>
+    
+        
+            <li class="masthead-nav-item">
+                <a
+                    class="masthead-nav-control"
+                    href="/pro"
+                    data-analytics-label="subscribe"
+                    data-analytics-action="UserMenuClick"
+                >Subscribe</a>
+            </li>
+        
+        <li class="masthead-nav-item">
+            <a
+                class="masthead-nav-control"
+                href="/login"
+            >Log In</a>
+        </li>
+        <li class="masthead-nav-item masthead-nav-join">
+            <a
+                class="btn-secondary
+                    join-cta-button"
+                href="/join"
+                data-analytics-action="SignUpClick"
+            >Sign Up</a>
+        </li>
+    
+</ul></div><div
+                    class=" navlist navlist--more masthead-nav hidden-xs " data-require="components/primary-nav" data-more-string="More…"><ul
+                        class="js-navlist-items navlist-items" aria-label="Primary navigation"><li class="masthead-nav-item masthead-nav-pro"><a
+                class="masthead-nav-control masthead-pro-text" href="/pro" data-analytics-label="subscribe" data-analytics-action="UserMenuClick">Upgrade to Pro</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/dashboard" data-analytics-action="NavigationLink" data-analytics-label="live">Live</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control masthead-nav-control--active" href="/music" data-analytics-action="NavigationLink" data-analytics-label="music">Music</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/charts" data-analytics-action="NavigationLink" data-analytics-label="charts">Charts</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/events" data-analytics-action="NavigationLink" data-analytics-label="events">Events</a></li><li class="masthead-nav-item"><a
+                class=" masthead-nav-control " href="/features" data-analytics-action="NavigationLink" data-analytics-label="features">Features</a></li></ul></div><ul
+            class=" site-auth site-auth--anon hidden-xs ">
+    <li class="site-auth-item"><a
+                class="site-auth-control" href="/login">Log In</a></li><li class="site-auth-item"><a
+                class="site-auth-control btn-secondary join-cta-button" href="/join" data-analytics-action="SignUpClick">Sign Up</a></li>
+</ul></div></nav>
+
+    
+
+    
+
+    
+    <div
+        class=""
+        data-require="components/language-prompt"
+        data-lazy-load-content="/nagbar/language-prompt"
+    >
+    </div>
+
+
+    
+
+    
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+
+    
+
+    
+
+    
+    <div
+        class="nag-bar nag-bar--plybar-masthead-release-warning "
+        
+        
+        role="status"
+    >
+        <div class="container">
+            
+            <p class="nag-bar-message ">
+                
+        A new version of Last.fm is available, to keep everything running smoothly, please <a href="javascript:window.location.reload()">reload</a> the site.
+    
+            </p>
+        </div>
+    </div>
+
+
+    
+
+    
+
+    
+    
+    <div id="redirect-bar" data-require="core/redirect-bar">
+        <script id="redirect-bar-data" type="application/json">
+            {
+                "content": {
+                    "redirect": "Redirected from {link}."
+                },
+                
+                    "overlayColor": null
+                
+            }
+        </script>
+        <redirect-bar></redirect-bar>
+    </div>
+
+    
+        
+    
+
+
+    
+
+    
+    <div id="mantle_skin" class="adaptive-skin-container">
+        <div class="adaptive-skin-wrapper">
+            <div id="adSkinLeft" class="adaptive-skin-left"></div>
+            <div id="adSkinRight" class="adaptive-skin-right"></div>
+        </div>
+        
+
+        
+
+        
+        
+
+        
+    
+
+
+
+
+<header class="header-new header-new--track header-new--subpage">
+    
+    
+    
+    <div
+        class="
+            header-new-inner
+            
+            
+        "
+        
+            style="background: #6A2F26"
+        
+    >
+        
+            <div class="header-new-background">
+                <div
+                    class="header-new-background-image"
+                    style="background-image: url(https://lastfm.freetls.fastly.net/i/u/ar0/325954902c0042f3b589a941b8ba6365.jpg);"
+                    itemprop="image"
+                    content="https://lastfm.freetls.fastly.net/i/u/ar0/325954902c0042f3b589a941b8ba6365.jpg"
+                ></div>
+                <div
+                    class="header-new-background-overlay-mobile"
+                    style="
+                        background: linear-gradient(
+                            rgba(106,47,38,0),
+                            rgba(106,47,38,1)
+                        );
+                    "
+                ></div>
+                <div
+                    class="header-new-background-overlay"
+                    style="
+                        background: linear-gradient(
+                            0.25turn,
+                            rgba(106,47,38,1),
+                            rgba(106,47,38,0)
+                        );
+                    "
+                ></div>
+            </div>
+        
+        <div class="header-new-content">
+            
+        
+    
+        
+        <span itemprop="byArtist" itemscope itemtype="http://schema.org/MusicGroup">
+            <a class="header-new-crumb" itemprop="url" href="/music/Radiohead"><span itemprop="name">Radiohead</span></a>
+        </span>
+    
+    <h1 class="header-new-title" itemprop="name">Karma Police</h1>
+    <link itemprop="url" href="/music/Radiohead/_/Karma+Police" />
+
+        
+    
+        
+    <nav
+        class="
+            
+                navlist
+            
+            secondary-nav
+            
+                navlist--more
+            
+            
+        "
+        aria-label="Secondary navigation"
+        
+            data-require="components/collapsing-nav-v2"
+            data-more-string="More…"
+        
+    >
+        <ul class="navlist-items js-navlist-items">
+            <li
+                    class="
+                        
+                            navlist-item
+                        
+                        secondary-nav-item
+                        
+                            secondary-nav-item--overview
+                        
+                    "
+                    
+                ><a
+                            class="
+                                secondary-nav-item-link
+                                
+                            "
+                            href="/music/Radiohead/_/Karma+Police"
+                            
+                        >
+                            Overview
+                            
+                        </a></li><li
+                    class="
+                        
+                            navlist-item
+                        
+                        secondary-nav-item
+                        
+                            secondary-nav-item--albums
+                        
+                    "
+                    
+                ><a
+                            class="
+                                secondary-nav-item-link
+                                
+                            "
+                            href="/music/Radiohead/_/Karma+Police/+albums"
+                            
+                        >
+                            Albums
+                            
+                        </a></li><li
+                    class="
+                        
+                            navlist-item
+                        
+                        secondary-nav-item
+                        
+                            secondary-nav-item--wiki
+                        
+                    "
+                    
+                ><a
+                            class="
+                                secondary-nav-item-link
+                                
+                            "
+                            href="/music/Radiohead/_/Karma+Police/+wiki"
+                            
+                        >
+                            Wiki
+                            
+                        </a></li><li
+                    class="
+                        
+                            navlist-item
+                        
+                        secondary-nav-item
+                        
+                            secondary-nav-item--tags
+                        
+                    "
+                    
+                ><a
+                            class="
+                                secondary-nav-item-link
+                                
+                            "
+                            href="/music/Radiohead/_/Karma+Police/+tags"
+                            
+                        >
+                            Tags
+                            
+                        </a></li><li
+                    class="
+                        
+                            navlist-item
+                        
+                        secondary-nav-item
+                        
+                            secondary-nav-item--shoutbox
+                        
+                    "
+                    
+                ><a
+                            class="
+                                secondary-nav-item-link
+                                
+                            "
+                            href="/music/Radiohead/_/Karma+Police/+shoutbox"
+                            
+                        >
+                            Shouts
+                            
+                        </a></li>
+        </ul>
+    </nav>
+
+    
+
+    
+        </div>
+        
+    </div>
+
+</header>
+
+    <div class="full-bleed-ad-container" data-ad-container>
+        
+    
+        
+        
+            <div id="leader_plus_top" data-ad="leader_plus_top" class="leader_plus_top lastfm-ad" data-ads-placement='{&#34;id&#34;: &#34;leader_plus_top&#34;, &#34;sizes&#34;: [[728, 90], [970, 66], [970, 250], [728, 91]], &#34;targeting&#34;: {&#34;pos&#34;: &#34;top&#34;}, &#34;adblock_message&#34;: true}'></div>
+        
+        
+    
+
+    </div>
+
+    
+    <div class="container page-content">
+        
+    
+        <div
+            class="
+                tonefuze
+                
+                    tonefuze--mobile
+                    visible-xs
+                
+                
+            "
+            data-require="ads/tonefuze"
+
+            
+                id="tonefuze-mobile-3f565564-d552-48fb-8ee2-8eed6d3cd124"
+                data-tonefuze-id="100000055"
+            
+
+            
+                data-tonefuze-artist="Radiohead"
+                data-tonefuze-track="Karma Police"
+            
+        ></div>
+    
+
+        <div class="row buffer-4 buffer-reset@sm">
+            <div class="col-main">
+                
+    <h2 class="subpage-title">Lyrics</h2>
+
+    <section class="buffer-standard">
+        
+    
+        <section
+            class="lyrics-container"
+            itemprop="recordingOf"
+            itemscope
+            itemtype="http://schema.org/MusicComposition"
+        >
+            <span
+                class="lyrics-body"
+                itemprop="lyrics"
+                itemscope
+                itemtype="http://schema.org/CreativeWork"
+            >
+                <span itemprop="text">
+                    
+                        
+                        <p class="lyrics-paragraph">Karma police<br />Arrest this man<br />He talks in maths<br />He buzzes like a fridge<br />He&#x27;s like a detuned radio</p>
+                    
+                        
+                        <p class="lyrics-paragraph">Karma police<br />Arrest this girl<br />Her Hitler hairdo<br />Is making me feel ill<br />And we have crashed her party</p>
+                    
+                        
+                            <div class="visible-xs lyrics-ad-break-continue">
+                                Lyrics continue below...
+                            </div>
+                            <div class="full-bleed-ad-container buffer-standard" data-ad-container>
+                                <div id="mobile_pos_1" data-ad="mobile_pos_1" class="mobile_pos_1 lastfm-ad-mobile" data-ads-placement='{&#34;id&#34;: &#34;mobile_pos_1&#34;, &#34;sizes&#34;: [[300, 250], [320, 50]], &#34;is_mobile&#34;: true, &#34;targeting&#34;: {&#34;pos&#34;: &#34;1&#34;}, &#34;adblock_message&#34;: true}'></div>
+        
+        
+            <p class="mpu-subscription-upsell mpu-subscription-upsell--mobile_pos_1">
+                Don't want to see ads? <a href="/pro" data-analytics-action="SubscribeClick" data-analytics-label="AdUpsellCTA">Upgrade Now</a>
+            </p>
+                            </div>
+                        
+                        <p class="lyrics-paragraph">This is what you&#x27;ll get<br />This is what you&#x27;ll get<br />This is what you&#x27;ll get<br />When you mess with us</p>
+                    
+                        
+                        <p class="lyrics-paragraph">Karma police<br />I&#x27;ve given all I can<br />It&#x27;s not enough<br />I&#x27;ve given all I can<br />But we&#x27;re still on the payroll</p>
+                    
+                        
+                        <p class="lyrics-paragraph">This is what you&#x27;ll get<br />This is what you&#x27;ll get<br />This is what you&#x27;ll get<br />When you mess with us</p>
+                    
+                        
+                        <p class="lyrics-paragraph">For a minute there<br />I lost myself, I lost myself<br />Phew, for a minute there<br />I lost myself, I lost myself</p>
+                    
+                        
+                        <p class="lyrics-paragraph">For a minute there<br />I lost myself, I lost myself<br />Phew, for a minute there<br />I lost myself, I lost myself</p>
+                    
+                </span>
+            </span>
+            <footer class="lyrics-attribution">
+                
+                    <p>Writer(s): Greenwood Colin Charles, Greenwood Jonathan Richard Guy, O Brien Edward John, Selway Philip James, Yorke Thomas Edward</p>
+                
+                <a href="https://www.musixmatch.com" class="lyrics-logo">
+                    <img src="/static/images/musixmatch@2x.8ced219cdc28.png"
+                         width="220"
+                         height="26"
+                         alt="Lyrics powered by Musixmatch"
+                         loading="lazy"
+                    />
+                </a>
+            </footer>
+            <script async src="https://tracking.musixmatch.com/t1.0/m_js/e_0/sn_0/l_21407550/su_0/rs_0/tr_3vUCAJVxA7_9mJLcqfV4pki5kFdY5nGqntVQfqk75G2-yUSF9vq7BOnwFw04B1ED2AFByBTPAgdhXH_pTMHBejeaiy3PJHTcnGgvpl15Cuy_21KADRM1dIzSOkF760bKDT27fqMTsrTo5hudfCh1p6kotRF_C7NfK365pre9ECb4j98gpWXj74-bNhD--Vdd_nseK2xcb683DuoEm-QLgBf35gHAmdVfqbxu1tOUFCExmElf30wcdD-WKul0MIL5b0EpeJL1_bSPm_IW3_1gWxMNqx1esivDJRA75HyzSFNMtDOQtMadRP57DNTqPn9D2h2uXkLoWvWAMsc_JJW4YvKkV866wQFKVmUAaHbkUSznW8ispQ7wg_E-OuAUNLayzhGYgBPxTUX6go7EOKEgSKgtFwAF7t49IJjYyK6Nt77wlfMU6BkhpTYhhSbT/"></script>
+        </section>
+    
+
+    </section>
+    <div class="full-bleed-ad-container buffer-standard" data-ad-container>
+        
+    
+        
+        
+            <div id="mobile_pos_2" data-ad="mobile_pos_2" class="mobile_pos_2 lastfm-ad-mobile" data-ads-placement='{&#34;id&#34;: &#34;mobile_pos_2&#34;, &#34;sizes&#34;: [[300, 250]], &#34;is_mobile&#34;: true, &#34;targeting&#34;: {&#34;pos&#34;: &#34;2&#34;}, &#34;adblock_message&#34;: true}'></div>
+        
+        
+            <p class="mpu-subscription-upsell mpu-subscription-upsell--mobile_pos_2">
+                Don't want to see ads? <a href="/pro" data-analytics-action="SubscribeClick" data-analytics-label="AdUpsellCTA">Upgrade Now</a>
+            </p>
+        
+    
+
+    </div>
+
+                
+
+
+    <section class="buffer-standard section-with-separator visible-xs">
+        <h3 class="text-18">Similar Tracks</h3>
+        
+    
+
+    
+    
+    
+    <ol
+        class="
+            
+            column-tracks
+            column-tracks--with-12
+        "
+        
+    >
+        
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Radiohead/_/Paranoid+Android"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Paranoid Android</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Radiohead"
+            
+            
+                itemprop="url"
+            
+        >Radiohead</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/62d26c6cb4ac4bdccb8f3a2a0fd55421.jpg"
+            alt="OK Computer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=fHiGbolFFGw"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="fHiGbolFFGw"
+    data-youtube-url="https://www.youtube.com/watch?v=fHiGbolFFGw"
+
+    data-track-name="Paranoid Android"
+    data-track-url="/music/Radiohead/_/Paranoid+Android"
+    
+        data-artist-name="Radiohead"
+        data-artist-url="/music/Radiohead"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Radiohead/_/Paranoid+Android"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Radiohead/_/No+Surprises"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >No Surprises</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Radiohead"
+            
+            
+                itemprop="url"
+            
+        >Radiohead</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/62d26c6cb4ac4bdccb8f3a2a0fd55421.jpg"
+            alt="OK Computer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=u5CVsCnxyXg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="u5CVsCnxyXg"
+    data-youtube-url="https://www.youtube.com/watch?v=u5CVsCnxyXg"
+
+    data-track-name="No Surprises"
+    data-track-url="/music/Radiohead/_/No+Surprises"
+    
+        data-artist-name="Radiohead"
+        data-artist-url="/music/Radiohead"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Radiohead/_/No+Surprises"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Pixies/_/Where+Is+My+Mind%3F"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Where Is My Mind?</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Pixies"
+            
+            
+                itemprop="url"
+            
+        >Pixies</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/7a0af4bf09044557ac7bbb916eee1fc0.jpg"
+            alt="Surfer Rosa"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=6VG6gIvcjU8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="6VG6gIvcjU8"
+    data-youtube-url="https://www.youtube.com/watch?v=6VG6gIvcjU8"
+
+    data-track-name="Where Is My Mind?"
+    data-track-url="/music/Pixies/_/Where+Is+My+Mind%3F"
+    
+        data-artist-name="Pixies"
+        data-artist-url="/music/Pixies"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Pixies/_/Where+Is+My+Mind%3F"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Weezer/_/Say+It+Ain%27t+So"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Say It Ain&#39;t So</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Weezer"
+            
+            
+                itemprop="url"
+            
+        >Weezer</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/a986774f52c2438fbe38f019812d3896.jpg"
+            alt="Weezer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=ENXvZ9YRjbo"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="ENXvZ9YRjbo"
+    data-youtube-url="https://www.youtube.com/watch?v=ENXvZ9YRjbo"
+
+    data-track-name="Say It Ain&#39;t So"
+    data-track-url="/music/Weezer/_/Say+It+Ain%27t+So"
+    
+        data-artist-name="Weezer"
+        data-artist-url="/music/Weezer"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Weezer/_/Say+It+Ain%27t+So"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Weezer/_/Buddy+Holly"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Buddy Holly</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Weezer"
+            
+            
+                itemprop="url"
+            
+        >Weezer</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/a986774f52c2438fbe38f019812d3896.jpg"
+            alt="Weezer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=kemivUKb4f4"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="kemivUKb4f4"
+    data-youtube-url="https://www.youtube.com/watch?v=kemivUKb4f4"
+
+    data-track-name="Buddy Holly"
+    data-track-url="/music/Weezer/_/Buddy+Holly"
+    
+        data-artist-name="Weezer"
+        data-artist-url="/music/Weezer"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Weezer/_/Buddy+Holly"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Pixies/_/Here+Comes+Your+Man"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Here Comes Your Man</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Pixies"
+            
+            
+                itemprop="url"
+            
+        >Pixies</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/baafa02626d54475c412e80c6b121193.jpg"
+            alt="Doolittle"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=tPgf_btTFlc"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="tPgf_btTFlc"
+    data-youtube-url="https://www.youtube.com/watch?v=tPgf_btTFlc"
+
+    data-track-name="Here Comes Your Man"
+    data-track-url="/music/Pixies/_/Here+Comes+Your+Man"
+    
+        data-artist-name="Pixies"
+        data-artist-url="/music/Pixies"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Pixies/_/Here+Comes+Your+Man"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Foo+Fighters/_/Everlong"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Everlong</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Foo+Fighters"
+            
+            
+                itemprop="url"
+            
+        >Foo Fighters</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/41ef2aab38184517a400b6193d61925d.jpg"
+            alt="The Colour and the Shape"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=eBG7P-K-r1Y"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="eBG7P-K-r1Y"
+    data-youtube-url="https://www.youtube.com/watch?v=eBG7P-K-r1Y"
+
+    data-track-name="Everlong"
+    data-track-url="/music/Foo+Fighters/_/Everlong"
+    
+        data-artist-name="Foo Fighters"
+        data-artist-url="/music/Foo+Fighters"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Foo+Fighters/_/Everlong"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/The+Strokes/_/Soma"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Soma</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/The+Strokes"
+            
+            
+                itemprop="url"
+            
+        >The Strokes</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/29c98431ed68a10f110cf47c89f174b3.jpg"
+            alt="Is This It"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=QU-LToyO7HE"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="QU-LToyO7HE"
+    data-youtube-url="https://www.youtube.com/watch?v=QU-LToyO7HE"
+
+    data-track-name="Soma"
+    data-track-url="/music/The+Strokes/_/Soma"
+    
+        data-artist-name="The Strokes"
+        data-artist-url="/music/The+Strokes"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/The+Strokes/_/Soma"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Muse/_/Plug+In+Baby"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Plug In Baby</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Muse"
+            
+            
+                itemprop="url"
+            
+        >Muse</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/5a2c98f98f05f457d770bfaf45f7cc8a.jpg"
+            alt="Origin of Symmetry"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=dbB-mICjkQM"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="dbB-mICjkQM"
+    data-youtube-url="https://www.youtube.com/watch?v=dbB-mICjkQM"
+
+    data-track-name="Plug In Baby"
+    data-track-url="/music/Muse/_/Plug+In+Baby"
+    
+        data-artist-name="Muse"
+        data-artist-url="/music/Muse"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Muse/_/Plug+In+Baby"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+                column-tracks-item-wrap--end
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/Muse/_/Hysteria"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Hysteria</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Muse"
+            
+            
+                itemprop="url"
+            
+        >Muse</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/09a7dd691dba9ed475f1b5c1bef0074a.jpg"
+            alt="Absolution"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=3dm_5qWWDV8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="3dm_5qWWDV8"
+    data-youtube-url="https://www.youtube.com/watch?v=3dm_5qWWDV8"
+
+    data-track-name="Hysteria"
+    data-track-url="/music/Muse/_/Hysteria"
+    
+        data-artist-name="Muse"
+        data-artist-url="/music/Muse"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Muse/_/Hysteria"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+                column-tracks-item-wrap--end
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/The+Smashing+Pumpkins/_/1979"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >1979</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/The+Smashing+Pumpkins"
+            
+            
+                itemprop="url"
+            
+        >The Smashing Pumpkins</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/5035b4b0d20242b9c24fa00a3ab1a0f9.jpg"
+            alt="Rarities &amp; B-Sides"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=4aeETEoNfOg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="4aeETEoNfOg"
+    data-youtube-url="https://www.youtube.com/watch?v=4aeETEoNfOg"
+
+    data-track-name="1979"
+    data-track-url="/music/The+Smashing+Pumpkins/_/1979"
+    
+        data-artist-name="The Smashing Pumpkins"
+        data-artist-url="/music/The+Smashing+Pumpkins"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/The+Smashing+Pumpkins/_/1979"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+        
+        
+    
+    <li
+        class="
+            column-tracks-item-wrap
+            
+            
+                column-tracks-item-wrap--end
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                column-tracks-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="column-tracks-item-name" itemprop="name">
+        <a
+            href="/music/R.E.M./_/Losing+My+Religion"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Losing My Religion</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="column-tracks-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/R.E.M."
+            
+            
+                itemprop="url"
+            
+        >R.E.M.</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="column-tracks-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/26f65e1765bf936542e6099ab0c8784a.jpg"
+            alt="In Time: The Best of R.E.M. 1988-2003"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        column-tracks-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=xwtdhWltSIg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="xwtdhWltSIg"
+    data-youtube-url="https://www.youtube.com/watch?v=xwtdhWltSIg"
+
+    data-track-name="Losing My Religion"
+    data-track-url="/music/R.E.M./_/Losing+My+Religion"
+    
+        data-artist-name="R.E.M."
+        data-artist-url="/music/R.E.M."
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/R.E.M./_/Losing+My+Religion"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+    </ol>
+
+
+
+
+    </section>
+
+            </div>
+            <div class="col-sidebar">
+                
+    
+        <div
+            class="
+                tonefuze
+                
+                    tonefuze--desktop
+                    hidden-xs
+                
+                
+            "
+            data-require="ads/tonefuze"
+
+            
+                id="tonefuze-desktop-5a589844-daf9-4a11-8f5a-4bc2240a8ff8"
+                data-tonefuze-id="100000054"
+            
+
+            
+                data-tonefuze-artist="Radiohead"
+                data-tonefuze-track="Karma Police"
+            
+        ></div>
+    
+
+                
+
+
+
+    
+        
+        <section class="buffer-standard hidden-xs">
+            <h3 class="text-18">Similar Tracks</h3>
+            
+    
+
+    
+    
+    
+    <ol
+        class="
+            
+            similar-items-sidebar
+            similar-items-sidebar--with-3
+        "
+        
+    >
+        
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Radiohead/_/Paranoid+Android"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Paranoid Android</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Radiohead"
+            
+            
+                itemprop="url"
+            
+        >Radiohead</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/62d26c6cb4ac4bdccb8f3a2a0fd55421.jpg"
+            alt="OK Computer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=fHiGbolFFGw"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="fHiGbolFFGw"
+    data-youtube-url="https://www.youtube.com/watch?v=fHiGbolFFGw"
+
+    data-track-name="Paranoid Android"
+    data-track-url="/music/Radiohead/_/Paranoid+Android"
+    
+        data-artist-name="Radiohead"
+        data-artist-url="/music/Radiohead"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Radiohead/_/Paranoid+Android"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Radiohead/_/No+Surprises"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >No Surprises</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Radiohead"
+            
+            
+                itemprop="url"
+            
+        >Radiohead</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/62d26c6cb4ac4bdccb8f3a2a0fd55421.jpg"
+            alt="OK Computer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=u5CVsCnxyXg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="u5CVsCnxyXg"
+    data-youtube-url="https://www.youtube.com/watch?v=u5CVsCnxyXg"
+
+    data-track-name="No Surprises"
+    data-track-url="/music/Radiohead/_/No+Surprises"
+    
+        data-artist-name="Radiohead"
+        data-artist-url="/music/Radiohead"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Radiohead/_/No+Surprises"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Pixies/_/Where+Is+My+Mind%3F"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Where Is My Mind?</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Pixies"
+            
+            
+                itemprop="url"
+            
+        >Pixies</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/7a0af4bf09044557ac7bbb916eee1fc0.jpg"
+            alt="Surfer Rosa"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=6VG6gIvcjU8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="6VG6gIvcjU8"
+    data-youtube-url="https://www.youtube.com/watch?v=6VG6gIvcjU8"
+
+    data-track-name="Where Is My Mind?"
+    data-track-url="/music/Pixies/_/Where+Is+My+Mind%3F"
+    
+        data-artist-name="Pixies"
+        data-artist-url="/music/Pixies"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Pixies/_/Where+Is+My+Mind%3F"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+    </ol>
+
+
+
+
+            
+                <button
+                        class="more-items"
+                        aria-expanded="false"
+                        aria-controls="more-similar-tracks"
+                        data-disclose-remove
+                >Show more</button>
+                
+    
+
+    
+    
+    
+    <ol
+        class="
+            disclose-hide
+            similar-items-sidebar
+            similar-items-sidebar--with-9
+        "
+        
+            id="more-similar-tracks"
+        
+    >
+        
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Weezer/_/Say+It+Ain%27t+So"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Say It Ain&#39;t So</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Weezer"
+            
+            
+                itemprop="url"
+            
+        >Weezer</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/a986774f52c2438fbe38f019812d3896.jpg"
+            alt="Weezer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=ENXvZ9YRjbo"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="ENXvZ9YRjbo"
+    data-youtube-url="https://www.youtube.com/watch?v=ENXvZ9YRjbo"
+
+    data-track-name="Say It Ain&#39;t So"
+    data-track-url="/music/Weezer/_/Say+It+Ain%27t+So"
+    
+        data-artist-name="Weezer"
+        data-artist-url="/music/Weezer"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Weezer/_/Say+It+Ain%27t+So"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Weezer/_/Buddy+Holly"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Buddy Holly</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Weezer"
+            
+            
+                itemprop="url"
+            
+        >Weezer</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/a986774f52c2438fbe38f019812d3896.jpg"
+            alt="Weezer"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=kemivUKb4f4"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="kemivUKb4f4"
+    data-youtube-url="https://www.youtube.com/watch?v=kemivUKb4f4"
+
+    data-track-name="Buddy Holly"
+    data-track-url="/music/Weezer/_/Buddy+Holly"
+    
+        data-artist-name="Weezer"
+        data-artist-url="/music/Weezer"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Weezer/_/Buddy+Holly"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Pixies/_/Here+Comes+Your+Man"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Here Comes Your Man</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Pixies"
+            
+            
+                itemprop="url"
+            
+        >Pixies</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/baafa02626d54475c412e80c6b121193.jpg"
+            alt="Doolittle"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=tPgf_btTFlc"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="tPgf_btTFlc"
+    data-youtube-url="https://www.youtube.com/watch?v=tPgf_btTFlc"
+
+    data-track-name="Here Comes Your Man"
+    data-track-url="/music/Pixies/_/Here+Comes+Your+Man"
+    
+        data-artist-name="Pixies"
+        data-artist-url="/music/Pixies"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Pixies/_/Here+Comes+Your+Man"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Foo+Fighters/_/Everlong"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Everlong</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Foo+Fighters"
+            
+            
+                itemprop="url"
+            
+        >Foo Fighters</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/41ef2aab38184517a400b6193d61925d.jpg"
+            alt="The Colour and the Shape"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=eBG7P-K-r1Y"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="eBG7P-K-r1Y"
+    data-youtube-url="https://www.youtube.com/watch?v=eBG7P-K-r1Y"
+
+    data-track-name="Everlong"
+    data-track-url="/music/Foo+Fighters/_/Everlong"
+    
+        data-artist-name="Foo Fighters"
+        data-artist-url="/music/Foo+Fighters"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Foo+Fighters/_/Everlong"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/The+Strokes/_/Soma"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Soma</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/The+Strokes"
+            
+            
+                itemprop="url"
+            
+        >The Strokes</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/29c98431ed68a10f110cf47c89f174b3.jpg"
+            alt="Is This It"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=QU-LToyO7HE"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="QU-LToyO7HE"
+    data-youtube-url="https://www.youtube.com/watch?v=QU-LToyO7HE"
+
+    data-track-name="Soma"
+    data-track-url="/music/The+Strokes/_/Soma"
+    
+        data-artist-name="The Strokes"
+        data-artist-url="/music/The+Strokes"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/The+Strokes/_/Soma"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Muse/_/Plug+In+Baby"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Plug In Baby</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Muse"
+            
+            
+                itemprop="url"
+            
+        >Muse</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/5a2c98f98f05f457d770bfaf45f7cc8a.jpg"
+            alt="Origin of Symmetry"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=dbB-mICjkQM"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="dbB-mICjkQM"
+    data-youtube-url="https://www.youtube.com/watch?v=dbB-mICjkQM"
+
+    data-track-name="Plug In Baby"
+    data-track-url="/music/Muse/_/Plug+In+Baby"
+    
+        data-artist-name="Muse"
+        data-artist-url="/music/Muse"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Muse/_/Plug+In+Baby"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/Muse/_/Hysteria"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Hysteria</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/Muse"
+            
+            
+                itemprop="url"
+            
+        >Muse</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/09a7dd691dba9ed475f1b5c1bef0074a.jpg"
+            alt="Absolution"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=3dm_5qWWDV8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="3dm_5qWWDV8"
+    data-youtube-url="https://www.youtube.com/watch?v=3dm_5qWWDV8"
+
+    data-track-name="Hysteria"
+    data-track-url="/music/Muse/_/Hysteria"
+    
+        data-artist-name="Muse"
+        data-artist-url="/music/Muse"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/Muse/_/Hysteria"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/The+Smashing+Pumpkins/_/1979"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >1979</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/The+Smashing+Pumpkins"
+            
+            
+                itemprop="url"
+            
+        >The Smashing Pumpkins</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/5035b4b0d20242b9c24fa00a3ab1a0f9.jpg"
+            alt="Rarities &amp; B-Sides"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=4aeETEoNfOg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="4aeETEoNfOg"
+    data-youtube-url="https://www.youtube.com/watch?v=4aeETEoNfOg"
+
+    data-track-name="1979"
+    data-track-url="/music/The+Smashing+Pumpkins/_/1979"
+    
+        data-artist-name="The Smashing Pumpkins"
+        data-artist-url="/music/The+Smashing+Pumpkins"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/The+Smashing+Pumpkins/_/1979"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+                
+            
+
+            
+        
+    
+    <li
+        class="
+            similar-items-sidebar-item-wrap
+            
+            
+        "
+        itemscope
+        itemtype="http://schema.org/MusicRecording"
+        
+        
+    >
+        <div
+            class="
+                similar-items-sidebar-item
+                js-link-block
+                link-block
+            "
+        >
+            
+
+            
+            
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+    <h3 class="similar-items-sidebar-item-name" itemprop="name">
+        <a
+            href="/music/R.E.M./_/Losing+My+Religion"
+            
+            
+                itemprop="url"
+            
+                class="link-block-target"
+            
+        >Losing My Religion</a>
+    </h3>
+
+
+        
+    
+        
+            <p
+                class="similar-items-sidebar-item-artist"
+                itemscope
+                itemprop="byArtist"
+                itemtype="http://schema.org/MusicGroup"
+            >
+                <span itemprop="name">
+                    <a
+            href="/music/R.E.M."
+            
+            
+                itemprop="url"
+            
+        >R.E.M.</a>
+                </span>
+            </p>
+        
+    
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    <div class="media-item ">
+        
+    
+    
+        
+    
+        
+    
+
+    
+
+    
+
+    
+        <span class="similar-items-sidebar-item-image cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/26f65e1765bf936542e6099ab0c8784a.jpg"
+            alt="In Time: The Best of R.E.M. 1988-2003"
+            itemprop="image"
+            loading="lazy"
+        />
+    
+
+    
+        </span>
+    
+
+        
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        similar-items-sidebar-item-playlink desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=xwtdhWltSIg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="xwtdhWltSIg"
+    data-youtube-url="https://www.youtube.com/watch?v=xwtdhWltSIg"
+
+    data-track-name="Losing My Religion"
+    data-track-url="/music/R.E.M./_/Losing+My+Religion"
+    
+        data-artist-name="R.E.M."
+        data-artist-url="/music/R.E.M."
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+    
+
+    
+
+    </div>
+
+
+    
+        
+
+            
+                
+                
+    <a
+        href="/music/R.E.M./_/Losing+My+Religion"
+        class="
+            js-link-block-cover-link
+            link-block-cover-link
+        "
+        tabindex="-1"
+        aria-hidden="true"
+    ></a>
+
+            
+        </div>
+    </li>
+
+    
+            
+    </ol>
+
+
+
+
+            
+        </section>
+    
+
+                <div class="sidebar-ad-container buffer-standard" data-ad-container>
+                    
+    
+        
+        
+            <div id="mpu_plus_top" data-ad="mpu_plus_top" class="mpu_plus_top lastfm-ad" data-ads-placement='{&#34;id&#34;: &#34;mpu_plus_top&#34;, &#34;sizes&#34;: [[300, 250], [300, 600]], &#34;targeting&#34;: {&#34;pos&#34;: &#34;top&#34;}, &#34;adblock_message&#34;: true}'></div>
+        
+        
+            <p class="mpu-subscription-upsell mpu-subscription-upsell--mpu">
+                Don't want to see ads? <a href="/pro" data-analytics-action="SubscribeClick" data-analytics-label="AdUpsellCTA">Upgrade Now</a>
+            </p>
+        
+    
+
+                </div>
+                
+    <div class="related-ads">
+            <div
+                
+                    data-searchlinks-desktop
+                
+            ></div>
+        </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+        
+            
+    <div
+        class="trending-tracks-section-wrapper"
+        data-require="components/lazy-load-v3"
+        data-lazy-load-content="/charts/partial/trending-tracks"
+        data-lazy-load-when-on-screen
+    >
+        
+    <section class="trending-tracks-section">
+        <div class="container">
+            <h3 class="text-18">Trending Tracks</h3>
+            
+    
+    <ul class="trending-tracks">
+        
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            1
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            2
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            3
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            4
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            5
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+            <li class="
+                trending-tracks-item-wrap
+                
+            ">
+                <div class="trending-tracks-item">
+                    
+                        <p class="trending-tracks-item-index">
+                            6
+                        </p>
+                    
+                    
+                        
+    <div class="trending-tracks-album-art media-item">
+        <div class="cover-art--placeholder">
+        </div>
+    </div>
+
+                    
+                </div>
+            </li>
+    </ul>
+
+
+            <p class="trending-tracks-more-link">
+                <a href="/charts">View all trending tracks</a>
+            </p>
+        </div>
+    </section>
+
+    </div>
+
+
+            <div class="container page-content">
+                
+    
+    
+    
+        
+    
+    <div
+        class="lazy-features-page-bottom"
+        data-require="components/lazy-load-v3"
+        data-lazy-load-content="/features/partial/page-bottom?artist_url=/music/Radiohead"
+        data-lazy-load-when-on-screen
+    >
+        <div class="features-page-bottom section-with-separator section-with-separator--xs-only">
+            <h2 class="text-18">Features</h2>
+            <ul class="features-teasers">
+                
+                    <li class="features-teaser-wrap">
+                        <div class="features-teaser">
+                            <div class="features-teaser-image-outer">
+                                <div class="features-teaser-image--placeholder"></div>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li class="features-teaser-wrap">
+                        <div class="features-teaser">
+                            <div class="features-teaser-image-outer">
+                                <div class="features-teaser-image--placeholder"></div>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li class="features-teaser-wrap">
+                        <div class="features-teaser">
+                            <div class="features-teaser-image-outer">
+                                <div class="features-teaser-image--placeholder"></div>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li class="features-teaser-wrap">
+                        <div class="features-teaser">
+                            <div class="features-teaser-image-outer">
+                                <div class="features-teaser-image--placeholder"></div>
+                            </div>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+                
+    
+
+            </div>
+        
+
+        
+            <div class="full-bleed-ad-container" data-ad-container>
+                
+    
+        
+        
+            <div id="leader_bottom" data-ad="leader_bottom" class="leader_bottom lastfm-ad" data-ads-placement='{&#34;id&#34;: &#34;leader_bottom&#34;, &#34;sizes&#34;: [[728, 90], [970, 66], [728, 92]], &#34;targeting&#34;: {&#34;pos&#34;: &#34;bottom&#34;}}'></div>
+        
+        
+    
+
+
+            </div>
+        
+
+        
+            <div class="container page-content visible-xs">
+                
+    <div class="related-ads">
+            <div
+                
+                    data-searchlinks-mobile
+                
+            ></div>
+        </div>
+
+            </div>
+        
+    </div>
+
+    <div id="qa-page-load"></div>
+
+    
+
+    
+    <footer class="footer" itemscope itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="https://www.last.fm">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-top-row">
+                    <div class="footer-top-col">
+                        <h2 class="footer-heading">Company</h2>
+                        <ul class="footer-links">
+                            <li><a href="/about">About Last.fm</a></li>
+                            <li><a href="/about/contact">Contact Us</a></li>
+                            <li><a href="/about/jobs">Jobs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-top-col">
+                        <h2 class="footer-heading">Help</h2>
+                        <ul class="footer-links">
+                            <li><a href="/about/trackmymusic">Track My Music</a></li>
+                            
+                                <li><a href="https://support.last.fm/" target="_BLANK">Community Support</a></li>
+                            
+                            <li><a href="/help/guidelines">Community Guidelines</a></li>
+                            
+                                <li><a href="/help/faq" target="_BLANK">Help</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="footer-top-col">
+                        <h2 class="footer-heading">Goodies</h2>
+                        <ul class="footer-links">
+                            <li><a href="/about/trackmymusic">Download Scrobbler</a></li>
+                            <li><a href="/api">Developer API</a></li>
+                            <li><a href="/music/+free-music-downloads">Free Music Downloads</a></li>
+                            <li><a href="https://store.last.fm">Merchandise</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-top-col">
+                        <h2 class="footer-heading">Account</h2>
+                        <ul class="footer-links">
+                            
+                                <li><a href="/join">Sign Up</a></li>
+                                <li><a href="/login">Log In</a></li>
+                                <li><a href="/pro">Subscribe</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="footer-top-col">
+                        <h2 class="footer-heading">Follow Us</h2>
+                        <ul class="footer-links">
+                            <li><a itemprop="sameAs" target="_blank" href="https://www.facebook.com/lastfm">Facebook</a></li>
+                            <li><a itemprop="sameAs" target="_blank" href="https://twitter.com/lastfm">Twitter</a></li>
+                            <li><a itemprop="sameAs" target="_blank" href="https://www.instagram.com/last_fm">Instagram</a></li>
+                            <li><a itemprop="sameAs" target="_blank" href="https://www.youtube.com/user/lastfm">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-9">
+                        <ul id="language-selector">
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                            footer-language--active
+                                        
+                                    "
+                                >
+                                    
+                                        <strong>English</strong><span class="sr-only">current language</span>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="de" />
+                                            <button class="mimic-link" name="de" type="submit">Deutsch</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="es" />
+                                            <button class="mimic-link" name="es" type="submit">Español</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="fr" />
+                                            <button class="mimic-link" name="fr" type="submit">Français</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="it" />
+                                            <button class="mimic-link" name="it" type="submit">Italiano</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="ja" />
+                                            <button class="mimic-link" name="ja" type="submit">日本語</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="pl" />
+                                            <button class="mimic-link" name="pl" type="submit">Polski</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="pt" />
+                                            <button class="mimic-link" name="pt" type="submit">Português</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="ru" />
+                                            <button class="mimic-link" name="ru" type="submit">Русский</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="sv" />
+                                            <button class="mimic-link" name="sv" type="submit">Svenska</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="tr" />
+                                            <button class="mimic-link" name="tr" type="submit">Türkçe</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                                
+                                <li
+                                    class="
+                                        footer-language
+                                        
+                                    "
+                                >
+                                    
+                                        <form class="footer-language-form" action="/i18n/setlang/" method="post">
+                                            <input type="hidden" name="language" value="zh" />
+                                            <button class="mimic-link" name="zh" type="submit">简体中文</button>
+                                        </form>
+                                    
+                                </li>
+                            
+                        </ul>
+                        
+                        <p class="footer-timezone">
+                            
+                                Time zone: <strong>America/New_York</strong>
+                            
+                        </p>
+
+                        <div class="footer-legal">
+                            <ul>
+                                <li class="footer-legal-item"><a rel="nofollow" href="http://www.cbsinteractive.com/">CBS Interactive</a> © 2021 <span itemprop="name">Last.fm</span> Ltd. All rights reserved</li>
+                                <li class="footer-legal-item"><a href="/legal/terms">Terms of Use</a></li>
+                                <li class="footer-legal-item"><a href="/legal/privacy">Privacy Policy</a></li>
+                                <li class="footer-legal-item"><a href="/legal">Legal Policies</a></li>
+                                
+                                    <li class="footer-legal-item"><a href="https://ca.privacy.cbs">California Privacy/Info We Collect</a></li>
+                                    <li class="footer-legal-item"><a href="https://ca.privacy.cbs/donotsell">Do Not Sell My Personal Information</a></li>
+                                
+                                <li class="footer-legal-item"><a target="_blank" href="https://uk-viacomcbs.icims.com/jobs/intro">Jobs at ViacomCBS</a></li>
+                                <li class="footer-legal-item"><a rel="nofollow" href="http://www.last.fm">Last.fm Music</a></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="logo col-xs-12 col-sm-3">
+                        <p>Audioscrobbler</p>
+                        <img src="/static/images/footer_logo@2x.49ca51948b0a.png"
+                             width="37"
+                             height="20"
+                             alt="Last.fm 'as' logo"
+                             loading="lazy"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <section class="debug-log">
+    <h2 class="debug-log-heading">API Calls</h2>
+    
+</section>
+
+
+        </div>
+        
+    
+        <div id="data-ads"
+            data-ads-beacon
+            data-ads-targeting='{&#34;geo&#34;: &#34;US&#34;, &#34;lang&#34;: &#34;en&#34;, &#34;beta&#34;: &#34;yes&#34;, &#34;ptype&#34;: &#34;track_lyrics&#34;, &#34;artist&#34;: &#34;radiohead&#34;, &#34;ar&#34;: &#34;radiohead&#34;, &#34;tag&#34;: &#34;alternative,alternativerock,rock,indie,radiohead&#34;}'
+            data-ads-unitname='/8264/aw-lastfm/music/track/lyrics'
+            data-ads-unitname-mobile='/8264/maw-lastfm/music/track/lyrics'
+            data-ads-zone='/music/track/lyrics'
+            data-ads-env='prod'
+        ></div>
+    
+
+    </div>
+
+    
+        <div
+            data-require="player/providers/spotify/spotify-provider"
+            data-spotify-auth-modal="/player/modal/spotify"
+            data-spotify-premium-modal="/player/modal/spotify-premium"
+            data-spotify-inactive-modal="/player/modal/spotify-inactive"
+            data-spotify-initial-device-modal="/player/modal/spotify-initial-device-detection"
+        ></div>
+
+        <div
+            data-require="player/providers/youtube/youtube-provider"
+            class="video-player"
+            aria-hidden="true"
+            id="youtube-video"
+        >
+            <div class="video-player-inner-wrap">
+                <div class="video-player-embed js-player"></div>
+                <button class="
+                    video-player-close
+                    js-close-player
+                ">Close</button>
+            </div>
+        </div>
+    
+
+
+        
+            
+        
+        
+            
+    
+        
+        
+            <div id="intromercial" data-ad="intromercial" class="intromercial lastfm-ad" data-ads-placement='{&#34;id&#34;: &#34;intromercial&#34;, &#34;out_of_page&#34;: true}'></div>
+        
+        
+    
+
+            
+    
+        
+        
+            <div id="mobile_intromercial" data-ad="mobile_intromercial" class="mobile_intromercial lastfm-ad-mobile" data-ads-placement='{&#34;id&#34;: &#34;mobile_intromercial&#34;, &#34;is_mobile&#34;: true, &#34;out_of_page&#34;: true}'></div>
+        
+        
+    
+
+        
+        
+            
+                <div id="sticky-ad-container"
+                     class="sticky-ad-container"
+                     data-ad-container
+                     data-require="ads/ad-placement-helper">
+                    <button id="sticky-ad-disclose-button"
+                            aria-expanded="true"
+                            aria-controls="sticky-ad-container"
+                            data-disclose-autoclose=""
+                            class="disclose-trigger disclose-active">
+                        Close
+                    </button>
+                    
+    
+        
+        
+            <div id="omni_leaderboard_sticky" data-ad="omni_leaderboard_sticky" class="omni_leaderboard_sticky lastfm-ad" data-ads-placement='{&#34;id&#34;: &#34;omni_leaderboard_sticky&#34;, &#34;sizes&#34;: [[6, 6], [728, 90]]}'></div>
+        
+        
+    
+
+                    
+    
+        
+        
+            <div id="mobile_omni_plus_sticky" data-ad="mobile_omni_plus_sticky" class="mobile_omni_plus_sticky lastfm-ad-mobile" data-ads-placement='{&#34;id&#34;: &#34;mobile_omni_plus_sticky&#34;, &#34;sizes&#34;: [[320, 50], [6, 6]], &#34;is_mobile&#34;: true}'></div>
+        
+        
+    
+
+                </div>
+            
+        
+
+        <script class="js-modal-template" type="text/template">
+            <div class="modal-dialog" role="dialog" aria-labelledby="modal-label">
+                <div class="modal-content" data-require="stats/base-v3">
+                    <div class="modal-actions">
+                        
+                        <button class="modal-dismiss js-close sr-only">Close</button>
+                    </div>
+                    <div js-modal-body class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script>
+            var immediateUseBidBarrelFunctions = ['auction', 'initialize', 'setTargeting', 'destroySlots', 'setConfig', 'on', 'setLazyLoad'];
+            (function(a){
+                var w=window,b='BidBarrel',q='queue';w[b]=w[b]?w[b]:{};w[b][q]=w[b][q]?w[b][q]:[];
+                a.forEach(function(z){w[b][z]=w[b][z]||function(){var c=arguments;w[b][q].push(function(r){w[b][z].apply(w[b],c);r()})}});
+            })(immediateUseBidBarrelFunctions);
+        </script><script id="bb-lib" async src="https://at.cbsi.com/lib/dist/prod/bidbarrel-lastfm.min.js"></script>
+        
+            <script class="js-adblock-message-template" type="text/template">
+                
+    
+    <div><div>
+        <section class="
+            adblock-message
+            adblock-message--adfree
+            link-block
+            js-link-block
+        ">
+            <p class="adblock-message-body">
+                
+                    <strong>Browse ad-free</strong> with a premium Last.fm account
+                
+            </p>
+            
+            <a
+                class="adblock-message-button link-block-target"
+                href="/pro"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageAdfree"
+            >Find out more</a>
+            <a
+                href="/pro"
+                class="
+                    js-link-block-cover-link
+                    link-block-cover-link
+                "
+                tabindex="-1"
+                aria-hidden="true"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageAdfree"
+            ></a>
+        </section>
+    </div></div>
+
+            </script>
+            <script class="js-adblock-message-template" type="text/template">
+                
+    
+    <div><div>
+        <section class="
+            adblock-message
+            adblock-message--support
+            link-block
+            js-link-block
+        ">
+            <p class="adblock-message-body">
+                
+                    <strong>Show your support</strong> with a premium Last.fm account
+                
+            </p>
+            
+            <a
+                class="adblock-message-button link-block-target"
+                href="/pro"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageSupport"
+            >Find out more</a>
+            <a
+                href="/pro"
+                class="
+                    js-link-block-cover-link
+                    link-block-cover-link
+                "
+                tabindex="-1"
+                aria-hidden="true"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageSupport"
+            ></a>
+        </section>
+    </div></div>
+
+            </script>
+            <script class="js-adblock-message-template" type="text/template">
+                
+    
+    <div><div>
+        <section class="
+            adblock-message
+            adblock-message--benefits
+            link-block
+            js-link-block
+        ">
+            <p class="adblock-message-body">
+                
+                    <strong>Get exclusive benefits</strong> with a premium Last.fm account
+                
+            </p>
+            
+            <a
+                class="adblock-message-button link-block-target"
+                href="/pro"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageBenefits"
+            >Find out more</a>
+            <a
+                href="/pro"
+                class="
+                    js-link-block-cover-link
+                    link-block-cover-link
+                "
+                tabindex="-1"
+                aria-hidden="true"
+                data-analytics-action="SubscribeClick"
+                data-analytics-label="AdblockMessageBenefits"
+            ></a>
+        </section>
+    </div></div>
+
+            </script>
+        
+
+        <script>
+            window.lfmDomReadyCallback && window.lfmDomReadyCallback();
+            window.lfmDomReady = true;
+        </script>
+        
+            <link
+                href="/static/styles/build/app-0d308943fb.959eec7e6ab1.css"
+                rel="preload"
+                as="style"
+                charset="utf-8"
+                data-require="shim/rel-preload"
+                media="(min-width: 768px)" 
+            >
+        
+    </body>
+</html>

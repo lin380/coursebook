@@ -68,6 +68,11 @@ tab:pinboard-journals-humanities
 tab:pinboard-journals-cl
 fig:framing-research-visual-summary-graphic
 fig:ad-example-webpage
+fig:ad-example-lyrics-page-lastfm
+fig:ad-inspect-element-artist-lastfm
+fig:ad-inspect-element-lyrics-lastfm
+fig:ad-genre-page-lastfm
+fig:ad-genre-tracks-list-lastfm
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis
@@ -114,9 +119,15 @@ plan
 prepare
 acquire-data
 direct-downloads
+files
+compressed-files
 apis
+open-access
+authentication
 web-scraping
 a-toy-example
+a-practical-example
+scaling-up
 documentation-1
 curate-data
 structured

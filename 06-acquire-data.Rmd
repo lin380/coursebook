@@ -67,11 +67,13 @@ There are three main ways to acquire corpus data using R that I will introduce y
 
 ## Direct downloads
 
-Scenarios
+### Files
 
-1. File download
-2. Compressed file download
+... add ...
 
+### Compressed files
+
+... describe compressed files...
 
 Let's take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the [NLTK data repository site](http://www.nltk.org/nltk_data/). More often than not this file will be some type of compressed archive file with an extension such  as `.zip` or `.tz`, which is the case here. Archive files make downloading multiple files easy by grouping files and directories into one file. In R we can used the `download.file()` function from the base R library^[Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.]. There are a number of **arguments** that a function may require or provide optionally. The `download.file()` function minimally requires two: `url` and `destfile`. That is the file to download and the location where it is to be saved to disk.
 
@@ -341,6 +343,8 @@ Explore this function's documentation (`?tadr::get_compressed_data()`) and/ or v
 
 A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through **Automatic Programming Interfaces** (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, [gutenbergr](https://CRAN.R-project.org/package=gutenbergr) provides access to Project Gutenberg, [rtweet](https://CRAN.R-project.org/package=rtweet) to Twitter, and [Rfacebook](https://CRAN.R-project.org/package=Rfacebook) to Facebook. 
 
+### Open access
+
 Using R package interfaces, however, often requires some more knowledge about R objects and functions. Let's take a look at how to access data from Project Gutenberg through the `gutenbergr` package. Along the way we will touch upon various functions and concepts that are key to working with the R data types vectors and data frames including filtering and writing tabular data to disk in plain-text format. 
 
 To get started let's install and/ or load the `gutenbergr` package. If a package is not part of the R base library, we cannot assume that the user will have the package in their library. The standard approach for installing and then loading a package is by using the `install.packages()` function and then calling `library()`. 
@@ -463,21 +467,21 @@ works_pr <- gutenberg_download(gutenberg_id = ids_sample$gutenberg_id,
 glimpse(works_pr) # summarize the dataset
 ```
 
-At this point we have data and could move on to processing this data in preparation for analysis. However, we are aiming for a reproducible workflow and this code does not conform to our principle of modularity: each subsequent step in our analysis will depend on running this code first. Furthermore, running this code as it is creates issues with bandwidth, as in our previous examples from direct downloads. To address modularity we will write the data to disk in **plain-text format**. In this way each subsequent step in our analysis can access the data locally. To address bandwidth concerns, we will devise a method for checking to see if the data is already downloaded and skip the download, if possible, to avoid accessing the Project Gutenberg server unnecessarily.
+At this point we have data and could move on to processing this dataset in preparation for analysis. However, we are aiming for a reproducible workflow and this code does not conform to our principle of modularity: each subsequent step in our analysis will depend on running this code first. Furthermore, running this code as it is creates issues with bandwidth, as in our previous examples from direct downloads. To address modularity we will write the dataset to disk in **plain-text format**. In this way each subsequent step in our analysis can access the dataset locally. To address bandwidth concerns, we will devise a method for checking to see if the dataset is already downloaded and skip the download, if possible, to avoid accessing the Project Gutenberg server unnecessarily.
 
-To write our data frame to disk we will export it into a standard plain-text format for two-dimensional data: a CSV file (comma-separated value). The CSV structure for this data will look like this:
+To write our data frame to disk we will export it into a standard plain-text format for two-dimensional datasets: a CSV file (comma-separated value). The CSV structure for this dataset will look like this:
 
 ```{r ad-csv-snippet}
 works_pr %>% head() %>% format_csv() %>% cat()
 ```
 
-The first line contains the names of the columns and subsequent lines the observations. Data points that contain commas themselves (e.g. "Shaw, Bernard") are quoted to avoid misinterpreting these commas a deliminators in our data. To write this data to disk we will use the `write_csv()` function. 
+The first line contains the names of the columns and subsequent lines the observations. Data points that contain commas themselves (e.g. "Shaw, Bernard") are quoted to avoid misinterpreting these commas a deliminators in our data. To write this dataset to disk we will use the `reader::write_csv()` function. 
 
 ```{r ad-write-csv-brit, eval=FALSE}
 write_csv(works_pr, file = "../data/original/gutenberg_works_pr.csv")
 ```
 
-To avoid downloading data that already resides on disk, let's implement a similar strategy to the one used for direct downloads (`get_zip_data()`). I've incorporated the code for sampling and downloading data for a particular subject from Project Gutenberg with a control statement to check if the data file already exists into a function I named `get_gutenberg_subject()`. Take a look at this function below. 
+To avoid downloading dataset that already resides on disk, let's implement a similar strategy to the one used for direct downloads (`get_zip_data()`). I've incorporated the code for sampling and downloading data for a particular subject from Project Gutenberg with a control statement to check if the dataset file already exists into a function I named `get_gutenberg_subject()`. Take a look at this function below. 
 
 ```{r ad-get-gutenberg-subject-fun}
 get_gutenberg_subject <- function(subject, target_file, sample_size = 10) {
@@ -549,9 +553,11 @@ data
 
 In sum, this subsection provided an overview to acquiring data from web service APIs through R packages. We took at closer look at the `gutenbergr` package which provides programmatic access to works available on Project Gutenberg. Working with package interfaces requires more knowledge of R including loading/ installing packages, working with vectors and data frames, and exporting data from an R session. We touched on these programming concepts and also outlined a method to create a reproducible workflow. 
 
+### Authentication
+
+
 <!-- Consider:
 
-- TBDBr package for getting the BELC data
 - rtweet package for getting tweet data (Corona virus?)
 
 -->
@@ -606,14 +612,330 @@ Each element in this file is delineated by an opening and closing tag, `<head></
 
 The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let's attempt to extract some information from our toy example. To do this we will need the [rvest](https://CRAN.R-project.org/package=rvest) package. First, install/load the package, then, read and parse the HTML from the character vector named `web_file` assigning the result to `html`.
 
+```{r ad-read-html-toy, cache=FALSE}
+pacman::p_load(rvest) # install/ load `rvest`
+
+html <- read_html(web_file) # read raw html and parse to xml
+html
+```
+
+`read_html()` parses the raw HTML into an object of class `xml_document`. The summary output above shows that tags the HTML structure have been parsed into 'elements'. The tag elements can be accessed by using the `html_elements()` function by specifying the tag to isolate.
+
+```{r ad-parse-html-toy-1, cache=FALSE}
+html %>% 
+  html_elements("div")
+```
+
+Notice that `html_elements("div")` has returned both `div` tags. To isolate one of tags by its class, we add the class name to the tag separating it with a `.`. 
+
+```{r ad-parse-html-toy-2, eval=TRUE, echo=TRUE}
+html %>% 
+  html_elements("div.intro")
+```
+
+Great. Now say we want to drill down and isolate the subordinate `<p>` nodes. We can add `p` to our node filter.
+
+```{r ad-parse-html-toy-3}
+html %>% 
+  html_elements("div.intro p")
+```
+
+To extract the text contained within a node we use the `html_text()` function.
+
+```{r ad-parse-html-toy-4, eval=TRUE, echo=TRUE}
+html %>% 
+  html_elements("div.intro p") %>% 
+  html_text()
+```
+
+The result is a character vector with two elements corresponding to the text contained in each `<p>` tag. If you were paying close attention you might have noticed that the second element in our vector includes extra whitespace after the period. To trim leading and trailing whitespace from text we can add the `trim = TRUE` argument to `html_text()`.
+
+```{r ad-parse-html-toy-5, eval=TRUE, echo=TRUE}
+html %>% 
+  html_elements("div.intro p") %>% 
+  html_text(trim = TRUE)
+```
+
+From here we would then work to organize the text into a format we want to store it in and write the results to disk. Let's leave writing data to disk for later in the chapter. For now keep our focus on working with `rvest` to acquire data from html documents working with a more practical example.
+
+### A practical example
+
+<!-- update: change website to scrape -->
+<!-- remember to remove `eval = FALSE` from code chunks to run -->
+
+With some basic understanding of HTML and how to use the `rvest` package, let's turn to a realistic example. Say we want to acquire lyrics from the online music website and database [last.fm](https://www.last.fm/). The first step in any web scrape is to investigate the site and page(s) we want to scrape to ascertain if there any licensing restrictions. Many, but not all websites, will include a plain text file [`robots.txt`](https://www.cloudflare.com/learning/bots/what-is-robots.txt/) at the root of the main URL. This file is declares which webpages a 'robot' (including web scraping scripts) can and cannot access. We can use the `robotstxt` package to find out which URLs are accessible ^[It is important to check the paths of sub-domains as some website allow access in some areas and not in others].
+
+<!-- change domain -->
+
+```{r ad-web-permissions}
+pacman::p_load(robotstxt) # load/ install `robotstxt`
+
+paths_allowed(paths = "https://www.last.fm/") # check permissions
+```
+
+<!-- screenshot of page to scrape -->
+
+The next step includes identifying the URL we want to target and exploring the structure of the HTML document. Take the following webpage I have identified, seen in Figure \@ref(fig:ad-example-lyrics-page-lastfm). 
+
+```{r ad-example-lyrics-page-lastfm, echo=FALSE, fig.cap='Lyrics page from last.fm'}
+knitr::include_graphics("images/06-acquire-data/ad-lastfm-webpage-lyrics.png")
+```
+
+As in our toy example, first we want to feed the HTML web address to the `read_html()` function to parse the tags into elements. We will then assign the result to `html`.
+
+<!-- rvest::read_html() -->
+
+```{r ad-read-write-read-page-x, echo=FALSE, eval=FALSE}
+# download page, as to avoid server load/ article limits
+pacman::p_load(httr)
+# get and write to disk
+GET(url = "https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics", write_disk(path = "resources/06-acquire-data/lastfm_web.html"))
+```
+
+<!-- show code, but don't evaluate -->
+
+```{r ad-read-page-lyrics-lastfm, eval=FALSE}
+# read and parse html as an xml object
+lyrics_url <- "https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics"
+html <- read_html(lyrics_url) # read raw html and parse to xml
+html
+```
+
+<!-- show html object -->
+
+```{r ad-print-html-lyrics-lastfm, echo=FALSE}
+lyrics_url <- "https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics" # to use later 
+# read page back in from disk
+html <- read_html(x = "resources/06-acquire-data/lastfm_web.html", encoding = "UTF-8")
+html
+```
 
 
+At this point we have captured and parsed the raw HTML assigning it to the object named `html`. The next step is to identify the html elements that contain the information we want to extract from the page. To do this it is helpful to use a browser to inspect specific elements of the webpage. Your browser will be equipped with a command that you can enable by hovering your mouse over the element of the page you want to target and using a right click to select "Inspect" (Chrome) or "Inspect Element" (Safari, Brave). This will split your browser window vertical or horizontally showing you the raw HTML underlying the webpage.
+
+```{r ad-inspect-element-artist-lastfm, echo=FALSE, fig.cap='Using the "Inspect Element" command to explore raw html.'}
+knitr::include_graphics("images/06-acquire-data/ad-lastfm-artist-inspect.png")
+```
+
+<!-- change class/ tag/ attribute appropriately -->
+
+From Figure \@ref(fig:ad-inspect-element-lyrics-lastfm) we see that the element we want to target is contained within an `<a></a>` tag. Now this tag is common and we don't want to extract every `a` so we use the class `header-new-crumb` to specify we only want the artist name. Using the convention described in our toy example, we can isolate the artist of the lyrics page.
+
+<!-- change class/ tag/ attribute appropriately -->
+
+```{r ad-extract-artist-lastfm-1}
+html %>% 
+  html_element("a.header-new-crumb")
+```
+
+We can then extract the text with `html_text()`.
+
+```{r ad-extract-artist-lastfm-2}
+artist <- 
+  html %>% 
+  html_element("a.header-new-crumb") %>% 
+  html_text()
+artist
+```
+
+Let's extract the song title in the same way. 
+
+<!-- change class/ tag/ attribute appropriately -->
+
+```{r ad-extract-song-title}
+song <- 
+  html %>% 
+  html_element("h1.header-new-title") %>% 
+  html_text()
+song
+```
+
+Now if we inspect the HTML of the lyrics page, we will notice that the lyrics are contained in `<p></p>` tags with the class `lyrics-paragraph`. 
+
+```{r ad-inspect-element-lyrics-lastfm, echo=FALSE, fig.cap='Using the "Inspect Element" command to explore raw html.'}
+knitr::include_graphics("images/06-acquire-data/ad-lastfm-lyrics-inspect.png")
+```
 
 
+Since there are multiple elements that we want to extract, we will need to use the `html_elements()` function instead of the `html_element()` which only targets one element.
+
+```{r ad-extract-lyrics}
+lyrics <- 
+  html %>% 
+  html_elements("p.lyrics-paragraph") %>% 
+  html_text()
+lyrics
+```
 
 
+At this point, we have isolated and extracted the artist, song, and lyrics from the webpage. Each of these elements are stored in character vectors in our R session. To complete our task we need to write this data to disk as plain text. With an eye towards a tidy dataset, an ideal format to store the data is in a CSV file where each column corresponds to one of the elements from our scrape and each row an observation. A CSV file is a tabular format and so before we can write the data to disk let's coerce the data that we have into tabular format. We will use the `tibble()` function here to streamline our data frame creation. ^[`tibble` objects are `data.frame` objects with some added extra bells and whistles that we won't get into here.] Feeding each of the vectors `artist`, `song`, and `lyrics` as arguments to `tibble()` creates the tabular format we are looking for.
 
+```{r ad-create-tibble-lastfm-1}
+tibble(artist, song, lyrics) %>% 
+  glimpse()
+```
 
+Notice that there are seven rows in this data frame, one corresponding to each paragraph in `lyrics`. R has a bias towards working with vectors of the same length. As such each of the other vectors (`artist`, and `song`) are replicated, or recycled, until they are the same length as the longest vector `lyrics`, which a length of seven. 
+
+For good documentation let's add our object `lyrics_url` to the data frame, which contains the actual web link to this page, and assign the result to `song_lyrics`.
+
+```{r ad-create-tibble-lastfm-2}
+song_lyrics <- tibble(artist, song, lyrics, lyrics_url)
+```
+
+The final step is to write this data to disk. To do this we will use the `write_csv()` function. 
+
+<!-- adjust target file -->
+
+```{r ad-write-csv-lastfm, eval=FALSE}
+write_csv(x = song_lyrics, path = "../data/original/lyrics.csv")
+```
+
+### Scaling up
+
+At this point you may be think, 'Great, I can download data from a single page, but what about downloading multiple pages?' Good question. That's really where the strength of a programming approach takes hold. Extracting information from multiple pages is not fundamentally different than working with a single page. However, it does require more sophisticated understanding of the web and R coding strategies, in particular __iteration__.  
+
+The first step is to create a couple functions to make it possible to efficiently reuse the code we have developed so far: 
+
+1. the `get_lyrics` function wraps the code for scraping a single lyrics webpage from last.fm. 
+
+```{r ad-get-lyrics-function}
+get_lyrics <- function(lyrics_url) {
+  # Function: Scrape last.fm lyrics page for: artist, song, 
+  # and lyrics from a provided content link. 
+  # Return as a tibble/data.frame
+  
+  cat("Scraping song lyrics from:", lyrics_url, "\n")
+  
+  pacman::p_load(tidyverse, rvest) # install/ load package(s)
+  
+  url <- url(lyrics_url, "rb") # open url connection 
+  html <- read_html(url) # read and parse html as an xml object
+  close(url) # close url connection
+  
+  artist <- 
+    html %>% 
+    html_element("a.header-new-crumb") %>% 
+    html_text()
+  
+  song <- 
+    html %>% 
+    html_element("h1.header-new-title") %>% 
+    html_text()
+  
+  lyrics <- 
+    html %>% 
+    html_elements("p.lyrics-paragraph") %>% 
+    html_text()
+  
+  cat("...one moment ")
+  
+  Sys.sleep(1) # sleep for 1 second to reduce server load
+  
+  song_lyrics <- tibble(artist, song, lyrics, lyrics_url)
+  
+  cat("... done! \n")
+  
+  return(song_lyrics)
+}
+```
+
+```{block2, type="rmdtip"}
+The `get_lyrics` function includes all of the code developed previously, but also includes: (1) output messages (`cat()`), (2) a processing pause (`Sys.sleep()`), and (3) code to manage opening and closing web connections (`url()` and `close()`). 
+
+Points (1) and (2) will be useful when we iterate over this function to provide status messages and to reduce server load when processing multiple webpages from a web domain. (3) will be necessary to manage webpages that are non-existent. As we will see, we will generate url link to multiple song lyrics some of which will not be valid. To avoid errors that will stop the processing these steps have been incorporated here.
+```
+
+2. the `write_content` writes the webscraped data to our local machine, including functionality to create the necessary directory structure of the target file path we choose.
+
+```{r ad-write-content-function}
+write_content <- function(content, target_file) {
+  # Function: Write the tibble content to disk. Create the directory if
+  # it does not already exist.
+  
+  pacman::p_load(tidyverse) # install/ load packages
+  
+  target_dir <- dirname(target_file) # identify target file directory structure
+  dir.create(path = target_dir, recursive = TRUE, showWarnings = FALSE) # create directory
+  write_csv(content, target_file) # write csv file to target location
+  
+  cat("Content written to disk!\n")
+}
+```
+
+With just these two functions, we can take a lyrics URL from last.fm and scrape and write the data to disk like this. 
+
+```{r ad-get-write-single-lyric-lastfm, eval=FALSE}
+lyrics_url <- "https://www.last.fm/music/Pixies/_/Where+Is+My+Mind%3F/+lyrics"
+
+lyrics_url %>% 
+  get_lyrics() %>% 
+  write_content(target_file = "../data/original/lastfm/lyrics.csv")
+```
+
+```bash
+data/original/lastfm/
+└── lyrics.csv
+```
+
+Now we could manually search and copy URLs and run this function pipeline. This would be fine if we had just a few particular URLs that we wanted to scrape. But if we want to, say, scrape a set of lyrics grouped by genre. We would probably want a more programmatic approach. The good news is we can leverage our understanding of webscraping to scrape last.fm to harvest the information needed to create and store links to songs by genre. We can then pass these links to a pipeline, similar to the previous one, to scrape lyrics for many songs and store the results in files grouped by genre.
+
+Get the lyrics from top songs from a specific genre. 
+
+```{r ad-genre-page-lastfm, echo=FALSE, fig.cap='Genre page on last.fm'}
+knitr::include_graphics("images/06-acquire-data/ad-lastfm-genres.png")
+```
+
+Diving into a a particular genre, 'rock' for example, you will get a listing of the top tracks in that genre. 
+
+```{r ad-genre-tracks-list-lastfm, echo=FALSE, fig.cap='Tracks by genre list page on last.fm'}
+knitr::include_graphics("images/06-acquire-data/ad-lastfm-genre-tracks-list.png")
+```
+Inspecting the HTML elements for the track names in Figure \@ref(fig:ad-genre-tracks-list-lastfm), we can see that a relative URL is found for the track. In this case, I have 'Smells Like Teen Spirit' by Nirvana highlighted in the inspector. If we follow this link to the track page and then to the lyrics for the track, you will notice that the relative URL on the track listings page has all the unique information. Only the web domain `https://www.last.fm` and the post-pended `/+lyrics` is missing. 
+
+So with this we can put together a function which gets the track listing for a last.fm genre, scrapes the relative URLs for each of the tracks, and creates a full absolute URL to the lyrics page. 
+
+```{r ad-get-genre-lyrics-url-lastfm}
+get_genre_lyrics_urls <- function(last_fm_genre) {
+  # Function: Scrapes a given last.fm genre title for top tracks in
+  # that genre and then creates links to the lyrics pages for these tracks
+  
+  cat("Scraping top songs from:", last_fm_genre, "genre: \n")
+  
+  pacman::p_load(tidyverse, rvest) # install/ load packages
+  
+  # create web url for the genre listing page
+  genre_listing_url <- 
+    paste0("https://www.last.fm/tag/", last_fm_genre, "/tracks") 
+  
+  genre_lyrics_urls <- 
+    read_html(genre_listing_url) %>% # read raw html and parse to xml
+    html_elements("td.chartlist-name a") %>% # isolate the track elements
+    html_attr("href") %>% # extract the href attribute
+    paste0("https://www.last.fm", ., "/+lyrics") # join the domain, relative artist path, and the post-pended /+lyrics to create an absolute URL
+  
+  return(genre_lyrics_urls)
+}
+```
+
+With this function, all we need is to identify verbatim way last.fm lists the genres. For Rock, it is `rock` but for Hip Hop, it is `hip+hop`. 
+
+```{r ad-save-get-genre-lyrics-urls-lastfm, echo=FALSE, eval=FALSE}
+hip_hop_lyrics <- get_genre_lyrics_urls("hip+hop")
+saveRDS(hip_hop_lyrics, file = "resources/06-acquire-data/hip_hop_lyrics.rds")
+```
+
+```{r ad-demo-get-genre-lyrics-urls-lastfm, eval=FALSE}
+get_genre_lyrics_urls("hip+hop") %>%  # get urls for top hip hop tracks
+  head(n = 10) # only display 10 tracks
+```
+
+```{r ad-print-get-genre-lyrics-urls-lastfm, echo=FALSE}
+hip_hop_lyrics <- read_rds(file = "resources/06-acquire-data/hip_hop_lyrics.rds")
+cat("Scraping top songs from: hip+hop genre:\n")
+hip_hop_lyrics %>% 
+  head(n = 10)
+```
 
 
 

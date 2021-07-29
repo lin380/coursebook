@@ -2,7 +2,7 @@
 title: "Coursebook"
 subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research with R"
 author: "Jerid Francom"
-date: "July 25, 2021 (latest version)"
+date: "July 29, 2021 (latest version)"
 site: bookdown::bookdown_site
 bibliography: [coursebook.bib, packages.bib]
 biblio-style: apalike

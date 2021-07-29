@@ -52,15 +52,45 @@ GOALS:
 
 Overview...
 
+<!-- Curation points:
+
+Unit of analysis
+- separate/ segment (e.g. sentences into words)
+- conflate/ collapse (e.g. paragraphs into texts)
+
+-->
+
+
+
 ## Structured
 
 ...
 
+<!-- Consider:
+
+- TBDBr package for the BELC data
+- ...
+
+-->
+
 ## Semi-structured
+
+<!-- Consider:
+
+- Switchboard Dialog Act Corpus
+
+-->
 
 ...
 
 ## Unstructured
+
+<!-- Consider:
+
+- Europarle Corpus
+
+-->
+
 
 ...
 
