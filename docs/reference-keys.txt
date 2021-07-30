@@ -67,6 +67,8 @@ tab:pinboard-journals-linguistics
 tab:pinboard-journals-humanities
 tab:pinboard-journals-cl
 fig:framing-research-visual-summary-graphic
+fig:ad-show-page-cedel2-1
+fig:ad-show-page-cedel2-2
 fig:ad-example-webpage
 fig:ad-example-lyrics-page-lastfm
 fig:ad-inspect-element-artist-lastfm
@@ -118,9 +120,9 @@ identify
 plan
 prepare
 acquire-data
-direct-downloads
-files
-compressed-files
+downloads
+manual
+programmatic
 apis
 open-access
 authentication
@@ -145,7 +147,7 @@ section
 inference-packages
 prediction
 section-1
-summary-4
+summary-5
 exploration
 section-2
 exploration-packages

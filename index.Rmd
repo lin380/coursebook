@@ -1,6 +1,6 @@
 --- 
 title: "Coursebook"
-subtitle: "Text as Data: An introduction to quantative text analysis and reproducible research with R"
+subtitle: "Text as Data: An introduction to quantitative text analysis and reproducible research with R"
 author: "Jerid Francom"
 date: "`r format(Sys.Date(), '%B %d, %Y')` (latest version)"
 site: bookdown::bookdown_site

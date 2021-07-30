@@ -52,11 +52,25 @@ GOALS:
 
 Overview...
 
-<!-- Curation points:
+<!-- 
+
+Curation points:
 
 Unit of analysis
 - separate/ segment (e.g. sentences into words)
 - conflate/ collapse (e.g. paragraphs into texts)
+
+Regular expressions
+
+Tidyverse
+- dplry::mutate
+- stringr::str_
+- 
+
+Cases: 
+
+- Using music lyrics by genre to explore phrasal verbs (useful in ESL learning) [@Akbary2018], consider Cambridge Dictionary definitions (https://dictionary.cambridge.org/grammar/british-grammar/phrasal-verbs-and-multi-word-verbs)
+- ...
 
 -->
 
@@ -69,7 +83,7 @@ Unit of analysis
 <!-- Consider:
 
 - TBDBr package for the BELC data
-- ...
+- last.fm webscrape
 
 -->
 
@@ -78,6 +92,7 @@ Unit of analysis
 <!-- Consider:
 
 - Switchboard Dialog Act Corpus
+- ACTIV-ES corpus
 
 -->
 
@@ -88,6 +103,7 @@ Unit of analysis
 <!-- Consider:
 
 - Europarle Corpus
+- ...
 
 -->
 

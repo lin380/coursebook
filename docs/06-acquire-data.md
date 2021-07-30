@@ -62,21 +62,44 @@ Overview... (edit)
 
 I will provide an overview of the first of three common strategies for acquiring corpus data in R: accessing corpus data from data repositories and individual sites. I will cover acquiring data from different sources and introduce you to the R code that will help speed the process, maintain consistency in our data, and set the stage for a reproducible workflow.
 
-There are three main ways to acquire corpus data using R that I will introduce you to: **direct download**, **package interfaces**, and **web scraping**. In this chapter we will start by directly downloading a corpus as it is the most straightforward process for the novice R programmer and incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions.
+There are three main ways to acquire corpus data using R that I will introduce you to: **downloads**, **APIs**, and **web scraping**. In this chapter we will start by manual and programmatically downloading a corpus as it is the most straightforward process for the novice R programmer and typically incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions. Using R packages to interface with APIs involves delving into more detail about R objects and custom functions. Finally acquiring data from the web is the most idiosyncratic and involves both knowledge of the web, more sophisticated R skills, and often some clever hacking skills. 
 
 
-## Direct downloads
+## Downloads
 
-### Files
+### Manual
 
-... add ...
+The first acquisition method I will cover here is inherently non-reproducible from the standpoint that the programming implementation cannot acquire the data based solely on running the project code itself. In other words, it requires manual intervention. Manual downloads are typical for data resources which are not openly accessible on the public facing web. These can be resources that require institutional or private licensing ([Language Data Consortium](https://www.ldc.upenn.edu/), [International Corpus of English](http://ice-corpora.net/ice/), [BYU Corpora](https://www.corpusdata.org/), etc.), require authorization/ registration ([The Language Archive](https://archive.mpi.nl/tla/), [COW Corpora](https://www.webcorpora.org/), etc.), and/ or are only accessible via resource search interfaces ([Corpus of Spanish in Southern Arizona](https://cesa.arizona.edu/), [Corpus Escrito del Español como L2 (CEDEL2)](http://cedel2.learnercorpora.com/), etc.). 
 
-### Compressed files
+Let's work with the CEDEL2 corpus [@Lozano2009] which provides a search interface and open access to the data through the search interface. The homepage can be seen in Figure \@ref(fig:ad-show-page-cedel2-1). 
 
-... describe compressed files...
+<div class="figure" style="text-align: center">
+<img src="images/06-acquire-data/ad-cedel2-site.png" alt="CEDEL2 Corpus homepage" width="90%" />
+<p class="caption">(\#fig:ad-show-page-cedel2-1)CEDEL2 Corpus homepage</p>
+</div>
 
-Let's take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the [NLTK data repository site](http://www.nltk.org/nltk_data/). More often than not this file will be some type of compressed archive file with an extension such  as `.zip` or `.tz`, which is the case here. Archive files make downloading multiple files easy by grouping files and directories into one file. In R we can used the `download.file()` function from the base R library^[Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.]. There are a number of **arguments** that a function may require or provide optionally. The `download.file()` function minimally requires two: `url` and `destfile`. That is the file to download and the location where it is to be saved to disk.
+Following the search/ download link you can find a search interface that allows the user to select the sub-corpus of interest. I've selected the subcorpus "Learners of L2 Spanish" and specified the L1 as English. 
 
+<div class="figure" style="text-align: center">
+<img src="images/06-acquire-data/ad-cedel2-search-download.png" alt="Search and download interface for the CEDEL2 Corpus" width="90%" />
+<p class="caption">(\#fig:ad-show-page-cedel2-2)Search and download interface for the CEDEL2 Corpus</p>
+</div>
+
+The 'Download' link now appears for this search criteria. Following this link will provide the user a form to fill out. This particular resource allows for access to different formats to download (Texts only, Texts with metadata, CSV (Excel), CSV (Others)). I will select the 'CSV (Others)' option so that the data is structured for easier processing downstream when we work to curate the data in our next processing step. Then I will choose to save the CSV in the `data/original/` directory of my project and create a sub-directory called `cedel2/`. 
+
+```bash
+data/
+├── derived
+└── original
+    └── cedel2
+       └── texts.csv
+```
+
+Other resources will inevitably include unique processes to obtaining the data, but in the end the data should be archived in the research structure in the `data/original/` directory and be treated as 'read-only'. 
+
+### Programmatic
+
+There are many resources that provide corpus data is directly accessible for which programmatic approaches can be applied. Let's take a look at how this works starting with the a sample from the Switchboard Corpus, a corpus of 2,400 telephone conversations by 543 speakers. First we navigate to the site with a browser and download the file that we are looking for. In this case I found the Switchboard Corpus on the [NLTK data repository site](http://www.nltk.org/nltk_data/). More often than not this file will be some type of compressed archive file with an extension such  as `.zip` or `.tz`, which is the case here. Archive files make downloading large single files or multiple files easy by grouping files and directories into one file. In R we can used the `download.file()` function from the base R library^[Remember base R packages are installed by default with R and are loaded and accessible by default in each R session.]. There are a number of **arguments** that a function may require or provide optionally. The `download.file()` function minimally requires two: `url` and `destfile`. That is the file to download and the location where it is to be saved to disk.
 
 
 ```r
@@ -662,9 +685,12 @@ data
         └── transcript
 ```
 
-In sum, this subsection provided an overview to acquiring data from web service APIs through R packages. We took at closer look at the `gutenbergr` package which provides programmatic access to works available on Project Gutenberg. Working with package interfaces requires more knowledge of R including loading/ installing packages, working with vectors and data frames, and exporting data from an R session. We touched on these programming concepts and also outlined a method to create a reproducible workflow. 
+
 
 ### Authentication
+
+
+[rtweet](https://CRAN.R-project.org/package=rtweet) [@rtweet-package]
 
 
 <!-- Consider:
@@ -673,15 +699,15 @@ In sum, this subsection provided an overview to acquiring data from web service 
 
 -->
 
-
+In sum, this subsection provided an overview to acquiring data from web service APIs through R packages. We took at closer look at the `gutenbergr` package which provides programmatic access to works available on Project Gutenberg and the `rtweet` package which provides authenticated access to Twitter. Working with package interfaces requires more knowledge of R including loading/ installing packages, working with vectors and data frames, and exporting data from an R session. We touched on these programming concepts and also outlined a method to create a reproducible workflow. 
 
 ## Web scraping
 
-There are many resources available through direct downloads from repositories and individual sites and R package interfaces to web resources with APIs, but these resources are relatively limited to the amount of public-facing textual data recorded on the web. In the case that you want to acquire data from webpages R can be used to access the web programmatically through a process known as web scraping. The complexity of web scrapes can vary but in general it requires more advanced knowledge of R as well as the structure of the language of the web: HTML (Hypertext Markup Language).
+There are many resources available through manula and direct downloads from repositories and individual sites and R package interfaces to web resources with APIs, but these resources are relatively limited to the amount of public-facing textual data recorded on the web. In the case that you want to acquire data from webpages, R can be used to access the web programmatically through a process known as web scraping. The complexity of web scrapes can vary but in general it requires more advanced knowledge of R as well as the structure of the language of the web: HTML (Hypertext Markup Language).
 
 ### A toy example
 
-HTML is a cousin of XML and as such organizes web documents in a hierarchical format that is read by your browser as you navigate the web. Take for example the toy webpage I created for this demonstration in Figure \@ref(fig:ad-example-webpage).
+HTML is a cousin of XML (eXtensible Markup Language) and as such organizes web documents in a hierarchical format that is read by your browser as you navigate the web. Take for example the toy webpage I created as a demonstration in Figure \@ref(fig:ad-example-webpage).
 
 <div class="figure" style="text-align: center">
 <img src="images/06-acquire-data/example-webpage.png" alt="Example web page." width="90%" />
@@ -721,7 +747,7 @@ The file accessed by my browser to render this webpage is `test.html` and in pla
 
 Each element in this file is delineated by an opening and closing tag, `<head></head>`. Tags are nested within other tags to create the structural hierarchy. Tags can take class and id labels to distinguish them from other tags and often contain other attributes that dictate how the tag is to behave when rendered visually by a browser. For example, there are two `<div>` tags in our toy example: one has the label `class = "intro"` and the other `class = "conc"`. `<div>` tags are often used to separate sections of a webpage that may require special visual formatting. The `<a>` tag, on the other hand, creates a web link. As part of this tag's function, it requires the attribute `href=` and a web protocol --in this case it is a link to an email address `mailto:francojc@wfu.edu`. More often than not, however, the `href=` contains a URL (Uniform Resource Locator). A working example might look like this: `<a href="https://francojc.github.io/">My homepage</a>`.
 
-The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let's attempt to extract some information from our toy example. To do this we will need the [rvest](https://CRAN.R-project.org/package=rvest) package. First, install/load the package, then, read and parse the HTML from the character vector named `web_file` assigning the result to `html`.
+The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let's attempt to extract some information from our toy example. To do this we will need the [rvest](https://CRAN.R-project.org/package=rvest)[@R-rvest] package. First, install/load the package, then, read and parse the HTML from the character vector named `web_file` assigning the result to `html`.
 
 
 ```r
@@ -953,7 +979,7 @@ write_csv(x = song_lyrics, path = "../data/original/lyrics.csv")
 
 At this point you may be think, 'Great, I can download data from a single page, but what about downloading multiple pages?' Good question. That's really where the strength of a programming approach takes hold. Extracting information from multiple pages is not fundamentally different than working with a single page. However, it does require more sophisticated understanding of the web and R coding strategies, in particular __iteration__.  
 
-The first step is to create a couple functions to make it possible to efficiently reuse the code we have developed so far: 
+Before we get to iteration, let's first create a couple functions to make it possible to efficiently reuse the code we have developed so far: 
 
 1. the `get_lyrics` function wraps the code for scraping a single lyrics webpage from last.fm. 
 
@@ -1035,7 +1061,7 @@ data/original/lastfm/
 
 Now we could manually search and copy URLs and run this function pipeline. This would be fine if we had just a few particular URLs that we wanted to scrape. But if we want to, say, scrape a set of lyrics grouped by genre. We would probably want a more programmatic approach. The good news is we can leverage our understanding of webscraping to scrape last.fm to harvest the information needed to create and store links to songs by genre. We can then pass these links to a pipeline, similar to the previous one, to scrape lyrics for many songs and store the results in files grouped by genre.
 
-Get the lyrics from top songs from a specific genre. 
+Last.fm provides a genres page where some of the top genres are listed and can be further explored.  
 
 <div class="figure" style="text-align: center">
 <img src="images/06-acquire-data/ad-lastfm-genres.png" alt="Genre page on last.fm" width="90%" />
@@ -1048,7 +1074,8 @@ Diving into a a particular genre, 'rock' for example, you will get a listing of 
 <img src="images/06-acquire-data/ad-lastfm-genre-tracks-list.png" alt="Tracks by genre list page on last.fm" width="90%" />
 <p class="caption">(\#fig:ad-genre-tracks-list-lastfm)Tracks by genre list page on last.fm</p>
 </div>
-Inspecting the HTML elements for the track names in Figure \@ref(fig:ad-genre-tracks-list-lastfm), we can see that a relative URL is found for the track. In this case, I have 'Smells Like Teen Spirit' by Nirvana highlighted in the inspector. If we follow this link to the track page and then to the lyrics for the track, you will notice that the relative URL on the track listings page has all the unique information. Only the web domain `https://www.last.fm` and the post-pended `/+lyrics` is missing. 
+
+If we inspect the HTML elements for the track names in Figure \@ref(fig:ad-genre-tracks-list-lastfm), we can see that a relative URL is found for the track. In this case, I have 'Smells Like Teen Spirit' by Nirvana highlighted in the inspector. If we follow this link to the track page and then to the lyrics for the track, you will notice that the relative URL on the track listings page has all the unique information. Only the web domain `https://www.last.fm` and the post-pended `/+lyrics` is missing. 
 
 So with this we can put together a function which gets the track listing for a last.fm genre, scrapes the relative URLs for each of the tracks, and creates a full absolute URL to the lyrics page. 
 
@@ -1076,7 +1103,7 @@ get_genre_lyrics_urls <- function(last_fm_genre) {
 }
 ```
 
-With this function, all we need is to identify verbatim way last.fm lists the genres. For Rock, it is `rock` but for Hip Hop, it is `hip+hop`. 
+With this function, all we need is to identify the verbatim way last.fm lists the genres. For Rock, it is `rock` but for Hip Hop, it is `hip+hop`. 
 
 
 
@@ -1101,9 +1128,162 @@ get_genre_lyrics_urls("hip+hop") %>%  # get urls for top hip hop tracks
 #> [10] "https://www.last.fm/music/Juzhin/_/Flunk-Down+(Juzhin+Remix)/+lyrics"
 ```
 
+So now we have a method to scrape URLs by genre and list them in a vector. Our approach, then, could be to pass these lyrics URLs to our existing pipeline which downloads the lyrics (`get_lyrics()`) and then writes them to disk (`write_content()`). 
 
+
+```r
+# Note: will not run
+get_genre_lyrics_urls("hip+hop") %>% # get lyrics urls for specific genre
+  get_lyrics() %>% # scrape lyrics url
+  write_content(target_file = "../data/original/lastfm/hip_hop.csv") # write to disk
+```
+
+This approach, however, has a couple problems. (1) our `get_lyrics()` function only takes one URL at a time, but the result of `get_genre_lyrics_urls()` will produce many URLs. We will be able to solve this with iteration using the [purrr]() package, specifically the `map()` function which will iteratively map each URL output from `get_genre_lyrics_urls()` to `get_lyrics()` in turn. (2) the output from our iterative application of `get_lyrics()` will produce a tibble for each URL, which then sets up a problem with writing the tibbles to disk with the `write_content()` function. To avoid this we will want to combine the tibbles into one single tibble and then send it to be written to disk. The `bind_rows()` function will do just this. 
+
+
+```r
+# Note: will run, but with occasional errors
+get_genre_lyrics_urls("hip+hop") %>% # get lyrics urls for specific genre
+  map(get_lyrics) %>%  # scrape lyrics url
+  bind_rows() %>% # combine tibbles into one
+  write_content(target_file = "../data/original/lastfm/hip_hop.csv") # write to disk
+```
+
+This preceding pipeline conceptually will work. However, on my testing, it turns out that some of the URLs that are generated in the `get_genre_lyrics_urls()` do not exist on the site. That is, the song is listed but no lyrics have been added to the song site. This will mean that when the URL is sent to the `get_lyrics()` function, there will be an error when attempting to download and parse the page with `read_html()` which will halt the entire process. To avoid this error, we can wrap the `get_lyrics()` function in a function designed to attempt to download and parse the URL (`tryCatch()`), but if there is an error, it will skip it and move on to the next URL without stopping the processing. This approach is reflected in the `get_lyrics_catch()` function below. 
+
+
+```r
+# Wrap the `get_lyrics()` function with `tryCatch()` to skip URLs that have no
+# lyrics
+
+get_lyrics_catch <- function(lyrics_url) {
+    tryCatch(get_lyrics(lyrics_url), error = function(e) return(NULL))  # no, URL, return(NULL)/ skip
+}
+```
+
+Updating the pipeline with the `get_lyrics_catch()` function would look like this:
+
+
+```r
+# Note: will run, but we can do better
+get_genre_lyrics_urls("hip+hop") %>% # get lyrics urls for specific genre
+  map(get_lyrics_catch) %>%  # scrape lyrics url
+  bind_rows() %>% # combine tibbles into one
+  write_content(target_file = "../data/original/lastfm/hip_hop.csv") # write to disk
+```
+
+This will work, but as we have discussed before one of this goals we have we acquiring data for a reproducible research project is to make sure that we are developing efficient code that will not burden site's server we are scraping from. In this case, we would like to check to see if the data is already downloaded. If not, then the script should run. If so, then the script does not run. Of course this is a perfect use of a conditional statement. To make this a single function we can call, I've wrapped the functions we created for getting lyric URLs from last.fm, scraping the URLs, and writing the results to disk in the `download_lastfm_lyrics()` function below. I also added a line to add a `last_fm_genre` column to the combined tibble to store the name of the genre we scraped (i.e. `mutate(genre = last_fm_genre)`.
+
+
+```r
+download_lastfm_lyrics <- function(last_fm_genre, target_file) {
+    # Function: get last.fm lyric urls by genre and write them to disk
+
+    if (!file.exists(target_file)) {
+
+        cat("Downloading data.\n")
+
+        get_genre_lyrics_urls(last_fm_genre) %>%
+            map(get_lyrics_catch) %>%
+            bind_rows() %>%
+            mutate(genre = last_fm_genre) %>%
+            write_content(target_file)
+
+    } else {
+        cat("Data already downloaded!\n")
+    }
+}
+```
+
+Now we can call this function on any genre on the last.fm site and download the top 50 song lyrics for that genre (provided they all have lyrics pages).
+
+
+```r
+# Scrape lyrics for 'pop'
+download_lastfm_lyrics(last_fm_genre = "pop", target_file = "../data/original/lastfm/pop.csv")
+
+# Scrape lyrics for 'rock'
+download_lastfm_lyrics(last_fm_genre = "rock", target_file = "../data/original/lastfm/rock.csv")
+
+# Scrape lyrics for 'hip hop'
+download_lastfm_lyrics(last_fm_genre = "hip+hop", target_file = "../data/original/lastfm/hip_hop.csv")
+
+# Scrape lyrics for 'metal'
+download_lastfm_lyrics(last_fm_genre = "metal", target_file = "../data/original/lastfm/metal.csv")
+```
+
+Now we can see that our web scrape data is organized in a similar fashion to the other data we acquired in this chapter.
+
+```bash
+data/
+├── derived
+└── original
+    ├── gutenberg
+    │   ├── works_pq.csv
+    │   └── works_pr.csv
+    ├── lastfm
+    │   ├── hip_hop.csv
+    │   ├── metal.csv
+    │   ├── pop.csv
+    │   └── rock.csv
+    ├── sbc
+    │   ├── meta-data
+    │   └── transcriptions
+    └── scs
+        ├── README
+        ├── discourse
+        ├── disfluency
+        ├── tagged
+        ├── timed-transcript
+        └── transcript
+```
+
+Again, it is important to add these custom functions to our `acquire_functions.R` script in the `functions/` directory so we can access them in our scripts more efficiently and make our analysis steps more succinct and legible. 
+
+
+In this section we covered scraping language data from the web. The rvest package provides a host of functions for downloading and parsing HTML. We first looked at a toy example to get a basic understanding of how HTML works and then moved to applying this knowledge to a practical example. To maintain a reproducible workflow, the code developed in this example was grouped into task-oriented functions which were in turn joined and wrapped into a function that provided convenient access to our workflow and avoided unnecessary downloads (in the case the data already exists on disk).
+
+Here we have built on previously introduced R coding concepts and demonstrated various others. Web scraping often requires more knowledge of and familiarity with R as well as other web technologies. Rest assured, however, practice will increase confidence in your abilities. I encourage you to practice on your own with other websites. You will encounter problems. Consult the R documentation in RStudio or online and lean on the R community on the web at sites such as [Stack Overflow](https://stackoverflow.com/) inter alia.
 
 ## Documentation
+
+Components that are standard to include:
+
+- Short description
+- Source
+- Date
+- Structure
+  - column number of variables, description
+  - row number of observations, description
+
+- There may also be conditions and/ or licensing restrictions that one should heed when using and potentially sharing the data.
+
+Repository and corpus resources:
+
+- download documentation for corpora (web portal?), 
+
+- API and web scraping, create
+  - README.Rmd
+    - Short description
+    - Source
+    - Date
+    - Structure
+      - column number of variables, description
+      - row number of observations, description
+
+
+
+## Summary {-}
+
+
+.... 
+
+At this point you have both a bird’s eye view of the data available on the web and strategies on how to access a great majority of it. It is now time to turn to the next step in our data analysis project: data curation. In the next posts I will cover how to wrangle your raw data into a tidy dataset. This will include working with and incorporating meta-data as well as augmenting a dataset with linguistic annotations.
+
+- add data documentation into the summary. 
+- modular design, input/ output control
+- data/ dataset organization
+- ...
 
 
 

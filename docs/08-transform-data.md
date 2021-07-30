@@ -51,17 +51,47 @@ Overview...
 
 ...
 
+<!-- Consider:
+
+- last.fm lyrics, line-break artifacts
+- 
+
+
+-->
+
 ## Recode
 
 ...
+
+<!-- Consider:
+
+- ...
+
+-->
 
 ## Generate
 
 ...
 
+<!-- Consider:
+
+- Syntactic parsing for last.fm music lyrics, phrasal verbs (compound:prt) a la [@Akbary2018], with automated approach
+- SOTU Corpus, frequency weighting and scaling for clustering algorithm?
+- ...
+
+-->
+
 ## Merge
 
 ...
+
+<!-- Consider:
+
+- Switchboard Dialog Act Corpus, stand-off meta-data files
+- 
+
+-->
+
 
 ## Documentation
 
