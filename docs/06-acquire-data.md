@@ -6,10 +6,12 @@
 
 
 
-Overview...
+**PREPARATION**
+
+At this point we will turn our attention to implementing the specifics outlined in our research blueprint. This section will group the components which concern the acquisition, curation, and transformation of data into a dataset which is prepared to be submitted to analysis. In each of these three chapters I will outline some of the main characteristics to consider in each of these research steps and provide authentic examples of working with R to implement these steps. In [Chapter 5](#acquire-data) this includes downloads, working with APIs, and webscraping. In [Chapter 6](#curate-data) we turn to organize data into rectangular, or 'tidy', format. Depending on the data or dataset acquired for the research project, the steps necessary to shape our data into a base dataset will vary, as we will see. In [Chapter 7](#transform-data) we will work to manipulate curated datasets to create datasets which are aligned with the research aim and research question. This often includes normalizing values, recoding variables, and generating new variables as well as and sourcing and merging information from other datasets with the dataset to be submitted for analysis. 
 
 
-# Acquire data
+# Acquire data {#acquire-data}
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
@@ -18,11 +20,11 @@ Overview...
 > ―--Stephen King
 
 <div class="rmdkey">
-<p>In this chapter you will learn:</p>
+<p>The essential questions for this chapter are:</p>
 <ul>
-<li>the goals of this textbook</li>
-<li>the reasoning for using the R programming language</li>
-<li>important text conventions employed in this textbook</li>
+<li>What are the most common strategies for acquiring corpus data?</li>
+<li>What programmatic steps can we take to ensure the acquisition process is reproducible?</li>
+<li>What is the importance of documenting data?</li>
 </ul>
 </div>
 
@@ -58,11 +60,7 @@ GOALS:
 
 
 
-Overview... (edit)
-
-I will provide an overview of the first of three common strategies for acquiring corpus data in R: accessing corpus data from data repositories and individual sites. I will cover acquiring data from different sources and introduce you to the R code that will help speed the process, maintain consistency in our data, and set the stage for a reproducible workflow.
-
-There are three main ways to acquire corpus data using R that I will introduce you to: **downloads**, **APIs**, and **web scraping**. In this chapter we will start by manual and programmatically downloading a corpus as it is the most straightforward process for the novice R programmer and typically incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions. Using R packages to interface with APIs involves delving into more detail about R objects and custom functions. Finally acquiring data from the web is the most idiosyncratic and involves both knowledge of the web, more sophisticated R skills, and often some clever hacking skills. 
+There are three main ways to acquire corpus data using R that I will introduce you to: **downloads**, **APIs**, and **web scraping**. In this chapter we will start by manual and programmatically downloading a corpus as it is the most straightforward process for the novice R programmer and typically incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions. Next I will cover using R packages to interface with APIs, both open-access and authentication-based. APIs will require us to delve into more detail about R objects and custom functions. Finally acquiring data from the web via webscraping is the most idiosyncratic and involves both knowledge of the web, more sophisticated R skills, and often some clever hacking skills. I will start with a crash course on the structure of web documents (HTML) and then scale up to a real-world example. To round out the chapter we will cover the process of ensuring that our data is documented in such a way as to provide sufficient information to understand its key sampling characteristics and the source from which it was drawn. 
 
 
 ## Downloads

@@ -285,15 +285,14 @@ After updating these files, build the project again and make sure that the new c
 
 ## Summary {-}
 
-- Round-up of the chapter ...
-- Heads-up for the upcoming parts, implementation: preparation and modeling
+The aim of this chapter is to provide the key conceptual and practical points to guide the development of a viable research project. Good research is purposive, inquisitive, informed, methodological, and communicable. It is not, however, always a linear process. Exploring your area(s) of interest and connecting with existing work will help couch and refine your research. But practical considerations, such as the existence of viable data, technical skills, and/ or time constrains, sometimes pose challenges and require a researcher to rethink and/ or redirect the research in sometimes small and other times more significant ways. The process of formulating a research question and developing a viable research plan is key to supporting viable, successful, and insightful research. To ensure that the effort to derive insight from data is of most value to the researcher and the research community, the research should strive to be methodological and communicable adopting best practices for reproducible research. 
+
+This chapter concludes the Orientation section of this coursebook. At this point the fundamental characteristics of research are in place to move a project towards implementation. The next section, Preparation, aims to cover the acquisition, curation, and transformation of data in preparation for analysis. These are the first steps in putting a research blueprint into action and by no coincidence the first components in the Data to Insight Hierarchy. Following the Preparation section our attention will turn to the implementation of the three analysis approaches we have covered: inference, prediction, and exploration. Throughout these next sections we will maintain our aim to develop methodological and communicable research by connecting our implementation process to reproducible programming strategies. 
 
 <div class="figure" style="text-align: center">
 <img src="images/05-framing-research/framing-research-visual-summary.png" alt="Framing research: visual summary" width="90%" />
 <p class="caption">(\#fig:framing-research-visual-summary-graphic)Framing research: visual summary</p>
 </div>
-
-
 
 <!--
 ## Annotated readings {-}
