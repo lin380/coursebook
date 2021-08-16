@@ -1,4 +1,4 @@
-# Course {-}
+# Preface {-}
 
 
 
@@ -50,9 +50,19 @@ This chapter aims to provide a brief summary of current research trends that for
 
 In recent years there has been a growing buzz around the term 'Data Science' and related terms; data analytics, data mining, *etc*. In a nutshell data science is the process by which an investigator leverages statistical methods and computational power to uncover insight from large datasets. Driven in large part by the increase in computing power available to the average individual and the increasing amount of electronic data that is now available through the internet, interest in data science has expanded to virtually all fields in academia and areas in the public sector. Data scientists are in high demand and this trend is expected to continue into the foreseeable future.
 
-This coursebook is an introduction to the fundamental concepts and practical programming skills from Data Science that are increasingly employed in a variety of language-centered fields and sub-fields. It is geared towards advanced undergraduates and graduate students of linguistics and related fields. As quantitative research skills are quickly becoming a core aspect of many language programs, this coursebook aims to provide a fundamental understanding of theoretical concepts, programming skills, and statistical methods for doing quantitative text analysis. 
+This coursebook is an introduction to the fundamental concepts and practical programming skills from Data Science that are increasingly employed in a variety of language-centered fields and sub-fields applied to the task of text analysis. It is geared towards advanced undergraduates and graduate students of linguistics and related fields. As quantitative research skills are quickly becoming a core aspect of many language programs, this coursebook aims to provide a fundamental understanding of theoretical concepts, programming skills, and statistical methods for doing quantitative text analysis. 
 
-## Learning goals
+## Approach
+
+Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img) from @Wickham2017. 
+
+<div class="figure" style="text-align: center">
+<img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="90%" />
+<p class="caption">(\#fig:tidy-workflow-img)Workflow diagram from R for Data Science.</p>
+</div>
+However these resources tend to underrepresent the importance of establishing a research question and implementation plan. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. I think a central advantage to this coursebook for language researchers is to thread the project goals from a conceptual point of view without technical implementation in mind first. Then, after establishing a viable vision about what the data should look like, how it should be analyzed, and how the analysis will contribute to knowledge in the field, we can move towards implementing these preliminary formulations in R code in a reproducible fashion. In essence this approach reflects [the classic separation between content and format](https://en.wikipedia.org/wiki/Separation_of_content_and_presentation) –the content of our research should precede the format it should or will take.
+
+### Learning goals
 
 This course you will:
 
@@ -75,30 +85,9 @@ __Programming Skills (PS):__ learn to produce your own research and work collabo
 1. demonstrate proficiency to implement research with R (RD points 3-5)
 2. demonstrate ability to produce collaborative and reproducible research using R, RStudio, and GitHub
 
-In each chapter of this coursebook specific learning objectives will be specified that target these learning outcomes so it is clear what we are doing and why were are doing it. 
+<!-- In each chapter of this coursebook specific learning objectives will be specified that target these learning outcomes so it is clear what we are doing and why were are doing it.  -->
 
-## Approach
-
-Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the basic 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img) from @Wickham2017.  However these resources tend to underrepresent the importance of  leading with a research question. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. Then comes how to orient the research approach to best address this question (or questions). Then we move on to matching data sources, organizing data, modeling data, and finally reporting findings.
-
-<div class="figure" style="text-align: center">
-<img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="90%" />
-<p class="caption">(\#fig:tidy-workflow-img)Workflow diagram from R for Data Science.</p>
-</div>
-
-
-I think a central advantage to this coursebook for language researchers is to thread the project goals from a conceptual point of view without technical implementation in mind first.
-
-Then, after a general idea about what the data should look like, how it should be analyzed, and how the analysis will contribute to knowledge in the field, we can move towards implementing these preliminary formulations in R code. In essence this approach reflects [the classic separation between content and format](https://en.wikipedia.org/wiki/Separation_of_content_and_presentation) –the content of our research should precede the format it should or will take.
-
-This coursebook is divided into four parts:
-
-1. In "Foundations", an environmental survey of quantitative research across disciplines and orient language-based research is provided. (Provide historical and research context for quantitative text analysis)
-2. "Orientation" aims to build your knowledge about what data is, how text is organized into datasets, what role statistics play in quantitative research and the types of statistical approaches that are commonly found in text analysis research, and finally how to develop a research question and a research blueprint for conducting a quantitative text analysis research project. (Develop an understanding of what quantitative research is and how it is approached)
-3. "Preparation" covers a variety of implementation approaches for each stage for deriving a dataset ready for statistical analysis which includes acquiring, curating, and transforming data. (Dive into coding practices produce data ready for statistical analysis)
-4. "Modeling" elaborates various statistical approaches for data analysis and contextualizes their application in for types of research questions. (Conducting statistical text analysis)
-
-## Prerequisites {#prerequisites}
+### Prerequisites {#prerequisites}
 
 **TODOS:**
 
@@ -134,7 +123,7 @@ install.packages("devtools")
 devtools::install_github("lin380/tadr")
 ```
 
-## Programming
+### Programming
 
 Reasons to program:
 
@@ -153,6 +142,15 @@ Reasons to use R:
 https://francojc.github.io/2017/08/14/getting-started-with-r-and-rstudio/
 
 -->
+
+## Structure
+
+This coursebook is divided into four parts:
+
+1. In "Foundations", an environmental survey of quantitative research across disciplines and orient language-based research is provided. 
+2. "Orientation" aims to build your knowledge about what data is, how text is organized into datasets, what role statistics play in quantitative research and the types of statistical approaches that are commonly found in text analysis research, and finally how to develop a research question and a research blueprint for conducting a quantitative text analysis research project. 
+3. "Preparation" covers a variety of implementation approaches for each stage for deriving a dataset ready for statistical analysis which includes acquiring, curating, and transforming data. 
+4. "Analysis" elaborates various statistical approaches for data analysis and contextualizes their application in for different types of research questions and aims. 
 
 
 ## Conventions
@@ -178,7 +176,7 @@ When necessary meta-description of code will appear. This is particularly releva
 ```
 ````
 
-In terms of prose, key concepts will be signaled using **_bold italics_**. Terms that appear in this typeface will also appear in the [glossary] at the end of the text. Furthermore, there are four pose text blocks that will be used to signal the reader's attention: *key points*, *notes*, *tips*, *questions*, and *warnings*.  
+In terms of prose, key concepts will be signaled using **_bold italics_**. Terms that appear in this typeface will also appear in the [glossary] at the end of the text (TODO). Furthermore, there are four pose text blocks that will be used to signal the reader's attention: *key points*, *notes*, *tips*, *questions*, and *warnings*.  
 
 Key points summarize the main points to be covered in a chapter or a subsection of the text.
 
@@ -276,6 +274,13 @@ Table: (\#tab:test-tab)Here is a nice table!
 |          5.1|         3.5|          1.4|         0.3|setosa  |
 |          5.7|         3.8|          1.7|         0.3|setosa  |
 |          5.1|         3.8|          1.5|         0.3|setosa  |
+
+## Resources
+
+- Tutorials
+- Swirl
+- `tadr` package
+- tadr support site
 
 ## Build information
 

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Course | Coursebook</title>
+<title>Preface | Coursebook</title>
 <meta name="author" content="Jerid Francom">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
-<li><a class="active" href="course.html">Course</a></li>
+<li><a class="active" href="preface.html">Preface</a></li>
 <li class="book-part">Foundations</li>
 <li><a class="" href="foundations-overview.html">Overview</a></li>
 <li><a class="" href="data-language-and-text-analysis.html"><span class="header-section-number">1</span> Data, language, and text analysis</a></li>
@@ -70,8 +70,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="course" class="section level1 unnumbered">
-<h1>Course<a class="anchor" aria-label="anchor" href="#course"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="preface" class="section level1 unnumbered">
+<h1>Preface<a class="anchor" aria-label="anchor" href="#preface"><i class="fas fa-link"></i></a>
 </h1>
 <p style="font-weight:bold; color:red;">
 INCOMPLETE DRAFT
@@ -122,7 +122,7 @@ The essential questions for this chapter are:
 <h2>
 <span class="header-section-number">0.2</span> Approach<a class="anchor" aria-label="anchor" href="#approach"><i class="fas fa-link"></i></a>
 </h2>
-<p>Many textbooks on doing ‘Data Science,’ even those that have a domain-centric approach, such as text analysis, tend to focus on the ‘tidy’ approach, seen in Figure <a href="course.html#fig:tidy-workflow-img">0.1</a> from <span class="citation"><a href="references.html#ref-Wickham2017" role="doc-biblioref">Wickham &amp; Grolemund</a> (<a href="references.html#ref-Wickham2017" role="doc-biblioref">2017</a>)</span>.</p>
+<p>Many textbooks on doing ‘Data Science,’ even those that have a domain-centric approach, such as text analysis, tend to focus on the ‘tidy’ approach, seen in Figure <a href="preface.html#fig:tidy-workflow-img">0.1</a> from <span class="citation"><a href="references.html#ref-Wickham2017" role="doc-biblioref">Wickham &amp; Grolemund</a> (<a href="references.html#ref-Wickham2017" role="doc-biblioref">2017</a>)</span>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:tidy-workflow-img"></span>
 <img src="images/01-course/standard-tidy-approach.png" alt="Workflow diagram from R for Data Science." width="90%"><p class="caption">
@@ -291,7 +291,7 @@ This is a warning.
   \hat{c} = \underset{c \in C} {\mathrm{argmax}} ~\hat{P}(c) \prod_i \hat{P}(w_i|c)
   \tag{0.1}
 \end{equation}\]</span></p>
-<p>Data analysis leans heavily on graphical representations. Figures will appear numbered, as in Figure <a href="course.html#fig:test-fig">0.2</a>.</p>
+<p>Data analysis leans heavily on graphical representations. Figures will appear numbered, as in Figure <a href="preface.html#fig:test-fig">0.2</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># load graphics package</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># map 'hp' and 'mpg' to coordinate space</span>
@@ -307,7 +307,7 @@ This is a warning.
 Figure 0.2: Test plot from mtcars dataset
 </p>
 </div>
-<p>Tables, such as Table <a href="course.html#tab:test-tab">0.1</a> will be numbered separately from figures.</p>
+<p>Tables, such as Table <a href="preface.html#tab:test-tab">0.1</a> will be numbered separately from figures.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fl">20</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"Here is a nice table!"</span>, booktabs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -464,9 +464,21 @@ Figure 0.2: Test plot from mtcars dataset
 </tbody>
 </table></div>
 </div>
-<div id="build-information" class="section level2" number="0.5">
+<div id="resources" class="section level2" number="0.5">
 <h2>
-<span class="header-section-number">0.5</span> Build information<a class="anchor" aria-label="anchor" href="#build-information"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.5</span> Resources<a class="anchor" aria-label="anchor" href="#resources"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Tutorials</li>
+<li>Swirl</li>
+<li>
+<code>tadr</code> package</li>
+<li>tadr support site</li>
+</ul>
+</div>
+<div id="build-information" class="section level2" number="0.6">
+<h2>
+<span class="header-section-number">0.6</span> Build information<a class="anchor" aria-label="anchor" href="#build-information"><i class="fas fa-link"></i></a>
 </h2>
 <p>This coursebook was written in <a href="http://bookdown.org/">bookdown</a> inside <a href="http://www.rstudio.com/ide/">RStudio</a>. The website is hosted with <a href="https://pages.github.com/">GitHub Pages</a> and the complete source is available from <a href="https://github.com/lin380">GitHub</a>.</p>
 <!-- and automatically updated after every commit by [Travis-CI](https://travis-ci.org).  -->
@@ -494,7 +506,7 @@ Figure 0.2: Test plot from mtcars dataset
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#course">Course</a></li>
+<li><a class="nav-link" href="#preface">Preface</a></li>
 <li><a class="nav-link" href="#rationale"><span class="header-section-number">0.1</span> Rationale</a></li>
 <li>
 <a class="nav-link" href="#approach"><span class="header-section-number">0.2</span> Approach</a><ul class="nav navbar-nav">
@@ -505,7 +517,8 @@ Figure 0.2: Test plot from mtcars dataset
 </li>
 <li><a class="nav-link" href="#structure"><span class="header-section-number">0.3</span> Structure</a></li>
 <li><a class="nav-link" href="#conventions"><span class="header-section-number">0.4</span> Conventions</a></li>
-<li><a class="nav-link" href="#build-information"><span class="header-section-number">0.5</span> Build information</a></li>
+<li><a class="nav-link" href="#resources"><span class="header-section-number">0.5</span> Resources</a></li>
+<li><a class="nav-link" href="#build-information"><span class="header-section-number">0.6</span> Build information</a></li>
 </ul>
 
       <div class="book-extra">
