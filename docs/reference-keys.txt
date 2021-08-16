@@ -79,15 +79,6 @@ fig:ad-inspect-element-artist-lastfm
 fig:ad-inspect-element-lyrics-lastfm
 fig:ad-genre-page-lastfm
 fig:ad-genre-tracks-list-lastfm
-rationale
-approach
-learning-goals
-prerequisites
-programming
-structure
-conventions
-resources
-build-information
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis
@@ -103,7 +94,7 @@ types
 sources
 formats
 information
-structure-1
+structure
 transformation
 normalization
 recoding

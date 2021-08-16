@@ -46,13 +46,13 @@
 
 This chapter aims to provide a brief summary of current research trends that form the context for the rationale for this textbook. It also provides instructors and students an overview of the purpose and approach of the textbook. It will also include a description of the main components of each section and chapter and provide a guide to conventions used in the book and resources available. 
 
-## Rationale
+## Rationale {-}
 
 In recent years there has been a growing buzz around the term 'Data Science' and related terms; data analytics, data mining, *etc*. In a nutshell data science is the process by which an investigator leverages statistical methods and computational power to uncover insight from large datasets. Driven in large part by the increase in computing power available to the average individual and the increasing amount of electronic data that is now available through the internet, interest in data science has expanded to virtually all fields in academia and areas in the public sector. Data scientists are in high demand and this trend is expected to continue into the foreseeable future.
 
 This coursebook is an introduction to the fundamental concepts and practical programming skills from Data Science that are increasingly employed in a variety of language-centered fields and sub-fields applied to the task of text analysis. It is geared towards advanced undergraduates and graduate students of linguistics and related fields. As quantitative research skills are quickly becoming a core aspect of many language programs, this coursebook aims to provide a fundamental understanding of theoretical concepts, programming skills, and statistical methods for doing quantitative text analysis. 
 
-## Approach
+## Approach {-}
 
 Many textbooks on doing 'Data Science', even those that have a domain-centric approach, such as text analysis, tend to focus on the 'tidy' approach, seen in Figure \@ref(fig:tidy-workflow-img) from @Wickham2017. 
 
@@ -62,7 +62,7 @@ Many textbooks on doing 'Data Science', even those that have a domain-centric ap
 </div>
 However these resources tend to underrepresent the importance of establishing a research question and implementation plan. A big part, or perhaps the biggest part of doing quantitative research, and research in general is what is the question to be addressed. I think a central advantage to this coursebook for language researchers is to thread the project goals from a conceptual point of view without technical implementation in mind first. Then, after establishing a viable vision about what the data should look like, how it should be analyzed, and how the analysis will contribute to knowledge in the field, we can move towards implementing these preliminary formulations in R code in a reproducible fashion. In essence this approach reflects [the classic separation between content and format](https://en.wikipedia.org/wiki/Separation_of_content_and_presentation) –the content of our research should precede the format it should or will take.
 
-### Learning goals
+### Learning goals {-}
 
 This course you will:
 
@@ -87,7 +87,7 @@ __Programming Skills (PS):__ learn to produce your own research and work collabo
 
 <!-- In each chapter of this coursebook specific learning objectives will be specified that target these learning outcomes so it is clear what we are doing and why were are doing it.  -->
 
-### Prerequisites {#prerequisites}
+### Prerequisites {-}
 
 **TODOS:**
 
@@ -123,7 +123,7 @@ install.packages("devtools")
 devtools::install_github("lin380/tadr")
 ```
 
-### Programming
+### Programming {-}
 
 Reasons to program:
 
@@ -143,7 +143,7 @@ https://francojc.github.io/2017/08/14/getting-started-with-r-and-rstudio/
 
 -->
 
-## Structure
+## Coursebook structure {-}
 
 This coursebook is divided into four parts:
 
@@ -153,7 +153,7 @@ This coursebook is divided into four parts:
 4. "Analysis" elaborates various statistical approaches for data analysis and contextualizes their application in for different types of research questions and aims. 
 
 
-## Conventions
+## Conventions {-}
 
 This coursebook is about the concepts for understanding and the techniques for doing quantitative text analysis with R. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself --specifically using an R language package called `bookdown` [@R-bookdown]. This R package makes it possible to write, execute ('run'), and display code and results within the text. 
 
@@ -275,14 +275,27 @@ Table: (\#tab:test-tab)Here is a nice table!
 |          5.7|         3.8|          1.7|         0.3|setosa  |
 |          5.1|         3.8|          1.5|         0.3|setosa  |
 
-## Resources
+## Resources {-}
 
-- Tutorials
-- Swirl
-- `tadr` package
-- tadr support site
+This coursebook includes the [Text as Data Resources](https://lin380.github.io/tadr/) accompany website. This site itself includes resources to learn and extend R skills relevant for conducting reproducible text analysis research. Tutorials are provided which provide video, questions, and interactive coding practice. Recipes includes worked demonstrations of targeted aspects of R programming. Each of these resources are coordinated to provide the programming skills necessary for the stages of text analysis covered in the coursebook. 
 
-## Build information
+In addition to the Tutorials and Recipes, students are encouraged to engage with the interactive coding `swirl` activities. In contrast to Tutorials, swirl activities will be performed in an RStudio session in the R console. This provides a more authentic experience for learning to use R. The swirl activities for this coursebook can be downloaded within an R console by running: 
+
+```r
+install.packages("swirl")
+library("swirl")
+install_course_github("lin380", "swirl")
+```
+
+To start an activity run: 
+
+```r
+swirl()
+```
+
+and follow the instructions to get started and select a lesson.
+
+## Build information {-}
 
 This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio](http://www.rstudio.com/ide/). The website is hosted with [GitHub Pages](https://pages.github.com/) and the complete source is available from [GitHub](https://github.com/lin380).
 

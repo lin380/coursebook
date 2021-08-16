@@ -499,9 +499,9 @@ Explore some of the resources listed above and consider their sampling frames. C
 <span class="header-section-number">2.2</span> Information<a class="anchor" aria-label="anchor" href="#information"><i class="fas fa-link"></i></a>
 </h2>
 <p>Identifying an adequate corpus resource for the target research question is the first step in moving a quantitative text research project forward. The next step is to select the components or characteristics of this resource that are relevant for the research and then move to organize the attributes of this data into a more useful and informative format. This is the process of converting a corpus into a <strong>dataset</strong> –a tabular representation of the information to be leveraged in the analysis.</p>
-<div id="structure-1" class="section level3" number="2.2.1">
+<div id="structure" class="section level3" number="2.2.1">
 <h3>
-<span class="header-section-number">2.2.1</span> Structure<a class="anchor" aria-label="anchor" href="#structure-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2.1</span> Structure<a class="anchor" aria-label="anchor" href="#structure"><i class="fas fa-link"></i></a>
 </h3>
 <p>Data alone is not informative. Only through explicit organization of the data in a way that makes relationships accessible does the data become information. This is a particularly salient hurdle in text analysis research. Some textual data is <em>unstructured</em> –that is, the relationships that will be used in the analysis have yet to be explicitly drawn and organized from the text to make the relationships meaningful and useful for analysis.</p>
 <p>For the running text in the Europarle Corpus, we know that there are files which are the source text (original) and files that correspond to the target text (translation). In Table <a href="understanding-data.html#tab:structure-europarle">2.6</a> we see that this text has been organized so that there are columns corresponding to the <code>type</code> and <code>sentence</code> with an additional <code>sentence_id</code> column to keep an index of how the sentences are aligned.</p>
@@ -1641,7 +1641,7 @@ All tabular data does not have the ‘tidy’ format that I have described here.
 </table></div>
 <!-- - Tokenization --><p>One of the most common forms of recoding in text analysis is tokenization. Tokenization is the process of recasting the text into smaller linguistic units. When working with text that has not been linguistically annotated, the most feasible linguistic tokens are words, ngrams, and sentences. While word and sentence tokens are easily understandable, ngram tokens need some explanation. An ngram is a sequence of either characters or words where <em>n</em> is the length of this sequence. The ngram sequences are drawn incrementally, so the bigrams (two-word sequences) for the sentence “This is an input sentence.” are:</p>
 <p>this is, is an, an input, input sentence</p>
-<p>We’ve already seen word tokenization exemplified with the Europarle Corpus in subsection <a href="understanding-data.html#structure-1">Structure</a> in Table <a href="understanding-data.html#tab:tidy-words-europarle">2.9</a>, so let’s create (word) bigram tokens for this corpus.</p>
+<p>We’ve already seen word tokenization exemplified with the Europarle Corpus in subsection <a href="understanding-data.html#structure">Structure</a> in Table <a href="understanding-data.html#tab:tidy-words-europarle">2.9</a>, so let’s create (word) bigram tokens for this corpus.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:recoding-tokenization-europarle-bigram-words">Table 2.21: </span>The first 10 word bigrams of the Europarle Corpus.</caption>
@@ -2405,7 +2405,7 @@ Chapter 1.4 "Types of variables"
 </li>
 <li>
 <a class="nav-link" href="#information"><span class="header-section-number">2.2</span> Information</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#structure-1"><span class="header-section-number">2.2.1</span> Structure</a></li>
+<li><a class="nav-link" href="#structure"><span class="header-section-number">2.2.1</span> Structure</a></li>
 <li><a class="nav-link" href="#transformation"><span class="header-section-number">2.2.2</span> Transformation</a></li>
 </ul>
 </li>
