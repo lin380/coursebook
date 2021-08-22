@@ -4,7 +4,7 @@ bookdown::bs4_book:
   css: [assets/bs4.css]
   repo: https://github.com/lin380/coursebook
   includes:
-      in_header: includes.html
+    in_header: includes.html
 bookdown::gitbook:
   css: [assets/style.css]
   split_by: chapter

@@ -3,7 +3,7 @@
 ```{r, child="_common.Rmd"}
 ```
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > The journey of a thousand miles begins with one step.
 >
@@ -12,7 +12,9 @@
 ```{block, type="rmdkey"}
 The essential questions for this chapter are:
 
-- ...
+- What is the rationale for creating a coursebook on quantitative text analysis?
+- What is the approach taken in this coursebook?
+- What are the learning goals and how does the coursebook aim to support attaining these goals?
 ```
 
 <!-- TUTORIALS:
@@ -41,8 +43,7 @@ The essential questions for this chapter are:
 -->
 
 
-
-This chapter aims to provide a brief summary of current research trends that form the context for the rationale for this textbook. It also provides instructors and students an overview of the purpose and approach of the textbook. It will also include a description of the main components of each section and chapter and provide a guide to conventions used in the book and resources available. 
+This chapter aims to provide a brief summary of current research trends that form the context for the rationale for this coursebook It also provides instructors and students an overview of the purpose and approach of the coursebook It will also include a description of the main components of each section and chapter and provide a guide to conventions used in the book and resources available. 
 
 ## Rationale {-}
 
@@ -86,55 +87,19 @@ __Programming Skills (PS):__ learn to produce your own research and work collabo
 
 ### Prerequisites {-}
 
-**TODOS:**
+This coursebook is aimed at students that have some background in language-related studies or linguistics with a desire to expand their methodological toolbox. It does not assume a strong background in these areas, however. Furthermore, I will make no assumptions about students' experience with programming in general, or programming with R, in particular. 
 
-Change this subsection:
-
-- Move the R, RStudio, Packages, Git, GitHub to the `tadr` package vignettes/ articles
-- Make reference here to the `tadr` package (Coursebook support package)
-- 
-
-
-Before we continue, make sure you have all the software you need for this book:
-
-- **R**: ...
-
-- **RStudio**: RStudio is a free and open source integrated development environment (IDE) for R. ...
-
-- **R packages**: This coursebook uses a bunch of R packages.
-    You can install them all at once by running:
-
-    ```{r, echo = FALSE, cache = FALSE}
-    deps <- desc::desc_get_deps()
-    pkgs <- sort(deps$package[deps$type == "Imports"])
-    pkgs2 <- strwrap(paste(encodeString(pkgs, quote = '"'), collapse = ", "), exdent = 2)
-    install <- paste0(
-      "install.packages(c(\n  ", 
-      paste(pkgs2, "\n", collapse = ""), 
-      "))"
-    )
-    ```
-
-    ```{r code = install, eval = FALSE}
-    ```
-
-- Coursebook support package
-  [`tadr`](https://lin380.github.io/tadr/) is a support R package and resource site for this coursebook. The package includes data, functions, and interactive R programming tutorials which make use of the `swirl` package. The website includes programming demonstrations called 'Worked' examples and reference to documentation and other resources for doing quantitative research with R.
-
-```{r tadr, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("lin380/tadr")
-```   
+You will need reliable access to the internet and a computer to work with the code in this coursebook and the code found in the accompanying resource site ([tadr](https://lin380.github.io/tadr/)). 
 
 ### Programming {-}
 
-Reasons to program:
+Programming is the backbone for modern quantitative research. Here are some of the reasons to program:
 
 - *Flexibility* Graphical User Interface (GUI) based software is inherently limited. What you see is what you get. If you have another need, you need to find a tool. If another tool does not implement what you think you need, you are out of luck.
 - *Transparency* By taking a programming approach to research analysis you make your decisions explicit and leave a breadcrumb trail to everything you do.
 - *Reproducibility* What you do will be clearer to you but also allow you to share the process with others (including your future self!). Insight grows much faster when exposed to light. Sharing your research with collaborators or on sites such as GitHub or BitBucket brings makes your work visible and accessible to the world. Reproducibility is gaining momentum and is fueled by programmatic approaches to research.
 
-Reasons to use R:
+R is a popular programming language with statiticians and was adopted by many other fields in natural and social sciences. There are various reasons why using R for this coursebook is a good choice:
 
 - *One stop shopping* Once known specifically as a statistical programming language, R can now be a round trip tool to acquire, curate, transform, visualize, *and* statistically analyze data. It also allows for robust communication in reports and data and analysis sharing (reproducibility).
 - *You are not alone* There is a sizable R programming community, especially in academics. This has two tangible benefits; first, you will likely be able to find user contributed R packages that will satisfy many of the more sophisticated programming goals you will have and second, you will be able to get answers to any of your programming questions on popular sites like StackOverflow.
@@ -158,7 +123,7 @@ This coursebook is divided into four parts:
 
 ## Conventions {-}
 
-This coursebook is about the concepts for understanding and the techniques for doing quantitative text analysis with R. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique textbook compared to others you have seen. It has been created using R itself --specifically using an R language package called `bookdown` [@R-bookdown]. This R package makes it possible to write, execute ('run'), and display code and results within the text. 
+This coursebook is about the concepts for understanding and the techniques for doing quantitative text analysis with R. Therefore there will be an intermingling of prose and code presented. As such, an attempt to establish consistent conventions throughout the text has been made to signal reader's attention as appropriate. As we explore concepts, R code itself will be incorporated into the text. This may be a unique coursebook compared to others you have seen. It has been created using R itself --specifically using an R language package called `bookdown` [@R-bookdown]. This R package makes it possible to write, execute ('run'), and display code and results within the text. 
 
 For example, the following text block shows actual R code and the results that are generated when running this code. Note that the hashtag `#` signals a **code comment**. The code follows within the same text block and a subsequent text block displays the output of the code.
 
@@ -184,15 +149,15 @@ Key points summarize the main points to be covered in a chapter or a subsection 
 ```{block, type="rmdkey"}
 In this chapter you will learn:
 
-- the goals of this textbook
+- the goals of this coursebook
 - the reasoning for using the R programming language
-- important text conventions employed in this textbook
+- important text conventions employed in this coursebook
 ```
 
 Notes provide a bit more information on the topic or where to find more information.
 
 ```{block, type="rmdnote"}
-R is more than a powerful statistical programming language, it also can be used to perform all the necessary steps in a data science project; including reporting. A relatively new addition to the reporting capabilities of R is the `bookdown` package (this textbook was created using this very package). You can find out more [here](https://bookdown.org/).
+R is more than a powerful statistical programming language, it also can be used to perform all the necessary steps in a data science project; including reporting. A relatively new addition to the reporting capabilities of R is the `bookdown` package (this coursebook was created using this very package). You can find out more [here](https://bookdown.org/).
 ```
 
 Tips are used to signal helpful hints that might otherwise be overlooked.
@@ -247,23 +212,9 @@ knitr::kable(
 
 ## Resources {-}
 
-This coursebook includes the [Text as Data Resources](https://lin380.github.io/tadr/) accompany website. This site itself includes resources to learn and extend R skills relevant for conducting reproducible text analysis research. Tutorials are provided which provide video, questions, and interactive coding practice. Recipes includes worked demonstrations of targeted aspects of R programming. Each of these resources are coordinated to provide the programming skills necessary for the stages of text analysis covered in the coursebook. 
+This coursebook includes the [Text as Data Resources](https://lin380.github.io/tadr/) accompany website. This site itself includes resources to learn and extend R skills relevant for conducting reproducible text analysis research. [Tutorials](https://lin380.github.io/tadr/tutorials/index.html) are provided which provide video, questions, and interactive coding practice. [Recipes](https://lin380.github.io/tadr/articles/index.html) includes worked demonstrations of targeted aspects of R programming. Each of these resources are coordinated to provide the programming skills necessary for the stages of text analysis covered in the coursebook. 
 
-In addition to the Tutorials and Recipes, students are encouraged to engage with the interactive coding `swirl` activities. In contrast to Tutorials, swirl activities will be performed in an RStudio session in the R console. This provides a more authentic experience for learning to use R. The swirl activities for this coursebook can be downloaded within an R console by running: 
-
-```r
-install.packages("swirl")
-library("swirl")
-install_course_github("lin380", "swirl")
-```
-
-To start an activity run: 
-
-```r
-swirl()
-```
-
-and follow the instructions to get started and select a lesson.
+In addition to the Tutorials and Recipes, students are encouraged to engage with the interactive coding `swirl` activities. In contrast to Tutorials, swirl activities will be performed in an RStudio session in the R console. This provides a more authentic experience for learning to use R. 
 
 ## Build information {-}
 
@@ -271,10 +222,9 @@ This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio]
 
 <!-- and automatically updated after every commit by [Travis-CI](https://travis-ci.org).  -->
 
+This version of the coursebook was built with `r R.version.string`. 
 
-This version of the coursebook was built with `r R.version.string` and the following packages:
-
-```{r, echo = FALSE, results="asis"}
+```{r, echo = FALSE, results="asis", eval=FALSE}
 pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
 df <- tibble(
   package = pkgs$package,
