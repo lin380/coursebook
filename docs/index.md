@@ -2,7 +2,7 @@
 title: "Coursebook"
 subtitle: "Text as Data: An introduction to quantitative text analysis and reproducible research with R"
 author: "Jerid Francom"
-date: "August 21, 2021 (latest version)"
+date: "August 24, 2021 (latest version)"
 site: bookdown::bookdown_site
 bibliography: [coursebook.bib, packages.bib]
 biblio-style: apalike
@@ -28,7 +28,7 @@ favicon: assets/images/favicon.ico
 
 <img src="assets/images/logo.png" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> This is the coursebook to accompany Linguistics 380 "Language Use and Technology" at Wake Forest University. The working title for this coursebook is *Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research with R*. 
 
-The content is currently under development. Feedback is welcome and can be provided through the [hypothes.is](https://web.hypothes.is/) service. A toolbar interface to this service is located on the right sidebar. To register for a free account and join the "TAD" annotation group [follow this link](https://hypothes.is/groups/Q3o92MJg/tad). Suggestions and changes that are incorporated will be [acknowledged](#acknowledgements). 
+The content is currently under development. Feedback is welcome and can be provided through the [hypothes.is](https://web.hypothes.is/) service. A toolbar interface to this service is located on the right sidebar. To register for a free account and join the "text_as_data" annotation group [follow this link](https://hypothes.is/groups/WkoaXnBX/text-as-data). Suggestions and changes that are incorporated will be [acknowledged](#acknowledgements). 
 
 **Author**
 

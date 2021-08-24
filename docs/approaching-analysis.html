@@ -6,7 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 Approaching analysis | Coursebook</title>
 <meta name="author" content="Jerid Francom">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="DRAFT  Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write. — H.G. Wells  The essential questions for this chapter are:  What is the role...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Approaching analysis | Coursebook">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://lin380.github.io/coursebook/approaching-analysis.html">
+<meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<meta property="og:description" content="DRAFT  Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write. — H.G. Wells  The essential questions for this chapter are:  What is the role...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Approaching analysis | Coursebook">
+<meta name="twitter:site" content="@jeridfrancom">
+<meta name="twitter:description" content="DRAFT  Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write. — H.G. Wells  The essential questions for this chapter are:  What is the role...">
+<meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -17,7 +29,7 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-57189160-3', 'auto');
       ga('send', 'pageview');
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -370,7 +382,7 @@ female
 <p>Turning to continuous variables, another subdivision can be made which hinges on the existence of a non-arbitrary zero or not. <em>Interval variables</em> contain values in which the difference between the values is regular and defined, but the measure has an arbitrary zero value. A typically cited example of an interval variable is temperature measurements on the Fahrenheit scale. A value of 0 on this scale does not mean there is 0 temperature. <em>Ratio variables</em> have all the properties of interval variables but also include a non-arbitrary definition of zero. All of the continuous variables in the BELC dataset (<code>num_tokens</code>, <code>num_types</code>, and <code>ttr</code>) are ratio variables as a value of 0 would indicate the lack of this attribute.</p>
 <p>An hierarchical overview of the relationship between the two main and four sub-types of levels of measurement appear in Figure <a href="approaching-analysis.html#fig:info-values-graphic">3.1</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:info-values-graphic"></span>
+<span style="display:block;" id="fig:info-values-graphic"></span>
 <img src="images/04-approaching-analysis/Informational-values-paper.png" alt="Levels of measurement graphic representation." width="90%"><p class="caption">
 Figure 3.1: Levels of measurement graphic representation.
 </p>
@@ -542,7 +554,7 @@ The descriptive statistics returned above were generated by the <code>skimr</cod
 <p>In the above summary, we see the mean, standard deviation (sd), and the quantiles (the five-number summary, p0, p25, p50, p75, and p100). The middle quantile (p50) is the median and the IQR is listed last.</p>
 <p>These are important measures for assessing the central tendency and dispersion and will be useful for reporting purposes, but to get a better feel of how a variable is distributed, nothing beats a visual summary. A boxplot graphically summarizes many of these metrics. In Figure <a href="approaching-analysis.html#fig:summaries-boxplots-belc">3.2</a> we see the same three continuous variables, but now in graphical form.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-boxplots-belc"></span>
+<span style="display:block;" id="fig:summaries-boxplots-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-boxplots-belc-1.png" alt="Boxplots for each of the continuous variables in the BELC dataset." width="90%"><p class="caption">
 Figure 3.2: Boxplots for each of the continuous variables in the BELC dataset.
 </p>
@@ -551,14 +563,14 @@ Figure 3.2: Boxplots for each of the continuous variables in the BELC dataset.
 <p>Boxplots provide a robust and visually intuitive way of assessing central tendency and variability in a continuous variable but this type of plot can be complemented by looking at the overall distribution of the values in terms of their frequencies. A histogram provides a visualization of the frequency (and density in this case with the blue overlay) of the values across a continuous variable binned at regular intervals.</p>
 <p>In Figure <a href="approaching-analysis.html#fig:summaries-histograms-belc">3.3</a> I’ve plotted histograms in the top row and density plots in the bottom row for the same three continuous variables from the BELC dataset.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-histograms-belc"></span>
+<span style="display:block;" id="fig:summaries-histograms-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-histograms-belc-1.png" alt="Histograms and density plots for the continuous variables in the BELC dataset." width="90%"><p class="caption">
 Figure 3.3: Histograms and density plots for the continuous variables in the BELC dataset.
 </p>
 </div>
 <p>Histograms provide insight into the distribution of the data. For our three continuous variables, the distributions happen not to be too strikingly distinct. They are, however, not the same either. When we explore continuous variables with histograms we are often trying to assess whether there is skew or not. There are three general types of skew, visualized in Figure <a href="approaching-analysis.html#fig:summaries-skew-graphic">3.4</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-skew-graphic"></span>
+<span style="display:block;" id="fig:summaries-skew-graphic"></span>
 <img src="images/04-approaching-analysis/skew-types-paper.png" alt="Examples of skew types in density plots." width="100%"><p class="caption">
 Figure 3.4: Examples of skew types in density plots.
 </p>
@@ -566,7 +578,7 @@ Figure 3.4: Examples of skew types in density plots.
 <p>In histograms/ density plots in which the distribution is either left or right, the median and the mean are not aligned. The <em>mode</em>, which indicates the most frequent value in the variable is also not aligned with the other two measures. In a left-skewed distribution the mean will be to the left of the median which is left of the mode whereas in a right-skewed distribution the opposite occurs. In a distribution with absolutely no skew these three measures are the same. In practice these measures rarely align perfectly but it is very typical for these three measures to approximate alignment. It is common enough that this distribution is called the Normal Distribution<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;formally known as a Gaussian Distribution&lt;/p&gt;"><sup>8</sup></a> as it is very common in real-world data.</p>
 <p>Another and potentially more informative way to inspect the normality of a distribution is to create Quantile-Quantile plots (QQ Plot). In Figure <a href="approaching-analysis.html#fig:summaries-qqnorm-plot-belc">3.5</a> I’ve created QQ plots for our three continuous variables. The line in each plot is the normal distribution and the more points that fall off of this line, the less likely that the distribution is normal.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-qqnorm-plot-belc"></span>
+<span style="display:block;" id="fig:summaries-qqnorm-plot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-qqnorm-plot-belc-1.png" alt="QQ Plots for the continuous variables in the BELC dataset." width="90%"><p class="caption">
 Figure 3.5: QQ Plots for the continuous variables in the BELC dataset.
 </p>
@@ -627,7 +639,7 @@ Type-Token Ratio
 <p>Before we leave continuous variables, let’s consider another approach for visually summarizing a single continuous variable. The Empirical Cumulative Distribution Frequency, or <em>ECDF</em>, is a summary of the cumulative proportion of each of the values of a continuous variable. An ECDF plot can be useful in determining what proportion of the values fall above or below a certain percentage of the data.</p>
 <p>In Figure <a href="approaching-analysis.html#fig:summarize-ecdf-belc">3.6</a> we see ECDF plots for our three continuous variables.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summarize-ecdf-belc"></span>
+<span style="display:block;" id="fig:summarize-ecdf-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summarize-ecdf-belc-1.png" alt="ECDF plots for the continuous variables in the BELC dataset." width="90%"><p class="caption">
 Figure 3.6: ECDF plots for the continuous variables in the BELC dataset.
 </p>
@@ -735,7 +747,7 @@ fem: 48, mal: 31
 <p>To explore the relationship between two continuous variables we can statistically summarize a relationship with a <strong>coefficient of correlation</strong> which is a measure of <strong>effect size</strong> between continuous variables. If the continuous variables approximate the normal distribution <em>Pearson’s r</em> is used, if not <em>Kendall’s tau</em> is the appropriate measure. A correlation coefficient ranges from -1 to 1 where 0 is no correlation and -1 or 1 is perfect correlation (either negative or positive). Let’s assess the correlation coefficient for the variables <code>num_tokens</code> and <code>ttr</code>. Since these variables are not normally distributed, we use Kendall’s tau. Using this measure the correlation coefficient is <span class="math inline">\(-0.563\)</span> suggesting there is a correlation, but not a particularly strong one.</p>
 <p>Correlation measures are important for reporting but to really appreciate a relationship it is best to graphically represent the variables in a <em>scatterplot</em>. In Figure <a href="approaching-analysis.html#fig:summaries-bivariate-scatterplot-belc">3.7</a> we see the relationship between <code>num_tokens</code> and <code>ttr</code>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-bivariate-scatterplot-belc"></span>
+<span style="display:block;" id="fig:summaries-bivariate-scatterplot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-bivariate-scatterplot-belc-1.png" alt="Scatterplot..." width="90%"><p class="caption">
 Figure 3.7: Scatterplot…
 </p>
@@ -748,7 +760,7 @@ In plots comparing two or more variables, the choice of which variable to plot o
 </div>
 <p>Let’s add another variable to the mix, in this case the categorical variable <code>sex</code>, taking our bivariate exploration to a multivariate exploration. Again each point corresponds to an observation where the values for <code>num_tokens</code> and <code>ttr</code> intersect. But now each of these points is given a color that reflects which level of <code>sex</code> it is associated with.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-multivariate-scatterplot-belc"></span>
+<span style="display:block;" id="fig:summaries-multivariate-scatterplot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-multivariate-scatterplot-belc-1.png" alt="Scatterplot visualizing the relationship between `num_tokens` and `ttr`." width="90%"><p class="caption">
 Figure 3.8: Scatterplot visualizing the relationship between <code>num_tokens</code> and <code>ttr</code>.
 </p>
@@ -836,7 +848,7 @@ ci
 <p>The SEM is a metric which summarizes variation based on the number of values and the CI, as we have seen, summarizes the potential range of in which the mean may fall given a likelihood criterion (usually the same as the <span class="math inline">\(p\)</span>-value, .05).</p>
 <p>Because we are assessing a categorical variable in combination with a continuous variable a table is an available visual summary. But as I have said before, a graphic summary is hard to beat. In the following figure (<a href="approaching-analysis.html#fig:summaries-bivariate-barplot-belc">3.9</a>) a barplot is provided which includes the means of <code>num_tokens</code> for each level of <code>age_group</code>. The overlaid bars represent the confidence interval for each mean score.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-bivariate-barplot-belc"></span>
+<span style="display:block;" id="fig:summaries-bivariate-barplot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-bivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num_tokens` by `age_group` from the BELC dataset." width="90%"><p class="caption">
 Figure 3.9: Barplot comparing the mean <code>num_tokens</code> by <code>age_group</code> from the BELC dataset.
 </p>
@@ -845,7 +857,7 @@ Figure 3.9: Barplot comparing the mean <code>num_tokens</code> by <code>age_grou
 <p>To gauge the effect size of this relationship we can use <em>Spearman’s rho</em> for rank-based coefficients. The score is 0.708 indicating that the relationship between <code>age_group</code> and <code>num_tokens</code> is quite strong.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To calculate effect sizes for the difference between two means, &lt;em&gt;Cohen’s d&lt;/em&gt; is used.&lt;/p&gt;"><sup>9</sup></a></p>
 <p>Now, if we want to explore a multivariate relationship and add <code>sex</code> to the current descriptive summary, we can create a summary table, but let’s jump straight to a barplot.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-multivariate-barplot-belc"></span>
+<span style="display:block;" id="fig:summaries-multivariate-barplot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-multivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num_tokens` by `age_group` and `sex` from the BELC dataset." width="90%"><p class="caption">
 Figure 3.10: Barplot comparing the mean <code>num_tokens</code> by <code>age_group</code> and <code>sex</code> from the BELC dataset.
 </p>
@@ -853,7 +865,7 @@ Figure 3.10: Barplot comparing the mean <code>num_tokens</code> by <code>age_gro
 <p>We see in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-barplot-belc">3.10</a> that on the whole, the appears to be general trend towards more tokens in a composition for more advanced learner levels. However, the non-overlap in CI bars for the ‘12-year-olds’ for the levels of <code>sex</code> (‘male’ and ‘female’) suggest that 12-year-old females may produce more tokens per composition than males –a potential divergence from the overall trend.</p>
 <p>Barplots are a familiar and common visualization for summaries of continuous variables across levels of categorical variables, but a boxplot is another useful visualization of this type of relationship.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-bivariate-boxplots-belc"></span>
+<span style="display:block;" id="fig:summaries-bivariate-boxplots-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-bivariate-boxplots-belc-1.png" alt="Boxplot of the relationship between `age_group` and `num_tokens` from the BELC dataset." width="90%"><p class="caption">
 Figure 3.11: Boxplot of the relationship between <code>age_group</code> and <code>num_tokens</code> from the BELC dataset.
 </p>
@@ -862,7 +874,7 @@ Figure 3.11: Boxplot of the relationship between <code>age_group</code> and <cod
 Additionally, when the confidence interval goes outside the interquantile range (the box) the notches hinge back to the either the 1st (lower) or the 3rd (higher) IQR range and suggests that the variability is high.</p>
 <p>We can also add a third variable to our exploration. As in the barplot in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-barplot-belc">3.10</a>, the boxplot in Figure <a href="approaching-analysis.html#fig:summaries-multivariate-boxplots-belc">3.12</a> suggests that there is an overall trend towards more tokens per composition as a learner advances in experience, except at the ‘12-year-old’ level where there appears to be a difference between ‘males’ and ‘females.’</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-multivariate-boxplots-belc"></span>
+<span style="display:block;" id="fig:summaries-multivariate-boxplots-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-multivariate-boxplots-belc-1.png" alt="Boxplot of the relationship between `age_group`, `num_tokens` and `sex` from the BELC dataset." width="90%"><p class="caption">
 Figure 3.12: Boxplot of the relationship between <code>age_group</code>, <code>num_tokens</code> and <code>sex</code> from the BELC dataset.
 </p>
@@ -958,7 +970,7 @@ Total
 </table></div>
 <p>As the size of the contingency table increases, visual inspection becomes more difficult. As we have seen, a graphical summary often proves more helpful to detect patterns.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-bivariate-categorical-barplot-belc"></span>
+<span style="display:block;" id="fig:summaries-bivariate-categorical-barplot-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-bivariate-categorical-barplot-belc-1.png" alt="Barplot..." width="90%"><p class="caption">
 Figure 3.13: Barplot…
 </p>
@@ -1182,7 +1194,7 @@ Total
 </table></div>
 <p>Contingency tables with this many levels are notoriously difficult to interpret. A plot that is often used for three-way contingency table summaries is a mosaic plot. In Figure <a href="approaching-analysis.html#fig:summaries-multivariate-mosaic-belc">3.14</a> I have created a mosaic plot for the three categorical variables in the previous contingency tables.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:summaries-multivariate-mosaic-belc"></span>
+<span style="display:block;" id="fig:summaries-multivariate-mosaic-belc"></span>
 <img src="04-approaching-analysis_files/figure-html/summaries-multivariate-mosaic-belc-1.png" alt="Mosaic plot for three categorical variables `age_group`, `rank_tokens`, and `sex` in the BELC dataset." width="90%"><p class="caption">
 Figure 3.14: Mosaic plot for three categorical variables <code>age_group</code>, <code>rank_tokens</code>, and <code>sex</code> in the BELC dataset.
 </p>
@@ -1237,7 +1249,7 @@ Figure 3.14: Mosaic plot for three categorical variables <code>age_group</code>,
 <p>The hypothesis we have described predicts what is known as an <em>interaction</em>; the relationship between our independent variables predict different variational patterns in the dependent variable. As you most likely can appreciate the more independent variables we include in our hypothesis, and by extension our analysis, the more difficult it becomes to interpret. Due to the increasing difficulty for interpretation, in practice, IDA studies rarely include more than two or three independent variables in the same analysis.</p>
 <p>Independent variables add to the complexity of a study because they are part of our research focus, specifically our hypothesis. It is, however, common to include other variables which are not of central focus, but are commonly assumed to contribute to the explanation of the variation of the dependent variable. Let’s assume that the background literature suggests that the age of speakers also plays a role in the number of questions that men and women use in spontaneous conversation. Let’s also assume that the data we have collected includes information about the age of speakers. If we would like to factor out the potential influence of age on the use of questions and focus on the particular independent variables we’ve defined in our hypothesis, we can include the age of speakers as a <strong>control variable</strong>. A control variable will be added to the statistical analysis and documented in our report but it will not be included in the hypothesis nor interpreted in our results.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:aa-inferential-variables"></span>
+<span style="display:block;" id="fig:aa-inferential-variables"></span>
 <img src="images/04-approaching-analysis/inferential-variables.png" alt="Variable roles in inferential analysis." width="90%"><p class="caption">
 Figure 3.15: Variable roles in inferential analysis.
 </p>
@@ -1484,7 +1496,7 @@ Had your mobile 11 months or more? U R entitled to Update to the latest colour m
 <p>As it stands we have two variables; <code>sms_type</code> is clearly the target and <code>message</code> contain the full messages. The question is how best to transform the information in the <code>message</code> variable such that it will provide an algorithm useful information to predict each value of <code>sms_type</code>. Since the informational value of <code>sms_type</code> is categorical we will call the values <strong>classes</strong>. The process of deciding on how to transform the information in <code>message</code> into useful features is called <strong>feature engineering</strong> and it is a process which is much an art as a science. On the creative side of things it is often helpful to have a mixture of relevant domain knowledge and clever hacking skills to envision what features may work best. The more logistic side of things requires some knowledge about the strengths and weaknesses of various learning algorithms when dealing with certain number and informational value feature combinations.</p>
 <p>Leaving the choice of algorithm aside, let’s focus on feature engineering. Since each <code>message</code> value is a unique message, the chance that using <code>message</code> as it is, is not likely to help us make reliable predictions about the status of new message (‘spam’ or ‘ham’). A simple first-pass approach to decomposing <code>message</code> to draw out similarities and distinctions between the classes may be to break each message into words. Now SMS messages are not your average type of text –there are many non-standard forms. So our definition of word may simply be character groupings broken apart by whitespace. To avoid confusion between our common-sense understanding of word and the types of character strings, it is often the case that language feature values are called <strong>terms</strong>. Other term types may work better, n-grams, character sequences, stems/lemmas, or even combinations of these. Certain terms may be removed that are potentially uninformative either based on their class (stopwords, numerals, punctuation, etc.) or due to their distribution. The process of systematic isolation of terms which are more informative than others is called <strong>dimensionality reduction</strong> <span class="citation">(<a href="references.html#ref-Kowsari2019" role="doc-biblioref">Kowsari et al., 2019</a>)</span>. With experience a research will become more adept a recognizing advantages and potential issues and alternative ways of approaching the creation of features but there is almost always some level of trial and error in the process. Feature engineering is very much an exploratory process. It is also iterative. You can try a set of features with an algorithm and produce a language model and test it on the training set –if is accurate, great. If not, you can brainstorm some more –you are free to try further engineer the features trying new features or feature measures (term weights) and/ or change the learning algorithm.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:aa-predictive-variables"></span>
+<span style="display:block;" id="fig:aa-predictive-variables"></span>
 <img src="images/04-approaching-analysis/predictive-variables.png" alt="Variable roles in predictive analysis." width="90%"><p class="caption">
 Figure 3.16: Variable roles in predictive analysis.
 </p>
@@ -1548,7 +1560,7 @@ Decision Tree
 <!-- use of the data: training, development, test splits -->
 <p>Once we have identified our target variable, engineered a promising set of features, and selected an algorithm to employ that meets our research goals, it is now time to interrogate the dataset. The first step is to partition the dataset into a training and test set. The training set is the dataset we will use to try out different features and/ or algorithms with the aim of developing a model which can most accurately predict the target variable values in this training set. This is the second step and it’s done by first training an algorithm to associate the features with the (actual) target values. Next, the resulting model is then applied to the same training data, yet with the target variable removed, or hidden, from the machine learner. The target values predicted by the model for each observation are compared to the actual target values. The more predicted and actual values for the target variable coincide, the more accurate the model. If the model shows high accuracy, then we are ready to move to evaluate this model on the test set (again removing the target variable). If the model accuracy is low, it’s back to the drawing board either returning to feature engineering and/ or algorithm selection in hopes to improve model performance. In this way, the training data can be used multiple times, a clear divergence from standard IDA methods in which the data is interrogated and analyzed once and only once.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:aa-predictive-phases"></span>
+<span style="display:block;" id="fig:aa-predictive-phases"></span>
 <img src="images/04-approaching-analysis/predictive-phases.png" alt="Phases in predictive analysis." width="90%"><p class="caption">
 Figure 3.17: Phases in predictive analysis.
 </p>
@@ -1577,7 +1589,7 @@ MuPDAR approach (Multifactorial Prediction and Deviation Analysis with Regressio
 <p>Another notable point of contrast concerns the interpretation of EDA results. Although quantitative in nature, exploratory methods involve a high level of human interpretation. Human interpretation is a part of each stage of data analysis, and each statistical approach, in general, but exploratory methods produce results that require associative thinking and pattern detection which is distinct from the other two analysis approaches, in particular, IDA.</p>
 <p>Again, as we have done for the other two analysis approaches, let’s turn to the process of variable identification, data interrogation, and interpretation methods. As in the case of PDA, EDA only requires a research goal. But in PDA, the research goal centered around predicting a target variable. In EDA, there is no such focus. The research goal may in fact be less defined and a researcher may consider various relationships in turn or simultaneously. The curation of the variables, however, does overlap in spirit to the process of <strong>feature engineering</strong> that we touched on for creating variables for predictive models. But in EDA the measure to gauge whether the engineered variables are good, is left to the qualitative evaluation of the researcher.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:aa-exploratory-variables"></span>
+<span style="display:block;" id="fig:aa-exploratory-variables"></span>
 <img src="images/04-approaching-analysis/exploratory-variables.png" alt="Variable roles in exploratory analysis." width="90%"><p class="caption">
 Figure 3.18: Variable roles in exploratory analysis.
 </p>
@@ -1822,7 +1834,7 @@ Dimensionality reduction
 </table></div>
 <p>EDA leans heavily on visual representations of both descriptive and unsupervised learning methods. Visualizations enable humans to identify and extrapolate associative patterns. Visualizations range from standard barplots and scatterplots to network graphs and dendrograms and more. Some sample visualizations based on the SOTU Corpus are found in Figure <a href="approaching-analysis.html#fig:eda-visualizations-grid">3.19</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:eda-visualizations-grid"></span>
+<span style="display:block;" id="fig:eda-visualizations-grid"></span>
 <img src="04-approaching-analysis_files/figure-html/eda-visualizations-grid-1.png" alt="Sample visualizations from the SOTU Corpus (1946-2020)." width="90%"><p class="caption">
 Figure 3.19: Sample visualizations from the SOTU Corpus (1946-2020).
 </p>
@@ -1842,7 +1854,7 @@ Figure 3.19: Sample visualizations from the SOTU Corpus (1946-2020).
 </h2>
 <p>In this chapter we have focused on description and analysis –the third component of DIKI Hierarchy. This process is visually summarized in Figure <a href="approaching-analysis.html#fig:approaching-analysis-visual-summary-graphic">3.20</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:approaching-analysis-visual-summary-graphic"></span>
+<span style="display:block;" id="fig:approaching-analysis-visual-summary-graphic"></span>
 <img src="images/04-approaching-analysis/approaching-analysis-visual-summary-paper.png" alt="Approaching analysis: visual summary" width="90%"><p class="caption">
 Figure 3.20: Approaching analysis: visual summary
 </p>
@@ -1893,7 +1905,7 @@ Figure 3.20: Approaching analysis: visual summary
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on August 21, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on August 24, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1913,6 +1925,22 @@ Figure 3.20: Approaching analysis: visual summary
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

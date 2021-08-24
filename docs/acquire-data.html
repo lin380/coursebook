@@ -6,7 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Acquire data | Coursebook</title>
 <meta name="author" content="Jerid Francom">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="INCOMPLETE DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Acquire data | Coursebook">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://lin380.github.io/coursebook/acquire-data.html">
+<meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<meta property="og:description" content="INCOMPLETE DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Acquire data | Coursebook">
+<meta name="twitter:site" content="@jeridfrancom">
+<meta name="twitter:description" content="INCOMPLETE DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?...">
+<meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -17,7 +29,7 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-57189160-3', 'auto');
       ga('send', 'pageview');
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -137,14 +149,14 @@ GOALS:
 <p>The first acquisition method I will cover here is inherently non-reproducible from the standpoint that the programming implementation cannot acquire the data based solely on running the project code itself. In other words, it requires manual intervention. Manual downloads are typical for data resources which are not openly accessible on the public facing web. These can be resources that require institutional or private licensing (<a href="https://www.ldc.upenn.edu/">Language Data Consortium</a>, <a href="http://ice-corpora.net/ice/">International Corpus of English</a>, <a href="https://www.corpusdata.org/">BYU Corpora</a>, etc.), require authorization/ registration (<a href="https://archive.mpi.nl/tla/">The Language Archive</a>, <a href="https://www.webcorpora.org/">COW Corpora</a>, etc.), and/ or are only accessible via resource search interfaces (<a href="https://cesa.arizona.edu/">Corpus of Spanish in Southern Arizona</a>, <a href="http://cedel2.learnercorpora.com/">Corpus Escrito del Español como L2 (CEDEL2)</a>, etc.).</p>
 <p>Let’s work with the CEDEL2 corpus <span class="citation">(<a href="references.html#ref-Lozano2009" role="doc-biblioref">Lozano, 2009</a>)</span> which provides a search interface and open access to the data through the search interface. The homepage can be seen in Figure <a href="acquire-data.html#fig:ad-show-page-cedel2-1">5.1</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-show-page-cedel2-1"></span>
+<span style="display:block;" id="fig:ad-show-page-cedel2-1"></span>
 <img src="images/06-acquire-data/ad-cedel2-site.png" alt="CEDEL2 Corpus homepage" width="90%"><p class="caption">
 Figure 5.1: CEDEL2 Corpus homepage
 </p>
 </div>
 <p>Following the search/ download link you can find a search interface that allows the user to select the sub-corpus of interest. I’ve selected the subcorpus “Learners of L2 Spanish” and specified the L1 as English.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-show-page-cedel2-2"></span>
+<span style="display:block;" id="fig:ad-show-page-cedel2-2"></span>
 <img src="images/06-acquire-data/ad-cedel2-search-download.png" alt="Search and download interface for the CEDEL2 Corpus" width="90%"><p class="caption">
 Figure 5.2: Search and download interface for the CEDEL2 Corpus
 </p>
@@ -198,7 +210,7 @@ Figure 5.2: Search and download interface for the CEDEL2 Corpus
 <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">temp</span><span class="op">)</span></code></pre></div>
 <div class="rmdtip">
 <p>
-In the previous code I’ve used the values stored in the objects <code>url</code> and <code>temp</code> in the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function without specifying the argument names –only providing the names of the objects. R will assume that values of a function map to the ordering of the arguments. If your values do not map to ordering of the arguments you are required to specify the argument name and the value. To view the ordering of objects hit <code>TAB</code> after entering the function name or consult the function documentation by prefixing the function name with <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> and hitting <code>ENTER</code>.
+In the previous code I’ve used the values stored in the objects <code>url</code> and <code>temp</code> in the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function without specifying the argument names –only providing the names of the objects. R will assume that values of a function map to the ordering of the arguments. If your values do not map to ordering of the arguments you are required to specify the argument name and the value. To view the ordering of objects hit <code>TAB</code> after entering the function name or consult the function documentation by prefixing the function name with <code>?</code> and hitting <code>ENTER</code>.
 </p>
 </div>
 <p>At this point our downloaded file is stored temporarily on disk and can be accessed and decompressed to our target directory using <code>temp</code> as the value for the argument <code>zipfile</code> from the <code><a href="https://rdrr.io/r/utils/unzip.html">unzip()</a></code> function. I’ve assigned our target directory path to <code>target_dir</code> and used it as the value for the argument <code>exdir</code> to prepare us for the next tweak on our approach.</p>
@@ -279,7 +291,7 @@ In the previous code I’ve used the values stored in the objects <code>url</cod
 OK. You should have recognized the general steps in this function: the argument <code>url</code> and <code>target_dir</code> specify where to get the data and where to write the decompressed files, the <code>if()</code> statement evaluates whether the data already exists, if not (<code>!dir.exists(target_dir)</code>) then the data is downloaded and decompressed, if it does exist (<code>else</code>) then it is not downloaded.
 <div class="rmdtip">
 <p>
-The prefixed <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code> in the logical expression <code><a href="https://rdrr.io/r/base/files2.html">dir.exists(target_dir)</a></code> returns the opposite logical value. This is needed in this case so when the target directory exists, the expression will return <code>FALSE</code>, not <code>TRUE</code>, and therefore not proceed in downloading the resource.
+The prefixed <code>!</code> in the logical expression <code>dir.exists(target_dir)</code> returns the opposite logical value. This is needed in this case so when the target directory exists, the expression will return <code>FALSE</code>, not <code>TRUE</code>, and therefore not proceed in downloading the resource.
 </p>
 </div>
 <p>There are a couple key tweaks I’ve added that provide some additional functionality. For one I’ve included the function <code><a href="https://rdrr.io/r/base/files2.html">dir.create()</a></code> to create the target directory where the data will be written. I’ve also added an additional argument to the <code><a href="https://rdrr.io/r/utils/unzip.html">unzip()</a></code> function, <code>junkpaths = TRUE</code>. Together these additions allow the user to create an arbitrary directory path where the files, and only the files, will be extracted to on our disk. This will discard the containing directory of the <code>.zip</code> file which can be helpful when we want to add multiple <code>.zip</code> files to the same target directory.</p>
@@ -431,9 +443,9 @@ Note that the arguments <code>tidyverse</code> and <code>gutenbergr</code> are c
 
 <div class="rmdtip">
 <p>The <code>gutenberg_metadata</code>, <code>gutenberg_authors</code>, and <code>gutenberg_subjects</code> are periodically updated. To check to see when each data frame was last updated run:</p>
-<p><code><a href="https://rdrr.io/r/base/attr.html">attr(gutenberg_metadata, "date_updated")</a></code></p>
+<p><code>attr(gutenberg_metadata, "date_updated")</code></p>
 </div>
-<p>To download the text itself we use the <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function which takes one required argument, <code>gutenberg_id</code>. The <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function is what is known as ‘vectorized,’ that is, it can take a single value or multiple values for the argument <code>gutenberg_id</code>. Vectorization refers to the process of applying a function to each of the elements stored in a <strong>vector</strong> –a primary object type in R. A vector is a grouping of values of one of various types including character (<code>chr</code>), integer (<code>int</code>), double (<code>dbl</code>), and logical (<code>lgl</code>) and a data frame is a grouping of vectors. The <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function takes an integer vector which can be manually added or selected from the <code>gutenberg_metadata</code> or <code>gutenberg_subjects</code> data frames using the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> operator (e.g. <code>gutenberg_metadata$gutenberg_id</code>).</p>
+<p>To download the text itself we use the <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function which takes one required argument, <code>gutenberg_id</code>. The <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function is what is known as ‘vectorized,’ that is, it can take a single value or multiple values for the argument <code>gutenberg_id</code>. Vectorization refers to the process of applying a function to each of the elements stored in a <strong>vector</strong> –a primary object type in R. A vector is a grouping of values of one of various types including character (<code>chr</code>), integer (<code>int</code>), double (<code>dbl</code>), and logical (<code>lgl</code>) and a data frame is a grouping of vectors. The <code><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download()</a></code> function takes an integer vector which can be manually added or selected from the <code>gutenberg_metadata</code> or <code>gutenberg_subjects</code> data frames using the <code>$</code> operator (e.g. <code>gutenberg_metadata$gutenberg_id</code>).</p>
 <p>Let’s first add them manually here as a toy example by generating a vector of integers from 1 to 5 assigned to the variable name <code>ids</code>.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>  <span class="co"># integer vector of values 1 to 5</span>
@@ -477,7 +489,7 @@ Note that the arguments <code>tidyverse</code> and <code>gutenbergr</code> are c
 <span class="co">#&gt; $ subject      &lt;chr&gt; "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "PR…</span></code></pre></div>
 <div class="rmdwarning">
 <p>
-The operators <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> and <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> are not equivalents. <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> is used for logical evaluation and <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> is an alternate notation for variable assignment (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>).
+The operators <code>=</code> and <code>==</code> are not equivalents. <code>==</code> is used for logical evaluation and <code>=</code> is an alternate notation for variable assignment (<code>&lt;-</code>).
 </p>
 </div>
 <p>The <code>gutenberg_subjects</code> data frame does not contain information as to whether a <code>gutenberg_id</code> is associated with a plain-text version. To limit our query to only those English Literature works with text, we filter the <code>gutenberg_metadata</code> data frame by the ids we have selected in <code>ids</code> and the attribute <code>has_text</code> in the <code>gutenberg_metadata</code> data frame.</p>
@@ -485,7 +497,7 @@ The operators <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>
 <code class="sourceCode R"><span class="co"># Filter for only those works that have text</span>
 <span class="va">ids_has_text</span> <span class="op">&lt;-</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_metadata</span>, 
-         <span class="va">gutenberg_id</span> <span class="op">%in%</span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, 
+         <span class="va">gutenberg_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, 
          <span class="va">has_text</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">ids_has_text</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 6,724</span>
@@ -500,7 +512,7 @@ The operators <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>
 <span class="co">#&gt; $ has_text            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…</span></code></pre></div>
 
 <div class="rmdtip">
-A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gutenberg_id</code>. First, the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> symbol in <code>ids$gutenberg_id</code> is the programmatic way to target a particular column in an R data frame. In this example we select the <code>ids</code> data frame and the column <code>gutenberg_id</code>, which is a integer vector. The <code>gutenberg_id</code> variable that precedes the <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> operator does not need an explicit reference to a data frame because the primary argument of the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function is this data frame (<code>gutenberg_metadata</code>). Second, the <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> operator logically evaluates whether the vector elements in <code>gutenberg_metadata$gutenberg_ids</code> are also found in the vector <code>ids$gutenberg_id</code> returning <code>TRUE</code> and <code>FALSE</code> accordingly. This effectively filters those ids which are not in both vectors.
+A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gutenberg_id</code>. First, the <code>$</code> symbol in <code>ids$gutenberg_id</code> is the programmatic way to target a particular column in an R data frame. In this example we select the <code>ids</code> data frame and the column <code>gutenberg_id</code>, which is a integer vector. The <code>gutenberg_id</code> variable that precedes the <code>%in%</code> operator does not need an explicit reference to a data frame because the primary argument of the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function is this data frame (<code>gutenberg_metadata</code>). Second, the <code>%in%</code> operator logically evaluates whether the vector elements in <code>gutenberg_metadata$gutenberg_ids</code> are also found in the vector <code>ids$gutenberg_id</code> returning <code>TRUE</code> and <code>FALSE</code> accordingly. This effectively filters those ids which are not in both vectors.
 </div>
 <p>As we can see the number of works with text is fewer than the number of works listed, 7100 versus 6724. Now we can safely do our random selection of 10 works, with the function <code>slice_sample()</code> and be confident that the ids we select will contain text when we take the next step by downloading the data.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
@@ -565,7 +577,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
     <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span> <span class="co"># make the sampling reproducible</span>
     <span class="va">ids_sample</span> <span class="op">&lt;-</span> 
       <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gutenberg_metadata</span>, 
-             <span class="va">gutenberg_id</span> <span class="op">%in%</span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, <span class="co"># select ids in both data frames </span>
+             <span class="va">gutenberg_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">ids</span><span class="op">$</span><span class="va">gutenberg_id</span>, <span class="co"># select ids in both data frames </span>
              <span class="va">has_text</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># select those ids that have text</span>
       <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="va">sample_size</span><span class="op">)</span> <span class="co"># sample N works </span>
     <span class="co"># Download sample with associated `author` and `title` metadata</span>
@@ -628,7 +640,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 </h3>
 <p>HTML is a cousin of XML (eXtensible Markup Language) and as such organizes web documents in a hierarchical format that is read by your browser as you navigate the web. Take for example the toy webpage I created as a demonstration in Figure <a href="acquire-data.html#fig:ad-example-webpage">5.3</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-example-webpage"></span>
+<span style="display:block;" id="fig:ad-example-webpage"></span>
 <img src="images/06-acquire-data/example-webpage.png" alt="Example web page." width="90%"><p class="caption">
 Figure 5.3: Example web page.
 </p>
@@ -718,7 +730,7 @@ Figure 5.3: Example web page.
 <!-- screenshot of page to scrape -->
 <p>The next step includes identifying the URL we want to target and exploring the structure of the HTML document. Take the following webpage I have identified, seen in Figure <a href="acquire-data.html#fig:ad-example-lyrics-page-lastfm">5.4</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-example-lyrics-page-lastfm"></span>
+<span style="display:block;" id="fig:ad-example-lyrics-page-lastfm"></span>
 <img src="images/06-acquire-data/ad-lastfm-webpage-lyrics.png" alt="Lyrics page from last.fm" width="90%"><p class="caption">
 Figure 5.4: Lyrics page from last.fm
 </p>
@@ -742,7 +754,7 @@ Figure 5.4: Lyrics page from last.fm
 #&gt; [2] &lt;body&gt;\n&lt;div id="initial-tealium-data" data-require="tracking/tealium-uta ...</code></pre>
 <p>At this point we have captured and parsed the raw HTML assigning it to the object named <code>html</code>. The next step is to identify the html elements that contain the information we want to extract from the page. To do this it is helpful to use a browser to inspect specific elements of the webpage. Your browser will be equipped with a command that you can enable by hovering your mouse over the element of the page you want to target and using a right click to select “Inspect” (Chrome) or “Inspect Element” (Safari, Brave). This will split your browser window vertical or horizontally showing you the raw HTML underlying the webpage.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-inspect-element-artist-lastfm"></span>
+<span style="display:block;" id="fig:ad-inspect-element-artist-lastfm"></span>
 <img src="images/06-acquire-data/ad-lastfm-artist-inspect.png" alt='Using the "Inspect Element" command to explore raw html.' width="90%"><p class="caption">
 Figure 5.5: Using the “Inspect Element” command to explore raw html.
 </p>
@@ -773,7 +785,7 @@ Figure 5.5: Using the “Inspect Element” command to explore raw html.
 <span class="co">#&gt; [1] "Karma Police"</span></code></pre></div>
 <p>Now if we inspect the HTML of the lyrics page, we will notice that the lyrics are contained in <code>&lt;p&gt;&lt;/p&gt;</code> tags with the class <code>lyrics-paragraph</code>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-inspect-element-lyrics-lastfm"></span>
+<span style="display:block;" id="fig:ad-inspect-element-lyrics-lastfm"></span>
 <img src="images/06-acquire-data/ad-lastfm-lyrics-inspect.png" alt='Using the "Inspect Element" command to explore raw html.' width="90%"><p class="caption">
 Figure 5.6: Using the “Inspect Element” command to explore raw html.
 </p>
@@ -886,14 +898,14 @@ Points (1) and (2) will be useful when we iterate over this function to provide 
 <p>Now we could manually search and copy URLs and run this function pipeline. This would be fine if we had just a few particular URLs that we wanted to scrape. But if we want to, say, scrape a set of lyrics grouped by genre. We would probably want a more programmatic approach. The good news is we can leverage our understanding of webscraping to scrape last.fm to harvest the information needed to create and store links to songs by genre. We can then pass these links to a pipeline, similar to the previous one, to scrape lyrics for many songs and store the results in files grouped by genre.</p>
 <p>Last.fm provides a genres page where some of the top genres are listed and can be further explored.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-genre-page-lastfm"></span>
+<span style="display:block;" id="fig:ad-genre-page-lastfm"></span>
 <img src="images/06-acquire-data/ad-lastfm-genres.png" alt="Genre page on last.fm" width="90%"><p class="caption">
 Figure 5.7: Genre page on last.fm
 </p>
 </div>
 <p>Diving into a a particular genre, ‘rock’ for example, you will get a listing of the top tracks in that genre.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:ad-genre-tracks-list-lastfm"></span>
+<span style="display:block;" id="fig:ad-genre-tracks-list-lastfm"></span>
 <img src="images/06-acquire-data/ad-lastfm-genre-tracks-list.png" alt="Tracks by genre list page on last.fm" width="90%"><p class="caption">
 Figure 5.8: Tracks by genre list page on last.fm
 </p>
@@ -1122,7 +1134,7 @@ Figure 5.8: Tracks by genre list page on last.fm
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on August 21, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on August 24, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1142,6 +1154,22 @@ Figure 5.8: Tracks by genre list page on last.fm
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>
