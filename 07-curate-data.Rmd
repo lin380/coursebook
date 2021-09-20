@@ -68,6 +68,24 @@ Tidyverse
 - stringr::str_
 - 
 
+Data: 
+
+structured
+
+- brown
+
+semi-structured
+
+- CEDEL2
+- lastfm
+- gutenbergr 
+- activ-es
+
+unstructured
+
+- europarle
+
+
 Cases: 
 
 - Using music lyrics by genre to explore phrasal verbs (useful in ESL learning) [@Akbary2018], consider Cambridge Dictionary definitions (https://dictionary.cambridge.org/grammar/british-grammar/phrasal-verbs-and-multi-word-verbs)
