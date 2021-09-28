@@ -13,7 +13,7 @@ At this point we will turn our attention to implementing the specifics outlined 
 
 # Acquire data {#acquire-data}
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > The scariest moment is always just before you start.
 >
