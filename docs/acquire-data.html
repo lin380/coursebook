@@ -288,7 +288,7 @@ In the previous code I’ve used the values stored in the objects <code>url</cod
         <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Data already exists \n"</span><span class="op">)</span>  <span class="co"># print status message</span>
     <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
-OK. You should have recognized the general steps in this function: the argument <code>url</code> and <code>target_dir</code> specify where to get the data and where to write the decompressed files, the <code>if()</code> statement evaluates whether the data already exists, if not (<code>!dir.exists(target_dir)</code>) then the data is downloaded and decompressed, if it does exist (<code>else</code>) then it is not downloaded.
+<p>OK. You should have recognized the general steps in this function: the argument <code>url</code> and <code>target_dir</code> specify where to get the data and where to write the decompressed files, the <code>if()</code> statement evaluates whether the data already exists, if not (<code>!dir.exists(target_dir)</code>) then the data is downloaded and decompressed, if it does exist (<code>else</code>) then it is not downloaded.</p>
 <div class="rmdtip">
 <p>
 The prefixed <code>!</code> in the logical expression <code>dir.exists(target_dir)</code> returns the opposite logical value. This is needed in this case so when the target directory exists, the expression will return <code>FALSE</code>, not <code>TRUE</code>, and therefore not proceed in downloading the resource.
@@ -385,7 +385,7 @@ Explore this function’s documentation (<code>?tadr::get_compressed_data()</cod
 <h2>
 <span class="header-section-number">5.2</span> APIs<a class="anchor" aria-label="anchor" href="#apis"><i class="fas fa-link"></i></a>
 </h2>
-<p>A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through <strong>Automatic Programming Interfaces</strong> (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, <a href="https://CRAN.R-project.org/package=gutenbergr">gutenbergr</a> provides access to Project Gutenberg, <a href="https://CRAN.R-project.org/package=rtweet">rtweet</a> to Twitter, and <a href="https://CRAN.R-project.org/package=Rfacebook">Rfacebook</a> to Facebook.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;See Section &lt;a href="understanding-data.html#sources"&gt;2.1.3.2&lt;/a&gt; for a list of some other API packages.&lt;/p&gt;'><sup>15</sup></a></p>
+<p>A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through <strong>Application Programming Interfaces</strong> (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, <a href="https://CRAN.R-project.org/package=gutenbergr">gutenbergr</a> provides access to Project Gutenberg, <a href="https://CRAN.R-project.org/package=rtweet">rtweet</a> to Twitter, and <a href="https://CRAN.R-project.org/package=Rfacebook">Rfacebook</a> to Facebook.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;See Section &lt;a href="understanding-data.html#sources"&gt;2.1.3.2&lt;/a&gt; for a list of some other API packages.&lt;/p&gt;'><sup>15</sup></a></p>
 <!-- RESOURCES:
 - [rwhatsapp](https://github.com/JBGruber/rwhatsapp) work with personal chat history 
 - 
@@ -415,7 +415,7 @@ Explore this function’s documentation (<code>?tadr::get_compressed_data()</cod
 Note that the arguments <code>tidyverse</code> and <code>gutenbergr</code> are comma-separated but not quoted when using <code>p_load()</code>. When using <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> to install, package names need to be quoted (character strings). <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> can take quotes or no quotes, but only one package at a time.
 </p>
 </div>
-<p>Project Gutenberg provides access to thousands of texts in the public domain. The <code>gutenbergr</code> package contains a set of tables, or <strong>data frames</strong> in R speak, that index the meta-data for these texts broken down by text (<code>gutenberg_metadata</code>), author (<code>gutenberg_authors</code>), and subject (<code>gutenberg_subjects</code>). I’ll use the <code>glimpse()</code> function loaded in the <a href="https://CRAN.R-project.org/package=tidyverse">tidyverse</a> package<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;code&gt;tidyverse&lt;/code&gt; is not a typical package. It is a set of packages: &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;, &lt;code&gt;readr&lt;/code&gt;, &lt;code&gt;purrr&lt;/code&gt;, and &lt;code&gt;tibble&lt;/code&gt;. These packages are all installed/ loaded with &lt;code&gt;tidyverse&lt;/code&gt; and form the backbone for the type of work you will typically do in most analyses.&lt;/p&gt;"><sup>16</sup></a> to summarize the structure of these data frames.</p>
+<p>Project Gutenberg provides access to thousands of texts in the public domain. The <code>gutenbergr</code> package contains a set of tables, or <strong>data frames</strong> in R speak, that index the meta-data for these texts broken down by text (<code>gutenberg_metadata</code>), author (<code>gutenberg_authors</code>), and subject (<code>gutenberg_subjects</code>). I’ll use the <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function loaded in the <a href="https://CRAN.R-project.org/package=tidyverse">tidyverse</a> package<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;code&gt;tidyverse&lt;/code&gt; is not a typical package. It is a set of packages: &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;, &lt;code&gt;readr&lt;/code&gt;, &lt;code&gt;purrr&lt;/code&gt;, and &lt;code&gt;tibble&lt;/code&gt;. These packages are all installed/ loaded with &lt;code&gt;tidyverse&lt;/code&gt; and form the backbone for the type of work you will typically do in most analyses.&lt;/p&gt;"><sup>16</sup></a> to summarize the structure of these data frames.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">gutenberg_metadata</span><span class="op">)</span>  <span class="co"># summarize text meta-data</span>
 <span class="co">#&gt; Rows: 51,997</span>
@@ -516,9 +516,9 @@ The operators <code>=</code> and <code>==</code> are not equivalents. <code>==</
 <span class="co">#&gt; $ has_text            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…</span></code></pre></div>
 
 <div class="rmdtip">
-A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gutenberg_id</code>. First, the <code>$</code> symbol in <code>ids$gutenberg_id</code> is the programmatic way to target a particular column in an R data frame. In this example we select the <code>ids</code> data frame and the column <code>gutenberg_id</code>, which is a integer vector. The <code>gutenberg_id</code> variable that precedes the <code>%in%</code> operator does not need an explicit reference to a data frame because the primary argument of the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function is this data frame (<code>gutenberg_metadata</code>). Second, the <code>%in%</code> operator logically evaluates whether the vector elements in <code>gutenberg_metadata$gutenberg_ids</code> are also found in the vector <code>ids$gutenberg_id</code> returning <code>TRUE</code> and <code>FALSE</code> accordingly. This effectively filters those ids which are not in both vectors.
+A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gutenberg_id</code>. First, the <code>$</code> symbol in <code>ids$gutenberg_id</code> is the programmatic way to target a particular column in an R data frame. In this example we select the <code>ids</code> data frame and the column <code>gutenberg_id</code>, which is a integer vector. The <code>gutenberg_id</code> variable that precedes the <code>%in%</code> operator does not need an explicit reference to a data frame because the primary argument of the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function is this data frame (<code>gutenberg_metadata</code>). Second, the <code>%in%</code> operator logically evaluates whether the vector elements in <code>gutenberg_metadata$gutenberg_ids</code> are also found in the vector <code>ids$gutenberg_id</code> returning <code>TRUE</code> and <code>FALSE</code> accordingly. This effectively filters those ids which are not in both vectors.
 </div>
-<p>As we can see the number of works with text is fewer than the number of works listed, 7100 versus 6724. Now we can safely do our random selection of 10 works, with the function <code>slice_sample()</code> and be confident that the ids we select will contain text when we take the next step by downloading the data.</p>
+<p>As we can see the number of works with text is fewer than the number of works listed, 7100 versus 6724. Now we can safely do our random selection of 10 works, with the function <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code> and be confident that the ids we select will contain text when we take the next step by downloading the data.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>  <span class="co"># make the sampling reproducible</span>
 <span class="va">ids_sample</span> <span class="op">&lt;-</span> <span class="fu">slice_sample</span><span class="op">(</span><span class="va">ids_has_text</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># sample 10 works</span>
@@ -624,26 +624,307 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <h3>
 <span class="header-section-number">5.2.2</span> Authentication<a class="anchor" aria-label="anchor" href="#authentication"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>NOTE</strong>: Subsection under development</p>
 <p>Some APIs and the R interfaces that provide access to them require authentication. This may either be through an interactive process that is mediated between R and the web service and/ or by visiting the developer website of the particular API. In either case, there is an extra step that is necessary to make the connect to the API to access the data.</p>
-<p>Let’s take a look at the popular micro-blogging platform Twitter. The rtweet package <span class="citation">(<a href="references.html#ref-rtweet-package" role="doc-biblioref">Kearney, 2019</a>)</span> provides access to tweets in various ways. Two popular methods we will outline here include searching tweets posted in the recent past (6-9 days) and collecting tweets in real-time (‘streaming’).</p>
-<p>Install and/or load the rtweet package.</p>
+<p>Let’s take a look at the popular micro-blogging platform Twitter. The rtweet package <span class="citation">(<a href="references.html#ref-rtweet-package" role="doc-biblioref">Kearney, 2019</a>)</span> provides access to tweets in various ways. To get started install and/or load the rtweet package.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rtweet</span><span class="op">)</span>  <span class="co"># install/load rtweet package</span></code></pre></div>
-<p>Now before a researcher can access data from Twitter with rtweet, <a href="https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html">an authentication token must be setup and made accessible</a>. After following the steps for setting up an authentication token, that token can be accessed with the</p>
+<p>Now before a researcher can access data from Twitter with rtweet, <a href="https://docs.ropensci.org/rtweet/articles/auth.html">an authentication token must be setup and made accessible</a>. After following the steps for setting up an authentication token and saving it, that token can be accessed with the <code><a href="https://docs.ropensci.org/rtweet/reference/auth_as.html">auth_as()</a></code> function.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">auth_setup_default</span><span class="op">(</span><span class="op">)</span>  <span class="co"># setup twitter credentials to work with rtweet</span>
-
-<span class="co"># ?  try out rtweet authentication with RStudio Cloud to get first-time process</span>
-<span class="co"># view</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">auth_as</span><span class="op">(</span><span class="va">twitter_auth</span><span class="op">)</span>  <span class="co"># load the saved `twitter_auth` token</span></code></pre></div>
+<p>Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API includes searching tweets (<code>search_tweets</code>) posted in the recent past (6-9 days).</p>
+<p>Let’s look at a typical query using the <code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets()</a></code> function.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">auth_get</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">rt_latinx</span> <span class="op">&lt;-</span> 
+  <span class="fu">search_tweets</span><span class="op">(</span>q <span class="op">=</span> <span class="st">"latinx"</span>, <span class="co"># query term</span>
+                n <span class="op">=</span> <span class="fl">100</span>, <span class="co"># number of tweets desired</span>
+                type <span class="op">=</span> <span class="st">"mixed"</span>, <span class="co"># a mix of `recent` and `popular` tweets</span>
+                include_rts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># do not include RTs</span></code></pre></div>
+<p>Looking at the arguments in this function, we see I’ve specified the query term to be ‘latinx.’ This is a single word query but if the query included multiple words, the spaces between would be interpreted as the logical <code>AND</code> (only match tweets with all the individual terms). If one would like to include multi-word expressions, the expressions should be enclosed by single quotes (i.e. <code>q = "'spanish speakers' AND latinx"</code>). Another approach would be to include the logical <code>OR</code> (match tweets with either of the terms). Multi-word expressions can be included as in the previous case. Of note, hashtags are acceptable terms, so <code>q = "#latinx"</code> would match tweets with this hashtag.</p>
+<p>The number of results has been set at ‘100,’ but this is the default, so I could have left it out. But you can increase the number of desired tweets. There are rate limits which cap the number of tweets you can access in a given 15-minute time period.</p>
+<p>Another argument of importance is the <code>type</code> argument. This argument has three possible attributes <code>popular</code>, <code>recent</code>, and <code>mixed</code>. When the <code>popular</code> attribute he Twitter API will tend to return fewer tweets than specified by <code>n</code>. With <code>recent</code> or <code>mixed</code> you will most likely get the <code>n</code> you specified (note that <code>mixed</code> is a mix of <code>popular</code> and <code>recent</code>).</p>
+<p>A final argument to note is the <code>include_rts</code> whose attribute is logical. If <code>FALSE</code> no retweets will be included in the results. This is often what a language researcher will want.</p>
+<p>Now, once the <code>search_tweets</code> query has been run, there a a large number of variables that are included in the resulting data frame. Here’s an overview of the names of the variables and the vector types for each variable.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ad-rtweet-variables-table">Table 5.1: </span>Variables and variable types returned from Twitter API via rtweet’s <code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets()</a></code> function.</caption>
+<tbody>
+<tr class="odd">
+<td align="left">created_at</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">id</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">id_str</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">full_text</td>
+<td align="left">character</td>
+</tr>
+<tr class="odd">
+<td align="left">truncated</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">display_text_range</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">entities</td>
+<td align="left">list</td>
+</tr>
+<tr class="even">
+<td align="left">metadata</td>
+<td align="left">list</td>
+</tr>
+<tr class="odd">
+<td align="left">source</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_status_id</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_status_id_str</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_user_id</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_user_id_str</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_screen_name</td>
+<td align="left">character</td>
+</tr>
+<tr class="odd">
+<td align="left">geo</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">coordinates</td>
+<td align="left">list</td>
+</tr>
+<tr class="odd">
+<td align="left">place</td>
+<td align="left">list</td>
+</tr>
+<tr class="even">
+<td align="left">contributors</td>
+<td align="left">logical</td>
+</tr>
+<tr class="odd">
+<td align="left">is_quote_status</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">retweet_count</td>
+<td align="left">integer</td>
+</tr>
+<tr class="odd">
+<td align="left">favorite_count</td>
+<td align="left">integer</td>
+</tr>
+<tr class="even">
+<td align="left">favorited</td>
+<td align="left">logical</td>
+</tr>
+<tr class="odd">
+<td align="left">retweeted</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">lang</td>
+<td align="left">character</td>
+</tr>
+<tr class="odd">
+<td align="left">possibly_sensitive</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status_id</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_id_str</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status</td>
+<td align="left">list</td>
+</tr>
+<tr class="odd">
+<td align="left">text</td>
+<td align="left">character</td>
+</tr>
+<tr class="even">
+<td align="left">favorited_by</td>
+<td align="left">logical</td>
+</tr>
+<tr class="odd">
+<td align="left">display_text_width</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">retweeted_status</td>
+<td align="left">logical</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_permalink</td>
+<td align="left">logical</td>
+</tr>
+<tr class="even">
+<td align="left">query</td>
+<td align="left">logical</td>
+</tr>
+<tr class="odd">
+<td align="left">possibly_sensitive_appealable</td>
+<td align="left">logical</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets">Twitter API documentation for the standard Search Tweets call</a>, which is what <code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets()</a></code> interfaces with has quite a few variables (35 to be exact). For many purposes it is not necessary to keep all the variables. Furthermore, since we will want to write a plain-text file to disk as part of our project, we will need to either convert or eliminate any of the variables that are marked as type <code>list</code>. The most common variable to convert is the <code>coordinates</code> variable, as it will contain the geolocation codes for those Twitter users’ tweets captured in the query that have geolocation enabled on their device. It is of note, however, that using <code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets()</a></code> without specifying that only tweets with geocodes should be captured (<code>geocode =</code>) will tend to return very few, if any, tweets with geolocation information as the majority of Twitter users do not have geolocation enabled.</p>
+<p>Let’s assume that we want to keep all the variables that are not of type <code>list</code>. One option is to use <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and name each variable we want to keep. On the other hand we can use a combination of <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and negated <code>!where()</code> to select all the variables that are not lists (<code>is_list</code>). Let’s do the later approach.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cnn_flw</span> <span class="op">&lt;-</span> <span class="fu">get_followers</span><span class="op">(</span>user <span class="op">=</span> <span class="st">"cnn"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">432</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">cnn_flw</span><span class="op">$</span><span class="va">user_id</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">get_timeline</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">full_text</span>, <span class="va">text</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">rt_latinx_subset</span> <span class="op">&lt;-</span> 
+  <span class="va">rt_latinx</span> <span class="op">%&gt;%</span> <span class="co"># dataset</span>
+  <span class="fu">select</span><span class="op">(</span><span class="op">!</span><span class="fu">where</span><span class="op">(</span><span class="va">is_list</span><span class="op">)</span><span class="op">)</span>  <span class="co"># select all variables that are NOT lists</span>
+
+<span class="va">rt_latinx_subset</span> <span class="op">%&gt;%</span> <span class="co"># subsetted dataset</span>
+  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span> <span class="co"># overview</span>
+<span class="co">#&gt; Rows: 100</span>
+<span class="co">#&gt; Columns: 30</span>
+<span class="co">#&gt; $ created_at                    &lt;chr&gt; "Sun Sep 26 17:38:06 +0000 2021", "Sun S…</span>
+<span class="co">#&gt; $ id                            &lt;dbl&gt; 1.44e+18, 1.44e+18, 1.44e+18, 1.44e+18, …</span>
+<span class="co">#&gt; $ id_str                        &lt;chr&gt; "1442181701967302659", "1442196629801488…</span>
+<span class="co">#&gt; $ full_text                     &lt;chr&gt; "If we call it Latinx Mass they can't ca…</span>
+<span class="co">#&gt; $ truncated                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…</span>
+<span class="co">#&gt; $ display_text_range            &lt;dbl&gt; 57, 177, 166, 23, 261, 153, 202, 211, 57…</span>
+<span class="co">#&gt; $ source                        &lt;chr&gt; "&lt;a href=\"https://mobile.twitter.com\" …</span>
+<span class="co">#&gt; $ in_reply_to_status_id         &lt;dbl&gt; NA, NA, NA, 1.44e+18, NA, NA, NA, NA, 1.…</span>
+<span class="co">#&gt; $ in_reply_to_status_id_str     &lt;chr&gt; NA, NA, NA, "1437436224042635269", NA, N…</span>
+<span class="co">#&gt; $ in_reply_to_user_id           &lt;dbl&gt; NA, NA, NA, 4.26e+08, NA, NA, NA, NA, 2.…</span>
+<span class="co">#&gt; $ in_reply_to_user_id_str       &lt;chr&gt; NA, NA, NA, "426159377", NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ in_reply_to_screen_name       &lt;chr&gt; NA, NA, NA, "MorganStanley", NA, NA, NA,…</span>
+<span class="co">#&gt; $ geo                           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ contributors                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ is_quote_status               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE,…</span>
+<span class="co">#&gt; $ retweet_count                 &lt;int&gt; 351, 124, 62, 0, 0, 0, 0, 0, 0, 0, 0, 1,…</span>
+<span class="co">#&gt; $ favorite_count                &lt;int&gt; 3902, 898, 280, 0, 0, 0, 0, 0, 0, 7, 0, …</span>
+<span class="co">#&gt; $ favorited                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…</span>
+<span class="co">#&gt; $ retweeted                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…</span>
+<span class="co">#&gt; $ lang                          &lt;chr&gt; "en", "en", "es", "en", "en", "en", "en"…</span>
+<span class="co">#&gt; $ possibly_sensitive            &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, FALSE, F…</span>
+<span class="co">#&gt; $ quoted_status_id              &lt;dbl&gt; NA, NA, NA, NA, 1.44e+18, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ quoted_status_id_str          &lt;chr&gt; NA, NA, NA, NA, "1442475408058830856", N…</span>
+<span class="co">#&gt; $ text                          &lt;chr&gt; "If we call it Latinx Mass they can't ca…</span>
+<span class="co">#&gt; $ favorited_by                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ display_text_width            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ retweeted_status              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ quoted_status_permalink       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ query                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ possibly_sensitive_appealable &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span></code></pre></div>
+<p>Now we have the 30 variables which can be written to disk as a plain-text file. Let’s go ahead a do this, but wrap it in a function that does all the work we’ve just laid out in one function. In addition we will check to see if the same query has been run, and skip running the query if the dataset is on disk.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">write_search_tweets</span> <span class="op">&lt;-</span> 
+  <span class="kw">function</span><span class="op">(</span><span class="va">query</span>, <span class="va">path</span>, <span class="va">n</span> <span class="op">=</span> <span class="fl">100</span>, <span class="va">type</span> <span class="op">=</span> <span class="st">"mixed"</span>, <span class="va">include_rts</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+    <span class="co"># Function</span>
+    <span class="co"># Conduct a Twitter search query and write the results to a csv file</span>
+    
+    <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># check to see if the file already exists</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"File does not exist \n"</span><span class="op">)</span> <span class="co"># message</span>
+      
+      <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rtweet">rtweet</a></span><span class="op">)</span> <span class="co"># to use Twitter API</span>
+      <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># to manipulate data</span>
+      
+      <span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_get.html">auth_get</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># get authentication token</span>
+      
+      <span class="va">results</span> <span class="op">&lt;-</span> <span class="co"># query results</span>
+        <span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets</a></span><span class="op">(</span>q <span class="op">=</span> <span class="va">query</span>, <span class="co"># query term</span>
+                      n <span class="op">=</span> <span class="va">n</span>, <span class="co"># number of tweets desired (default 100)</span>
+                      type <span class="op">=</span> <span class="va">type</span>, <span class="co"># type of query</span>
+                      include_rts <span class="op">=</span> <span class="va">include_rts</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># to include RTs</span>
+        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="fu">where</span><span class="op">(</span><span class="va">is_list</span><span class="op">)</span><span class="op">)</span>  <span class="co"># remove list variables</span>
+      
+      <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># isolate directory and check if exists</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Creating directory \n"</span><span class="op">)</span> <span class="co"># message</span>
+        
+        <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span>, <span class="co"># isolate and create directory (remove file name)</span>
+                   recursive <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># create embedded directories if necessary</span>
+                   showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># do not report warnings</span>
+      <span class="op">}</span>
+      
+      <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">results</span>, file <span class="op">=</span> <span class="va">path</span><span class="op">)</span> <span class="co"># write results to csv file </span>
+      <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Twitter search results written to disk \n"</span><span class="op">)</span> <span class="co"># message</span>
+      
+    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"File already exists! \n"</span><span class="op">)</span> <span class="co"># message</span>
+    <span class="op">}</span>
+  <span class="op">}</span></code></pre></div>
+<p>Let’s run this function with the same query as above.</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">write_search_tweets</span><span class="op">(</span>query <span class="op">=</span> <span class="st">"latinx"</span>, path <span class="op">=</span> <span class="st">"../data/original/twitter/rt_latinx.csv"</span><span class="op">)</span></code></pre></div>
+<p>And the appropriate directory structure and file have been written to disk.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="acquire-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/original/twitter/</span></span>
+<span id="cb54-2"><a href="acquire-data.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> rt_latinx.csv</span></code></pre></div>
+<!-- 
+Let's now look at a typical query using the `stream_tweets()` function. 
+
+
+```r
+rt_stream_usa <- stream_tweets(q = lookup_coords("usa"), timeout = 300)
+```
+
+
+
+
+
+The main difference to note here is that since we are pulling tweets posted in real-time, there is a `timeout` argument which we can set the number of seconds to leave the connection open (in this case 300 seconds is 5 minutes). Tweets that are posted during this window have a chance to be captured by our query (a 1\% chance from the Twitterverse). 
+
+The second argument here specifies that the query is geolocation. The `stream_tweets()` function allows for one of four query types: 1. `q = ""` (default) where no parameters are specified, 2. a terms query, just like for `search_tweets()`, 3. a vector of user ids, and 4. geolocation coordinates, as seen above.
+
+The geocoordinates above are generated by the `lookup_coords()` function. This function comes with a number of countries' and world cities' coordinates pre-determined and one can access them with the appropriate keyword. As we have just seen, `usa` is one such set of coordinates, `world` is another. To find the keywords for cities, you can browse the `rtweets:::citycoords` data frame.
+
+
+```r
+rtweet:::citycoords %>% # dataset
+  filter(str_detect(city, "pho")) # filter by (partially) matching the city name
+#> # A tibble: 3 × 3
+#>   city              lat   lng
+#>   <chr>           <dbl> <dbl>
+#> 1 phoenix ariz     33.5  112.
+#> 2 phoenix us       33.5  112.
+#> 3 phoenix ariz us  33.5  112.
+```
+
+With the city name keyword identified, we can see the latitude/ longitude bounding box for this city. 
+
+
+```r
+lookup_coords("phoenix us")
+#> $place
+#> [1] "phoenix us"
+#> 
+#> $box
+#> sw.lng.lng sw.lat.lat ne.lng.lng ne.lat.lat 
+#>      112.0       33.4      112.1       33.5 
+#> 
+#> $point
+#>   lat   lng 
+#>  33.5 112.1 
+#> 
+#> attr(,"class")
+#> [1] "coords" "list"
+```
+
+The `$box` coordinates are passed to `stream_tweets()` to gather real-time tweets. You can also  manually add the coordinates as well. There is a great website for getting the bounding box for any place on the planet appropriately named [Bounding Box](https://boundingbox.klokantech.com/).^[Just make sure to select CSV from the Copy and Paste dropdown and round to the nearest whole number.] -->
 <!-- Consider:
 
 - rtweet package for getting tweet data (Corona virus?)
@@ -701,7 +982,7 @@ Figure 5.3: Example web page.
 &lt;/html&gt;</code></pre>
 <p>Each element in this file is delineated by an opening and closing tag, <code>&lt;head&gt;&lt;/head&gt;</code>. Tags are nested within other tags to create the structural hierarchy. Tags can take class and id labels to distinguish them from other tags and often contain other attributes that dictate how the tag is to behave when rendered visually by a browser. For example, there are two <code>&lt;div&gt;</code> tags in our toy example: one has the label <code>class = "intro"</code> and the other <code>class = "conc"</code>. <code>&lt;div&gt;</code> tags are often used to separate sections of a webpage that may require special visual formatting. The <code>&lt;a&gt;</code> tag, on the other hand, creates a web link. As part of this tag’s function, it requires the attribute <code>href=</code> and a web protocol –in this case it is a link to an email address <code>mailto:francojc@wfu.edu</code>. More often than not, however, the <code>href=</code> contains a URL (Uniform Resource Locator). A working example might look like this: <code>&lt;a href="https://francojc.github.io/"&gt;My homepage&lt;/a&gt;</code>.</p>
 <p>The aim of a web scrape is to download the HTML file, parse the document structure, and extract the elements containing the relevant information we wish to capture. Let’s attempt to extract some information from our toy example. To do this we will need the <a href="https://CRAN.R-project.org/package=rvest">rvest</a><span class="citation">(<a href="references.html#ref-R-rvest" role="doc-biblioref">Wickham, 2021</a>)</span> package. First, install/load the package, then, read and parse the HTML from the character vector named <code>web_file</code> assigning the result to <code>html</code>.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rvest</span><span class="op">)</span>  <span class="co"># install/ load `rvest`</span>
 
 <span class="va">html</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="va">web_file</span><span class="op">)</span>  <span class="co"># read raw html and parse to xml</span>
@@ -711,35 +992,35 @@ Figure 5.3: Example web page.
 <span class="co">#&gt; [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...</span>
 <span class="co">#&gt; [2] &lt;body&gt;\n    &lt;div class="intro"&gt;\n      &lt;p&gt;Welcome!&lt;/p&gt;\n      &lt;p&gt;This is  ...</span></code></pre></div>
 <p><code>read_html()</code> parses the raw HTML into an object of class <code>xml_document</code>. The summary output above shows that tags the HTML structure have been parsed into ‘elements.’ The tag elements can be accessed by using the <code>html_elements()</code> function by specifying the tag to isolate.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div"</span><span class="op">)</span>
 <span class="co">#&gt; {xml_nodeset (2)}</span>
 <span class="co">#&gt; [1] &lt;div class="intro"&gt;\n      &lt;p&gt;Welcome!&lt;/p&gt;\n      &lt;p&gt;This is my first web ...</span>
 <span class="co">#&gt; [2] &lt;div class="conc"&gt;\n      &lt;p&gt;Good-bye!&lt;/p&gt;\n    &lt;/div&gt;</span></code></pre></div>
 <p>Notice that <code>html_elements("div")</code> has returned both <code>div</code> tags. To isolate one of tags by its class, we add the class name to the tag separating it with a <code>.</code>.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro"</span><span class="op">)</span>
 <span class="co">#&gt; {xml_nodeset (1)}</span>
 <span class="co">#&gt; [1] &lt;div class="intro"&gt;\n      &lt;p&gt;Welcome!&lt;/p&gt;\n      &lt;p&gt;This is my first web ...</span></code></pre></div>
 <p>Great. Now say we want to drill down and isolate the subordinate <code>&lt;p&gt;</code> nodes. We can add <code>p</code> to our node filter.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro p"</span><span class="op">)</span>
 <span class="co">#&gt; {xml_nodeset (2)}</span>
 <span class="co">#&gt; [1] &lt;p&gt;Welcome!&lt;/p&gt;</span>
 <span class="co">#&gt; [2] &lt;p&gt;This is my first website. &lt;/p&gt;</span></code></pre></div>
 <p>To extract the text contained within a node we use the <code>html_text()</code> function.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
-    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro p"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro p"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Welcome!"                   "This is my first website. "</span></code></pre></div>
 <p>The result is a character vector with two elements corresponding to the text contained in each <code>&lt;p&gt;</code> tag. If you were paying close attention you might have noticed that the second element in our vector includes extra whitespace after the period. To trim leading and trailing whitespace from text we can add the <code>trim = TRUE</code> argument to <code>html_text()</code>.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
-    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro p"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"div.intro p"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_text</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Welcome!"                  "This is my first website."</span></code></pre></div>
 <p>From here we would then work to organize the text into a format we want to store it in and write the results to disk. Let’s leave writing data to disk for later in the chapter. For now keep our focus on working with <code>rvest</code> to acquire data from html documents working with a more practical example.</p>
@@ -752,7 +1033,7 @@ Figure 5.3: Example web page.
 <!-- remember to remove `eval = FALSE` from code chunks to run -->
 <p>With some basic understanding of HTML and how to use the <code>rvest</code> package, let’s turn to a realistic example. Say we want to acquire lyrics from the online music website and database <a href="https://www.last.fm/">last.fm</a>. The first step in any web scrape is to investigate the site and page(s) we want to scrape to ascertain if there any licensing restrictions. Many, but not all websites, will include a plain text file <a href="https://www.cloudflare.com/learning/bots/what-is-robots.txt/"><code>robots.txt</code></a> at the root of the main URL. This file is declares which webpages a ‘robot’ (including web scraping scripts) can and cannot access. We can use the <code>robotstxt</code> package to find out which URLs are accessible.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is important to check the paths of sub-domains as some website allow access in some areas and not in others&lt;/p&gt;"><sup>18</sup></a></p>
 <!-- change domain -->
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">robotstxt</span><span class="op">)</span>  <span class="co"># load/ install `robotstxt`</span>
 
 <span class="fu">paths_allowed</span><span class="op">(</span>paths <span class="op">=</span> <span class="st">"https://www.last.fm/"</span><span class="op">)</span>  <span class="co"># check permissions</span>
@@ -768,7 +1049,7 @@ Figure 5.4: Lyrics page from last.fm
 <p>As in our toy example, first we want to feed the HTML web address to the <code>read_html()</code> function to parse the tags into elements. We will then assign the result to <code>html</code>.</p>
 <!-- rvest::read_html() -->
 <!-- show code, but don't evaluate -->
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># read and parse html as an xml object</span>
 <span class="va">lyrics_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.last.fm/music/Radiohead/_/Karma+Police/+lyrics"</span>
 <span class="va">html</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="va">lyrics_url</span><span class="op">)</span>  <span class="co"># read raw html and parse to xml</span>
@@ -792,24 +1073,24 @@ Figure 5.5: Using the “Inspect Element” command to explore raw html.
 <!-- change class/ tag/ attribute appropriately -->
 <p>From Figure <a href="acquire-data.html#fig:ad-inspect-element-lyrics-lastfm">5.6</a> we see that the element we want to target is contained within an <code>&lt;a&gt;&lt;/a&gt;</code> tag. Now this tag is common and we don’t want to extract every <code>a</code> so we use the class <code>header-new-crumb</code> to specify we only want the artist name. Using the convention described in our toy example, we can isolate the artist of the lyrics page.</p>
 <!-- change class/ tag/ attribute appropriately -->
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">html</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_element</span><span class="op">(</span><span class="st">"a.header-new-crumb"</span><span class="op">)</span>
 <span class="co">#&gt; {html_node}</span>
 <span class="co">#&gt; &lt;a class="header-new-crumb" itemprop="url" href="/music/Radiohead"&gt;</span>
 <span class="co">#&gt; [1] &lt;span itemprop="name"&gt;Radiohead&lt;/span&gt;</span></code></pre></div>
 <p>We can then extract the text with <code>html_text()</code>.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">artist</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-    <span class="fu">html_element</span><span class="op">(</span><span class="st">"a.header-new-crumb"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">artist</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">html_element</span><span class="op">(</span><span class="st">"a.header-new-crumb"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 <span class="va">artist</span>
 <span class="co">#&gt; [1] "Radiohead"</span></code></pre></div>
 <p>Let’s extract the song title in the same way.</p>
 <!-- change class/ tag/ attribute appropriately -->
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">song</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-    <span class="fu">html_element</span><span class="op">(</span><span class="st">"h1.header-new-title"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">song</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">html_element</span><span class="op">(</span><span class="st">"h1.header-new-title"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 <span class="va">song</span>
 <span class="co">#&gt; [1] "Karma Police"</span></code></pre></div>
@@ -821,9 +1102,9 @@ Figure 5.6: Using the “Inspect Element” command to explore raw html.
 </p>
 </div>
 <p>Since there are multiple elements that we want to extract, we will need to use the <code>html_elements()</code> function instead of the <code>html_element()</code> which only targets one element.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lyrics</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"p.lyrics-paragraph"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lyrics</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"p.lyrics-paragraph"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 <span class="va">lyrics</span>
 <span class="co">#&gt; [1] "Karma policeArrest this manHe talks in mathsHe buzzes like a fridgeHe's like a detuned radio"      </span>
@@ -833,10 +1114,10 @@ Figure 5.6: Using the “Inspect Element” command to explore raw html.
 <span class="co">#&gt; [5] "This is what you'll getThis is what you'll getThis is what you'll getWhen you mess with us"        </span>
 <span class="co">#&gt; [6] "For a minute thereI lost myself, I lost myselfPhew, for a minute thereI lost myself, I lost myself"</span>
 <span class="co">#&gt; [7] "For a minute thereI lost myself, I lost myselfPhew, for a minute thereI lost myself, I lost myself"</span></code></pre></div>
-<p>At this point, we have isolated and extracted the artist, song, and lyrics from the webpage. Each of these elements are stored in character vectors in our R session. To complete our task we need to write this data to disk as plain text. With an eye towards a tidy dataset, an ideal format to store the data is in a CSV file where each column corresponds to one of the elements from our scrape and each row an observation. A CSV file is a tabular format and so before we can write the data to disk let’s coerce the data that we have into tabular format. We will use the <code>tibble()</code> function here to streamline our data frame creation.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;code&gt;tibble&lt;/code&gt; objects are &lt;code&gt;data.frame&lt;/code&gt; objects with some added extra bells and whistles that we won’t get into here.&lt;/p&gt;"><sup>19</sup></a> Feeding each of the vectors <code>artist</code>, <code>song</code>, and <code>lyrics</code> as arguments to <code>tibble()</code> creates the tabular format we are looking for.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span>
+<p>At this point, we have isolated and extracted the artist, song, and lyrics from the webpage. Each of these elements are stored in character vectors in our R session. To complete our task we need to write this data to disk as plain text. With an eye towards a tidy dataset, an ideal format to store the data is in a CSV file where each column corresponds to one of the elements from our scrape and each row an observation. A CSV file is a tabular format and so before we can write the data to disk let’s coerce the data that we have into tabular format. We will use the <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> function here to streamline our data frame creation.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;code&gt;tibble&lt;/code&gt; objects are &lt;code&gt;data.frame&lt;/code&gt; objects with some added extra bells and whistles that we won’t get into here.&lt;/p&gt;"><sup>19</sup></a> Feeding each of the vectors <code>artist</code>, <code>song</code>, and <code>lyrics</code> as arguments to <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> creates the tabular format we are looking for.</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 7</span>
 <span class="co">#&gt; Columns: 3</span>
 <span class="co">#&gt; $ artist &lt;chr&gt; "Radiohead", "Radiohead", "Radiohead", "Radiohead", "Radiohead"…</span>
@@ -844,12 +1125,12 @@ Figure 5.6: Using the “Inspect Element” command to explore raw html.
 <span class="co">#&gt; $ lyrics &lt;chr&gt; "Karma policeArrest this manHe talks in mathsHe buzzes like a f…</span></code></pre></div>
 <p>Notice that there are seven rows in this data frame, one corresponding to each paragraph in <code>lyrics</code>. R has a bias towards working with vectors of the same length. As such each of the other vectors (<code>artist</code>, and <code>song</code>) are replicated, or recycled, until they are the same length as the longest vector <code>lyrics</code>, which a length of seven.</p>
 <p>For good documentation let’s add our object <code>lyrics_url</code> to the data frame, which contains the actual web link to this page, and assign the result to <code>song_lyrics</code>.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">song_lyrics</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span>, <span class="va">lyrics_url</span><span class="op">)</span></code></pre></div>
-<p>The final step is to write this data to disk. To do this we will use the <code>write_csv()</code> function.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">song_lyrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span>, <span class="va">lyrics_url</span><span class="op">)</span></code></pre></div>
+<p>The final step is to write this data to disk. To do this we will use the <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> function.</p>
 <!-- adjust target file -->
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">write_csv</span><span class="op">(</span>x <span class="op">=</span> <span class="va">song_lyrics</span>, path <span class="op">=</span> <span class="st">"../data/original/lyrics.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">song_lyrics</span>, path <span class="op">=</span> <span class="st">"../data/original/lyrics.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="scaling-up" class="section level3" number="5.3.3">
 <h3>
@@ -860,7 +1141,7 @@ Figure 5.6: Using the “Inspect Element” command to explore raw html.
 <ol style="list-style-type: decimal">
 <li>the <code>get_lyrics</code> function wraps the code for scraping a single lyrics webpage from last.fm.</li>
 </ol>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">get_lyrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lyrics_url</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Function: Scrape last.fm lyrics page for: artist, song, and lyrics from a</span>
     <span class="co"># provided content link.  Return as a tibble/data.frame</span>
@@ -873,23 +1154,23 @@ Figure 5.6: Using the “Inspect Element” command to explore raw html.
     <span class="va">html</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="va">url</span><span class="op">)</span>  <span class="co"># read and parse html as an xml object</span>
     <span class="fu"><a href="https://rdrr.io/r/base/connections.html">close</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span>  <span class="co"># close url connection</span>
 
-    <span class="va">artist</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-        <span class="fu">html_element</span><span class="op">(</span><span class="st">"a.header-new-crumb"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="va">artist</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+        <span class="fu">html_element</span><span class="op">(</span><span class="st">"a.header-new-crumb"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
         <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 
-    <span class="va">song</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-        <span class="fu">html_element</span><span class="op">(</span><span class="st">"h1.header-new-title"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="va">song</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+        <span class="fu">html_element</span><span class="op">(</span><span class="st">"h1.header-new-title"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
         <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 
-    <span class="va">lyrics</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">%&gt;%</span>
-        <span class="fu">html_elements</span><span class="op">(</span><span class="st">"p.lyrics-paragraph"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="va">lyrics</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+        <span class="fu">html_elements</span><span class="op">(</span><span class="st">"p.lyrics-paragraph"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
         <span class="fu">html_text</span><span class="op">(</span><span class="op">)</span>
 
     <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"...one moment "</span><span class="op">)</span>
 
     <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># sleep for 1 second to reduce server load</span>
 
-    <span class="va">song_lyrics</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span>, <span class="va">lyrics_url</span><span class="op">)</span>
+    <span class="va">song_lyrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">artist</span>, <span class="va">song</span>, <span class="va">lyrics</span>, <span class="va">lyrics_url</span><span class="op">)</span>
 
     <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"... done! \n"</span><span class="op">)</span>
 
@@ -903,7 +1184,7 @@ Points (1) and (2) will be useful when we iterate over this function to provide 
 <ol start="2" style="list-style-type: decimal">
 <li>the <code>write_content</code> writes the webscraped data to our local machine, including functionality to create the necessary directory structure of the target file path we choose.</li>
 </ol>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">write_content</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">content</span>, <span class="va">target_file</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Function: Write the tibble content to disk. Create the directory if it</span>
     <span class="co"># does not already exist.</span>
@@ -912,19 +1193,19 @@ Points (1) and (2) will be useful when we iterate over this function to provide 
 
     <span class="va">target_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="va">target_file</span><span class="op">)</span>  <span class="co"># identify target file directory structure</span>
     <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">target_dir</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>  <span class="co"># create directory</span>
-    <span class="fu">write_csv</span><span class="op">(</span><span class="va">content</span>, <span class="va">target_file</span><span class="op">)</span>  <span class="co"># write csv file to target location</span>
+    <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">content</span>, <span class="va">target_file</span><span class="op">)</span>  <span class="co"># write csv file to target location</span>
 
     <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Content written to disk!\n"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>With just these two functions, we can take a lyrics URL from last.fm and scrape and write the data to disk like this.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lyrics_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.last.fm/music/Pixies/_/Where+Is+My+Mind%3F/+lyrics"</span>
 
-<span class="va">lyrics_url</span> <span class="op">%&gt;%</span>
-    <span class="fu">get_lyrics</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">lyrics_url</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">get_lyrics</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">write_content</span><span class="op">(</span>target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/lyrics.csv"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="acquire-data.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/original/lastfm/</span></span>
-<span id="cb72-2"><a href="acquire-data.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> lyrics.csv</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="acquire-data.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/original/lastfm/</span></span>
+<span id="cb75-2"><a href="acquire-data.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> lyrics.csv</span></code></pre></div>
 <p>Now we could manually search and copy URLs and run this function pipeline. This would be fine if we had just a few particular URLs that we wanted to scrape. But if we want to, say, scrape a set of lyrics grouped by genre. We would probably want a more programmatic approach. The good news is we can leverage our understanding of webscraping to scrape last.fm to harvest the information needed to create and store links to songs by genre. We can then pass these links to a pipeline, similar to the previous one, to scrape lyrics for many songs and store the results in files grouped by genre.</p>
 <p>Last.fm provides a genres page where some of the top genres are listed and can be further explored.</p>
 <div class="figure" style="text-align: center">
@@ -942,7 +1223,7 @@ Figure 5.8: Tracks by genre list page on last.fm
 </div>
 <p>If we inspect the HTML elements for the track names in Figure <a href="acquire-data.html#fig:ad-genre-tracks-list-lastfm">5.8</a>, we can see that a relative URL is found for the track. In this case, I have ‘Smells Like Teen Spirit’ by Nirvana highlighted in the inspector. If we follow this link to the track page and then to the lyrics for the track, you will notice that the relative URL on the track listings page has all the unique information. Only the web domain <code>https://www.last.fm</code> and the post-pended <code>/+lyrics</code> is missing.</p>
 <p>So with this we can put together a function which gets the track listing for a last.fm genre, scrapes the relative URLs for each of the tracks, and creates a full absolute URL to the lyrics page.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">get_genre_lyrics_urls</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">last_fm_genre</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># Function: Scrapes a given last.fm genre title for top tracks in</span>
   <span class="co"># that genre and then creates links to the lyrics pages for these tracks</span>
@@ -956,16 +1237,16 @@ Figure 5.8: Tracks by genre list page on last.fm
     <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://www.last.fm/tag/"</span>, <span class="va">last_fm_genre</span>, <span class="st">"/tracks"</span><span class="op">)</span> 
   
   <span class="va">genre_lyrics_urls</span> <span class="op">&lt;-</span> 
-    <span class="fu">read_html</span><span class="op">(</span><span class="va">genre_listing_url</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># read raw html and parse to xml</span>
-    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"td.chartlist-name a"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># isolate the track elements</span>
-    <span class="fu">html_attr</span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># extract the href attribute</span>
+    <span class="fu">read_html</span><span class="op">(</span><span class="va">genre_listing_url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># read raw html and parse to xml</span>
+    <span class="fu">html_elements</span><span class="op">(</span><span class="st">"td.chartlist-name a"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># isolate the track elements</span>
+    <span class="fu">html_attr</span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract the href attribute</span>
     <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://www.last.fm"</span>, <span class="va">.</span>, <span class="st">"/+lyrics"</span><span class="op">)</span> <span class="co"># join the domain, relative artist path, and the post-pended /+lyrics to create an absolute URL</span>
   
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">genre_lyrics_urls</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>With this function, all we need is to identify the verbatim way last.fm lists the genres. For Rock, it is <code>rock</code> but for Hip Hop, it is <code>hip+hop</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># get urls for top hip hop tracks</span>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># get urls for top hip hop tracks</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># only display 10 tracks</span></code></pre></div>
 <pre><code>#&gt; Scraping top songs from: hip+hop genre:
 #&gt;  [1] "https://www.last.fm/music/Juzhin/_/Charlie+Conscience+(feat.+MMAIO)/+lyrics"
@@ -979,20 +1260,20 @@ Figure 5.8: Tracks by genre list page on last.fm
 #&gt;  [9] "https://www.last.fm/music/Gina+Moryson/_/Vanilla+Smoothy+(Live)/+lyrics"    
 #&gt; [10] "https://www.last.fm/music/Juzhin/_/Flunk-Down+(Juzhin+Remix)/+lyrics"</code></pre>
 <p>So now we have a method to scrape URLs by genre and list them in a vector. Our approach, then, could be to pass these lyrics URLs to our existing pipeline which downloads the lyrics (<code>get_lyrics()</code>) and then writes them to disk (<code>write_content()</code>).</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Note: will not run</span>
-<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># get lyrics urls for specific genre</span>
-  <span class="fu">get_lyrics</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># scrape lyrics url</span>
+<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get lyrics urls for specific genre</span>
+  <span class="fu">get_lyrics</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># scrape lyrics url</span>
   <span class="fu">write_content</span><span class="op">(</span>target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/hip_hop.csv"</span><span class="op">)</span> <span class="co"># write to disk</span></code></pre></div>
-<p>This approach, however, has a couple problems. (1) our <code>get_lyrics()</code> function only takes one URL at a time, but the result of <code>get_genre_lyrics_urls()</code> will produce many URLs. We will be able to solve this with iteration using the <a href="">purrr</a> package, specifically the <code>map()</code> function which will iteratively map each URL output from <code>get_genre_lyrics_urls()</code> to <code>get_lyrics()</code> in turn. (2) the output from our iterative application of <code>get_lyrics()</code> will produce a tibble for each URL, which then sets up a problem with writing the tibbles to disk with the <code>write_content()</code> function. To avoid this we will want to combine the tibbles into one single tibble and then send it to be written to disk. The <code>bind_rows()</code> function will do just this.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<p>This approach, however, has a couple problems. (1) our <code>get_lyrics()</code> function only takes one URL at a time, but the result of <code>get_genre_lyrics_urls()</code> will produce many URLs. We will be able to solve this with iteration using the <a href="">purrr</a> package, specifically the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function which will iteratively map each URL output from <code>get_genre_lyrics_urls()</code> to <code>get_lyrics()</code> in turn. (2) the output from our iterative application of <code>get_lyrics()</code> will produce a tibble for each URL, which then sets up a problem with writing the tibbles to disk with the <code>write_content()</code> function. To avoid this we will want to combine the tibbles into one single tibble and then send it to be written to disk. The <code><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows()</a></code> function will do just this.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Note: will run, but with occasional errors</span>
-<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># get lyrics urls for specific genre</span>
-  <span class="fu">map</span><span class="op">(</span><span class="va">get_lyrics</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># scrape lyrics url</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># combine tibbles into one</span>
+<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get lyrics urls for specific genre</span>
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_lyrics</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># scrape lyrics url</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># combine tibbles into one</span>
   <span class="fu">write_content</span><span class="op">(</span>target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/hip_hop.csv"</span><span class="op">)</span> <span class="co"># write to disk</span></code></pre></div>
 <p>This preceding pipeline conceptually will work. However, on my testing, it turns out that some of the URLs that are generated in the <code>get_genre_lyrics_urls()</code> do not exist on the site. That is, the song is listed but no lyrics have been added to the song site. This will mean that when the URL is sent to the <code>get_lyrics()</code> function, there will be an error when attempting to download and parse the page with <code>read_html()</code> which will halt the entire process. To avoid this error, we can wrap the <code>get_lyrics()</code> function in a function designed to attempt to download and parse the URL (<code><a href="https://rdrr.io/r/base/conditions.html">tryCatch()</a></code>), but if there is an error, it will skip it and move on to the next URL without stopping the processing. This approach is reflected in the <code>get_lyrics_catch()</code> function below.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Wrap the `get_lyrics()` function with `tryCatch()` to skip URLs that have no</span>
 <span class="co"># lyrics</span>
 
@@ -1000,14 +1281,14 @@ Figure 5.8: Tracks by genre list page on last.fm
     <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="fu">get_lyrics</span><span class="op">(</span><span class="va">lyrics_url</span><span class="op">)</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span><span class="op">)</span>  <span class="co"># no, URL, return(NULL)/ skip</span>
 <span class="op">}</span></code></pre></div>
 <p>Updating the pipeline with the <code>get_lyrics_catch()</code> function would look like this:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Note: will run, but we can do better</span>
-<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># get lyrics urls for specific genre</span>
-  <span class="fu">map</span><span class="op">(</span><span class="va">get_lyrics_catch</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># scrape lyrics url</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># combine tibbles into one</span>
+<span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="st">"hip+hop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get lyrics urls for specific genre</span>
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_lyrics_catch</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># scrape lyrics url</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># combine tibbles into one</span>
   <span class="fu">write_content</span><span class="op">(</span>target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/hip_hop.csv"</span><span class="op">)</span> <span class="co"># write to disk</span></code></pre></div>
 <p>This will work, but as we have discussed before one of this goals we have we acquiring data for a reproducible research project is to make sure that we are developing efficient code that will not burden site’s server we are scraping from. In this case, we would like to check to see if the data is already downloaded. If not, then the script should run. If so, then the script does not run. Of course this is a perfect use of a conditional statement. To make this a single function we can call, I’ve wrapped the functions we created for getting lyric URLs from last.fm, scraping the URLs, and writing the results to disk in the <code>download_lastfm_lyrics()</code> function below. I also added a line to add a <code>last_fm_genre</code> column to the combined tibble to store the name of the genre we scraped (i.e. <code>mutate(genre = last_fm_genre)</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">download_lastfm_lyrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">last_fm_genre</span>, <span class="va">target_file</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Function: get last.fm lyric urls by genre and write them to disk</span>
 
@@ -1015,10 +1296,10 @@ Figure 5.8: Tracks by genre list page on last.fm
 
         <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Downloading data.\n"</span><span class="op">)</span>
 
-        <span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="va">last_fm_genre</span><span class="op">)</span> <span class="op">%&gt;%</span>
-            <span class="fu">map</span><span class="op">(</span><span class="va">get_lyrics_catch</span><span class="op">)</span> <span class="op">%&gt;%</span>
-            <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-            <span class="fu">mutate</span><span class="op">(</span>genre <span class="op">=</span> <span class="va">last_fm_genre</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">get_genre_lyrics_urls</span><span class="op">(</span><span class="va">last_fm_genre</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+            <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_lyrics_catch</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>genre <span class="op">=</span> <span class="va">last_fm_genre</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
             <span class="fu">write_content</span><span class="op">(</span><span class="va">target_file</span><span class="op">)</span>
 
     <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
@@ -1026,7 +1307,7 @@ Figure 5.8: Tracks by genre list page on last.fm
     <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 <p>Now we can call this function on any genre on the last.fm site and download the top 50 song lyrics for that genre (provided they all have lyrics pages).</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Scrape lyrics for 'pop'</span>
 <span class="fu">download_lastfm_lyrics</span><span class="op">(</span>last_fm_genre <span class="op">=</span> <span class="st">"pop"</span>, target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/pop.csv"</span><span class="op">)</span>
 
@@ -1039,27 +1320,34 @@ Figure 5.8: Tracks by genre list page on last.fm
 <span class="co"># Scrape lyrics for 'metal'</span>
 <span class="fu">download_lastfm_lyrics</span><span class="op">(</span>last_fm_genre <span class="op">=</span> <span class="st">"metal"</span>, target_file <span class="op">=</span> <span class="st">"../data/original/lastfm/metal.csv"</span><span class="op">)</span></code></pre></div>
 <p>Now we can see that our web scrape data is organized in a similar fashion to the other data we acquired in this chapter.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="acquire-data.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
-<span id="cb82-2"><a href="acquire-data.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> derived</span>
-<span id="cb82-3"><a href="acquire-data.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> original</span>
-<span id="cb82-4"><a href="acquire-data.html#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> gutenberg</span>
-<span id="cb82-5"><a href="acquire-data.html#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── works_pq.csv</span>
-<span id="cb82-6"><a href="acquire-data.html#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── works_pr.csv</span>
-<span id="cb82-7"><a href="acquire-data.html#cb82-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> lastfm</span>
-<span id="cb82-8"><a href="acquire-data.html#cb82-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── hip_hop.csv</span>
-<span id="cb82-9"><a href="acquire-data.html#cb82-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── metal.csv</span>
-<span id="cb82-10"><a href="acquire-data.html#cb82-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── pop.csv</span>
-<span id="cb82-11"><a href="acquire-data.html#cb82-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── rock.csv</span>
-<span id="cb82-12"><a href="acquire-data.html#cb82-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> sbc</span>
-<span id="cb82-13"><a href="acquire-data.html#cb82-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── meta-data</span>
-<span id="cb82-14"><a href="acquire-data.html#cb82-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── transcriptions</span>
-<span id="cb82-15"><a href="acquire-data.html#cb82-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> scs</span>
-<span id="cb82-16"><a href="acquire-data.html#cb82-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> README</span>
-<span id="cb82-17"><a href="acquire-data.html#cb82-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> discourse</span>
-<span id="cb82-18"><a href="acquire-data.html#cb82-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> disfluency</span>
-<span id="cb82-19"><a href="acquire-data.html#cb82-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> tagged</span>
-<span id="cb82-20"><a href="acquire-data.html#cb82-20" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> timed-transcript</span>
-<span id="cb82-21"><a href="acquire-data.html#cb82-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> transcript</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="acquire-data.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
+<span id="cb85-2"><a href="acquire-data.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> derived/</span>
+<span id="cb85-3"><a href="acquire-data.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> original/</span>
+<span id="cb85-4"><a href="acquire-data.html#cb85-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> cedel2/</span>
+<span id="cb85-5"><a href="acquire-data.html#cb85-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── texts.csv</span>
+<span id="cb85-6"><a href="acquire-data.html#cb85-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> gutenberg/</span>
+<span id="cb85-7"><a href="acquire-data.html#cb85-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── works_pq.csv</span>
+<span id="cb85-8"><a href="acquire-data.html#cb85-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── works_pr.csv</span>
+<span id="cb85-9"><a href="acquire-data.html#cb85-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> lastfm/</span>
+<span id="cb85-10"><a href="acquire-data.html#cb85-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── country.csv</span>
+<span id="cb85-11"><a href="acquire-data.html#cb85-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── hip_hop.csv</span>
+<span id="cb85-12"><a href="acquire-data.html#cb85-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── lyrics.csv</span>
+<span id="cb85-13"><a href="acquire-data.html#cb85-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── metal.csv</span>
+<span id="cb85-14"><a href="acquire-data.html#cb85-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── pop.csv</span>
+<span id="cb85-15"><a href="acquire-data.html#cb85-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── rock.csv</span>
+<span id="cb85-16"><a href="acquire-data.html#cb85-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> sbc/</span>
+<span id="cb85-17"><a href="acquire-data.html#cb85-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── meta-data/</span>
+<span id="cb85-18"><a href="acquire-data.html#cb85-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── transcriptions/</span>
+<span id="cb85-19"><a href="acquire-data.html#cb85-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> scs/</span>
+<span id="cb85-20"><a href="acquire-data.html#cb85-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── README</span>
+<span id="cb85-21"><a href="acquire-data.html#cb85-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── discourse</span>
+<span id="cb85-22"><a href="acquire-data.html#cb85-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── disfluency</span>
+<span id="cb85-23"><a href="acquire-data.html#cb85-23" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── documentation/</span>
+<span id="cb85-24"><a href="acquire-data.html#cb85-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── tagged</span>
+<span id="cb85-25"><a href="acquire-data.html#cb85-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── timed-transcript</span>
+<span id="cb85-26"><a href="acquire-data.html#cb85-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   └── transcript</span>
+<span id="cb85-27"><a href="acquire-data.html#cb85-27" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> twitter/</span>
+<span id="cb85-28"><a href="acquire-data.html#cb85-28" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> rt_latinx.csv</span></code></pre></div>
 <p>Again, it is important to add these custom functions to our <code>acquire_functions.R</code> script in the <code>functions/</code> directory so we can access them in our scripts more efficiently and make our analysis steps more succinct and legible.</p>
 <p>In this section we covered scraping language data from the web. The rvest package provides a host of functions for downloading and parsing HTML. We first looked at a toy example to get a basic understanding of how HTML works and then moved to applying this knowledge to a practical example. To maintain a reproducible workflow, the code developed in this example was grouped into task-oriented functions which were in turn joined and wrapped into a function that provided convenient access to our workflow and avoided unnecessary downloads (in the case the data already exists on disk).</p>
 <p>Here we have built on previously introduced R coding concepts and demonstrated various others. Web scraping often requires more knowledge of and familiarity with R as well as other web technologies. Rest assured, however, practice will increase confidence in your abilities. I encourage you to practice on your own with other websites. You will encounter problems. Consult the R documentation in RStudio or online and lean on the R community on the web at sites such as <a href="https://stackoverflow.com/">Stack Overflow</a> inter alia.</p>
@@ -1070,31 +1358,49 @@ Figure 5.8: Tracks by genre list page on last.fm
 <span class="header-section-number">5.4</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>As part of the data acquisition process it is important include documentation that describes the data resource(s) that will serve as the base for a research project. For all resources the data should include as much information possible that outlines the sampling frame of the data <span class="citation">(<a href="references.html#ref-Adel2020" role="doc-biblioref">Ädel, 2020</a>)</span>. For a corpus sample acquired from a repository will often include documentation which will outline the sampling frame –this most likely will be the very information which leads a researcher to select this resource for the project at hand. It is important to include this documentation (HTML or PDF file) or reference to the documentation (article citation or link<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note that web links can change and it is often best to safeguard the documentation by downloading the HTML documentation page instead of linking&lt;/p&gt;"><sup>20</sup></a>) within the reproducible project’s directory structure.</p>
-<!-- TODO:
-
-- Provide an example from the
-
--->
 <p>In other cases where the data acquisition process is formulated and conducted by the researcher for the specific aims of the research (i.e. API and web scraping approaches), the researcher should make an effort to document those aspects which are key for the study, but that may also be of interest to other researchers for similar research questions. This will may include language characteristics such as modality, register, genre, etc., speaker/ writer characteristics such as demographics, time period(s), context of the linguistic communication, etc. and process characteristics such as the source of the data, the process of acquisition, date of acquisition, etc. However, it is important to recognize that each language sample and the resource from which it is drawn is unique. As a general rule of thumb, a researcher should document the resource as if this were a resource <em>they</em> were to encounter for the first time. To archive this information, it is standard practice to include a <code>README</code> file in the relevant directory where the data is stored.</p>
-<!-- TODO:
-
-- Create an example README for the `lastfm` data?
-
--->
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="acquire-data.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
+<span id="cb86-2"><a href="acquire-data.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> derived/</span>
+<span id="cb86-3"><a href="acquire-data.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> original/</span>
+<span id="cb86-4"><a href="acquire-data.html#cb86-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> cedel2/</span>
+<span id="cb86-5"><a href="acquire-data.html#cb86-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── documentation/</span>
+<span id="cb86-6"><a href="acquire-data.html#cb86-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> └── texts.csv</span>
+<span id="cb86-7"><a href="acquire-data.html#cb86-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> gutenberg/</span>
+<span id="cb86-8"><a href="acquire-data.html#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── README.md</span>
+<span id="cb86-9"><a href="acquire-data.html#cb86-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── works_pq.csv</span>
+<span id="cb86-10"><a href="acquire-data.html#cb86-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> └── works_pr.csv</span>
+<span id="cb86-11"><a href="acquire-data.html#cb86-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> lastfm/</span>
+<span id="cb86-12"><a href="acquire-data.html#cb86-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── README.md</span>
+<span id="cb86-13"><a href="acquire-data.html#cb86-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── country.csv</span>
+<span id="cb86-14"><a href="acquire-data.html#cb86-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── hip_hop.csv</span>
+<span id="cb86-15"><a href="acquire-data.html#cb86-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── lyrics.csv</span>
+<span id="cb86-16"><a href="acquire-data.html#cb86-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── metal.csv</span>
+<span id="cb86-17"><a href="acquire-data.html#cb86-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── pop.csv</span>
+<span id="cb86-18"><a href="acquire-data.html#cb86-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> └── rock.csv</span>
+<span id="cb86-19"><a href="acquire-data.html#cb86-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> sbc/</span>
+<span id="cb86-20"><a href="acquire-data.html#cb86-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── meta-data/</span>
+<span id="cb86-21"><a href="acquire-data.html#cb86-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> └── transcriptions/</span>
+<span id="cb86-22"><a href="acquire-data.html#cb86-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> scs/</span>
+<span id="cb86-23"><a href="acquire-data.html#cb86-23" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── README</span>
+<span id="cb86-24"><a href="acquire-data.html#cb86-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── discourse</span>
+<span id="cb86-25"><a href="acquire-data.html#cb86-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── disfluency</span>
+<span id="cb86-26"><a href="acquire-data.html#cb86-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── documentation/</span>
+<span id="cb86-27"><a href="acquire-data.html#cb86-27" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── tagged</span>
+<span id="cb86-28"><a href="acquire-data.html#cb86-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> ├── timed-transcript</span>
+<span id="cb86-29"><a href="acquire-data.html#cb86-29" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│  </span> └── transcript</span>
+<span id="cb86-30"><a href="acquire-data.html#cb86-30" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> twitter/</span>
+<span id="cb86-31"><a href="acquire-data.html#cb86-31" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> README.md</span>
+<span id="cb86-32"><a href="acquire-data.html#cb86-32" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> rt_latinx.csv</span></code></pre></div>
 <p>For both existing corpora and data samples acquired by the researcher it is also important to signal if there are conditions and/ or licensing restrictions that one should heed when using and potentially sharing the data. In some cases existing corpus data come with restrictions on data sharing. These can be quite restrictive and ultimately require that the corpus data not be included in publically available reproducible project or data can only be shared in a derived format. If this the case, it is important to document the steps to legally acquire the data so that a researcher can acquire their own license and take full advantage of your reproducible project.</p>
 <p>In the case of data from APIs or web scraping, there too may be stipulations on sharing data. A growing number of data sources apply one of <a href="https://creativecommons.org/about/cclicenses/">the available Creative Common Licenses</a>. Check the source of your data for more information and if you are a member of a research institution you will likely have a <a href="https://zsr.wfu.edu/digital-scholarship/copyright/">specialist</a> on <a href="https://www.copyright.gov/fair-use/more-info.html">Copyright and Fair Use</a>.</p>
 </div>
 <div id="summary-4" class="section level2 unnumbered">
 <h2>Summary<a class="anchor" aria-label="anchor" href="#summary-4"><i class="fas fa-link"></i></a>
 </h2>
-<p>….</p>
+<p>In this chapter we have covered a lot of ground. On the surface we have discussed three methods for acquiring corpus data for use in text analysis. In the process we have delved into various aspects of the R programming language. Some key concepts include writing custom functions and working with those function in an iterative manner. We have also considered topics that are more general in nature and concern interacting with data found on the internet.</p>
+<p>Each of these methods should be approached in a way that is transparent to the researcher and to would-be collaborators and the general research community. For this reason the documentation of the steps taken to acquire data are key both in the code and in human-facing documentation.</p>
 <p>At this point you have both a bird’s eye view of the data available on the web and strategies on how to access a great majority of it. It is now time to turn to the next step in our data analysis project: data curation. In the next posts I will cover how to wrangle your raw data into a tidy dataset. This will include working with and incorporating meta-data as well as augmenting a dataset with linguistic annotations.</p>
-<ul>
-<li>add data documentation into the summary.</li>
-<li>modular design, input/ output control</li>
-<li>data/ dataset organization</li>
-<li>…</li>
-</ul>
+
 </div>
 </div>
 
@@ -1143,7 +1449,7 @@ Figure 5.8: Tracks by genre list page on last.fm
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on September 20, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on September 28, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

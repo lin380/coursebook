@@ -265,6 +265,7 @@ get_zip_data <- function(url, target_dir) {
 ```
 
 OK. You should have recognized the general steps in this function: the argument `url` and `target_dir` specify where to get the data and where to write the decompressed files, the `if()` statement evaluates whether the data already exists, if not (`!dir.exists(target_dir)`) then the data is downloaded and decompressed, if it does exist (`else`) then it is not downloaded. 
+
 <div class="rmdtip">
 <p>The prefixed <code>!</code> in the logical expression <code>dir.exists(target_dir)</code> returns the opposite logical value. This is needed in this case so when the target directory exists, the expression will return <code>FALSE</code>, not <code>TRUE</code>, and therefore not proceed in downloading the resource.</p>
 </div>
@@ -384,7 +385,7 @@ In this section, to sum up, we've covered how to access, download, and organize 
 
 ## APIs
 
-A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through **Automatic Programming Interfaces** (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, [gutenbergr](https://CRAN.R-project.org/package=gutenbergr) provides access to Project Gutenberg, [rtweet](https://CRAN.R-project.org/package=rtweet) to Twitter, and [Rfacebook](https://CRAN.R-project.org/package=Rfacebook) to Facebook.^[See Section \@ref(sources) for a list of some other API packages.]
+A convenient alternative method for acquiring data in R is through package interfaces to web services. These interfaces are built using R code to make connections with resources on the web through **Application Programming Interfaces** (APIs). Websites such as Project Gutenberg, Twitter, Facebook, and many others provide APIs to allow access to their data under certain conditions, some more limiting for data collection than others. Programmers (like you!) in the R community take up the task of wrapping calls to an API with R code to make accessing that data from R possible. For example, [gutenbergr](https://CRAN.R-project.org/package=gutenbergr) provides access to Project Gutenberg, [rtweet](https://CRAN.R-project.org/package=rtweet) to Twitter, and [Rfacebook](https://CRAN.R-project.org/package=Rfacebook) to Facebook.^[See Section \@ref(sources) for a list of some other API packages.]
 
 
 <!-- RESOURCES:
@@ -693,44 +694,244 @@ data
 
 ### Authentication
 
-**NOTE**: Subsection under development
-
 Some APIs and the R interfaces that provide access to them require authentication. This may either be through an interactive process that is mediated between R and the web service and/ or by visiting the developer website of the particular API. In either case, there is an extra step that is necessary to make the connect to the API to access the data. 
 
-Let's take a look at the popular micro-blogging platform Twitter. The rtweet package [@rtweet-package] provides access to tweets in various ways. Two popular methods we will outline here include searching tweets posted in the recent past (6-9 days) and collecting tweets in real-time ('streaming'). 
-
-Install and/or load the rtweet package. 
+Let's take a look at the popular micro-blogging platform Twitter. The rtweet package [@rtweet-package] provides access to tweets in various ways. To get started install and/or load the rtweet package. 
 
 
 ```r
 pacman::p_load(rtweet)  # install/load rtweet package
 ```
 
-Now before a researcher can access data from Twitter with rtweet, [an authentication token must be setup and made accessible](https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html). After following the steps for setting up an authentication token, that token can be accessed with the
+Now before a researcher can access data from Twitter with rtweet, [an authentication token must be setup and made accessible](https://docs.ropensci.org/rtweet/articles/auth.html). After following the steps for setting up an authentication token and saving it, that token can be accessed with the `auth_as()` function.
 
 
 ```r
-auth_setup_default()  # setup twitter credentials to work with rtweet
-
-# ?  try out rtweet authentication with RStudio Cloud to get first-time process
-# view
-
+auth_as(twitter_auth)  # load the saved `twitter_auth` token
 ```
+
+Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API includes searching tweets (`search_tweets`) posted in the recent past (6-9 days).
+
+Let's look at a typical query using the `search_tweets()` function. 
 
 
 ```r
-auth_get()
+rt_latinx <- 
+  search_tweets(q = "latinx", # query term
+                n = 100, # number of tweets desired
+                type = "mixed", # a mix of `recent` and `popular` tweets
+                include_rts = FALSE) # do not include RTs
 ```
 
+
+
+
+
+Looking at the arguments in this function, we see I've specified the query term to be 'latinx'. This is a single word query but if the query included multiple words, the spaces between would be interpreted as the logical `AND` (only match tweets with all the individual terms). If one would like to include multi-word expressions, the expressions should be enclosed by single quotes (i.e. `q = "'spanish speakers' AND latinx"`). Another approach would be to include the logical `OR` (match tweets with either of the terms). Multi-word expressions can be included as in the previous case. Of note, hashtags are acceptable terms, so `q = "#latinx"` would match tweets with this hashtag. 
+
+The number of results has been set at '100', but this is the default, so I could have left it out. But you can increase the number of desired tweets. There are rate limits which cap the number of tweets you can access in a given 15-minute time period.
+
+Another argument of importance is the `type` argument. This argument has three possible attributes `popular`, `recent`, and `mixed`. When the `popular` attribute he Twitter API will tend to return fewer tweets than specified by `n`. With `recent` or `mixed` you will most likely get the `n` you specified (note that `mixed` is a mix of `popular` and `recent`). 
+
+A final argument to note is the `include_rts` whose attribute is logical. If `FALSE` no retweets will be included in the results. This is often what a language researcher will want. 
+
+Now, once the `search_tweets` query has been run, there a a large number of variables that are included in the resulting data frame. Here's an overview of the names of the variables and the vector types for each variable. 
+
+
+
+
+Table: (\#tab:ad-rtweet-variables-table)Variables and variable types returned from Twitter API via rtweet's `search_tweets()` function.
+
+|                              |          |
+|:-----------------------------|:---------|
+|created_at                    |character |
+|id                            |double    |
+|id_str                        |character |
+|full_text                     |character |
+|truncated                     |logical   |
+|display_text_range            |double    |
+|entities                      |list      |
+|metadata                      |list      |
+|source                        |character |
+|in_reply_to_status_id         |double    |
+|in_reply_to_status_id_str     |character |
+|in_reply_to_user_id           |double    |
+|in_reply_to_user_id_str       |character |
+|in_reply_to_screen_name       |character |
+|geo                           |logical   |
+|coordinates                   |list      |
+|place                         |list      |
+|contributors                  |logical   |
+|is_quote_status               |logical   |
+|retweet_count                 |integer   |
+|favorite_count                |integer   |
+|favorited                     |logical   |
+|retweeted                     |logical   |
+|lang                          |character |
+|possibly_sensitive            |logical   |
+|quoted_status_id              |double    |
+|quoted_status_id_str          |character |
+|quoted_status                 |list      |
+|text                          |character |
+|favorited_by                  |logical   |
+|display_text_width            |logical   |
+|retweeted_status              |logical   |
+|quoted_status_permalink       |logical   |
+|query                         |logical   |
+|possibly_sensitive_appealable |logical   |
+
+
+The [Twitter API documentation for the standard Search Tweets call](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets), which is what `search_tweets()` interfaces with has quite a few variables (35 to be exact). For many purposes it is not necessary to keep all the variables. Furthermore, since we will want to write a plain-text file to disk as part of our project, we will need to either convert or eliminate any of the variables that are marked as type `list`. The most common variable to convert is the `coordinates` variable, as it will contain the geolocation codes for those Twitter users' tweets captured in the query that have geolocation enabled on their device. It is of note, however, that using `search_tweets()` without specifying that only tweets with geocodes should be captured (`geocode = `) will tend to return very few, if any, tweets with geolocation information as the majority of Twitter users do not have geolocation enabled.
+
+Let's assume that we want to keep all the variables that are not of type `list`. One option is to use `select()` and name each variable we want to keep. On the other hand we can use a combination of `select()` and negated `!where()` to select all the variables that are not lists (`is_list`). Let's do the later approach. 
 
 
 ```r
-cnn_flw <- get_followers(user = "cnn")
-set.seed(432)
-sample(cnn_flw$user_id, 5) %>%
-    get_timeline() %>%
-    select(full_text, text)
+rt_latinx_subset <- 
+  rt_latinx %>% # dataset
+  select(!where(is_list))  # select all variables that are NOT lists
+
+rt_latinx_subset %>% # subsetted dataset
+  glimpse() # overview
+#> Rows: 100
+#> Columns: 30
+#> $ created_at                    <chr> "Sun Sep 26 17:38:06 +0000 2021", "Sun S…
+#> $ id                            <dbl> 1.44e+18, 1.44e+18, 1.44e+18, 1.44e+18, …
+#> $ id_str                        <chr> "1442181701967302659", "1442196629801488…
+#> $ full_text                     <chr> "If we call it Latinx Mass they can't ca…
+#> $ truncated                     <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+#> $ display_text_range            <dbl> 57, 177, 166, 23, 261, 153, 202, 211, 57…
+#> $ source                        <chr> "<a href=\"https://mobile.twitter.com\" …
+#> $ in_reply_to_status_id         <dbl> NA, NA, NA, 1.44e+18, NA, NA, NA, NA, 1.…
+#> $ in_reply_to_status_id_str     <chr> NA, NA, NA, "1437436224042635269", NA, N…
+#> $ in_reply_to_user_id           <dbl> NA, NA, NA, 4.26e+08, NA, NA, NA, NA, 2.…
+#> $ in_reply_to_user_id_str       <chr> NA, NA, NA, "426159377", NA, NA, NA, NA,…
+#> $ in_reply_to_screen_name       <chr> NA, NA, NA, "MorganStanley", NA, NA, NA,…
+#> $ geo                           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ contributors                  <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ is_quote_status               <lgl> FALSE, FALSE, FALSE, FALSE, TRUE, FALSE,…
+#> $ retweet_count                 <int> 351, 124, 62, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+#> $ favorite_count                <int> 3902, 898, 280, 0, 0, 0, 0, 0, 0, 7, 0, …
+#> $ favorited                     <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+#> $ retweeted                     <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+#> $ lang                          <chr> "en", "en", "es", "en", "en", "en", "en"…
+#> $ possibly_sensitive            <lgl> NA, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+#> $ quoted_status_id              <dbl> NA, NA, NA, NA, 1.44e+18, NA, NA, NA, NA…
+#> $ quoted_status_id_str          <chr> NA, NA, NA, NA, "1442475408058830856", N…
+#> $ text                          <chr> "If we call it Latinx Mass they can't ca…
+#> $ favorited_by                  <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ display_text_width            <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ retweeted_status              <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ quoted_status_permalink       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ query                         <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ possibly_sensitive_appealable <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 ```
+
+Now we have the 30 variables which can be written to disk as a plain-text file. Let's go ahead a do this, but wrap it in a function that does all the work we've just laid out in one function. In addition we will check to see if the same query has been run, and skip running the query if the dataset is on disk. 
+
+
+```r
+write_search_tweets <- 
+  function(query, path, n = 100, type = "mixed", include_rts = FALSE) {
+    # Function
+    # Conduct a Twitter search query and write the results to a csv file
+    
+    if(!file.exists(path)) { # check to see if the file already exists
+      cat("File does not exist \n") # message
+      
+      library(rtweet) # to use Twitter API
+      library(tidyverse) # to manipulate data
+      
+      auth_get() # get authentication token
+      
+      results <- # query results
+        search_tweets(q = query, # query term
+                      n = n, # number of tweets desired (default 100)
+                      type = type, # type of query
+                      include_rts = include_rts) %>%  # to include RTs
+        select(!where(is_list))  # remove list variables
+      
+      if(!dir.exists(dirname(path))) { # isolate directory and check if exists
+        cat("Creating directory \n") # message
+        
+        dir.create(path = dirname(path), # isolate and create directory (remove file name)
+                   recursive = TRUE, # create embedded directories if necessary
+                   showWarnings = FALSE) # do not report warnings
+      }
+      
+      write_csv(x = results, file = path) # write results to csv file 
+      cat("Twitter search results written to disk \n") # message
+      
+    } else {
+      cat("File already exists! \n") # message
+    }
+  }
+```
+
+Let's run this function with the same query as above. 
+
+
+```r
+write_search_tweets(query = "latinx", path = "../data/original/twitter/rt_latinx.csv")
+```
+
+And the appropriate directory structure and file have been written to disk.
+
+```bash
+data/original/twitter/
+└── rt_latinx.csv
+```
+<!-- 
+Let's now look at a typical query using the `stream_tweets()` function. 
+
+
+```r
+rt_stream_usa <- stream_tweets(q = lookup_coords("usa"), timeout = 300)
+```
+
+
+
+
+
+The main difference to note here is that since we are pulling tweets posted in real-time, there is a `timeout` argument which we can set the number of seconds to leave the connection open (in this case 300 seconds is 5 minutes). Tweets that are posted during this window have a chance to be captured by our query (a 1\% chance from the Twitterverse). 
+
+The second argument here specifies that the query is geolocation. The `stream_tweets()` function allows for one of four query types: 1. `q = ""` (default) where no parameters are specified, 2. a terms query, just like for `search_tweets()`, 3. a vector of user ids, and 4. geolocation coordinates, as seen above.
+
+The geocoordinates above are generated by the `lookup_coords()` function. This function comes with a number of countries' and world cities' coordinates pre-determined and one can access them with the appropriate keyword. As we have just seen, `usa` is one such set of coordinates, `world` is another. To find the keywords for cities, you can browse the `rtweets:::citycoords` data frame.
+
+
+```r
+rtweet:::citycoords %>% # dataset
+  filter(str_detect(city, "pho")) # filter by (partially) matching the city name
+#> # A tibble: 3 × 3
+#>   city              lat   lng
+#>   <chr>           <dbl> <dbl>
+#> 1 phoenix ariz     33.5  112.
+#> 2 phoenix us       33.5  112.
+#> 3 phoenix ariz us  33.5  112.
+```
+
+With the city name keyword identified, we can see the latitude/ longitude bounding box for this city. 
+
+
+```r
+lookup_coords("phoenix us")
+#> $place
+#> [1] "phoenix us"
+#> 
+#> $box
+#> sw.lng.lng sw.lat.lat ne.lng.lng ne.lat.lat 
+#>      112.0       33.4      112.1       33.5 
+#> 
+#> $point
+#>   lat   lng 
+#>  33.5 112.1 
+#> 
+#> attr(,"class")
+#> [1] "coords" "list"
+```
+
+The `$box` coordinates are passed to `stream_tweets()` to gather real-time tweets. You can also  manually add the coordinates as well. There is a great website for getting the bounding box for any place on the planet appropriately named [Bounding Box](https://boundingbox.klokantech.com/).^[Just make sure to select CSV from the Copy and Paste dropdown and round to the nearest whole number.] -->
 
 
 <!-- Consider:
@@ -1263,26 +1464,33 @@ Now we can see that our web scrape data is organized in a similar fashion to the
 
 ```bash
 data/
-├── derived
-└── original
-    ├── gutenberg
+├── derived/
+└── original/
+    ├── cedel2/
+    │   └── texts.csv
+    ├── gutenberg/
     │   ├── works_pq.csv
     │   └── works_pr.csv
-    ├── lastfm
+    ├── lastfm/
+    │   ├── country.csv
     │   ├── hip_hop.csv
+    │   ├── lyrics.csv
     │   ├── metal.csv
     │   ├── pop.csv
     │   └── rock.csv
-    ├── sbc
-    │   ├── meta-data
-    │   └── transcriptions
-    └── scs
-        ├── README
-        ├── discourse
-        ├── disfluency
-        ├── tagged
-        ├── timed-transcript
-        └── transcript
+    ├── sbc/
+    │   ├── meta-data/
+    │   └── transcriptions/
+    ├── scs/
+    │   ├── README
+    │   ├── discourse
+    │   ├── disfluency
+    │   ├── documentation/
+    │   ├── tagged
+    │   ├── timed-transcript
+    │   └── transcript
+    └── twitter/
+        └── rt_latinx.csv
 ```
 
 Again, it is important to add these custom functions to our `acquire_functions.R` script in the `functions/` directory so we can access them in our scripts more efficiently and make our analysis steps more succinct and legible. 
@@ -1296,19 +1504,42 @@ Here we have built on previously introduced R coding concepts and demonstrated v
 
 As part of the data acquisition process it is important include documentation that describes the data resource(s) that will serve as the base for a research project. For all resources the data should include as much information possible that outlines the sampling frame of the data [@Adel2020]. For a corpus sample acquired from a repository will often include documentation which will outline the sampling frame --this most likely will be the very information which leads a researcher to select this resource for the project at hand. It is important to include this documentation (HTML or PDF file) or reference to the documentation (article citation or link^[Note that web links can change and it is often best to safeguard the documentation by downloading the HTML documentation page instead of linking]) within the reproducible project's directory structure.
 
-<!-- TODO:
-
-- Provide an example from the
-
--->
-
 In other cases where the data acquisition process is formulated and conducted by the researcher for the specific aims of the research (i.e. API and web scraping approaches), the researcher should make an effort to document those aspects which are key for the study, but that may also be of interest to other researchers for similar research questions. This will may include language characteristics such as modality, register, genre, etc., speaker/ writer characteristics such as demographics, time period(s), context of the linguistic communication, etc. and process characteristics such as the source of the data, the process of acquisition, date of acquisition, etc. However, it is important to recognize that each language sample and the resource from which it is drawn is unique. As a general rule of thumb, a researcher should document the resource as if this were a resource *they* were to encounter for the first time. To archive this information, it is standard practice to include a `README` file in the relevant directory where the data is stored.
 
-<!-- TODO:
-
-- Create an example README for the `lastfm` data?
-
--->
+```bash
+data/
+├── derived/
+└── original/
+    ├── cedel2/
+    │   ├── documentation/
+    │   └── texts.csv
+    ├── gutenberg/
+    │   ├── README.md
+    │   ├── works_pq.csv
+    │   └── works_pr.csv
+    ├── lastfm/
+    │   ├── README.md
+    │   ├── country.csv
+    │   ├── hip_hop.csv
+    │   ├── lyrics.csv
+    │   ├── metal.csv
+    │   ├── pop.csv
+    │   └── rock.csv
+    ├── sbc/
+    │   ├── meta-data/
+    │   └── transcriptions/
+    ├── scs/
+    │   ├── README
+    │   ├── discourse
+    │   ├── disfluency
+    │   ├── documentation/
+    │   ├── tagged
+    │   ├── timed-transcript
+    │   └── transcript
+    └── twitter/
+        ├── README.md
+        └── rt_latinx.csv
+```
 
 For both existing corpora and data samples acquired by the researcher it is also important to signal if there are conditions and/ or licensing restrictions that one should heed when using and potentially sharing the data. In some cases existing corpus data come with restrictions on data sharing. These can be quite restrictive and ultimately require that the corpus data not be included in publically available reproducible project or data can only be shared in a derived format. If this the case, it is important to document the steps to legally acquire the data so that a researcher can acquire their own license and take full advantage of your reproducible project. 
 
@@ -1316,17 +1547,8 @@ In the case of data from APIs or web scraping, there too may be stipulations on 
 
 ## Summary {-}
 
+In this chapter we have covered a lot of ground. On the surface we have discussed three methods for acquiring corpus data for use in text analysis. In the process we have delved into various aspects of the R programming language. Some key concepts include writing custom functions and working with those function in an iterative manner. We have also considered topics that are more general in nature and concern interacting with data found on the internet. 
 
-.... 
+Each of these methods should be approached in a way that is transparent to the researcher and to would-be collaborators and the general research community. For this reason the documentation of the steps taken to acquire data are key both in the code and in human-facing documentation. 
 
 At this point you have both a bird’s eye view of the data available on the web and strategies on how to access a great majority of it. It is now time to turn to the next step in our data analysis project: data curation. In the next posts I will cover how to wrangle your raw data into a tidy dataset. This will include working with and incorporating meta-data as well as augmenting a dataset with linguistic annotations.
-
-- add data documentation into the summary. 
-- modular design, input/ output control
-- data/ dataset organization
-- ...
-
-
-
-
-

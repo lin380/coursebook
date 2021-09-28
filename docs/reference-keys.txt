@@ -73,6 +73,7 @@ tab:pinboard-journals-cl
 fig:framing-research-visual-summary-graphic
 fig:ad-show-page-cedel2-1
 fig:ad-show-page-cedel2-2
+tab:ad-rtweet-variables-table
 fig:ad-example-webpage
 fig:ad-example-lyrics-page-lastfm
 fig:ad-inspect-element-artist-lastfm
