@@ -631,7 +631,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <p>Now before a researcher can access data from Twitter with rtweet, <a href="https://docs.ropensci.org/rtweet/articles/auth.html">an authentication token must be setup and made accessible</a>. After following the steps for setting up an authentication token and saving it, that token can be accessed with the <code><a href="https://docs.ropensci.org/rtweet/reference/auth_as.html">auth_as()</a></code> function.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">auth_as</span><span class="op">(</span><span class="va">twitter_auth</span><span class="op">)</span>  <span class="co"># load the saved `twitter_auth` token</span></code></pre></div>
-<p>Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API includes searching tweets (<code>search_tweets</code>) posted in the recent past (6-9 days).</p>
+<p>Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API which searchs tweets (<code>search_tweets</code>) posted in the recent past (6-9 days).</p>
 <p>Let’s look at a typical query using the <code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html">search_tweets()</a></code> function.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rt_latinx</span> <span class="op">&lt;-</span> 
@@ -870,7 +870,7 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
   <span class="op">}</span></code></pre></div>
 <p>Let’s run this function with the same query as above.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">write_search_tweets</span><span class="op">(</span>query <span class="op">=</span> <span class="st">"latinx"</span>, path <span class="op">=</span> <span class="st">"../data/original/twitter/rt_latinx.csv"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">write_search_tweets</span><span class="op">(</span>query <span class="op">=</span> <span class="st">"rt_latinx_subset"</span>, path <span class="op">=</span> <span class="st">"../data/original/twitter/rt_latinx.csv"</span><span class="op">)</span></code></pre></div>
 <p>And the appropriate directory structure and file have been written to disk.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="acquire-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/original/twitter/</span></span>
 <span id="cb54-2"><a href="acquire-data.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> rt_latinx.csv</span></code></pre></div>
@@ -1449,7 +1449,7 @@ Figure 5.8: Tracks by genre list page on last.fm
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on September 28, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on September 29, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

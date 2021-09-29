@@ -710,7 +710,7 @@ Now before a researcher can access data from Twitter with rtweet, [an authentica
 auth_as(twitter_auth)  # load the saved `twitter_auth` token
 ```
 
-Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API includes searching tweets (`search_tweets`) posted in the recent past (6-9 days).
+Now that we the R session is authenticated, we can explore a popular method for querying the Twitter API which searchs tweets (`search_tweets`) posted in the recent past (6-9 days).
 
 Let's look at a typical query using the `search_tweets()` function. 
 
@@ -872,7 +872,7 @@ Let's run this function with the same query as above.
 
 
 ```r
-write_search_tweets(query = "latinx", path = "../data/original/twitter/rt_latinx.csv")
+write_search_tweets(query = "rt_latinx_subset", path = "../data/original/twitter/rt_latinx.csv")
 ```
 
 And the appropriate directory structure and file have been written to disk.
