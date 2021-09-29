@@ -872,7 +872,7 @@ Let's run this function with the same query as above.
 
 
 ```r
-write_search_tweets(query = "rt_latinx_subset", path = "../data/original/twitter/rt_latinx.csv")
+write_search_tweets(query = "latinx", path = "../data/original/twitter/rt_latinx.csv")
 ```
 
 And the appropriate directory structure and file have been written to disk.
