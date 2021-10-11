@@ -260,13 +260,13 @@ europarle_en <-
   readtext::readtext("resources/formats_europarle-en_sample.txt") %>% 
   as_tibble() %>% 
   rename(type = doc_id, original_text = text) %>% 
-  mutate(type = "Target")
+  mutate(type = "Source")
 
 europarle_es <- 
   readtext::readtext("resources/formats_europarle-es_sample.txt") %>% 
   as_tibble() %>% 
   rename(type = doc_id, original_text = text) %>% 
-  mutate(type = "Source")
+  mutate(type = "Target")
 
 europarle <- bind_rows(europarle_en, europarle_es)
 

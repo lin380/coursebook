@@ -60,8 +60,7 @@ GOALS:
 pacman::p_load(tidyverse, gutenbergr)
 ```
 
-There are three main ways to acquire corpus data using R that I will introduce you to: **downloads**, **APIs**, and **web scraping**. In this chapter we will start by manual and programmatically downloading a corpus as it is the most straightforward process for the novice R programmer and typically incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions. Next I will cover using R packages to interface with APIs, both open-access and authentication-based. APIs will require us to delve into more detail about R objects and custom functions. Finally acquiring data from the web via webscraping is the most idiosyncratic and involves both knowledge of the web, more sophisticated R skills, and often some clever hacking skills. I will start with a crash course on the structure of web documents (HTML) and then scale up to a real-world example. To round out the chapter we will cover the process of ensuring that our data is documented in such a way as to provide sufficient information to understand its key sampling characteristics and the source from which it was drawn. 
-
+There are three main ways to acquire corpus data using R that I will introduce you to: **downloads**, **APIs**, and **web scraping**. In this chapter we will start by manual and programmatically downloading a corpus as it is the most straightforward process for the novice R programmer and typically incurs the least number of steps. Along the way I will introduce some key R coding concepts including control statements and custom functions. Next I will cover using R packages to interface with APIs, both open-access and authentication-based. APIs will require us to delve into more detail about R objects and custom functions. Finally acquiring data from the web via webscraping is the most idiosyncratic and involves both knowledge of the web, more sophisticated R skills, and often some clever hacking skills. I will start with a crash course on the structure of web documents (HTML) and then scale up to a real-world example. To round out the chapter we will cover the process of ensuring that our data is documented in such a way as to provide sufficient information to understand its key sampling characteristics and the source from which it was drawn.
 
 ## Downloads
 
@@ -608,7 +607,8 @@ rt_latinx <-
 ```
 
 ```{r ad-rtweet-search-latinx-copy, eval=FALSE, echo=FALSE}
-fs::file_copy(path = "../project_acquire_data/data/original/twitter/rt_latinx.rds", 
+# copy the rt_latinx.rds file from the `project_implementation` R project to the local `resources/` directory
+fs::file_copy(path = "../project_implementation/data/original/twitter/rt_latinx.rds", 
               new_path = "resources/06-acquire-data/rt_latinx.rds")
 ```
 
@@ -715,7 +715,7 @@ rt_stream_usa <- stream_tweets(q = lookup_coords("usa"), timeout = 300)
 ```
 
 ```{r ad-rtweet-stream-tweets-copy, eval=FALSE, echo=FALSE}
-fs::file_copy(path = "../project_acquire_data/data/original/twitter/rt_stream_usa.rds", 
+fs::file_copy(path = "../project_implementation/data/original/twitter/rt_stream_usa.rds", 
               new_path = "resources/06-acquire-data/rt_stream_usa.rds")
 ```
 
