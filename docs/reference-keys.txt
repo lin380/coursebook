@@ -87,6 +87,7 @@ tab:cd-structured-read-single-run
 tab:cd-structured-idealized-dataset
 tab:cd-structure-lastfm-collapse-table
 tab:cd-semi-sdac-idealized-dataset
+tab:cd-semi-sdac-text-8
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis
@@ -177,14 +178,3 @@ exploration
 section-2
 exploration-packages
 section-3
-tab:cd-semi-sdac-text-8
-fig:cd-regex-test
-annotated-readings
-data-analysis-1
-language-analysis-1
-text-analysis-1
-goals-and-organization
-annotated-readings-1
-data-1
-information-1
-documentation-4

@@ -884,7 +884,7 @@ slice_head(data, n = 5) %>% # preview first lines of `text`
 
 With our data now in a data frame, its time to parse the `text` column and extract the damsl tags, speaker, speaker turn, utterance number, and the utterance text itself into separate columns. To do this we will make extensive use of regular expressions. Our aim is to find a consistent pattern that distinguishes each piece of information from other other text in a given row of `data$text` and extract it. 
 
-The best way to learn regular expressions is to use them. To this end I've included a window to the interactive regular expression practice website [regex101](https://regex101.com) in Figure \@ref(fig:cd-regex-test). 
+The best way to learn regular expressions is to use them. To this end I've included a window to the interactive regular expression practice website [regex101](https://regex101.com).
 
 Copy the text below into the 'TEST STRING' field.  
 
@@ -899,11 +899,6 @@ sd          B.6 utt1: I think it usually does.  /
 ad          B.6 utt2: You might try, {F uh, }  /
 h          B.6 utt3: I don't know,  /
 ad          B.6 utt4: hold it down a little longer,  /
-```
-
-```{r cd-regex-test, echo=FALSE, fig.cap='Interactive interface to the [regex101](https://regex101.com) practice website.'}
-knitr::include_url(url = "https://regex101.com/?flags=gm", height = "600px")
-# https://regex101.com/?regex=<regex>&testString=<text>&flags=<flags>&subst=<replacement>&delimiter=<delimiter>
 ```
 
 

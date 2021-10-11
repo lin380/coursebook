@@ -991,7 +991,7 @@ Table: (\#tab:cd-semi-sdac-text-8)First 5 observations of prelim data curation o
 
 With our data now in a data frame, its time to parse the `text` column and extract the damsl tags, speaker, speaker turn, utterance number, and the utterance text itself into separate columns. To do this we will make extensive use of regular expressions. Our aim is to find a consistent pattern that distinguishes each piece of information from other other text in a given row of `data$text` and extract it. 
 
-The best way to learn regular expressions is to use them. To this end I've included a window to the interactive regular expression practice website [regex101](https://regex101.com) in Figure \@ref(fig:cd-regex-test). 
+The best way to learn regular expressions is to use them. To this end I've included a window to the interactive regular expression practice website [regex101](https://regex101.com).
 
 Copy the text below into the 'TEST STRING' field.  
 
@@ -1008,12 +1008,6 @@ h          B.6 utt3: I don't know,  /
 ad          B.6 utt4: hold it down a little longer,  /
 ```
 
-<div class="figure" style="text-align: center">
-<iframe src="https://regex101.com/?flags=gm" width="90%" height="600px"></iframe>
-<p class="caption">(\#fig:cd-regex-test)Interactive interface to the [regex101](https://regex101.com) practice website.</p>
-</div>
-
-<embed src="https://regex101.com" style="width:500px; height: 400px;">
 
 
 ### Write datasets
