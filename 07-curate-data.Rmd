@@ -3,7 +3,7 @@
 ```{r, child="_common.Rmd"}
 ```
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > The hardest bit of information to extract is the first piece.
 >
@@ -884,9 +884,9 @@ slice_head(data, n = 5) %>% # preview first lines of `text`
 
 With our data now in a data frame, its time to parse the `text` column and extract the damsl tags, speaker, speaker turn, utterance number, and the utterance text itself into separate columns. To do this we will make extensive use of regular expressions. Our aim is to find a consistent pattern that distinguishes each piece of information from other other text in a given row of `data$text` and extract it. 
 
-The best way to learn regular expressions is to use them. To this end I've included a window to the interactive regular expression practice website [regex101](https://regex101.com).
+The best way to learn regular expressions is to use them. To this end I've included a link to the interactive regular expression practice website [regex101](https://regex101.com).
 
-Copy the text below into the 'TEST STRING' field.  
+Open this site and copy the text below into the 'TEST STRING' field.  
 
 ```plain
 o          A.1 utt1: Okay.  /
@@ -901,12 +901,280 @@ h          B.6 utt3: I don't know,  /
 ad          B.6 utt4: hold it down a little longer,  /
 ```
 
+```{r cd-regex-101-image, echo=FALSE, fig.cap='RegEx101.'}
+knitr::include_graphics("images/07-curate-data/cd-regex-101.png")
+```
 
+Now manually type the following regular expressions into the 'REGULAR EXPRESSION' field one-by-one (each is on a separate line). Notice what is matched as you type and when you've finished typing. You can find out exactly what the component parts of each expression are doing by toggling the top right icon in the window or hovering your mouse over the relevant parts of the expression.
+
+```plain
+^.+?\s
+[AB]\.\d+
+utt\d+
+:.+$
+```
+
+As you can now see, we have regular expressions that will match the damsl tags, speaker and speaker turn, utterance number, and the utterance text. To apply these expressions to our data and extract this information into separate columns we will make use of the `mutate()` and `str_extract()` functions. `mutate()` will take our data frame and create new columns with values we match and extract from each row in the data frame with `str_extract()`. Notice that `str_extract()` is different than `str_extract_all()`. When we work with `mutate()` each row will be evaluated in turn, therefore we only need to make one match per row in `data$text`. 
+
+I've chained each of these steps in the code below, dropping the original `text` column with `select(-text)`, and overwriting `data` with the results.
+
+```{r cd-semi-sdac-text-parse}
+# Extract column information from `text`
+data <- 
+  data %>% # current dataset
+  mutate(damsl_tag = str_extract(string = text, pattern = "^.+?\\s")) %>%  # extract damsl tags
+  mutate(speaker_turn = str_extract(string = text, pattern = "[AB]\\.\\d+")) %>% # extract speaker_turn pairs
+  mutate(utterance_num = str_extract(string = text, pattern = "utt\\d+")) %>% # extract utterance number
+  mutate(utterance_text = str_extract(string = text, pattern = ":.+$")) %>%  # extract utterance text
+  select(-text) # drop the `text` column
+
+glimpse(data) # preview the data set
+```
+
+```{block, type="rmdwarning"}
+One twist you will notice is that regular expressions in R require double backslashes (`\\\\`) where other programming environments use a single backslash (`\\`).
+```
+
+There are a couple things left to do to the columns we extracted from the text before we move on to finishing up our tidy dataset. First, we need to separate the `speaker_turn` column into `speaker` and `turn_num` columns and second we need to remove unwanted characters from the `damsl_tag`, `utterance_num`, and `utterance_text` columns. 
+
+To separate the values of a column into two columns we use the `separate()` function. It takes a column to separate and character vector of the names of the new columns to create. By default the values of the input column will be separated by non-alphanumeric characters. In our case this means the `.` will be our separator.
+
+```{r cd-semi-sdac-text-organize}
+data <-
+  data %>% # current dataset
+  separate(col = speaker_turn, # source column
+           into = c("speaker", "turn_num")) # separate speaker_turn into distinct columns: speaker and turn_num
+
+glimpse(data) # preview the data set
+```
+
+To remove unwanted leading or trailing whitespace we apply the `str_trim()` function. For removing other characters we matching the character(s) and replace them with an empty string (`""`) with the `str_replace()` function. Again, I've chained these functions together and overwritten `data` with the results.
+
+```{r cd-semi-sdac-text-clean}
+# Clean up column information
+data <- 
+  data %>% # current dataset
+  mutate(damsl_tag = str_trim(damsl_tag)) %>% # remove leading/ trailing whitespace
+  mutate(utterance_num = str_replace(string = utterance_num, pattern = "utt", replacement = "")) %>% # remove 'utt'
+  mutate(utterance_text = str_replace(string = utterance_text, pattern = ":\\s", replacement = "")) %>% # remove ': '
+  mutate(utterance_text = str_trim(utterance_text)) # trim leading/ trailing whitespace
+
+glimpse(data) # preview the data set
+```
+
+To round out our tidy dataset for this single conversation file we will connect the `speaker_a_id` and `speaker_b_id` with speaker A and B in our current dataset adding a new column `speaker_id`. The `case_when()` function does exactly this: allows us to map rows of `speaker` with the value "A" to `speaker_a_id` and rows with value "B" to `speaker_b_id`.
+
+```{r cd-semi-sdac-speaker-ids}
+# Link speaker with speaker_id
+data <- 
+  data %>% # current dataset
+  mutate(speaker_id = case_when( # create speaker_id
+    speaker == "A" ~ speaker_a_id, # speaker_a_id value when A
+    speaker == "B" ~ speaker_b_id # speaker_b_id value when B
+  ))
+
+glimpse(data) # preview the data set
+```
+
+We now have the tidy dataset we set out to create. But this dataset only includes one conversation file! We want to apply this code to all 1155 conversation files in the `sdac/` corpus. The approach will be to create a custom function which groups the code we've done for this single file and then iterative send each file from the corpus through this function and combine the results into one data frame. 
+
+Here's the custom function with some extra code to print a progress message for each file when it runs. 
+
+```{r cd-semi-extract-sdac-metadata-function}
+extract_sdac_metadata <- function(file) {
+  # Function: to read a Switchboard Corpus Dialogue file and extract meta-data
+  cat("Reading", basename(file), "...")
+  
+  # Read `file` by lines
+  doc <- read_lines(file) 
+  
+  # Extract `doc_id`, `speaker_a_id`, and `speaker_b_id`
+  doc_speaker_info <- 
+    doc[str_detect(doc, "\\d+_\\d+_\\d+")] %>% # isolate pattern
+    str_extract("\\d+_\\d+_\\d+") %>% # extract the pattern
+    str_split(pattern = "_") %>% # split the character vector
+    unlist() # flatten the list to a character vector
+  doc_id <- doc_speaker_info[1] # extract `doc_id`
+  speaker_a_id <- doc_speaker_info[2] # extract `speaker_a_id`
+  speaker_b_id <- doc_speaker_info[3] # extract `speaker_b_id`
+  
+  # Extract `text`
+  text_start_index <- # find where header info stops
+    doc %>% 
+    str_detect(pattern = "={3,}") %>% # match 3 or more `=`
+    which() # find vector index
+  
+  text_start_index <- text_start_index + 1 # increment index by 1
+  text_end_index <- length(doc) # get the end of the text section
+  
+  text <- doc[text_start_index:text_end_index] # extract text
+  text <- str_trim(text) # remove leading and trailing whitespace
+  text <- text[text != ""] # remove blank lines
+  
+  data <- data.frame(doc_id, text) # tidy format `doc_id` and `text`
+  
+  # Extract column information from `text`
+  data <- 
+    data %>% 
+    mutate(damsl_tag = str_extract(string = text, pattern = "^.+?\\s")) %>%  # extract damsl tags
+    mutate(speaker_turn = str_extract(string = text, pattern = "[AB]\\.\\d+")) %>% # extract speaker_turn pairs
+    mutate(utterance_num = str_extract(string = text, pattern = "utt\\d+")) %>% # extract utterance number
+    mutate(utterance_text = str_extract(string = text, pattern = ":.+$")) %>%  # extract utterance text
+    select(-text)
+  
+  # Separate speaker_turn into distinct columns
+  data <-
+    data %>% # current dataset
+    separate(col = speaker_turn, # source column
+             into = c("speaker", "turn_num")) # separate speaker_turn into distinct columns: speaker and turn_num
+  
+  # Clean up column information
+  data <- 
+    data %>% 
+    mutate(damsl_tag = str_trim(damsl_tag)) %>% # remove leading/ trailing whitespace
+    mutate(utterance_num = str_replace(string = utterance_num, pattern = "utt", replacement = "")) %>% # remove 'utt'
+    mutate(utterance_text = str_replace(string = utterance_text, pattern = ":\\s", replacement = "")) %>% # remove ': '
+    mutate(utterance_text = str_trim(utterance_text)) # trim leading/ trailing whitespace
+  
+  # Link speaker with speaker_id
+  data <- 
+    data %>% # current dataset
+    mutate(speaker_id = case_when( # create speaker_id
+      speaker == "A" ~ speaker_a_id, # speaker_a_id value when A
+      speaker == "B" ~ speaker_b_id # speaker_b_id value when B
+    ))
+  cat(" done.\n")
+  return(data) # return the data frame object
+}
+```
+
+As a sanity check we will run the `extract_sdac_metadata()` function on a the conversation file we were just working on to make sure it works as expected.
+
+```{r cd-extract-sdac-metadata-test-show, eval=FALSE}
+extract_sdac_metadata(file = "../data/original/sdac/sw00utt/sw_0001_4325.utt") %>% 
+  glimpse()
+```
+
+```{r cd-extract-sdac-metadata-test-run, echo=FALSE}
+extract_sdac_metadata(file = "resources/07-curate-data/sdac/sw00utt/sw_0001_4325.utt") %>% 
+  glimpse()
+```
+
+Looks good! 
+
+So now it's time to create a vector with the paths to all of the conversation files. `fs::dir_ls()` interfaces with our OS file system and will return the paths to the files in the specified directory. We also add a pattern to match conversation files (`regexp = \\.utt$`) so we don't accidentally include other files in the corpus. `recurse` set to `TRUE` means we will get the full path to each file.
+
+
+```{r cd-semi-sdac-list-files-show, eval=FALSE}
+sdac_files <- 
+  fs::dir_ls(path = "../data/original/sdac/", # source directory
+             recurse = TRUE, # traverse all sub-directories
+             type = "file", # only return files
+             regexp = "\\.utt$") # only return files ending in .utt
+head(sdac_files) # preview file paths
+```
+
+```{r cd-semi-sdac-list-files-run, echo=FALSE, results='hide'}
+sdac_files <- 
+  fs::dir_ls(path = "resources/07-curate-data/sdac/", # source directory
+             recurse = TRUE, # traverse all sub-directories
+             type = "file", # only return files
+             regexp = "\\.utt$") # only return files ending in .utt
+head(sdac_files)
+```
+
+```plain
+../data/original/sdac/sw00utt/sw_0001_4325.utt
+../data/original/sdac/sw00utt/sw_0002_4330.utt
+../data/original/sdac/sw00utt/sw_0003_4103.utt
+../data/original/sdac/sw00utt/sw_0004_4327.utt
+../data/original/sdac/sw00utt/sw_0005_4646.utt
+../data/original/sdac/sw00utt/sw_0006_4108.utt
+```
+
+To pass each conversation file in the vector of paths to our conversation files iteratively to the `extract_sdac_metadata()` function we use `map()`. This will apply the function to each conversation file and return a data frame for each. `bind_rows()` will then join the resulting data frames by rows to give us a single tidy dataset for all 1155 conversations. Note there is a lot of processing going on here we have to be patient.
+
+```{r cd-semi-sdac-tidy-all, results='hide'}
+# Read files and return a tidy dataset
+sdac <- 
+  sdac_files %>% # pass file names
+  map(extract_sdac_metadata) %>% # read and tidy iteratively 
+  bind_rows() # bind the results into a single data frame
+```
+
+We now see that we have `r nrow(sdac)` observations (individual utterances in this dataset). 
+
+```{r cd-semi-sdac-preview-complete}
+glimpse(sdac) # preview complete curated dataset
+```
 
 ### Write datasets
 
+Again as in the previous cases, we will write this dataset to disk to prepare for the next step in our text analysis project. 
+
+```{r cd-semi-sdac-write, eval=FALSE}
+fs::dir_create(path = "../data/derived/sdac/") # create sdac subdirectory
+write_csv(sdac, 
+          file = "../data/derived/sdac/sdac_curated.csv") # write sdac to disk and label as the curated dataset
+```
+
+The directory structure now looks like this: 
+
+```bash
+data/
+├── derived/
+│   └── sdac/
+│       └── sdac_curated.csv
+└── original/
+    └── sdac/
+        ├── README
+        ├── doc/
+        ├── sw00utt/
+        ├── sw01utt/
+        ├── sw02utt/
+        ├── sw03utt/
+        ├── sw04utt/
+        ├── sw05utt/
+        ├── sw06utt/
+        ├── sw07utt/
+        ├── sw08utt/
+        ├── sw09utt/
+        ├── sw10utt/
+        ├── sw11utt/
+        ├── sw12utt/
+        └── sw13utt/
+```
 
 ### Summary
+
+In this section we looked at semi-structured data. This type of data often requires the most work to organize into a tidy dataset. We continued to work with many of the R programming strategies introduced to this point in the coursebook. We also made more extensive use of regular expressions to pick out information from a semi-structured document format.
+
+To round out this section I've provided a code summary of the steps involved to conduct the curation of the Switchboard Dialogue Act Corpus files. Note that I've added the `extract_sdac_metadata()` custom function to a file called `curate_functions.R` and sourced this file. This will make the code more succinct and legible here, as well in your own research projects. 
+
+```{r cd-semi-sdac-summary-code, eval=FALSE}
+
+# Source the `extract_sdac_metadata()` function
+source("../functions/curate_functions.R") 
+
+# Get list of the corpus files (.utt)
+sdac_files <- 
+  fs::dir_ls(path = "../data/original/sdac/", # source directory
+             recurse = TRUE, # traverse all sub-directories
+             type = "file", # only return files
+             regexp = "\\.utt$") # only return files ending in .utt
+
+# Read files and return a tidy dataset
+sdac <- 
+  sdac_files %>% # pass file names
+  map(extract_sdac_metadata) %>% # read and tidy iteratively 
+  bind_rows() # bind the results into a single data frame
+  
+# Write curated dataset to disk
+fs::dir_create(path = "../data/derived/sdac/") # create sdac subdirectory
+write_csv(sdac, 
+          file = "../data/derived/sdac/sdac_curated.csv") # write sdac to disk and label as the curated dataset
+```
+
 
 <!-- Consider:
 
@@ -915,22 +1183,58 @@ ad          B.6 utt4: hold it down a little longer,  /
 
 -->
 
-
-
-
-...
-
-
 ## Documentation
 
-...
+At this stage we again want to ensure that the data that we have derived is well-documented. Where in the data acquisition process the documentation was focused on the sampling frame, curated datasets require documentation that describes the structure of the now rectangular dataset and its attributes. This documentation is known as a **data dictionary**. At the curation stage this documentation often contains the following information [@HowMakeData10-2021]: 
+
+- names of the variables (as they appear in the dataset)
+- human-readable names for the variables
+- short prose descriptions of the variables, including units of measurement (where applicable)
+
+A data dictionary will take the format of a table and can be stored in a tabular-oriented file format (such as .csv). It is often easier to work with a spreadsheet to create this documentation. I suggest creating a .csv file with the basic structure of the documentation. You can do this however you choose, but I suggest using something along these lines as seen in the following custom function, `data_dic_starter()`. 
+
+```{r cd-documentation-dic-starter-function, eval=FALSE}
+data_dic_starter <- function(data, file_path) {
+  # Function:
+  # Creates a .csv file with the basic information
+  # to document a curated dataset
+  
+  tibble(variable_name = names(data), # column with existing variable names 
+       name = "", # column for human-readable names
+       description = "") %>% # column for prose description
+  write_csv(file = file_path) # write to disk
+}
+```
+
+Running this function in the R Console on the curated dataset (in this case the `sdac` dataset), will provide this structure. 
+
+```{r cd-documentation-dic-starter-structure, echo=FALSE}
+tibble(variable_name = names(sdac), name = "", description = "") %>% 
+  knitr::kable(booktabs = TRUE, 
+               caption = "Data dictionary starter structure for the SDAC curated dataset.")
+```
+
+The resulting .csv file can then be opened with spreadsheet software (such as MS Excel, Google Sheets, etc.) and edited.^[Note on RStudio Cloud you will need to download the .csv file and, after editing, upload the complete data dictionary file. Make sure to save the edited file as a .csv file.]
+
+```{r cd-documentation-starter-edit, echo=FALSE}
+knitr::include_graphics("images/07-curate-data/cd-data-dictionary.png")
+```
+
+Save this file as a .csv file and replace the original starter file. Note that it is important to use a plain-text file format for the official documentation file and avoid proprietary formats to ensure open accessibility and future compatibility.^[Although based on spreadsheets, @Broman2018 outlines many of the best for good data organization regardless of the technology.]
+
+Our `data/derived/` directory now looks like this.
+
+```bash
+data/
+└── derived/
+    └── sdac/
+        ├── sdac_curated.csv
+        └── data_dictionary_sdac.csv
+```
 
 ## Summary
 
----
+In this chapter we looked at the process of structuring data into a dataset. This included a discussion on three main types of data --unstructured, structured, and semi-structured. The level of structure of the original data(set) will vary from resource to resource and by the same token so will the file format used to support the level of meta-information included. The results from our data curation resulted in a curated dataset that is saved separate from the original data to maintain modularity between what the data(set) looked like before we intervene and afterwards. In addition to the code we use to derived the curated dataset's structure, we also include a data dictionary which documents the names of the variables and provides sufficient description of these variables so that it is clear what our dataset contains.
 
-__Notes:__
-
-Data Organization in Spreadsheets [@Broman2018]. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.
-
+It is important to recognized that this curated dataset will form the base for the next step in our text analysis project and the last step in data preparation for analysis: dataset transformation. This last step in preparing data for analysis is to convert this curated dataset into a dataset that is directly aligned with the research aims (i.e. analysis method(s)) of the project. Since there can be multiple analysis approaches applied the original data in a research project, this curated dataset serves as the point of departure for each of the subsequent datasets derived from the transformational steps. 
 

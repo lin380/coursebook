@@ -88,6 +88,8 @@ tab:cd-structured-idealized-dataset
 tab:cd-structure-lastfm-collapse-table
 tab:cd-semi-sdac-idealized-dataset
 tab:cd-semi-sdac-text-8
+fig:cd-regex-101-image
+tab:cd-documentation-dic-starter-structure
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis

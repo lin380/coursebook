@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Curate data | Coursebook</title>
 <meta name="author" content="Jerid Francom">
-<meta name="description" content="INCOMPLETE DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take? ...">
+<meta name="description" content="DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take?  what R...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Curate data | Coursebook">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/curate-data.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
-<meta property="og:description" content="INCOMPLETE DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take? ...">
+<meta property="og:description" content="DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take?  what R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Curate data | Coursebook">
 <meta name="twitter:site" content="@jeridfrancom">
-<meta name="twitter:description" content="INCOMPLETE DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take? ...">
+<meta name="twitter:description" content="DRAFT  The hardest bit of information to extract is the first piece. ―–Robert Ferrigno   The essential questions for this chapter are:  what are some of the formats that data can take?  what R...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -87,7 +87,7 @@
 <span class="header-section-number">6</span> Curate data<a class="anchor" aria-label="anchor" href="#curate-data"><i class="fas fa-link"></i></a>
 </h1>
 <p style="font-weight:bold; color:red;">
-INCOMPLETE DRAFT
+DRAFT
 </p>
 <blockquote>
 <p>The hardest bit of information to extract is the first piece.</p>
@@ -1173,8 +1173,8 @@ The stringr package has a handy function <code><a href="https://stringr.tidyvers
 </tbody>
 </table></div>
 <p>With our data now in a data frame, its time to parse the <code>text</code> column and extract the damsl tags, speaker, speaker turn, utterance number, and the utterance text itself into separate columns. To do this we will make extensive use of regular expressions. Our aim is to find a consistent pattern that distinguishes each piece of information from other other text in a given row of <code>data$text</code> and extract it.</p>
-<p>The best way to learn regular expressions is to use them. To this end I’ve included a window to the interactive regular expression practice website <a href="https://regex101.com">regex101</a>.</p>
-<p>Copy the text below into the ‘TEST STRING’ field.</p>
+<p>The best way to learn regular expressions is to use them. To this end I’ve included a link to the interactive regular expression practice website <a href="https://regex101.com">regex101</a>.</p>
+<p>Open this site and copy the text below into the ‘TEST STRING’ field.</p>
 <pre class="plain"><code>o          A.1 utt1: Okay.  /
 qw          A.1 utt2: {D So, }
 qy^d          B.2 utt1: [ [ I guess, +
@@ -1185,41 +1185,372 @@ sd          B.6 utt1: I think it usually does.  /
 ad          B.6 utt2: You might try, {F uh, }  /
 h          B.6 utt3: I don't know,  /
 ad          B.6 utt4: hold it down a little longer,  /</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:cd-regex-101-image"></span>
+<img src="images/07-curate-data/cd-regex-101.png" alt="RegEx101." width="90%"><p class="caption">
+Figure 6.1: RegEx101.
+</p>
+</div>
+<p>Now manually type the following regular expressions into the ‘REGULAR EXPRESSION’ field one-by-one (each is on a separate line). Notice what is matched as you type and when you’ve finished typing. You can find out exactly what the component parts of each expression are doing by toggling the top right icon in the window or hovering your mouse over the relevant parts of the expression.</p>
+<pre class="plain"><code>^.+?\s
+[AB]\.\d+
+utt\d+
+:.+$</code></pre>
+<p>As you can now see, we have regular expressions that will match the damsl tags, speaker and speaker turn, utterance number, and the utterance text. To apply these expressions to our data and extract this information into separate columns we will make use of the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract()</a></code> functions. <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> will take our data frame and create new columns with values we match and extract from each row in the data frame with <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract()</a></code>. Notice that <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract()</a></code> is different than <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all()</a></code>. When we work with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> each row will be evaluated in turn, therefore we only need to make one match per row in <code>data$text</code>.</p>
+<p>I’ve chained each of these steps in the code below, dropping the original <code>text</code> column with <code>select(-text)</code>, and overwriting <code>data</code> with the results.</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Extract column information from `text`</span>
+<span class="va">data</span> <span class="op">&lt;-</span> 
+  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>damsl_tag <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"^.+?\\s"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># extract damsl tags</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>speaker_turn <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"[AB]\\.\\d+"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract speaker_turn pairs</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_num <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"utt\\d+"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract utterance number</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">":.+$"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># extract utterance text</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">text</span><span class="op">)</span> <span class="co"># drop the `text` column</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># preview the data set</span>
+<span class="co">#&gt; Rows: 159</span>
+<span class="co">#&gt; Columns: 5</span>
+<span class="co">#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…</span>
+<span class="co">#&gt; $ damsl_tag      &lt;chr&gt; "o ", "qw ", "qy^d ", "+ ", "+ ", "qy ", "sd ", "ad ", …</span>
+<span class="co">#&gt; $ speaker_turn   &lt;chr&gt; "A.1", "A.1", "B.2", "A.3", "B.4", "A.5", "B.6", "B.6",…</span>
+<span class="co">#&gt; $ utterance_num  &lt;chr&gt; "utt1", "utt2", "utt1", "utt1", "utt1", "utt1", "utt1",…</span>
+<span class="co">#&gt; $ utterance_text &lt;chr&gt; ": Okay.  /", ": {D So, }", ": [ [ I guess, +", ": What…</span></code></pre></div>
+<div class="rmdwarning">
+<p>
+One twist you will notice is that regular expressions in R require double backslashes (<code>\\</code>) where other programming environments use a single backslash (<code>\</code>).
+</p>
+</div>
+<p>There are a couple things left to do to the columns we extracted from the text before we move on to finishing up our tidy dataset. First, we need to separate the <code>speaker_turn</code> column into <code>speaker</code> and <code>turn_num</code> columns and second we need to remove unwanted characters from the <code>damsl_tag</code>, <code>utterance_num</code>, and <code>utterance_text</code> columns.</p>
+<p>To separate the values of a column into two columns we use the <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> function. It takes a column to separate and character vector of the names of the new columns to create. By default the values of the input column will be separated by non-alphanumeric characters. In our case this means the <code>.</code> will be our separator.</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>
+  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">speaker_turn</span>, <span class="co"># source column</span>
+           into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"speaker"</span>, <span class="st">"turn_num"</span><span class="op">)</span><span class="op">)</span> <span class="co"># separate speaker_turn into distinct columns: speaker and turn_num</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># preview the data set</span>
+<span class="co">#&gt; Rows: 159</span>
+<span class="co">#&gt; Columns: 6</span>
+<span class="co">#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…</span>
+<span class="co">#&gt; $ damsl_tag      &lt;chr&gt; "o ", "qw ", "qy^d ", "+ ", "+ ", "qy ", "sd ", "ad ", …</span>
+<span class="co">#&gt; $ speaker        &lt;chr&gt; "A", "A", "B", "A", "B", "A", "B", "B", "B", "B", "B", …</span>
+<span class="co">#&gt; $ turn_num       &lt;chr&gt; "1", "1", "2", "3", "4", "5", "6", "6", "6", "6", "6", …</span>
+<span class="co">#&gt; $ utterance_num  &lt;chr&gt; "utt1", "utt2", "utt1", "utt1", "utt1", "utt1", "utt1",…</span>
+<span class="co">#&gt; $ utterance_text &lt;chr&gt; ": Okay.  /", ": {D So, }", ": [ [ I guess, +", ": What…</span></code></pre></div>
+<p>To remove unwanted leading or trailing whitespace we apply the <code><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim()</a></code> function. For removing other characters we matching the character(s) and replace them with an empty string (<code>""</code>) with the <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace()</a></code> function. Again, I’ve chained these functions together and overwritten <code>data</code> with the results.</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Clean up column information</span>
+<span class="va">data</span> <span class="op">&lt;-</span> 
+  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>damsl_tag <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">damsl_tag</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove leading/ trailing whitespace</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_num <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">utterance_num</span>, pattern <span class="op">=</span> <span class="st">"utt"</span>, replacement <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove 'utt'</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">utterance_text</span>, pattern <span class="op">=</span> <span class="st">":\\s"</span>, replacement <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove ': '</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">utterance_text</span><span class="op">)</span><span class="op">)</span> <span class="co"># trim leading/ trailing whitespace</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># preview the data set</span>
+<span class="co">#&gt; Rows: 159</span>
+<span class="co">#&gt; Columns: 6</span>
+<span class="co">#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…</span>
+<span class="co">#&gt; $ damsl_tag      &lt;chr&gt; "o", "qw", "qy^d", "+", "+", "qy", "sd", "ad", "h", "ad…</span>
+<span class="co">#&gt; $ speaker        &lt;chr&gt; "A", "A", "B", "A", "B", "A", "B", "B", "B", "B", "B", …</span>
+<span class="co">#&gt; $ turn_num       &lt;chr&gt; "1", "1", "2", "3", "4", "5", "6", "6", "6", "6", "6", …</span>
+<span class="co">#&gt; $ utterance_num  &lt;chr&gt; "1", "2", "1", "1", "1", "1", "1", "2", "3", "4", "5", …</span>
+<span class="co">#&gt; $ utterance_text &lt;chr&gt; "Okay.  /", "{D So, }", "[ [ I guess, +", "What kind of…</span></code></pre></div>
+<p>To round out our tidy dataset for this single conversation file we will connect the <code>speaker_a_id</code> and <code>speaker_b_id</code> with speaker A and B in our current dataset adding a new column <code>speaker_id</code>. The <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> function does exactly this: allows us to map rows of <code>speaker</code> with the value “A” to <code>speaker_a_id</code> and rows with value “B” to <code>speaker_b_id</code>.</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Link speaker with speaker_id</span>
+<span class="va">data</span> <span class="op">&lt;-</span> 
+  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>speaker_id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span> <span class="co"># create speaker_id</span>
+    <span class="va">speaker</span> <span class="op">==</span> <span class="st">"A"</span> <span class="op">~</span> <span class="va">speaker_a_id</span>, <span class="co"># speaker_a_id value when A</span>
+    <span class="va">speaker</span> <span class="op">==</span> <span class="st">"B"</span> <span class="op">~</span> <span class="va">speaker_b_id</span> <span class="co"># speaker_b_id value when B</span>
+  <span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># preview the data set</span>
+<span class="co">#&gt; Rows: 159</span>
+<span class="co">#&gt; Columns: 7</span>
+<span class="co">#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…</span>
+<span class="co">#&gt; $ damsl_tag      &lt;chr&gt; "o", "qw", "qy^d", "+", "+", "qy", "sd", "ad", "h", "ad…</span>
+<span class="co">#&gt; $ speaker        &lt;chr&gt; "A", "A", "B", "A", "B", "A", "B", "B", "B", "B", "B", …</span>
+<span class="co">#&gt; $ turn_num       &lt;chr&gt; "1", "1", "2", "3", "4", "5", "6", "6", "6", "6", "6", …</span>
+<span class="co">#&gt; $ utterance_num  &lt;chr&gt; "1", "2", "1", "1", "1", "1", "1", "2", "3", "4", "5", …</span>
+<span class="co">#&gt; $ utterance_text &lt;chr&gt; "Okay.  /", "{D So, }", "[ [ I guess, +", "What kind of…</span>
+<span class="co">#&gt; $ speaker_id     &lt;chr&gt; "1632", "1632", "1519", "1632", "1519", "1632", "1519",…</span></code></pre></div>
+<p>We now have the tidy dataset we set out to create. But this dataset only includes one conversation file! We want to apply this code to all 1155 conversation files in the <code>sdac/</code> corpus. The approach will be to create a custom function which groups the code we’ve done for this single file and then iterative send each file from the corpus through this function and combine the results into one data frame.</p>
+<p>Here’s the custom function with some extra code to print a progress message for each file when it runs.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extract_sdac_metadata</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Function: to read a Switchboard Corpus Dialogue file and extract meta-data</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Reading"</span>, <span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>, <span class="st">"..."</span><span class="op">)</span>
+  
+  <span class="co"># Read `file` by lines</span>
+  <span class="va">doc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_lines.html">read_lines</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span> 
+  
+  <span class="co"># Extract `doc_id`, `speaker_a_id`, and `speaker_b_id`</span>
+  <span class="va">doc_speaker_info</span> <span class="op">&lt;-</span> 
+    <span class="va">doc</span><span class="op">[</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">doc</span>, <span class="st">"\\d+_\\d+_\\d+"</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># isolate pattern</span>
+    <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="st">"\\d+_\\d+_\\d+"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract the pattern</span>
+    <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># split the character vector</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># flatten the list to a character vector</span>
+  <span class="va">doc_id</span> <span class="op">&lt;-</span> <span class="va">doc_speaker_info</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co"># extract `doc_id`</span>
+  <span class="va">speaker_a_id</span> <span class="op">&lt;-</span> <span class="va">doc_speaker_info</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="co"># extract `speaker_a_id`</span>
+  <span class="va">speaker_b_id</span> <span class="op">&lt;-</span> <span class="va">doc_speaker_info</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="co"># extract `speaker_b_id`</span>
+  
+  <span class="co"># Extract `text`</span>
+  <span class="va">text_start_index</span> <span class="op">&lt;-</span> <span class="co"># find where header info stops</span>
+    <span class="va">doc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"={3,}"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># match 3 or more `=`</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># find vector index</span>
+  
+  <span class="va">text_start_index</span> <span class="op">&lt;-</span> <span class="va">text_start_index</span> <span class="op">+</span> <span class="fl">1</span> <span class="co"># increment index by 1</span>
+  <span class="va">text_end_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">doc</span><span class="op">)</span> <span class="co"># get the end of the text section</span>
+  
+  <span class="va">text</span> <span class="op">&lt;-</span> <span class="va">doc</span><span class="op">[</span><span class="va">text_start_index</span><span class="op">:</span><span class="va">text_end_index</span><span class="op">]</span> <span class="co"># extract text</span>
+  <span class="va">text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">text</span><span class="op">)</span> <span class="co"># remove leading and trailing whitespace</span>
+  <span class="va">text</span> <span class="op">&lt;-</span> <span class="va">text</span><span class="op">[</span><span class="va">text</span> <span class="op">!=</span> <span class="st">""</span><span class="op">]</span> <span class="co"># remove blank lines</span>
+  
+  <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">doc_id</span>, <span class="va">text</span><span class="op">)</span> <span class="co"># tidy format `doc_id` and `text`</span>
+  
+  <span class="co"># Extract column information from `text`</span>
+  <span class="va">data</span> <span class="op">&lt;-</span> 
+    <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>damsl_tag <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"^.+?\\s"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># extract damsl tags</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>speaker_turn <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"[AB]\\.\\d+"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract speaker_turn pairs</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_num <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">"utt\\d+"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract utterance number</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">text</span>, pattern <span class="op">=</span> <span class="st">":.+$"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># extract utterance text</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">text</span><span class="op">)</span>
+  
+  <span class="co"># Separate speaker_turn into distinct columns</span>
+  <span class="va">data</span> <span class="op">&lt;-</span>
+    <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">speaker_turn</span>, <span class="co"># source column</span>
+             into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"speaker"</span>, <span class="st">"turn_num"</span><span class="op">)</span><span class="op">)</span> <span class="co"># separate speaker_turn into distinct columns: speaker and turn_num</span>
+  
+  <span class="co"># Clean up column information</span>
+  <span class="va">data</span> <span class="op">&lt;-</span> 
+    <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>damsl_tag <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">damsl_tag</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove leading/ trailing whitespace</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_num <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">utterance_num</span>, pattern <span class="op">=</span> <span class="st">"utt"</span>, replacement <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove 'utt'</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">utterance_text</span>, pattern <span class="op">=</span> <span class="st">":\\s"</span>, replacement <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove ': '</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>utterance_text <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">utterance_text</span><span class="op">)</span><span class="op">)</span> <span class="co"># trim leading/ trailing whitespace</span>
+  
+  <span class="co"># Link speaker with speaker_id</span>
+  <span class="va">data</span> <span class="op">&lt;-</span> 
+    <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># current dataset</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>speaker_id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span> <span class="co"># create speaker_id</span>
+      <span class="va">speaker</span> <span class="op">==</span> <span class="st">"A"</span> <span class="op">~</span> <span class="va">speaker_a_id</span>, <span class="co"># speaker_a_id value when A</span>
+      <span class="va">speaker</span> <span class="op">==</span> <span class="st">"B"</span> <span class="op">~</span> <span class="va">speaker_b_id</span> <span class="co"># speaker_b_id value when B</span>
+    <span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">" done.\n"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># return the data frame object</span>
+<span class="op">}</span></code></pre></div>
+<p>As a sanity check we will run the <code>extract_sdac_metadata()</code> function on a the conversation file we were just working on to make sure it works as expected.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">extract_sdac_metadata</span><span class="op">(</span>file <span class="op">=</span> <span class="st">"../data/original/sdac/sw00utt/sw_0001_4325.utt"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Reading sw_0001_4325.utt ... done.
+#&gt; Rows: 159
+#&gt; Columns: 7
+#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…
+#&gt; $ damsl_tag      &lt;chr&gt; "o", "qw", "qy^d", "+", "+", "qy", "sd", "ad", "h", "ad…
+#&gt; $ speaker        &lt;chr&gt; "A", "A", "B", "A", "B", "A", "B", "B", "B", "B", "B", …
+#&gt; $ turn_num       &lt;chr&gt; "1", "1", "2", "3", "4", "5", "6", "6", "6", "6", "6", …
+#&gt; $ utterance_num  &lt;chr&gt; "1", "2", "1", "1", "1", "1", "1", "2", "3", "4", "5", …
+#&gt; $ utterance_text &lt;chr&gt; "Okay.  /", "{D So, }", "[ [ I guess, +", "What kind of…
+#&gt; $ speaker_id     &lt;chr&gt; "1632", "1632", "1519", "1632", "1519", "1632", "1519",…</code></pre>
+<p>Looks good!</p>
+<p>So now it’s time to create a vector with the paths to all of the conversation files. <code><a href="http://fs.r-lib.org/reference/dir_ls.html">fs::dir_ls()</a></code> interfaces with our OS file system and will return the paths to the files in the specified directory. We also add a pattern to match conversation files (<code>regexp = \\.utt$</code>) so we don’t accidentally include other files in the corpus. <code>recurse</code> set to <code>TRUE</code> means we will get the full path to each file.</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_files</span> <span class="op">&lt;-</span> 
+  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
+             recurse <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># traverse all sub-directories</span>
+             type <span class="op">=</span> <span class="st">"file"</span>, <span class="co"># only return files</span>
+             regexp <span class="op">=</span> <span class="st">"\\.utt$"</span><span class="op">)</span> <span class="co"># only return files ending in .utt</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sdac_files</span><span class="op">)</span> <span class="co"># preview file paths</span></code></pre></div>
+<pre class="plain"><code>../data/original/sdac/sw00utt/sw_0001_4325.utt
+../data/original/sdac/sw00utt/sw_0002_4330.utt
+../data/original/sdac/sw00utt/sw_0003_4103.utt
+../data/original/sdac/sw00utt/sw_0004_4327.utt
+../data/original/sdac/sw00utt/sw_0005_4646.utt
+../data/original/sdac/sw00utt/sw_0006_4108.utt</code></pre>
+<p>To pass each conversation file in the vector of paths to our conversation files iteratively to the <code>extract_sdac_metadata()</code> function we use <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>. This will apply the function to each conversation file and return a data frame for each. <code><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows()</a></code> will then join the resulting data frames by rows to give us a single tidy dataset for all 1155 conversations. Note there is a lot of processing going on here we have to be patient.</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Read files and return a tidy dataset</span>
+<span class="va">sdac</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_files</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># pass file names</span>
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">extract_sdac_metadata</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># read and tidy iteratively </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># bind the results into a single data frame</span></code></pre></div>
+<p>We now see that we have 223606 observations (individual utterances in this dataset).</p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sdac</span><span class="op">)</span>  <span class="co"># preview complete curated dataset</span>
+<span class="co">#&gt; Rows: 223,606</span>
+<span class="co">#&gt; Columns: 7</span>
+<span class="co">#&gt; $ doc_id         &lt;chr&gt; "4325", "4325", "4325", "4325", "4325", "4325", "4325",…</span>
+<span class="co">#&gt; $ damsl_tag      &lt;chr&gt; "o", "qw", "qy^d", "+", "+", "qy", "sd", "ad", "h", "ad…</span>
+<span class="co">#&gt; $ speaker        &lt;chr&gt; "A", "A", "B", "A", "B", "A", "B", "B", "B", "B", "B", …</span>
+<span class="co">#&gt; $ turn_num       &lt;chr&gt; "1", "1", "2", "3", "4", "5", "6", "6", "6", "6", "6", …</span>
+<span class="co">#&gt; $ utterance_num  &lt;chr&gt; "1", "2", "1", "1", "1", "1", "1", "2", "3", "4", "5", …</span>
+<span class="co">#&gt; $ utterance_text &lt;chr&gt; "Okay.  /", "{D So, }", "[ [ I guess, +", "What kind of…</span>
+<span class="co">#&gt; $ speaker_id     &lt;chr&gt; "1632", "1632", "1519", "1632", "1519", "1632", "1519",…</span></code></pre></div>
 </div>
 <div id="write-datasets" class="section level3" number="6.3.3">
 <h3>
 <span class="header-section-number">6.3.3</span> Write datasets<a class="anchor" aria-label="anchor" href="#write-datasets"><i class="fas fa-link"></i></a>
 </h3>
+<p>Again as in the previous cases, we will write this dataset to disk to prepare for the next step in our text analysis project.</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span>  <span class="co"># create sdac subdirectory</span>
+<span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">sdac</span>, file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_curated.csv"</span><span class="op">)</span>  <span class="co"># write sdac to disk and label as the curated dataset</span></code></pre></div>
+<p>The directory structure now looks like this:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="curate-data.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
+<span id="cb146-2"><a href="curate-data.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> derived/</span>
+<span id="cb146-3"><a href="curate-data.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── sdac/</span>
+<span id="cb146-4"><a href="curate-data.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       └── sdac_curated.csv</span>
+<span id="cb146-5"><a href="curate-data.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> original/</span>
+<span id="cb146-6"><a href="curate-data.html#cb146-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sdac/</span>
+<span id="cb146-7"><a href="curate-data.html#cb146-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> README</span>
+<span id="cb146-8"><a href="curate-data.html#cb146-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> doc/</span>
+<span id="cb146-9"><a href="curate-data.html#cb146-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw00utt/</span>
+<span id="cb146-10"><a href="curate-data.html#cb146-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw01utt/</span>
+<span id="cb146-11"><a href="curate-data.html#cb146-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw02utt/</span>
+<span id="cb146-12"><a href="curate-data.html#cb146-12" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw03utt/</span>
+<span id="cb146-13"><a href="curate-data.html#cb146-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw04utt/</span>
+<span id="cb146-14"><a href="curate-data.html#cb146-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw05utt/</span>
+<span id="cb146-15"><a href="curate-data.html#cb146-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw06utt/</span>
+<span id="cb146-16"><a href="curate-data.html#cb146-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw07utt/</span>
+<span id="cb146-17"><a href="curate-data.html#cb146-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw08utt/</span>
+<span id="cb146-18"><a href="curate-data.html#cb146-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw09utt/</span>
+<span id="cb146-19"><a href="curate-data.html#cb146-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw10utt/</span>
+<span id="cb146-20"><a href="curate-data.html#cb146-20" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw11utt/</span>
+<span id="cb146-21"><a href="curate-data.html#cb146-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sw12utt/</span>
+<span id="cb146-22"><a href="curate-data.html#cb146-22" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> sw13utt/</span></code></pre></div>
 </div>
 <div id="summary-7" class="section level3" number="6.3.4">
 <h3>
 <span class="header-section-number">6.3.4</span> Summary<a class="anchor" aria-label="anchor" href="#summary-7"><i class="fas fa-link"></i></a>
 </h3>
+<p>In this section we looked at semi-structured data. This type of data often requires the most work to organize into a tidy dataset. We continued to work with many of the R programming strategies introduced to this point in the coursebook. We also made more extensive use of regular expressions to pick out information from a semi-structured document format.</p>
+<p>To round out this section I’ve provided a code summary of the steps involved to conduct the curation of the Switchboard Dialogue Act Corpus files. Note that I’ve added the <code>extract_sdac_metadata()</code> custom function to a file called <code>curate_functions.R</code> and sourced this file. This will make the code more succinct and legible here, as well in your own research projects.</p>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co"># Source the `extract_sdac_metadata()` function</span>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"../functions/curate_functions.R"</span><span class="op">)</span> 
+
+<span class="co"># Get list of the corpus files (.utt)</span>
+<span class="va">sdac_files</span> <span class="op">&lt;-</span> 
+  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
+             recurse <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># traverse all sub-directories</span>
+             type <span class="op">=</span> <span class="st">"file"</span>, <span class="co"># only return files</span>
+             regexp <span class="op">=</span> <span class="st">"\\.utt$"</span><span class="op">)</span> <span class="co"># only return files ending in .utt</span>
+
+<span class="co"># Read files and return a tidy dataset</span>
+<span class="va">sdac</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_files</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># pass file names</span>
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">extract_sdac_metadata</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># read and tidy iteratively </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># bind the results into a single data frame</span>
+  
+<span class="co"># Write curated dataset to disk</span>
+<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span> <span class="co"># create sdac subdirectory</span>
+<span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">sdac</span>, 
+          file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_curated.csv"</span><span class="op">)</span> <span class="co"># write sdac to disk and label as the curated dataset</span></code></pre></div>
 <!-- Consider:
 
 - Switchboard Dialog Act Corpus
 - ACTIV-ES corpus (tagged)
 
 -->
-<p>…</p>
 </div>
 </div>
 <div id="documentation-2" class="section level2" number="6.4">
 <h2>
 <span class="header-section-number">6.4</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation-2"><i class="fas fa-link"></i></a>
 </h2>
-<p>…</p>
+<p>At this stage we again want to ensure that the data that we have derived is well-documented. Where in the data acquisition process the documentation was focused on the sampling frame, curated datasets require documentation that describes the structure of the now rectangular dataset and its attributes. This documentation is known as a <strong>data dictionary</strong>. At the curation stage this documentation often contains the following information <span class="citation">(<a href="references.html#ref-HowMakeData10-2021" role="doc-biblioref"><span>“How to make a data dictionary,”</span> 2021</a>)</span>:</p>
+<ul>
+<li>names of the variables (as they appear in the dataset)</li>
+<li>human-readable names for the variables</li>
+<li>short prose descriptions of the variables, including units of measurement (where applicable)</li>
+</ul>
+<p>A data dictionary will take the format of a table and can be stored in a tabular-oriented file format (such as .csv). It is often easier to work with a spreadsheet to create this documentation. I suggest creating a .csv file with the basic structure of the documentation. You can do this however you choose, but I suggest using something along these lines as seen in the following custom function, <code>data_dic_starter()</code>.</p>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_dic_starter</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file_path</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Function:</span>
+  <span class="co"># Creates a .csv file with the basic information</span>
+  <span class="co"># to document a curated dataset</span>
+  
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>variable_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, <span class="co"># column with existing variable names </span>
+       name <span class="op">=</span> <span class="st">""</span>, <span class="co"># column for human-readable names</span>
+       description <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># column for prose description</span>
+  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">file_path</span><span class="op">)</span> <span class="co"># write to disk</span>
+<span class="op">}</span></code></pre></div>
+<p>Running this function in the R Console on the curated dataset (in this case the <code>sdac</code> dataset), will provide this structure.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:cd-documentation-dic-starter-structure">Table 6.9: </span>Data dictionary starter structure for the SDAC curated dataset.</caption>
+<thead><tr class="header">
+<th align="left">variable_name</th>
+<th align="left">name</th>
+<th align="left">description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">doc_id</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">damsl_tag</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">speaker</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">turn_num</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">utterance_num</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">utterance_text</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">speaker_id</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table></div>
+<p>The resulting .csv file can then be opened with spreadsheet software (such as MS Excel, Google Sheets, etc.) and edited.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note on RStudio Cloud you will need to download the .csv file and, after editing, upload the complete data dictionary file. Make sure to save the edited file as a .csv file.&lt;/p&gt;"><sup>21</sup></a></p>
+<div class="inline-figure"><img src="images/07-curate-data/cd-data-dictionary.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Save this file as a .csv file and replace the original starter file. Note that it is important to use a plain-text file format for the official documentation file and avoid proprietary formats to ensure open accessibility and future compatibility.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Although based on spreadsheets, &lt;span class="citation"&gt;&lt;a href="references.html#ref-Broman2018" role="doc-biblioref"&gt;Broman &amp;amp; Woo&lt;/a&gt; (&lt;a href="references.html#ref-Broman2018" role="doc-biblioref"&gt;2018&lt;/a&gt;)&lt;/span&gt; outlines many of the best for good data organization regardless of the technology.&lt;/p&gt;'><sup>22</sup></a></p>
+<p>Our <code>data/derived/</code> directory now looks like this.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="curate-data.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
+<span id="cb149-2"><a href="curate-data.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> derived/</span>
+<span id="cb149-3"><a href="curate-data.html#cb149-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sdac/</span>
+<span id="cb149-4"><a href="curate-data.html#cb149-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">├──</span> sdac_curated.csv</span>
+<span id="cb149-5"><a href="curate-data.html#cb149-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> data_dictionary_sdac.csv</span></code></pre></div>
 </div>
 <div id="summary-8" class="section level2" number="6.5">
 <h2>
 <span class="header-section-number">6.5</span> Summary<a class="anchor" aria-label="anchor" href="#summary-8"><i class="fas fa-link"></i></a>
 </h2>
-<hr>
-<p><strong>Notes:</strong></p>
-<p>Data Organization in Spreadsheets <span class="citation">(<a href="references.html#ref-Broman2018" role="doc-biblioref">Broman &amp; Woo, 2018</a>)</span>. Although based on spreadsheets, many of the best practices discussed apply to good data organization regardless of the technology.</p>
+<p>In this chapter we looked at the process of structuring data into a dataset. This included a discussion on three main types of data –unstructured, structured, and semi-structured. The level of structure of the original data(set) will vary from resource to resource and by the same token so will the file format used to support the level of meta-information included. The results from our data curation resulted in a curated dataset that is saved separate from the original data to maintain modularity between what the data(set) looked like before we intervene and afterwards. In addition to the code we use to derived the curated dataset’s structure, we also include a data dictionary which documents the names of the variables and provides sufficient description of these variables so that it is clear what our dataset contains.</p>
+<p>It is important to recognized that this curated dataset will form the base for the next step in our text analysis project and the last step in data preparation for analysis: dataset transformation. This last step in preparing data for analysis is to convert this curated dataset into a dataset that is directly aligned with the research aims (i.e. analysis method(s)) of the project. Since there can be multiple analysis approaches applied the original data in a research project, this curated dataset serves as the point of departure for each of the subsequent datasets derived from the transformational steps.</p>
 
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="acquire-data.html"><span class="header-section-number">5</span> Acquire data</a></div>
 <div class="next"><a href="transform-data.html"><span class="header-section-number">7</span> Transform data</a></div>
@@ -1270,7 +1601,7 @@ ad          B.6 utt4: hold it down a little longer,  /</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on October 11, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on October 13, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
