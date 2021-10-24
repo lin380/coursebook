@@ -56,3 +56,17 @@ text
 ```r
 # Packages pacman::p_load(infer)
 ```
+
+
+<!-- IDEAS:
+
+- Use BELC dataset from "Approaching analysis" chapter
+  - Question(s): 
+    - 
+- Use Switchboard Dialogue Act Corpus
+  - Disfluencies (uh/ um)
+- Use other datasets from the "Transform datasets" chapter
+
+-->
+
+

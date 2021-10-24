@@ -555,7 +555,7 @@ The process of generation aims to _augment_ a variable or set of variables. In e
 
 ```{r functions-load-udpipe-model, echo=FALSE}
 load_model_udpipe <- function(model_lang) {
-  cleanNLP::cnlp_init_udpipe(model_lang) # to download the model, in not downloaded
+  cleanNLP::cnlp_init_udpipe(model_lang) # to download the model, if not downloaded
 base_path <- system.file("extdata", package = "cleanNLP") # get the base path
   model_name <- # extract the model_name
     base_path %>% # extract the base path
