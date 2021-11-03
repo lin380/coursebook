@@ -826,7 +826,7 @@ knitr::include_graphics("images/04-approaching-analysis/exploratory-variables.pn
 ```
 
 
-For illustrative purposes let's consider the State of the Union Corpus (SOTU) [@R-quanteda-corpora]. The presidential addresses and a set of meta-data variables are included in the corpus. I've subsetted this corpus to only include U.S. presidents since 1946. A tabular preview of the first 10 addresses (truncated for display) can be found in Table \@ref(tab:eda-sotu-corpus). 
+For illustrative purposes let's consider the State of the Union Corpus (SOTU) [@R-quanteda.corpora]. The presidential addresses and a set of meta-data variables are included in the corpus. I've subsetted this corpus to only include U.S. presidents since 1946. A tabular preview of the first 10 addresses (truncated for display) can be found in Table \@ref(tab:eda-sotu-corpus). 
 
 ```{r eda-sotu-corpus, echo=FALSE}
 library(quanteda)

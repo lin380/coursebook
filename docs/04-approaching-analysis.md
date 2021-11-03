@@ -991,7 +991,7 @@ Again, as we have done for the other two analysis approaches, let's turn to the 
 </div>
 
 
-For illustrative purposes let's consider the State of the Union Corpus (SOTU) [@R-quanteda-corpora]. The presidential addresses and a set of meta-data variables are included in the corpus. I've subsetted this corpus to only include U.S. presidents since 1946. A tabular preview of the first 10 addresses (truncated for display) can be found in Table \@ref(tab:eda-sotu-corpus). 
+For illustrative purposes let's consider the State of the Union Corpus (SOTU) [@R-quanteda.corpora]. The presidential addresses and a set of meta-data variables are included in the corpus. I've subsetted this corpus to only include U.S. presidents since 1946. A tabular preview of the first 10 addresses (truncated for display) can be found in Table \@ref(tab:eda-sotu-corpus). 
 
 <table>
 <caption>(\#tab:eda-sotu-corpus)First ten addresses from the SOTU Corpus.</caption>

@@ -49,6 +49,6 @@ TAD has been reviewed by and suggestions and changes incorporated based on the f
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'languageR', 'quanteda.corpora', 'rvest', 'rsyntax', 'rtweet'
 ), 'packages.bib')
 ```

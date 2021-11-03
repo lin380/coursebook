@@ -510,7 +510,7 @@ Let's turn to another type of join: an anti-join. The purpose of an anti-join is
 
 ```{r td-get-stopwords-english}
 english_stopwords <- 
-  get_stopwords(language = "en", ) # get English stopwords from the Snowball lexicon
+  get_stopwords(language = "en") # get English stopwords from the Snowball lexicon
 
 english_stopwords %>% 
   slice_head(n = 10) # preview first 10 observations
@@ -582,6 +582,9 @@ sdac_disfluencies %>% # dataset
         caption = "First 10 observations for the `sdac_disfluencies` dataset with speaker metadata.")
 ```
 
+```{r td-sdac-disfluencies-write, include=FALSE}
+write_csv(sdac_disfluencies, file = "resources/08-transform-data/data/derived/sdac/sdac_disfluencies.csv")
+```
 
 
 <!-- Consider:
@@ -616,16 +619,16 @@ data_dic_starter <- function(data, file_path) {
 Let's apply our function to the `sdac_disfluencies` dataset using the R console (not part of our project script to avoid overwriting our documentation!).
 
 ```{r td-sdac-disfluencies-data-dictionary-starter, eval=FALSE}
-data_dic_starter(data = sdac_disfluencies, file_path = "../data/derived/sdac/data_dictionary_sdac_disfluencies.csv")
+data_dic_starter(data = sdac_disfluencies, file_path = "../data/derived/sdac/sdac_disfluencies_data_dictionary.csv")
 ```
 
 ```bash
 data/derived/
 └── sdac/
     ├── data_dictionary_sdac.csv
-    ├── data_dictionary_sdac_disfluencies.csv
     ├── sdac_curated.csv
-    └── sdac_transformed_disfluencies.csv
+    ├── sdac_disfluencies.csv
+    └── sdac_disfluencies_data_dictionary.csv
 ```
 
 Open the `data_dictionary_sdac_disfluencies.csv` file in spreadsheet software and add the relevant description of the dataset. 

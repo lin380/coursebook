@@ -15,6 +15,7 @@
 
 - cite the packages used
 - cite the Europarle Corpus 
+- correct the file names for Switchboard to reflect the dataset_curated.csv, and dataset_data_dictionary.csv format
 
 -->
 
@@ -533,7 +534,7 @@ lastfm <- # new dataset
          -doc_id, -lyrics_url) # drop these columns
 
 glimpse(lastfm) # preview
-#> Rows: 2,183
+#> Rows: 2,172
 #> Columns: 4
 #> $ text   <chr> "I hurt myself todayTo see if I still feelI focus on the painTh…
 #> $ artist <chr> "Johnny Cash", "Johnny Cash", "Johnny Cash", "Johnny Cash", "Jo…
@@ -553,7 +554,7 @@ lastfm <-
   ungroup() # unset the groupings
 
 glimpse(lastfm) # preview
-#> Rows: 200
+#> Rows: 199
 #> Columns: 4
 #> $ artist <chr> "3 Doors Down", "3 Doors Down", "50 Cent", "a-ha", "ABBA", "Aer…
 #> $ song   <chr> "Here Without You", "Kryptonite", "In Da Club", "Take On Me", "…

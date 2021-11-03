@@ -411,15 +411,15 @@ Table: (\#tab:tidy-words-europarle)Europarle Paralle Corpus with `words` as prim
 
 |type   | sentence_id|words       |
 |:------|-----------:|:-----------|
-|Target |           1|Resumption  |
-|Target |           1|of          |
-|Target |           1|the         |
-|Target |           1|session     |
-|Source |           1|Reanudación |
-|Source |           1|del         |
-|Source |           1|período     |
-|Source |           1|de          |
-|Source |           1|sesiones    |
+|Source |           1|Resumption  |
+|Source |           1|of          |
+|Source |           1|the         |
+|Source |           1|session     |
+|Target |           1|Reanudación |
+|Target |           1|del         |
+|Target |           1|período     |
+|Target |           1|de          |
+|Target |           1|sesiones    |
 
 The values for the variables `type` and `sentence_id` maintain the necessary description for each `word` to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for `type` and `sentence_id` are repeated numerous times but this 'redundancy' makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this coursebook.
 
@@ -450,10 +450,10 @@ Table: (\#tab:normalize-non-speech-identify-europarle)Non-speech lines in the Eu
 
 |type   | sentence_id|sentence                                              |
 |:------|-----------:|:-----------------------------------------------------|
-|Target |           1|Resumption of the session                             |
-|Source |           1|Reanudación del período de sesiones                   |
-|Target |           7|(The House rose and observed a minute' s silence)     |
-|Source |           7|(El Parlamento, de pie, guarda un minuto de silencio) |
+|Source |           1|Resumption of the session                             |
+|Target |           1|Reanudación del período de sesiones                   |
+|Source |           7|(The House rose and observed a minute' s silence)     |
+|Target |           7|(El Parlamento, de pie, guarda un minuto de silencio) |
 
 A research project aiming to analyze speech would want to normalize this dataset removing these lines, as seen in Table \@ref(tab:normalize-non-speech-remove-europarle). 
 
@@ -462,22 +462,22 @@ Table: (\#tab:normalize-non-speech-remove-europarle)The Europarle dataset with n
 
 |type   | sentence_id|sentence                                                                                                                                                                                                                                 |
 |:------|-----------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Target |           2|I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.                          |
-|Source |           2|Declaro reanudado el período de sesiones del Parlamento Europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a Sus Señorías mi deseo de que hayan tenido unas buenas vacaciones.                                           |
-|Target |           3|Although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.                                          |
-|Source |           3|Como todos han podido comprobar, el gran "efecto del año 2000" no se ha producido. En cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.                           |
-|Target |           4|You have requested a debate on this subject in the course of the next few days, during this part-session.                                                                                                                                |
-|Source |           4|Sus Señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.                                                                                                                     |
-|Target |           5|In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
-|Source |           5|A la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la Unión Europea afectados.     |
-|Target |           6|Please rise, then, for this minute' s silence.                                                                                                                                                                                           |
-|Source |           6|Invito a todos a que nos pongamos de pie para guardar un minuto de silencio.                                                                                                                                                             |
-|Target |           8|Madam President, on a point of order.                                                                                                                                                                                                    |
-|Source |           8|Señora Presidenta, una cuestión de procedimiento.                                                                                                                                                                                        |
-|Target |           9|You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.                                                                                                              |
-|Source |           9|Sabrá usted por la prensa y la televisión que se han producido una serie de explosiones y asesinatos en Sri Lanka.                                                                                                                       |
-|Target |          10|One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago.                                                                                       |
-|Source |          10|Una de las personas que recientemente han asesinado en Sri Lanka ha sido al Sr. Kumar Ponnambalam, quien hace pocos meses visitó el Parlamento Europeo.                                                                                  |
+|Source |           2|I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.                          |
+|Target |           2|Declaro reanudado el período de sesiones del Parlamento Europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a Sus Señorías mi deseo de que hayan tenido unas buenas vacaciones.                                           |
+|Source |           3|Although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.                                          |
+|Target |           3|Como todos han podido comprobar, el gran "efecto del año 2000" no se ha producido. En cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.                           |
+|Source |           4|You have requested a debate on this subject in the course of the next few days, during this part-session.                                                                                                                                |
+|Target |           4|Sus Señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.                                                                                                                     |
+|Source |           5|In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
+|Target |           5|A la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la Unión Europea afectados.     |
+|Source |           6|Please rise, then, for this minute' s silence.                                                                                                                                                                                           |
+|Target |           6|Invito a todos a que nos pongamos de pie para guardar un minuto de silencio.                                                                                                                                                             |
+|Source |           8|Madam President, on a point of order.                                                                                                                                                                                                    |
+|Target |           8|Señora Presidenta, una cuestión de procedimiento.                                                                                                                                                                                        |
+|Source |           9|You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.                                                                                                              |
+|Target |           9|Sabrá usted por la prensa y la televisión que se han producido una serie de explosiones y asesinatos en Sri Lanka.                                                                                                                       |
+|Source |          10|One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago.                                                                                       |
+|Target |          10|Una de las personas que recientemente han asesinado en Sri Lanka ha sido al Sr. Kumar Ponnambalam, quien hace pocos meses visitó el Parlamento Europeo.                                                                                  |
 
 <!-- - Remove whitespace (possessives) -->
 
@@ -488,8 +488,8 @@ Table: (\#tab:normalize-whitespace-identify-europarle)Lines with possessives wit
 
 |type   | sentence_id|sentence                                                                                                                                                                                                                                 |
 |:------|-----------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Target |           5|In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
-|Target |           6|Please rise, then, for this minute' s silence.                                                                                                                                                                                           |
+|Source |           5|In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
+|Source |           6|Please rise, then, for this minute' s silence.                                                                                                                                                                                           |
 
 This may affect another transformation process or subsequent analysis, so it may be a good idea to normalize these forms by removing the extra whitespace. 
 
@@ -498,8 +498,8 @@ Table: (\#tab:normalize-whitespace-remove-europarle)The Europarle dataset with w
 
 |type   | sentence_id|sentence                                                                                                                                                                                                                                |
 |:------|-----------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Target |           5|In the meantime, I should like to observe a minute's silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
-|Target |           6|Please rise, then, for this minute's silence.                                                                                                                                                                                           |
+|Source |           5|In the meantime, I should like to observe a minute's silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union. |
+|Source |           6|Please rise, then, for this minute's silence.                                                                                                                                                                                           |
 
 <!-- - lowercase text -->
 
@@ -510,22 +510,22 @@ Table: (\#tab:normalize-lowercase-europarle)The Europarle dataset with lowercasi
 
 |type   | sentence_id|sentence                                                                                                                                                                                                                                |
 |:------|-----------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Target |           2|i declare resumed the session of the european parliament adjourned on friday 17 december 1999, and i would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.                         |
-|Source |           2|declaro reanudado el período de sesiones del parlamento europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a sus señorías mi deseo de que hayan tenido unas buenas vacaciones.                                          |
-|Target |           3|although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.                                         |
-|Source |           3|como todos han podido comprobar, el gran "efecto del año 2000" no se ha producido. en cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.                          |
-|Target |           4|you have requested a debate on this subject in the course of the next few days, during this part-session.                                                                                                                               |
-|Source |           4|sus señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.                                                                                                                    |
-|Target |           5|in the meantime, i should like to observe a minute's silence, as a number of members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the european union. |
-|Source |           5|a la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la unión europea afectados.    |
-|Target |           6|please rise, then, for this minute's silence.                                                                                                                                                                                           |
-|Source |           6|invito a todos a que nos pongamos de pie para guardar un minuto de silencio.                                                                                                                                                            |
-|Target |           8|madam president, on a point of order.                                                                                                                                                                                                   |
-|Source |           8|señora presidenta, una cuestión de procedimiento.                                                                                                                                                                                       |
-|Target |           9|you will be aware from the press and television that there have been a number of bomb explosions and killings in sri lanka.                                                                                                             |
-|Source |           9|sabrá usted por la prensa y la televisión que se han producido una serie de explosiones y asesinatos en sri lanka.                                                                                                                      |
-|Target |          10|one of the people assassinated very recently in sri lanka was mr kumar ponnambalam, who had visited the european parliament just a few months ago.                                                                                      |
-|Source |          10|una de las personas que recientemente han asesinado en sri lanka ha sido al sr. kumar ponnambalam, quien hace pocos meses visitó el parlamento europeo.                                                                                 |
+|Source |           2|i declare resumed the session of the european parliament adjourned on friday 17 december 1999, and i would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.                         |
+|Target |           2|declaro reanudado el período de sesiones del parlamento europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a sus señorías mi deseo de que hayan tenido unas buenas vacaciones.                                          |
+|Source |           3|although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.                                         |
+|Target |           3|como todos han podido comprobar, el gran "efecto del año 2000" no se ha producido. en cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.                          |
+|Source |           4|you have requested a debate on this subject in the course of the next few days, during this part-session.                                                                                                                               |
+|Target |           4|sus señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.                                                                                                                    |
+|Source |           5|in the meantime, i should like to observe a minute's silence, as a number of members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the european union. |
+|Target |           5|a la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la unión europea afectados.    |
+|Source |           6|please rise, then, for this minute's silence.                                                                                                                                                                                           |
+|Target |           6|invito a todos a que nos pongamos de pie para guardar un minuto de silencio.                                                                                                                                                            |
+|Source |           8|madam president, on a point of order.                                                                                                                                                                                                   |
+|Target |           8|señora presidenta, una cuestión de procedimiento.                                                                                                                                                                                       |
+|Source |           9|you will be aware from the press and television that there have been a number of bomb explosions and killings in sri lanka.                                                                                                             |
+|Target |           9|sabrá usted por la prensa y la televisión que se han producido una serie de explosiones y asesinatos en sri lanka.                                                                                                                      |
+|Source |          10|one of the people assassinated very recently in sri lanka was mr kumar ponnambalam, who had visited the european parliament just a few months ago.                                                                                      |
+|Target |          10|una de las personas que recientemente han asesinado en sri lanka ha sido al sr. kumar ponnambalam, quien hace pocos meses visitó el parlamento europeo.                                                                                 |
 
 Note that lowercasing text, and normalization steps in general, can come at a cost. For example, lowercasing the Europarle dataset sentences means we lose potentially valuable information; namely the ability to identify proper names (i.e. "Mr Kumar Ponnambalam") and titles (i.e. "European Parliament") directly from the orthographic forms. There are, however, transformation steps that can be applied which aim to recover 'lost' information in situations such as this and others.
 
@@ -663,16 +663,16 @@ Table: (\#tab:recoding-tokenization-europarle-bigram-words)The first 10 word big
 
 |type   | sentence_id|word_bigrams         |
 |:------|-----------:|:--------------------|
-|Target |           2|i declare            |
-|Target |           2|declare resumed      |
-|Target |           2|resumed the          |
-|Target |           2|the session          |
-|Target |           2|session of           |
-|Target |           2|of the               |
-|Target |           2|the european         |
-|Target |           2|european parliament  |
-|Target |           2|parliament adjourned |
-|Target |           2|adjourned on         |
+|Source |           2|i declare            |
+|Source |           2|declare resumed      |
+|Source |           2|resumed the          |
+|Source |           2|the session          |
+|Source |           2|session of           |
+|Source |           2|of the               |
+|Source |           2|the european         |
+|Source |           2|european parliament  |
+|Source |           2|parliament adjourned |
+|Source |           2|adjourned on         |
 
 As I just mentioned, ngrams sequences can be formed of characters as well. Here are character trigram (three-character) sequences. 
 
@@ -681,16 +681,16 @@ Table: (\#tab:recoding-tokenization-europarle-trigram-chars)The first 10 charact
 
 |type   | sentence_id|char_trigrams |
 |:------|-----------:|:-------------|
-|Target |           2|ide           |
-|Target |           2|dec           |
-|Target |           2|ecl           |
-|Target |           2|cla           |
-|Target |           2|lar           |
-|Target |           2|are           |
-|Target |           2|rer           |
-|Target |           2|ere           |
-|Target |           2|res           |
-|Target |           2|esu           |
+|Source |           2|ide           |
+|Source |           2|dec           |
+|Source |           2|ecl           |
+|Source |           2|cla           |
+|Source |           2|lar           |
+|Source |           2|are           |
+|Source |           2|rer           |
+|Source |           2|ere           |
+|Source |           2|res           |
+|Source |           2|esu           |
 
 
 #### Generation 
@@ -707,19 +707,24 @@ In the examples below I've added linguistic annotation to a target (English) and
 
 Table: (\#tab:generation-europarle-en-example)Automatic linguistic annotation for grammatical category and syntactic structure for an example English sentence from the Europarle Corpus
 
-|type   | sentence_id|token_id |token   |upos  |feats                         |token_id_source |syntactic_relation |
-|:------|-----------:|:--------|:-------|:-----|:-----------------------------|:---------------|:------------------|
-|Target |           6|1        |Please  |INTJ  |NA                            |2               |discourse          |
-|Target |           6|2        |rise    |VERB  |Mood=Imp&#124;VerbForm=Fin    |0               |root               |
-|Target |           6|3        |,       |PUNCT |NA                            |2               |punct              |
-|Target |           6|4        |then    |ADV   |PronType=Dem                  |10              |advmod             |
-|Target |           6|5        |,       |PUNCT |NA                            |10              |punct              |
-|Target |           6|6        |for     |ADP   |NA                            |10              |case               |
-|Target |           6|7        |this    |DET   |Number=Sing&#124;PronType=Dem |8               |det                |
-|Target |           6|8        |minute  |NOUN  |Number=Sing                   |10              |nmod:poss          |
-|Target |           6|9        |'s      |PART  |NA                            |8               |case               |
-|Target |           6|10       |silence |NOUN  |Number=Sing                   |2               |conj               |
-|Target |           6|11       |.       |PUNCT |NA                            |2               |punct              |
+|type   | sentence_id|token_id |token    |upos  |feats                          |token_id_source |syntactic_relation |
+|:------|-----------:|:--------|:--------|:-----|:------------------------------|:---------------|:------------------|
+|Target |           6|1        |Invito   |ADP   |NA                             |3               |case               |
+|Target |           6|2        |a        |DET   |Definite=Ind&#124;PronType=Art |3               |det                |
+|Target |           6|3        |todos    |NOUN  |Number=Plur                    |6               |nmod               |
+|Target |           6|4        |a        |DET   |Definite=Ind&#124;PronType=Art |6               |det                |
+|Target |           6|5        |que      |ADJ   |Degree=Pos                     |6               |amod               |
+|Target |           6|6        |nos      |NOUN  |Number=Plur                    |0               |root               |
+|Target |           6|7        |pongamos |X     |NA                             |13              |goeswith           |
+|Target |           6|8        |de       |X     |Foreign=Yes                    |13              |goeswith           |
+|Target |           6|9        |pie      |X     |NA                             |13              |goeswith           |
+|Target |           6|10       |para     |X     |NA                             |13              |goeswith           |
+|Target |           6|11       |guardar  |X     |NA                             |13              |goeswith           |
+|Target |           6|12       |un       |X     |NA                             |13              |goeswith           |
+|Target |           6|13       |minuto   |NOUN  |Number=Sing                    |6               |appos              |
+|Target |           6|14       |de       |PROPN |Number=Sing                    |15              |compound           |
+|Target |           6|15       |silencio |PROPN |Number=Sing                    |13              |flat               |
+|Target |           6|16       |.        |PUNCT |NA                             |6               |punct              |
 
 Now compare the English example sentence dataset in Table \@ref(tab:generation-europarle-en-example) with the parallel sentence in Spanish. Note that the grammatical features are language specific. For example, Spanish has gender which is apparent when scanning the `feats` variable. 
 
@@ -727,24 +732,18 @@ Now compare the English example sentence dataset in Table \@ref(tab:generation-e
 
 Table: (\#tab:generation-europarle-es-example)Automatic linguistic annotation for grammatical category and syntactic structure for an example Spanish sentence from the Europarle Corpus
 
-|type   | sentence_id|token_id |token    |upos  |feats                                                                                           |token_id_source |syntactic_relation |
-|:------|-----------:|:--------|:--------|:-----|:-----------------------------------------------------------------------------------------------|:---------------|:------------------|
-|Source |           6|1        |Invito   |VERB  |Gender=Masc&#124;Number=Sing&#124;VerbForm=Fin                                                  |0               |root               |
-|Source |           6|2        |a        |ADP   |NA                                                                                              |3               |case               |
-|Source |           6|3        |todos    |PRON  |Gender=Masc&#124;Number=Plur&#124;PronType=Tot                                                  |1               |obj                |
-|Source |           6|4        |a        |ADP   |NA                                                                                              |7               |mark               |
-|Source |           6|5        |que      |SCONJ |NA                                                                                              |4               |fixed              |
-|Source |           6|6        |nos      |PRON  |Case=Acc,Dat&#124;Number=Plur&#124;Person=1&#124;PrepCase=Npr&#124;PronType=Prs&#124;Reflex=Yes |7               |iobj               |
-|Source |           6|7        |pongamos |VERB  |Mood=Ind&#124;Number=Plur&#124;Person=1&#124;Tense=Pres&#124;VerbForm=Fin                       |1               |advcl              |
-|Source |           6|8        |de       |ADP   |NA                                                                                              |9               |case               |
-|Source |           6|9        |pie      |NOUN  |Gender=Masc&#124;Number=Sing                                                                    |7               |obl                |
-|Source |           6|10       |para     |ADP   |NA                                                                                              |11              |mark               |
-|Source |           6|11       |guardar  |VERB  |VerbForm=Inf                                                                                    |1               |advcl              |
-|Source |           6|12       |un       |DET   |Definite=Ind&#124;Gender=Masc&#124;Number=Sing&#124;PronType=Art                                |13              |det                |
-|Source |           6|13       |minuto   |NOUN  |Gender=Masc&#124;Number=Sing                                                                    |11              |obj                |
-|Source |           6|14       |de       |ADP   |NA                                                                                              |15              |case               |
-|Source |           6|15       |silencio |NOUN  |Gender=Masc&#124;Number=Sing                                                                    |13              |nmod               |
-|Source |           6|16       |.        |PUNCT |NA                                                                                              |1               |punct              |
+|type   | sentence_id|token_id |token    |upos  |feats                                                                     |token_id_source |syntactic_relation |
+|:------|-----------:|:--------|:--------|:-----|:-------------------------------------------------------------------------|:---------------|:------------------|
+|Source |           6|1        |Please   |PROPN |Gender=Fem&#124;Number=Sing                                               |4               |nsubj              |
+|Source |           6|2        |rise     |PROPN |Number=Sing                                                               |1               |flat               |
+|Source |           6|3        |,        |PUNCT |NA                                                                        |1               |punct              |
+|Source |           6|4        |then     |VERB  |Mood=Ind&#124;Number=Plur&#124;Person=3&#124;Tense=Pres&#124;VerbForm=Fin |0               |root               |
+|Source |           6|5        |,        |PUNCT |NA                                                                        |9               |punct              |
+|Source |           6|6        |for      |ADP   |NA                                                                        |9               |compound           |
+|Source |           6|7        |this     |X     |NA                                                                        |9               |compound           |
+|Source |           6|8        |minute's |X     |Gender=Masc&#124;Number=Sing                                              |9               |compound           |
+|Source |           6|9        |silence  |X     |Gender=Masc&#124;Number=Sing                                              |4               |conj               |
+|Source |           6|10       |.        |PUNCT |NA                                                                        |4               |punct              |
 
 There is much more to explore with linguistic annotation, and syntactic parsing in particular, but at this point it will suffice to note that it is possible to augment a dataset with grammatical information automatically.
 

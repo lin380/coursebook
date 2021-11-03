@@ -233,8 +233,8 @@ In this coursebook, however, I have developed a project template ([available on 
 #> │   ├── 5_generate_article.Rmd
 #> │   ├── _session-info.Rmd
 #> │   ├── _site.yml
-#> │   ├── biblio.bib
-#> │   └── index.Rmd
+#> │   ├── index.Rmd
+#> │   └── references.bib
 #> ├── data
 #> │   ├── derived
 #> │   └── original

@@ -120,18 +120,18 @@ europarle %>%
 
 Table: (\#tab:td-europarle-search-non-speech)Non-speech lines in the Europarle dataset.
 
-|type   | sentence_id|sentence                                                                                                                                                                                                                                                                |
-|:------|-----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Target |          85|(Applause from the PSE Group)                                                                                                                                                                                                                                           |
-|Target |         293|Structural Funds - Cohesion Fund coordination                                                                                                                                                                                                                           |
-|Source |          93|(El Parlamento rechaza la petición) El Presidente.                                                                                                                                                                                                                      |
-|Source |         110|(El Parlamento rechaza la propuesta por 164 votos a favor, 166 votos en contra y 7 abstenciones)                                                                                                                                                                        |
-|Target |         220|Transport of dangerous goods by road                                                                                                                                                                                                                                    |
-|Source |         673|A5-0078/1999 del Sr. Rapkay, en nombre de la Comisión de Asuntos Económicos y Monetarios, sobre el XXVIII Informe de la Comisión Europea sobre la política de competencia - 1998 (SEC(1999) 743 - C5-121/1999 - 1999/2124(COS));                                        |
-|Source |          66|Orden de los trabajos                                                                                                                                                                                                                                                   |
-|Source |         669|(El Acta queda aprobada)                                                                                                                                                                                                                                                |
-|Source |           1|Reanudación del período de sesiones                                                                                                                                                                                                                                     |
-|Target |         675|A5-0087/1999 by Mr Jonckheer, on behalf of the Committee on Economic and Monetary Affairs, on the seventh survey on state aid in the European Union in the manufacturing and certain other sectors. [COM(1999) 148 - C5-0107/1999 - 1999/2110(COS)] (Report 1995-1997); |
+|type   | sentence_id|sentence                                                                                                                                                                                                                                                 |
+|:------|-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Target |          85|(Applause from the PSE Group)                                                                                                                                                                                                                            |
+|Target |          66|Agenda                                                                                                                                                                                                                                                   |
+|Source |         670|Reforma de la política europea de competencia                                                                                                                                                                                                            |
+|Target |         133|Safety advisers for the transport of dangerous goods                                                                                                                                                                                                     |
+|Source |         110|(El Parlamento rechaza la propuesta por 164 votos a favor, 166 votos en contra y 7 abstenciones)                                                                                                                                                         |
+|Target |         293|Structural Funds - Cohesion Fund coordination                                                                                                                                                                                                            |
+|Source |          66|Orden de los trabajos                                                                                                                                                                                                                                    |
+|Target |         673|A5-0069/1999 by Mr von Wogau, on behalf of the Committee on Economic and Monetary Affairs, on the Commission White Paper on modernisation of the rules implementing Articles 85 and 86 of the EC Treaty [COM(1999) 101 - C5-0105/1999 - 1999/2108(COS)]; |
+|Source |         674|A5-0087/1999 del Sr. Jonckheer, en nombre de la Comisión de Asuntos Económicos y Monetarios, sobre el séptimo informe sobre ayudas estatales a la industria y a otros sectores en la Unión Europea (COM(1999) 148- C5-0107/1999 - 1999/2110(COS));       |
+|Source |           1|Reanudación del período de sesiones                                                                                                                                                                                                                      |
 
 Since this search appears to match lines that we do not want to preserve, let's move now to eliminate these lines from the dataset. To do this we will use the same regular expression patterns, but now each condition will have it's own `filter()` call and the `str_detect()` will be negated with a prefixed `!`.
 
@@ -275,28 +275,28 @@ Among a number of metadata variables, curated dataset includes the `utterance_te
 
 Table: (\#tab:td-sdac-preview-curated-dataset)20 randomly sampled lines of the SDAC curated dataset.
 
-| doc_id|damsl_tag |speaker | turn_num| utterance_num|utterance_text                                                                                                                                                                                                                             | speaker_id|
-|------:|:---------|:-------|--------:|-------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|
-|   2479|sd        |B       |       20|             3|I'm kind of had [ different, + different ] ideas from what probably the majority of people have, /                                                                                                                                         |       1096|
-|   2716|sd@       |A       |       85|             2|then if people weren't having to spend these huge amounts of money on getting insurance coverage.                                                                                                                                          |       1231|
-|   4917|%         |B       |       44|             3|{C and. } # -/                                                                                                                                                                                                                             |       1687|
-|   2875|sd        |A       |      127|             2|{E I mean, }                                                                                                                                                                                                                               |       1104|
-|   2950|%         |B       |      108|             1|{C And, } -/                                                                                                                                                                                                                               |       1266|
-|   4104|sv        |B       |       54|             3|{C because } they're real snobby about their language  /                                                                                                                                                                                   |       1508|
-|   2773|sv        |B       |       38|             2|{C so } it will be a good topic for me in the class for along time <laughter>. /                                                                                                                                                           |       1239|
-|   2537|sd        |B       |       16|             2|{C but, } {F um, } {D you know, } [ I don't, +  I'm not ] particularly  concerned with what people do, {F um, } after they leave for the day especially [ if I don't, +   if I don't, ] {F uh, } see any results of it the next # day. # / |       1142|
-|   3699|qy        |A       |        1|             2|{F Uh, } do you live in a home? /                                                                                                                                                                                                          |       1466|
-|   3565|sd        |A       |       47|             2|it was flat -- /                                                                                                                                                                                                                           |       1455|
-|   4707|+         |A       |        4|             1|<Cough> I turned ] mine in about twelve hours early at noon. /                                                                                                                                                                             |       1190|
-|   2663|sd        |B       |       34|             1|I think if the President, be him Republican or Democrat, - /                                                                                                                                                                               |       1084|
-|   4626|%         |A       |       45|             5|{F Uh, } {C and } it, {F uh, } - /                                                                                                                                                                                                         |       1196|
-|   2268|aa^r      |B       |      148|             2|No. /                                                                                                                                                                                                                                      |       1112|
-|   4318|sv        |A       |       89|             2|{C But, } {F uh, } {F uh, } it's interesting,  /                                                                                                                                                                                           |       1606|
-|   4329|ft        |B       |       84|             1|{D Well, } thank you. /                                                                                                                                                                                                                    |       1287|
-|   2554|aa        |B       |      110|             1|Absolutely. /                                                                                                                                                                                                                              |       1142|
-|   3716|+         |B       |       72|             1|-- {F uh, } I will use a little bit of mustard with it. /                                                                                                                                                                                  |       1315|
-|   3320|sv        |A       |       79|             4|{C but } they do. /                                                                                                                                                                                                                        |       1413|
-|   3064|sd        |B       |      138|             1|Boy, I wish I could say that my house and, - /                                                                                                                                                                                             |       1005|
+| doc_id|damsl_tag |speaker | turn_num| utterance_num|utterance_text                                                                                                               | speaker_id|
+|------:|:---------|:-------|--------:|-------------:|:----------------------------------------------------------------------------------------------------------------------------|----------:|
+|   2289|sv        |A       |       75|             2|{C But, } I think, - /                                                                                                       |       1214|
+|   3584|sd        |A       |       85|             1|{C But, }  in the house itself, I've been working  inside, {D you know, } [ these, + [ lo-, + ] these ] many months -- /     |       1051|
+|   2380|b^r       |B       |       23|             1|Uh-huh. /                                                                                                                    |       1035|
+|   2926|aa        |A       |      143|             1|Yeah,  /                                                                                                                     |       1257|
+|   3039|%         |B       |       84|             2|Yeah,  /                                                                                                                     |       1281|
+|   2549|sd        |A       |       42|             2|{D like } the press would get down on Landry,  /                                                                             |       1168|
+|   2820|b@        |A       |       99|             1|# Huh-uh.  #   *[[slash error]]                                                                                              |       1074|
+|   3688|qw        |A       |       39|             1|How old are your kids? /                                                                                                     |       1477|
+|   2316|sd        |B       |       10|             6|{C and } the schools down here rate, {D you know, } bottom ten percent across the country  /                                 |       1059|
+|   4092|%         |B       |      114|             3|{C and } they just, -/                                                                                                       |       1602|
+|   3146|sd        |A       |      127|             5|they must have a special source for getting them because even at the Farmer's Market, {F uh, }                               |       1316|
+|   3085|b         |B       |       70|             1|Uh-huh. /                                                                                                                    |       1264|
+|   3345|sd        |A       |       51|             4|{C but } I'm always aware of what's going on like that -- /                                                                  |       1413|
+|   2038|qh        |B       |       11|             7|[ [ {C and, } + {C and, } ] + {C and } ] [ do we, + do we ] support the Sandinistas [ or, + or ] do we support, {F uh, } - / |       1039|
+|   2767|qy^d      |A       |      131|             1|# {F Oh, } he was, #                                                                                                         |       1130|
+|   3342|sd        |B       |        6|             1|<Laughter> I'm not so sure I'm good at  it,  /                                                                               |       1422|
+|   2479|+         |A       |      161|             1|# and having # some <children> peace and quiet  /                                                                            |       1231|
+|   4028|sd        |B       |       24|             1|-- {C and, } {F um, } {F uh, } I did have surgery last summer  /                                                             |       1442|
+|   3830|sd        |B       |      122|             2|they voted them in  /                                                                                                        |       1493|
+|   2565|%         |A       |       70|             2|I, {F um, } - /                                                                                                              |       1211|
 Let's drop a few variables from our dataset to rein in our focus. I will keep the `doc_id`, `speaker_id`, and `utterance_text`. 
 
 
@@ -816,7 +816,7 @@ Let's turn to another type of join: an anti-join. The purpose of an anti-join is
 
 
 ```r
-english_stopwords <- get_stopwords(language = "en", )  # get English stopwords from the Snowball lexicon
+english_stopwords <- get_stopwords(language = "en")  # get English stopwords from the Snowball lexicon
 
 english_stopwords %>%
     slice_head(n = 10)  # preview first 10 observations
@@ -981,6 +981,7 @@ Table: (\#tab:td-sdac-disfluencies-meta-preview)First 10 observations for the `s
 
 
 
+
 <!-- Consider:
 
 - sentiment lexicons
@@ -1015,16 +1016,16 @@ Let's apply our function to the `sdac_disfluencies` dataset using the R console 
 
 
 ```r
-data_dic_starter(data = sdac_disfluencies, file_path = "../data/derived/sdac/data_dictionary_sdac_disfluencies.csv")
+data_dic_starter(data = sdac_disfluencies, file_path = "../data/derived/sdac/sdac_disfluencies_data_dictionary.csv")
 ```
 
 ```bash
 data/derived/
 └── sdac/
     ├── data_dictionary_sdac.csv
-    ├── data_dictionary_sdac_disfluencies.csv
     ├── sdac_curated.csv
-    └── sdac_transformed_disfluencies.csv
+    ├── sdac_disfluencies.csv
+    └── sdac_disfluencies_data_dictionary.csv
 ```
 
 Open the `data_dictionary_sdac_disfluencies.csv` file in spreadsheet software and add the relevant description of the dataset. 
