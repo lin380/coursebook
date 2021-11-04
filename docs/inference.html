@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 8 Inference | Coursebook</title>
 <meta name="author" content="Jerid Francom">
-<meta name="description" content="INCOMPLETE DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three...">
+<meta name="description" content="DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three main types of...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Inference | Coursebook">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/inference.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
-<meta property="og:description" content="INCOMPLETE DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three...">
+<meta property="og:description" content="DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three main types of...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 8 Inference | Coursebook">
 <meta name="twitter:site" content="@jeridfrancom">
-<meta name="twitter:description" content="INCOMPLETE DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three...">
+<meta name="twitter:description" content="DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three main types of...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -87,7 +87,7 @@
 <span class="header-section-number">8</span> Inference<a class="anchor" aria-label="anchor" href="#inference"><i class="fas fa-link"></i></a>
 </h1>
 <p style="font-weight:bold; color:red;">
-INCOMPLETE DRAFT
+DRAFT
 </p>
 <blockquote>
 <p>People generally see what they look for, and hear what they listen for.</p>
@@ -310,7 +310,7 @@ GOALS:
 #&gt; $ birth_year     &lt;dbl&gt; 1962, 1962, 1962, 1962, 1971, 1971, 1962, 1962, 1971, 1…
 #&gt; $ dialect_area   &lt;chr&gt; "WESTERN", "WESTERN", "WESTERN", "WESTERN", "SOUTH MIDL…
 #&gt; $ education      &lt;dbl&gt; 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1…</code></pre>
-<p>We prepared a data dictionary that reflects this transformed dataset. Let’s read that file and then view it Table <a href="#tab:i-sdac-disfluencies-diciontary-read-run"><strong>??</strong></a>.</p>
+<p>We prepared a data dictionary that reflects this transformed dataset. Let’s read that file and then view it Table <a href="inference.html#tab:i-sdac-disfluencies-dictionary">8.3</a>.</p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sdac_disfluencies_dictionary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_disfluencies_data_dictionary.csv"</span><span class="op">)</span>  <span class="co"># read data dictionary</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -622,7 +622,7 @@ GOALS:
 <p><code>effectsize()</code> recognizes the type of test results in <code>c1</code> and calculates the appropriate effect size measure and generates a confidence interval. Since the effect statistic (“Cramer’s V”) falls between the 95% confidence interval this suggests the results are reliably interpreted (chances of Type I (false positive) or Type II (false negative) are low).</p>
 <p>Now, the remaining question is to evaluate whether the significant result here is a strong effect or not. To do this we can pass the effect size measure to the <code>interpret_r()</code> function.</p>
 <div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Cramers_v</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Cramers_v</span><span class="op">)</span>  <span class="co"># interpret the effect size </span>
 <span class="co">#&gt; [1] "very large"</span>
 <span class="co">#&gt; (Rules: funder2019)</span></code></pre></div>
 <p>Turns out we have a strong effect; the realization of dative alternation heavily favors the ‘NP’ form in our data. The potential reasons why are not considered in this univariate analysis, but we will return to this question later as we add independent variables to the statistical analysis.</p>
@@ -639,14 +639,14 @@ This is an important step when working with numeric dependent variables as the t
 </div>
 <p>Since the dataset is currently organized around fillers as the observational unit, I will first transform this dataset to sum the use of fillers for each speaker in the dataset.</p>
 <div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sdac_fillers</span> <span class="op">&lt;-</span> 
+<code class="sourceCode R"><span class="va">sdac_speaker_fillers</span> <span class="op">&lt;-</span> 
   <span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">speaker_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># group by each speaker</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># add up all fillers used</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># remove grouping parameter</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:i-uni-cont-sdac-transform-preview">Table 8.5: </span>First 10 observations of <code>sdac_fillers</code> dataset.</caption>
+<span id="tab:i-uni-cont-sdac-transform-preview">Table 8.5: </span>First 10 observations of <code>sdac_speaker_fillers</code> dataset.</caption>
 <thead><tr class="header">
 <th align="left">speaker_id</th>
 <th align="right">sum</th>
@@ -701,7 +701,7 @@ This is an important step when working with numeric dependent variables as the t
   <span class="fu">skim_with</span><span class="op">(</span>numeric <span class="op">=</span> <span class="fu">sfl</span><span class="op">(</span>hist <span class="op">=</span> <span class="cn">NULL</span>, <span class="co"># remove hist skim</span>
                                    iqr <span class="op">=</span> <span class="va">IQR</span><span class="op">)</span><span class="op">)</span> <span class="co"># add IQR to skim</span>
 
-<span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+<span class="va">sdac_speaker_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># variable of interest</span>
   <span class="fu">num_skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
   <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
@@ -744,13 +744,13 @@ https://homepage.divms.uiowa.edu/~luke/classes/STAT4580/histdens.html
 -->
 <div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> 
-  <span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="va">sdac_speaker_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mapping</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># geometry</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Fillers"</span>, y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span>
 
 <span class="va">p2</span> <span class="op">&lt;-</span> 
-  <span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="va">sdac_speaker_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mapping</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html">geom_rug</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># visualize individual observations</span>
@@ -766,7 +766,7 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 </div>
 <p>Since our aim is to test for normality, we can generate a Quantile-Quantile plots (QQ Plot).</p>
 <div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+<code class="sourceCode R"><span class="va">sdac_speaker_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mapping</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># calculate expected quantile-quantile distribution</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_qq.html">stat_qq_line</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># plot the qq-line</span></code></pre></div>
@@ -775,13 +775,13 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <p><strong>Statistical interrogation</strong></p>
 <p>Although the descriptives and visualizations strongly suggest that we do not have normally distributed data let’s run a normality test. For this we turn to the <code><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test()</a></code> function which performs the Shapiro-Wilk test of normality. We pass the <code>sum</code> variable to this function to run the test.</p>
 <div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">sdac_fillers</span><span class="op">$</span><span class="va">sum</span><span class="op">)</span>  <span class="co"># apply the normality test to `sum`</span>
+<code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">sdac_speaker_fillers</span><span class="op">$</span><span class="va">sum</span><span class="op">)</span>  <span class="co"># apply the normality test to `sum`</span>
 
 <span class="va">s1</span>  <span class="co"># preview the test results</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  Shapiro-Wilk normality test</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; data:  sdac_fillers$sum</span>
+<span class="co">#&gt; data:  sdac_speaker_fillers$sum</span>
 <span class="co">#&gt; W = 0.8, p-value &lt;2e-16</span></code></pre></div>
 <p>As we saw with the results from the <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> function, the <code><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test()</a></code> function produces an object with information about the test including the <span class="math inline">\(p\)</span>-value. Let’s run our logical test to see if the test is statistically significant.</p>
 <div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
@@ -805,10 +805,10 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <p><strong>Descriptive assessment</strong></p>
 <p>Both the <code>realization_of_recipient</code> and <code>modality</code> variables are categorical, specifically nominal as we can see by using <code>skim()</code>.</p>
 <div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">yank</span><span class="op">(</span><span class="st">"factor"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select key variables</span>
+  <span class="fu">skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
+  <span class="fu">yank</span><span class="op">(</span><span class="st">"factor"</span><span class="op">)</span> <span class="co"># only show factor-oriented information</span></code></pre></div>
 <p><strong>Variable type: factor</strong></p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -840,14 +840,15 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 </table></div>
 <p>For this reason measures of central tendency are not applicable and we will turn to a contingency table to summarize the relationship. The janitor package has a set of functions, the primary function being <code>tabyl()</code>. Other functions used here are to adorn the contingency table with totals, percentages, and to format the output for readability.</p>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">tabyl</span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">adorn_totals</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"row"</span>, <span class="st">"col"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">adorn_percentages</span><span class="op">(</span><span class="st">"col"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">adorn_pct_formatting</span><span class="op">(</span>rounding <span class="op">=</span> <span class="st">"half up"</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">adorn_ns</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">adorn_title</span><span class="op">(</span><span class="st">"combined"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"Contingency table for `realization_of_recipient` and `modality`."</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">tabyl</span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># cross-tabulate</span>
+  <span class="fu">adorn_totals</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"row"</span>, <span class="st">"col"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># provide row and column totals</span>
+  <span class="fu">adorn_percentages</span><span class="op">(</span><span class="st">"col"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># add percentages to the columns</span>
+  <span class="fu">adorn_pct_formatting</span><span class="op">(</span>rounding <span class="op">=</span> <span class="st">"half up"</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># round the digits</span>
+  <span class="fu">adorn_ns</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># add observation number</span>
+  <span class="fu">adorn_title</span><span class="op">(</span><span class="st">"combined"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># add a header title</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># pretty table</span>
+        caption <span class="op">=</span> <span class="st">"Contingency table for `realization_of_recipient` and `modality`."</span><span class="op">)</span> <span class="co"># caption</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:i-bi-cat-contingency-table">Table 8.6: </span>Contingency table for <code>realization_of_recipient</code> and <code>modality</code>.</caption>
@@ -880,17 +881,19 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 </table></div>
 <p>To gain a better appreciation for this relationship let’s generate a couple plots one which shows cross-tabulated counts and the other calculated proportions.</p>
 <div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, fill <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Count"</span>,
-    x <span class="op">=</span> <span class="st">"Realization of recipient"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> 
+  <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, fill <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Count"</span>, x <span class="op">=</span> <span class="st">"Realization of recipient"</span><span class="op">)</span> <span class="co"># labels</span>
 
-<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
+<span class="va">p2</span> <span class="op">&lt;-</span> 
+  <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, fill <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry, with fill for proportion plot</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Proportion"</span>, x <span class="op">=</span> <span class="st">"Realization of recipient"</span>, fill <span class="op">=</span> <span class="st">"Modality"</span><span class="op">)</span> <span class="co"># labels</span>
 
-<span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, fill <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Proportion"</span>, x <span class="op">=</span> <span class="st">"Realization of recipient"</span>, fill <span class="op">=</span> <span class="st">"Modality"</span><span class="op">)</span>
-
-
+<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># remove legend from left plot</span>
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span> <span class="op">+</span> <span class="fu">plot_annotation</span><span class="op">(</span><span class="st">"Relationship between Realization of recipient and Modality."</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="09-inference_files/figure-html/i-bi-cat-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
@@ -936,7 +939,7 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <span class="co">#&gt; -------------------------</span>
 <span class="co">#&gt; 0.18       | [0.14, 0.21]</span>
 
-<span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Cramers_v</span><span class="op">)</span>
+<span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Cramers_v</span><span class="op">)</span>  <span class="co"># interpret the effect size</span>
 <span class="co">#&gt; [1] "small"</span>
 <span class="co">#&gt; (Rules: funder2019)</span></code></pre></div>
 <p>We get effect size and confidence interval information. Note that the effect size, reflected by Cramer’s V, for this relationship is weak. This points out an important aspect to evaluation of statistical tests. The fact that a test is significant does not mean that it is meaningful. A small effect size suggests that we should be cautious about the extent to which this significant finding is robust in the population from which the data is sampled.</p>
@@ -945,123 +948,712 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <h3>
 <span class="header-section-number">8.3.2</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous-1"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>–UNDER DEVELOPMENT–</strong></p>
+<p>For a bivariate analysis in which the dependent variable is not categorical, we will turn to the <code>sdac_disfluencies</code> dataset. The question we will pose to test is whether the use of fillers is related to the type of filler (‘uh’ or ‘um’).</p>
 <p><strong>Descriptive assessment</strong></p>
-<p><strong>Statistical interrogation</strong></p>
-<p><strong>Evaluation</strong></p>
-<ul>
-<li>
-<code>sdac_disfluencies</code>
-<ul>
-<li>
-<code>count</code> ~ <code>filler</code>
-</li>
-</ul>
-</li>
-</ul>
-<p><span class="citation">(<a href="references.html#ref-Baayen2008a" role="doc-biblioref">R. Harald Baayen, 2008</a>; <a href="references.html#ref-Gries2013a" role="doc-biblioref">Gries, 2013</a>)</span></p>
-<p>Generalized Linear Models (GLM) for regression models whose dependent variable does not fit the normal distribution. These include binary and ordinal regression and Poisson regression.</p>
+<p>The key variables to assess in this case are the variables <code>count</code> and <code>filler</code>. But before we start to explore this relationship we will need to transform the dataset such that each speaker’s use of the levels of <code>filler</code> is summed. We will use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to group <code>speaker_id</code> and <code>filler</code> combinations and then use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> to then sum the counts for each filler type for each speaker</p>
 <div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">filler</span>, y <span class="op">=</span> <span class="va">count</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"glm"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sdac_fillers</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">speaker_id</span>, <span class="va">filler</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># grouping parameters</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>sum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># summed counts for each speaker-filler combination</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># remove the grouping parameters</span></code></pre></div>
+<p>Let’s preview this transformation.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:i-bi-cont-sdac-fillers-preview">Table 8.7: </span>First 10 observations from <code>sdac_fillers</code> dataset.</caption>
+<thead><tr class="header">
+<th align="left">speaker_id</th>
+<th align="left">filler</th>
+<th align="right">sum</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">155</td>
+<td align="left">uh</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">155</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">1000</td>
+<td align="left">uh</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">1000</td>
+<td align="left">um</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">1001</td>
+<td align="left">uh</td>
+<td align="right">262</td>
+</tr>
+<tr class="even">
+<td align="left">1001</td>
+<td align="left">um</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">1002</td>
+<td align="left">uh</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="left">1002</td>
+<td align="left">um</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">1004</td>
+<td align="left">uh</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">1004</td>
+<td align="left">um</td>
+<td align="right">15</td>
+</tr>
+</tbody>
+</table></div>
+<p>Let’s take a look at them together by grouping the dataset by <code>filler</code> and then using the custom skim function <code>num_skim()</code> for the numeric variable<code>count</code>.</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">filler</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># grouping parameter</span>
+  <span class="fu">num_skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
+  <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
+<p><strong>Variable type: numeric</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="left">filler</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="right">iqr</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">sum</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">71.4</td>
+<td align="right">91.5</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">39</td>
+<td align="right">91</td>
+<td align="right">661</td>
+<td align="right">77</td>
+</tr>
+<tr class="even">
+<td align="left">sum</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">15.7</td>
+<td align="right">31.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">16</td>
+<td align="right">265</td>
+<td align="right">16</td>
+</tr>
+</tbody>
+</table></div>
+<p>We see here that the standard deviation and IQR for both ‘uh’ and ‘um’ are relatively large for the respective means (71.4 and 15.7) suggesting the distribution is quite dispersed. Let’s take a look at a boxplot to visualize the counts in <code>sum</code> for each level of <code>filler</code>.</p>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">filler</span>, y <span class="op">=</span> <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Filler"</span>, y <span class="op">=</span> <span class="st">"Counts"</span><span class="op">)</span> <span class="co"># labels</span>
 
-<span class="co"># How to choose a family</span>
-<span class="co"># https://www.researchgate.net/post/How-to-determine-which-family-function-to-use-when-fitting-generalized-linear-model-glm-in-R</span>
+<span class="va">p2</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_fillers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">filler</span>, y <span class="op">=</span> <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span> <span class="op">+</span> <span class="co"># scale the y axis to trim outliers</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Filler"</span>, y <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="co"># labels</span>
 
-<span class="va">m1</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">count</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">filler</span><span class="op">)</span>, <span class="co"># formula</span>
-      data <span class="op">=</span> <span class="va">sdac_disfluencies</span>, <span class="co"># selected data</span>
-      family <span class="op">=</span> <span class="st">"poisson"</span><span class="op">)</span> <span class="co"># selected distribution</span>
-<span class="va">m1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></code></pre></div>
+<div class="inline-figure"><img src="09-inference_files/figure-html/i-bi-cont-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>In the plot in the left pane we see a couple things. First, it appears that there is in fact quite a bit of dispersion as there are quite a few outliers (dots) above the lines extending from the boxes. Recall that the boxes represent the first and third quantile, that is the IQR and that the notches represent the confidence interval. Second, when we compare the boxes and their notches we see that there is little overlap (looking horizontally). In the right pane I’ve zoomed in a bit trimming some outliers to get a better view of the relationship between the boxes. Since the overlap is minimal and in particular the notches do not overlap at all, this is a good indication that there is a significant trend.</p>
+<p>From the descriptive statistics and the visual summary it appears that the filler ‘uh’ is more common than ‘um.’ It’s now time to submit this to statistical interrogation.</p>
+<p><strong>Statistical interrogation</strong></p>
+<!-- TODO:
+- Investigate How to choose a family
+  - https://www.researchgate.net/post/How-to-determine-which-family-function-to-use-when-fitting-generalized-linear-model-glm-in-R
+-->
+<p>In a bivariate (and multivariate) analysis where the dependent variable is non-categorical we apply Linear Regression Modeling (LM). The default assumption of linear models, however, is that the dependent variable is normally distributed. As we have seen our variable <code>sum</code> does not conform to the normal distribution. We know this because of our tests in the univariate case, but as mentioned at the end of that section, we are working with count data which by nature is understood as discrete and not continuous in a strict technical sense. So instead of using the linear model for our regression analysis we will use the Generalized Linear Model (GLM) <span class="citation">(<a href="references.html#ref-Baayen2008a" role="doc-biblioref">R. Harald Baayen, 2008</a>; <a href="references.html#ref-Gries2013a" role="doc-biblioref">Gries, 2013</a>)</span>.</p>
+<p>The function <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> implements generalized linear models. In addition to the formula (<code>sum ~ filler</code>) and the dataset to use, we also include an appropriate distribution family for the dependent variable. For count and frequency data the appropriate family is the “Poisson” distribution.</p>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">sum</span> <span class="op">~</span> <span class="va">filler</span>, <span class="co"># formula</span>
+      data <span class="op">=</span> <span class="va">sdac_fillers</span>, <span class="co"># dataset</span>
+      family <span class="op">=</span> <span class="st">"poisson"</span><span class="op">)</span> <span class="co"># distribution family</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span> <span class="co"># preview the test results</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Call:</span>
-<span class="co">#&gt; glm(formula = count ~ factor(filler), family = "poisson", data = sdac_disfluencies)</span>
+<span class="co">#&gt; glm(formula = sum ~ filler, family = "poisson", data = sdac_fillers)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Deviance Residuals: </span>
 <span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
-<span class="co">#&gt; -0.531  -0.531  -0.249  -0.249   8.612  </span>
+<span class="co">#&gt; -11.95   -5.61   -3.94    0.80   41.99  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;                  Estimate Std. Error z value Pr(&gt;|z|)    </span>
-<span class="co">#&gt; (Intercept)      -1.96066    0.00564    -348   &lt;2e-16 ***</span>
-<span class="co">#&gt; factor(filler)um -1.51308    0.01327    -114   &lt;2e-16 ***</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  4.26794    0.00564     757   &lt;2e-16 ***</span>
+<span class="co">#&gt; fillerum    -1.51308    0.01327    -114   &lt;2e-16 ***</span>
 <span class="co">#&gt; ---</span>
 <span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     Null deviance: 208714  on 447211  degrees of freedom</span>
-<span class="co">#&gt; Residual deviance: 191736  on 447210  degrees of freedom</span>
-<span class="co">#&gt; AIC: 259073</span>
+<span class="co">#&gt;     Null deviance: 72049  on 881  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 55071  on 880  degrees of freedom</span>
+<span class="co">#&gt; AIC: 58524</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Number of Fisher Scoring iterations: 6</span>
-<span class="va">m1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 × 5</span>
-<span class="co">#&gt;   term             estimate std.error statistic p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 (Intercept)         -1.96   0.00564     -348.       0</span>
-<span class="co">#&gt; 2 factor(filler)um    -1.51   0.0133      -114.       0</span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 6</span></code></pre></div>
+<p>Let’s focus on the coefficients, specifically for the ‘fillerum’ line. Since our factor <code>filler</code> has two levels one level is used as the reference to contrast with the other level. In this case by default the first level is used as the reference. Therefore the coefficients we see in ‘fillerum’ are ‘um’ in contrast to ‘uh.’ Without digging into the details of the other parameter statistics, let’s focus on the last column which contains the <span class="math inline">\(p\)</span>-value. A convenient aspect of the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function when applied to regression model results is that it provides statistical significance codes. In this case we can see that the contrast between ‘uh’ and ‘um’ is signficant at <span class="math inline">\(p &lt; .001\)</span> which of course is lower than our standard threshold of <span class="math inline">\(.05\)</span>.</p>
+<p>Therefore we can say with some confidence that the filler ‘uh’ is more frequent than ‘um.’</p>
+<p><strong>Evaluation</strong></p>
+<p>Given we have found a significant effect for <code>filler</code>, let’s look at evaluating the effect size and the confidence interval. Again, we use the <code>effectsize()</code> function. We then can preview the <code>effects</code> object. Note that effect size of interest is in the second row of the coefficient (<code>Std_Coefficient</code>) so we subset this column to extract only the effect coefficient for the <code>filler</code> contrast.</p>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">effects</span> <span class="op">&lt;-</span> <span class="fu">effectsize</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>  <span class="co"># evaluate effect size and generate a confidence interval</span>
 
-<span class="va">effects</span> <span class="op">&lt;-</span> <span class="fu">effectsize</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
+<span class="va">effects</span>  <span class="co"># preview effect size and confidence interval</span>
+<span class="co">#&gt; # Standardization method: refit</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Parameter   | Coefficient (std.) |         95% CI</span>
+<span class="co">#&gt; -------------------------------------------------</span>
+<span class="co">#&gt; (Intercept) |               4.27 | [ 4.26,  4.28]</span>
+<span class="co">#&gt; fillerum    |              -1.51 | [-1.54, -1.49]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Response is unstandardized)</span>
 
-<span class="va">effects</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-        caption <span class="op">=</span> <span class="st">"Effect size."</span><span class="op">)</span></code></pre></div>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:i-sdac-disfluencies-filler-count">Table 8.7: </span>Effect size.</caption>
-<thead><tr class="header">
-<th align="left">Parameter</th>
-<th align="right">Std_Coefficient</th>
-<th align="right">CI</th>
-<th align="right">CI_low</th>
-<th align="right">CI_high</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">(Intercept)</td>
-<td align="right">-1.96</td>
-<td align="right">0.95</td>
-<td align="right">-1.97</td>
-<td align="right">-1.95</td>
-</tr>
-<tr class="even">
-<td align="left">factor(filler)um</td>
-<td align="right">-1.51</td>
-<td align="right">0.95</td>
-<td align="right">-1.54</td>
-<td align="right">-1.49</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">effects</span><span class="op">$</span><span class="va">Std_Coefficient</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">interpret_r</span><span class="op">(</span><span class="op">)</span>
+<span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Std_Coefficient</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>  <span class="co"># interpret the effect size</span>
 <span class="co">#&gt; [1] "very large"</span>
 <span class="co">#&gt; (Rules: funder2019)</span></code></pre></div>
-<div class="inline-figure"><img src="09-inference_files/figure-html/i-sdac-disfluencies-filler-count-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>The coefficient statistic falls within the confidence interval and the effect size is strong so we can be confident that our findings are reliable given this data.</p>
 </div>
 </div>
 <div id="multivariate-analysis" class="section level2" number="8.4">
 <h2>
 <span class="header-section-number">8.4</span> Multivariate analysis<a class="anchor" aria-label="anchor" href="#multivariate-analysis"><i class="fas fa-link"></i></a>
 </h2>
+<p>The last case to consider is when we have more than one independent variable we want to use to assess their potential relationship to the dependent variable. Again we will consider a categorical and non-categorical dependent variable. But, in this case the implementation methods are quite similar, as we will see.</p>
 <div id="categorical-2" class="section level3" number="8.4.1">
 <h3>
 <span class="header-section-number">8.4.1</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical-2"><i class="fas fa-link"></i></a>
 </h3>
+<p>For the categorical multivariate case we will again consider the <code>dative</code> dataset and build on the previous analyses. The question to be posed is whether modality in combination with the length of the recipient (<code>length_of_recipient</code>) together explain the distribution of the realization of the recipient (<code>realization_of_recipient</code>).</p>
 <p><strong>Descriptive assessment</strong></p>
+<p>Now that we have three variables, there is more to summarize to get our descriptive information. Luckily, however, the same process can be applied to three (or more) variables using the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function and then passed to <code>skim()</code>. In this case we have two categorical variables and one numeric variable. So we will group by both the categorical variables and then pass the numeric variable to the custom <code>num_skim()</code> function –pulling out only the relevant descriptive information for numeric variables with <code>yank()</code>.</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span>, <span class="va">length_of_recipient</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select key variables</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">realization_of_recipient</span>, <span class="va">modality</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># grouping parameters</span>
+  <span class="fu">num_skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
+  <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
+<p><strong>Variable type: numeric</strong></p>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="17%">
+<col width="22%">
+<col width="8%">
+<col width="8%">
+<col width="12%">
+<col width="4%">
+<col width="4%">
+<col width="2%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="4%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="left">realization_of_recipient</th>
+<th align="left">modality</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="right">iqr</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">length_of_recipient</td>
+<td align="left">NP</td>
+<td align="left">spoken</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1.14</td>
+<td align="right">0.60</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">length_of_recipient</td>
+<td align="left">NP</td>
+<td align="left">written</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1.95</td>
+<td align="right">1.59</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">17</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">length_of_recipient</td>
+<td align="left">PP</td>
+<td align="left">spoken</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2.30</td>
+<td align="right">2.04</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">15</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">length_of_recipient</td>
+<td align="left">PP</td>
+<td align="left">written</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4.75</td>
+<td align="right">4.10</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">31</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is much more information now that we are considering multiple independent variables, but if we look over the measures of dispersion we can see that the median and the IQR are relatively similar to their respective means suggesting that there are fewer outliers and relativley little skew.</p>
+<p>Let’s take a look at a visualization of this information. Since we are working with a categorical dependent variable and there is one non-categorical variable we can use a boxplot. The addition here is to include a <code>color</code> mapping which will provide a distinct box for each level of modality (‘written’ and ‘spoken’).</p>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> 
+  <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, y <span class="op">=</span> <span class="va">length_of_recipient</span>, color <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Realization of recipient"</span>, y <span class="op">=</span> <span class="st">"Length of recipient (in words)"</span>, color <span class="op">=</span> <span class="st">"Modality"</span><span class="op">)</span> <span class="co"># labels</span>
+
+<span class="va">p2</span> <span class="op">&lt;-</span> 
+  <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span>, y <span class="op">=</span> <span class="va">length_of_recipient</span>, color <span class="op">=</span> <span class="va">modality</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span><span class="op">)</span> <span class="op">+</span> <span class="co"># scale the y axis to trim outliers</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Realization of recipient"</span>, y <span class="op">=</span> <span class="st">""</span>, color <span class="op">=</span> <span class="st">"Modality"</span><span class="op">)</span> <span class="co"># labels</span>
+
+<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># remove the legend from the left pane plot</span>
+
+<span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></code></pre></div>
+<div class="inline-figure"><img src="09-inference_files/figure-html/i-multi-cat-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>In the left pane we see the entire visualization including all outliers. From this view it appears that there is a potential trend that the length of the recipient is larger when the realization of the recipient is ‘PP.’ There is also a potential trend for modality with written language showing longer recipient lengths overall. The pane on the right is scaled to get a better view of the boxes by scaling the y-axis down and as such trimming the outliers. This plot shows more clearly that the length of the recipient is longer when the recipient is realized as a ‘PP.’ Again, the contrast in modality is also a potential trend, but the boxes (of the same color), particularly for the spoken modality overlap to some degree.</p>
+<p>So we have some trends in mind which will help us interpret the statistical interrogation so let’s move there next.</p>
 <p><strong>Statistical interrogation</strong></p>
+<p>Once we involve more than two variables, the choice of statistical method turns towards regression. In the case that the dependent variable is categorical, however, we will use Logistic Regression. The workhorse function <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> can be used for a series of regression models, including logistic regression. The requirement, however, is that we specify the family of the distribution. For logistic regression the family is “binomial.” The formula includes the dependent variable as a function of our other two variables, each are separated by the <code>+</code> operator.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">realization_of_recipient</span> <span class="op">~</span> <span class="va">modality</span> <span class="op">+</span> <span class="va">length_of_recipient</span>, <span class="co"># formula</span>
+          data <span class="op">=</span> <span class="va">dative</span>, <span class="co"># dataset</span>
+          family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span> <span class="co"># distribution family</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span> <span class="co"># preview the test results</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = realization_of_recipient ~ modality + length_of_recipient, </span>
+<span class="co">#&gt;     family = "binomial", data = dative)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -4.393  -0.598  -0.598   0.132   1.924  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                     Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)          -2.3392     0.0797  -29.35   &lt;2e-16 ***</span>
+<span class="co">#&gt; modalitywritten      -0.0483     0.1069   -0.45     0.65    </span>
+<span class="co">#&gt; length_of_recipient   0.7081     0.0420   16.86   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 3741.1  on 3262  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3104.7  on 3260  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3111</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 5</span></code></pre></div>
+<p>The results from the model again provide a wealth of information. But the key information to focus on is the coefficients. In particular the coefficients for the independent variables <code>modality</code> and <code>length_of_recipient</code>. What we notice, is that the <span class="math inline">\(p\)</span>-value for <code>length_of_recipient</code> is significant, but the contrast between ‘written’ and ‘spoken’ for <code>modality</code> is not. If you recall, we used this same dataset to explore <code>modality</code> as a single indpendent variable earlier –and it was found to be significant. So why now is it not? The answer is that when multiple variables are used to explain the distribution of a measure (dependent variable) each variable now adds more information to explain the dependent variable –each has it’s own contribution. Since <code>length_of_recipient</code> is significant, this suggests that the explanatory power of <code>modality</code> is weak, especially when compared to <code>length_of_recipient</code>. This make sense as we saw in the earlier model the fact that the effect size for <code>modality</code> was not strong and that is now more evident that the <code>length_of_recipient</code> is included in the model.</p>
 <p><strong>Evaluation</strong></p>
+<p>Now let’s move on and gauge the effect size and calculate the confidence interval for <code>length_of_recipient</code> in our model. We apply the <code>effectsize()</code> function to the model and then use <code>interpret_r()</code> on the coefficient of interest (which is in the fourth row of the <code>Std_Coefficients</code> column).</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">effects</span> <span class="op">&lt;-</span> <span class="fu">effectsize</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>  <span class="co"># evaluate effect size and generate a confidence interval</span>
+
+<span class="va">effects</span>  <span class="co"># preview effect size and confidence interval</span>
+<span class="co">#&gt; # Standardization method: refit</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Parameter           | Coefficient (std.) |         95% CI</span>
+<span class="co">#&gt; ---------------------------------------------------------</span>
+<span class="co">#&gt; (Intercept)         |              -1.03 | [-1.15, -0.92]</span>
+<span class="co">#&gt; modalitywritten     |              -0.05 | [-0.26,  0.16]</span>
+<span class="co">#&gt; length_of_recipient |               1.46 | [ 1.30,  1.64]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Response is unstandardized)</span>
+
+<span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Std_Coefficient</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>  <span class="co"># interpret the effect size</span>
+<span class="co">#&gt; [1] NA</span>
+<span class="co">#&gt; (Rules: funder2019)</span></code></pre></div>
+<p>We see we have a coefficient that falls within the confidence interval and the effect size is large. So we can saw with some confidence that the length of the recipient is a significant predictor of the use of ‘PP’ as the realization of the recipient in the dative alternation.</p>
 </div>
 <div id="continuous-2" class="section level3" number="8.4.2">
 <h3>
 <span class="header-section-number">8.4.2</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous-2"><i class="fas fa-link"></i></a>
 </h3>
+<p>The last case we will consider here is when the dependent variable is non-categorical and we have more than one independent variable. The question we will pose is whether the type of filler and the sex of the speaker can explain the use of fillers in conversational speech.</p>
+<p>We will need to prepare the data before we get started as our current data frame <code>sdac_fillers</code> has filler and the sum count for each filler grouped by speaker –but it does not include the <code>sex</code> of each speaker. The <code>sdac_disfluencies</code> data frame does have the <code>sex</code> column, but it has not been grouped by speaker. So let’s transform the <code>sdac_disfluencies</code> summarizing it to only get the <code>speaker_id</code> and <code>sex</code> combinations. This should result in a data frame with 441 observations, one observation for each speaker in the corpus.</p>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_speakers_sex</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">speaker_id</span>, <span class="va">sex</span><span class="op">)</span> <span class="co"># summarize for distinct `speaker_id` and `sex` values</span></code></pre></div>
+<p>Let’s preview the first 10 observations form this transformation.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:i-multi-cont-transform-sdac-preview">Table 8.8: </span>First 10 observations of the <code>sdac_speakers_sex</code> data frame.</caption>
+<thead><tr class="header">
+<th align="left">speaker_id</th>
+<th align="left">sex</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">155</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">1000</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1001</td>
+<td align="left">MALE</td>
+</tr>
+<tr class="even">
+<td align="left">1002</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1004</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="even">
+<td align="left">1005</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1007</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="even">
+<td align="left">1008</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1010</td>
+<td align="left">MALE</td>
+</tr>
+<tr class="even">
+<td align="left">1011</td>
+<td align="left">FEMALE</td>
+</tr>
+</tbody>
+</table></div>
+<p>Great, now we have each <code>speaker_id</code> and <code>sex</code> for all 441 speakers. One thing to note, however, is that speaker ‘155’ does not have a value for <code>sex</code> –this seems to be an error in the metadata that we will need to deal with before we proceed in our analysis. Let’s move on to join our new <code>sdac_speakers_sex</code> data frame and the <code>sdac_fillers</code> data frame.</p>
+<p>Now that we have a complete dataset with <code>speaker_id</code> and <code>sex</code> we will now join this dataset with our <code>sdac_fillers</code> dataset effectively adding the column <code>sex</code>. We want to keep all the observations in <code>sdac_fillers</code> and add the column <code>sex</code> for observations that correspond between each data frame for the column <code>speaker_id</code> so we will use a left join with the function <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> with the <code>sdac_fillers</code> dataset on the left.</p>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_fillers_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">sdac_fillers</span>, <span class="va">sdac_speakers_sex</span><span class="op">)</span>  <span class="co"># join</span></code></pre></div>
+<p>Now let’s preview the first observations in this new <code>sdac_fillers_sex</code> data frame.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:i-multi-cont-sdac-fillers-sex-preview">Table 8.9: </span>First 10 observations of the <code>sdac_fillers_sex</code> data frame.</caption>
+<thead><tr class="header">
+<th align="left">speaker_id</th>
+<th align="left">filler</th>
+<th align="right">sum</th>
+<th align="left">sex</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">155</td>
+<td align="left">uh</td>
+<td align="right">28</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">155</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">1000</td>
+<td align="left">uh</td>
+<td align="right">37</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="even">
+<td align="left">1000</td>
+<td align="left">um</td>
+<td align="right">8</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1001</td>
+<td align="left">uh</td>
+<td align="right">262</td>
+<td align="left">MALE</td>
+</tr>
+<tr class="even">
+<td align="left">1001</td>
+<td align="left">um</td>
+<td align="right">2</td>
+<td align="left">MALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1002</td>
+<td align="left">uh</td>
+<td align="right">34</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="even">
+<td align="left">1002</td>
+<td align="left">um</td>
+<td align="right">20</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="odd">
+<td align="left">1004</td>
+<td align="left">uh</td>
+<td align="right">30</td>
+<td align="left">FEMALE</td>
+</tr>
+<tr class="even">
+<td align="left">1004</td>
+<td align="left">um</td>
+<td align="right">15</td>
+<td align="left">FEMALE</td>
+</tr>
+</tbody>
+</table></div>
+<p>At this point let’s drop this speaker from the <code>sdac_speakers_sex</code> data frame.</p>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_fillers_sex</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_fillers_sex</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">speaker_id</span> <span class="op">!=</span> <span class="st">"155"</span><span class="op">)</span> <span class="co"># drop speaker_id 155</span></code></pre></div>
+<p>We are now ready to proceed in our analysis.</p>
 <p><strong>Descriptive assessment</strong></p>
+<p>The process by now should be quite routine for getting our descriptive statistics: select the key variables, group by the categorical variables, and finally pull the descriptives for the numeric variable.</p>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_fillers_sex</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sum</span>, <span class="va">filler</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select key variables</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">filler</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># grouping parameters</span>
+  <span class="fu">num_skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
+  <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
+<p><strong>Variable type: numeric</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="left">filler</th>
+<th align="left">sex</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="right">iqr</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">sum</td>
+<td align="left">uh</td>
+<td align="left">FEMALE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">63.22</td>
+<td align="right">76.5</td>
+<td align="right">0</td>
+<td align="right">12.0</td>
+<td align="right">39.0</td>
+<td align="right">81.8</td>
+<td align="right">509</td>
+<td align="right">69.8</td>
+</tr>
+<tr class="even">
+<td align="left">sum</td>
+<td align="left">uh</td>
+<td align="left">MALE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">78.74</td>
+<td align="right">102.6</td>
+<td align="right">0</td>
+<td align="right">15.2</td>
+<td align="right">37.5</td>
+<td align="right">101.5</td>
+<td align="right">661</td>
+<td align="right">86.2</td>
+</tr>
+<tr class="odd">
+<td align="left">sum</td>
+<td align="left">um</td>
+<td align="left">FEMALE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">22.38</td>
+<td align="right">36.3</td>
+<td align="right">0</td>
+<td align="right">1.0</td>
+<td align="right">9.0</td>
+<td align="right">28.0</td>
+<td align="right">265</td>
+<td align="right">27.0</td>
+</tr>
+<tr class="even">
+<td align="left">sum</td>
+<td align="left">um</td>
+<td align="left">MALE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">9.92</td>
+<td align="right">24.2</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+<td align="right">1.0</td>
+<td align="right">8.0</td>
+<td align="right">217</td>
+<td align="right">8.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Looking at these descriptives, it seems like there is quite a bit of variability for some combinations and not others. In short, it’s a mixed bag. Let’s try to make sense of these numbers with a boxplot.</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_fillers_sex</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">filler</span>, y <span class="op">=</span> <span class="va">sum</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Filler"</span>, y <span class="op">=</span> <span class="st">"Counts"</span>, color <span class="op">=</span> <span class="st">"Sex"</span><span class="op">)</span> <span class="co"># labels</span>
+
+<span class="va">p2</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_fillers_sex</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">filler</span>, y <span class="op">=</span> <span class="va">sum</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mappings</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geometry</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">200</span><span class="op">)</span> <span class="op">+</span> <span class="co"># scale the y axis to trim outliers</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Filler"</span>, y <span class="op">=</span> <span class="st">""</span>, color <span class="op">=</span> <span class="st">"Sex"</span><span class="op">)</span> <span class="co"># labels</span>
+
+<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># drop the legend from the left pane plot</span>
+
+<span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></code></pre></div>
+<div class="inline-figure"><img src="09-inference_files/figure-html/i-mulit-cont-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>We can see that ‘uh’ is used more than ‘um’ overall. But that whereas men and women use ‘uh’ in similar ways, women use more ‘um’ than men. This is known as an interaction. So we will approach our statistical analysis with this in mind.</p>
 <p><strong>Statistical interrogation</strong></p>
+<p>We will again use a generalized linear model with the <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> function to conduct our test. The distribution family will be the same has we are again using the <code>sum</code> as our dependent variable which contains discrete count values. The formula we will use, however, is new. Instead of adding a new variable to our independent variables, we will test the possible interaction between <code>filler</code> and <code>sex</code> that we noted in the descriptive assessment. To encode an interaction the <code>*</code> operator is used. So our formula will take the form <code>sum ~ filler * sex</code>. Let’s generate the model and view the summary of the test results as we have done before.</p>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">sum</span> <span class="op">~</span> <span class="va">filler</span> <span class="op">*</span> <span class="va">sex</span>, <span class="co"># formula</span>
+      data <span class="op">=</span> <span class="va">sdac_fillers_sex</span>, <span class="co"># dataset</span>
+      family <span class="op">=</span> <span class="st">"poisson"</span><span class="op">)</span> <span class="co"># distribution family</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span> <span class="co"># preview the test results</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = sum ~ filler * sex, family = "poisson", data = sdac_fillers_sex)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -12.55   -6.21   -3.64    1.08   40.60  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                  Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)       4.14660    0.00876   473.2   &lt;2e-16 ***</span>
+<span class="co">#&gt; fillerum         -1.03827    0.01714   -60.6   &lt;2e-16 ***</span>
+<span class="co">#&gt; sexMALE           0.21955    0.01145    19.2   &lt;2e-16 ***</span>
+<span class="co">#&gt; fillerum:sexMALE -1.03344    0.02791   -37.0   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 71956  on 879  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 53543  on 876  degrees of freedom</span>
+<span class="co">#&gt; AIC: 56994</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 6</span></code></pre></div>
+<p>Again looking at the coefficients we something new. First we see that there is a row for the <code>filler</code> contrast and the <code>sex</code> contrast but also the interaction between <code>filler</code> and <code>sex</code> (‘fillerum:sexMALE’). All rows show significant effects. It is important to note that when an interaction is explored and it is found to be significant, the other simple effects, known as main effects (‘fillerum’ and ‘sexMALE’), are ignored. Only the higer-order effect is considered significant.</p>
+<p>Now what does the ‘fillerum:sexMALE’ row mean. It means that there is an interaction between <code>filler</code> and <code>sex</code>. the directionality of that interaction should be interpreted using our descriptive assessment, in particular the visual boxplots we generated. In sum, women use more ‘um’ than men or stated another way men use ‘um’ less than women.</p>
 <p><strong>Evaluation</strong></p>
+<p>We finalize our analysis by looking at the effect size and confidence intervals.</p>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">effects</span> <span class="op">&lt;-</span> <span class="fu">effectsize</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>  <span class="co"># evaluate effect size and generate a confidence interval</span>
+
+<span class="va">effects</span>  <span class="co"># preview effect size and confidence interval</span>
+<span class="co">#&gt; # Standardization method: refit</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Parameter        | Coefficient (std.) |         95% CI</span>
+<span class="co">#&gt; ------------------------------------------------------</span>
+<span class="co">#&gt; (Intercept)      |               4.15 | [ 4.13,  4.16]</span>
+<span class="co">#&gt; fillerum         |              -1.04 | [-1.07, -1.00]</span>
+<span class="co">#&gt; sexMALE          |               0.22 | [ 0.20,  0.24]</span>
+<span class="co">#&gt; fillerum:sexMALE |              -1.03 | [-1.09, -0.98]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Response is unstandardized)</span>
+
+<span class="fu">interpret_r</span><span class="op">(</span><span class="va">effects</span><span class="op">$</span><span class="va">Std_Coefficient</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>  <span class="co"># interpret the effect size</span>
+<span class="co">#&gt; [1] "very large"</span>
+<span class="co">#&gt; (Rules: funder2019)</span></code></pre></div>
+<p>We can conclude, then, that there is a strong interaction effect for <code>filler</code> and <code>sex</code> and that women use more ‘um’ than men.</p>
+</div>
+</div>
+<div id="summary-10" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this chapter we have discussed various approaches to conducting inferential data analysis. Each configuration, however, always includes a descriptive assessment, statistical interrogation, and an evaluation of the results. We considered univariate, bivariate, and multivariate analyses using both categorical and non-categorical dependent variables to explore the similarities and differences between these approaches.</p>
 <!-- IDEAS:
 
 - Use BELC dataset from "Approaching analysis" chapter
@@ -1091,7 +1683,6 @@ RESOURCES:
 
 </div>
 </div>
-</div>
   <div class="chapter-nav">
 <div class="prev"><a href="analysis-overview.html">Overview</a></div>
 <div class="next"><a href="prediction.html"><span class="header-section-number">9</span> Prediction</a></div>
@@ -1118,6 +1709,7 @@ RESOURCES:
 <li><a class="nav-link" href="#continuous-2"><span class="header-section-number">8.4.2</span> Continuous</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#summary-10"><span class="header-section-number">8.5</span> Summary</a></li>
 </ul>
 
       <div class="book-extra">
@@ -1135,7 +1727,7 @@ RESOURCES:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 03, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 04, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

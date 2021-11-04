@@ -117,7 +117,9 @@ tab:i-sdac-disfluencies-dictionary
 tab:i-sdac-disfluencies-preview
 tab:i-uni-cont-sdac-transform-preview
 tab:i-bi-cat-contingency-table
-tab:i-sdac-disfluencies-filler-count
+tab:i-bi-cont-sdac-fillers-preview
+tab:i-multi-cont-transform-sdac-preview
+tab:i-multi-cont-sdac-fillers-sex-preview
 data-language-and-text-analysis
 making-sense-of-a-complex-world
 data-analysis
@@ -209,9 +211,10 @@ continuous-1
 multivariate-analysis
 categorical-2
 continuous-2
+summary-10
 prediction
 section
-summary-10
+summary-11
 exploration
 section-1
 exploration-packages

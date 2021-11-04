@@ -131,7 +131,7 @@ GOALS:
 ...
 
 -->
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Packages pacman::p_load(caret)</span></code></pre></div>
 <p>text</p>
 <div id="section" class="section level2" number="9.1">
@@ -140,7 +140,7 @@ GOALS:
 </h2>
 <p>text</p>
 <p>In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sms_f</span> <span class="op">&lt;-</span> <span class="va">sms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">terms</span>, <span class="va">message</span>, token <span class="op">=</span> <span class="st">"regex"</span>, pattern <span class="op">=</span> <span class="st">" "</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">sms_type</span>, <span class="va">terms</span><span class="op">)</span>
@@ -152,7 +152,7 @@ GOALS:
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sms_type</span>, <span class="va">terms</span>, frequency <span class="op">=</span> <span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"Top five most frequent terms for 'ham' and 'spam'."</span><span class="op">)</span></code></pre></div>
 <!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span>
 
 <span class="va">sms_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">sms</span>, strata <span class="op">=</span> <span class="st">"sms_type"</span><span class="op">)</span>
@@ -177,9 +177,9 @@ GOALS:
 <li>F1-score (summarizes the balance between precision and recall)</li>
 </ul>
 </div>
-<div id="summary-10" class="section level2" number="9.2">
+<div id="summary-11" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">9.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary-11"><i class="fas fa-link"></i></a>
 </h2>
 <p>…</p>
 
@@ -193,7 +193,7 @@ GOALS:
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#prediction"><span class="header-section-number">9</span> Prediction</a></li>
 <li><a class="nav-link" href="#section"><span class="header-section-number">9.1</span> …</a></li>
-<li><a class="nav-link" href="#summary-10"><span class="header-section-number">9.2</span> Summary</a></li>
+<li><a class="nav-link" href="#summary-11"><span class="header-section-number">9.2</span> Summary</a></li>
 </ul>
 
       <div class="book-extra">
@@ -211,7 +211,7 @@ GOALS:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 03, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 04, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

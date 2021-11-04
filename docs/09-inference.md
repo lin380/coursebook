@@ -2,13 +2,15 @@
 
 # Overview {-#analysis-overview}
 
+... UNDER DEVELOPMENT ...
+
 
 
 
 
 # Inference {#inference}
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 > People generally see what they look for, and hear what they listen for.
 >
@@ -167,7 +169,7 @@ glimpse(sdac_disfluencies)  # preview structure
 #> $ education      <dbl> 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1…
 ```
 
-We prepared a data dictionary that reflects this transformed dataset. Let's read that file and then view it Table \@ref(tab:i-sdac-disfluencies-diciontary-read-run). 
+We prepared a data dictionary that reflects this transformed dataset. Let's read that file and then view it Table \@ref(tab:i-sdac-disfluencies-dictionary). 
 
 
 ```r
@@ -426,7 +428,7 @@ Now, the remaining question is to evaluate whether the significant result here i
 
 
 ```r
-interpret_r(effects$Cramers_v)
+interpret_r(effects$Cramers_v)  # interpret the effect size 
 #> [1] "very large"
 #> (Rules: funder2019)
 ```
@@ -445,7 +447,7 @@ Since the dataset is currently organized around fillers as the observational uni
 
 
 ```r
-sdac_fillers <- 
+sdac_speaker_fillers <- 
   sdac_disfluencies %>% # dataset
   group_by(speaker_id) %>% # group by each speaker
   summarise(sum = sum(count)) %>% # add up all fillers used
@@ -454,7 +456,7 @@ sdac_fillers <-
 
 
 
-Table: (\#tab:i-uni-cont-sdac-transform-preview)First 10 observations of `sdac_fillers` dataset.
+Table: (\#tab:i-uni-cont-sdac-transform-preview)First 10 observations of `sdac_speaker_fillers` dataset.
 
 |speaker_id | sum|
 |:----------|---:|
@@ -479,7 +481,7 @@ num_skim <-
   skim_with(numeric = sfl(hist = NULL, # remove hist skim
                                    iqr = IQR)) # add IQR to skim
 
-sdac_fillers %>% # dataset
+sdac_speaker_fillers %>% # dataset
   select(sum) %>% # variable of interest
   num_skim() %>% # get custom data summary
   yank("numeric") # only show numeric-oriented information
@@ -507,13 +509,13 @@ https://homepage.divms.uiowa.edu/~luke/classes/STAT4580/histdens.html
 
 ```r
 p1 <- 
-  sdac_fillers %>% # dataset
+  sdac_speaker_fillers %>% # dataset
   ggplot(aes(sum)) + # mapping
   geom_histogram() +  # geometry
   labs(x = "Fillers", y = "Count")
 
 p2 <- 
-  sdac_fillers %>% # dataset
+  sdac_speaker_fillers %>% # dataset
   ggplot(aes(sum)) + # mapping
   geom_density() + # geometry
   geom_rug() +  # visualize individual observations
@@ -533,7 +535,7 @@ Since our aim is to test for normality, we can generate a Quantile-Quantile plot
 
 
 ```r
-sdac_fillers %>% # dataset
+sdac_speaker_fillers %>% # dataset
   ggplot(aes(sample = sum)) + # mapping
   stat_qq() + # calculate expected quantile-quantile distribution
   stat_qq_line() # plot the qq-line
@@ -549,13 +551,13 @@ Although the descriptives and visualizations strongly suggest that we do not hav
 
 
 ```r
-s1 <- shapiro.test(sdac_fillers$sum)  # apply the normality test to `sum`
+s1 <- shapiro.test(sdac_speaker_fillers$sum)  # apply the normality test to `sum`
 
 s1  # preview the test results
 #> 
 #> 	Shapiro-Wilk normality test
 #> 
-#> data:  sdac_fillers$sum
+#> data:  sdac_speaker_fillers$sum
 #> W = 0.8, p-value <2e-16
 ```
 
@@ -588,10 +590,10 @@ Both the `realization_of_recipient` and `modality` variables are categorical, sp
 
 
 ```r
-dative %>%
-    select(realization_of_recipient, modality) %>%
-    skim() %>%
-    yank("factor")
+dative %>% 
+  select(realization_of_recipient, modality) %>% # select key variables
+  skim() %>% # get custom data summary
+  yank("factor") # only show factor-oriented information
 ```
 
 
@@ -607,14 +609,15 @@ For this reason measures of central tendency are not applicable and we will turn
 
 
 ```r
-dative %>%
-    tabyl(realization_of_recipient, modality) %>%
-    adorn_totals(c("row", "col")) %>%
-    adorn_percentages("col") %>%
-    adorn_pct_formatting(rounding = "half up", digits = 0) %>%
-    adorn_ns() %>%
-    adorn_title("combined") %>%
-    kable(booktabs = TRUE, caption = "Contingency table for `realization_of_recipient` and `modality`.")
+dative %>% 
+  tabyl(realization_of_recipient, modality) %>% # cross-tabulate
+  adorn_totals(c("row", "col")) %>% # provide row and column totals
+  adorn_percentages("col") %>% # add percentages to the columns
+  adorn_pct_formatting(rounding = "half up", digits = 0) %>% # round the digits
+  adorn_ns() %>% # add observation number
+  adorn_title("combined") %>% # add a header title
+  kable(booktabs = TRUE, # pretty table
+        caption = "Contingency table for `realization_of_recipient` and `modality`.") # caption
 ```
 
 
@@ -631,17 +634,19 @@ To gain a better appreciation for this relationship let's generate a couple plot
 
 
 ```r
-p1 <- dative %>%
-    ggplot(aes(x = realization_of_recipient, fill = modality)) + geom_bar() + labs(y = "Count",
-    x = "Realization of recipient")
+p1 <- 
+  dative %>% # dataset
+  ggplot(aes(x = realization_of_recipient, fill = modality)) + # mappings
+  geom_bar() + # geometry
+  labs(y = "Count", x = "Realization of recipient") # labels
 
-p1 <- p1 + theme(legend.position = "none")
+p2 <- 
+  dative %>% # dataset
+  ggplot(aes(x = realization_of_recipient, fill = modality)) + # mappings
+  geom_bar(position = "fill") + # geometry, with fill for proportion plot
+  labs(y = "Proportion", x = "Realization of recipient", fill = "Modality") # labels
 
-p2 <- dative %>%
-    ggplot(aes(x = realization_of_recipient, fill = modality)) + geom_bar(position = "fill") +
-    labs(y = "Proportion", x = "Realization of recipient", fill = "Modality")
-
-
+p1 <- p1 + theme(legend.position = "none") # remove legend from left plot
 
 p1 + p2 + plot_annotation("Relationship between Realization of recipient and Modality.")
 ```
@@ -705,7 +710,7 @@ effects  # preview effect size and confidence interval
 #> -------------------------
 #> 0.18       | [0.14, 0.21]
 
-interpret_r(effects$Cramers_v)
+interpret_r(effects$Cramers_v)  # interpret the effect size
 #> [1] "small"
 #> (Rules: funder2019)
 ```
@@ -715,111 +720,485 @@ We get effect size and confidence interval information. Note that the effect siz
 
 ### Continuous
 
-**--UNDER DEVELOPMENT--**
+For a bivariate analysis in which the dependent variable is not categorical, we will turn to the `sdac_disfluencies` dataset. The question we will pose to test is whether the use of fillers is related to the type of filler ('uh' or 'um'). 
 
 **Descriptive assessment**
 
-**Statistical interrogation**
-
-**Evaluation**
-
-
-- `sdac_disfluencies`
-  - `count` ~ `filler`
-
-
-[@Baayen2008a; @Gries2013a]
-
-Generalized Linear Models (GLM) for regression models whose dependent variable does not fit the normal distribution. These include binary and ordinal regression and Poisson regression.
+The key variables to assess in this case are the variables `count` and `filler`. But before we start to explore this relationship we will need to transform the dataset such that each speaker's use of the levels of `filler` is summed. We will use `group_by()` to group `speaker_id` and `filler` combinations and then use `summarize()` to then sum the counts for each filler type for each speaker
 
 
 ```r
-sdac_disfluencies %>% 
-  ggplot(aes(x = filler, y = count, group = 1)) +
-  geom_smooth(method = "glm")
+sdac_fillers <- 
+  sdac_disfluencies %>% # dataset
+  group_by(speaker_id, filler) %>% # grouping parameters
+  summarize(sum = sum(count)) %>% # summed counts for each speaker-filler combination
+  ungroup() # remove the grouping parameters
+```
 
-# How to choose a family
-# https://www.researchgate.net/post/How-to-determine-which-family-function-to-use-when-fitting-generalized-linear-model-glm-in-R
+Let's preview this transformation.
 
+
+Table: (\#tab:i-bi-cont-sdac-fillers-preview)First 10 observations from `sdac_fillers` dataset.
+
+|speaker_id |filler | sum|
+|:----------|:------|---:|
+|155        |uh     |  28|
+|155        |um     |   0|
+|1000       |uh     |  37|
+|1000       |um     |   8|
+|1001       |uh     | 262|
+|1001       |um     |   2|
+|1002       |uh     |  34|
+|1002       |um     |  20|
+|1004       |uh     |  30|
+|1004       |um     |  15|
+
+
+Let's take a look at them together by grouping the dataset by `filler` and then using the custom skim function `num_skim()` for the numeric variable`count`. 
+
+
+```r
+sdac_fillers %>% # dataset
+  group_by(filler) %>% # grouping parameter
+  num_skim() %>% # get custom data summary
+  yank("numeric") # only show numeric-oriented information
+```
+
+
+
+**Variable type: numeric**
+
+|skim_variable |filler | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100| iqr|
+|:-------------|:------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|---:|
+|sum           |uh     |         0|             1| 71.4| 91.5|  0|  14|  39|  91|  661|  77|
+|sum           |um     |         0|             1| 15.7| 31.0|  0|   0|   4|  16|  265|  16|
+
+We see here that the standard deviation and IQR for both 'uh' and 'um' are relatively large for the respective means (71.4 and 15.7) suggesting the distribution is quite dispersed. Let's take a look at a boxplot to visualize the counts in `sum` for each level of `filler`. 
+
+
+
+```r
+p1 <- 
+  sdac_fillers %>% # dataset
+  ggplot(aes(x = filler, y = sum)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  labs(x = "Filler", y = "Counts") # labels
+
+p2 <- 
+  sdac_fillers %>% # dataset
+  ggplot(aes(x = filler, y = sum)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  ylim(0, 100) + # scale the y axis to trim outliers
+  labs(x = "Filler", y = "") # labels
+
+p1 + p2
+```
+
+<img src="09-inference_files/figure-html/i-bi-cont-visual-1.png" width="90%" style="display: block; margin: auto;" />
+
+In the plot in the left pane we see a couple things. First, it appears that there is in fact quite a bit of dispersion as there are quite a few outliers (dots) above the lines extending from the boxes. Recall that the boxes represent the first and third quantile, that is the IQR and that the notches represent the confidence interval. Second, when we compare the boxes and their notches we see that there is little overlap (looking horizontally). In the right pane I've zoomed in a bit trimming some outliers to get a better view of the relationship between the boxes. Since the overlap is minimal and in particular the notches do not overlap at all, this is a good indication that there is a significant trend.
+
+From the descriptive statistics and the visual summary it appears that the filler 'uh' is more common than 'um'. It's now time to submit this to statistical interrogation. 
+
+
+**Statistical interrogation**
+
+<!-- TODO:
+- Investigate How to choose a family
+  - https://www.researchgate.net/post/How-to-determine-which-family-function-to-use-when-fitting-generalized-linear-model-glm-in-R
+-->
+
+In a bivariate (and multivariate) analysis where the dependent variable is non-categorical we apply Linear Regression Modeling (LM). The default assumption of linear models, however, is that the dependent variable is normally distributed. As we have seen our variable `sum` does not conform to the normal distribution. We know this because of our tests in the univariate case, but as mentioned at the end of that section, we are working with count data which by nature is understood as discrete and not continuous in a strict technical sense. So instead of using the linear model for our regression analysis we will use the Generalized Linear Model (GLM) [@Baayen2008a; @Gries2013a]. 
+
+The function `glm()` implements generalized linear models. In addition to the formula (`sum ~ filler`) and the dataset to use, we also include an appropriate distribution family for the dependent variable. For count and frequency data the appropriate family is the "Poisson" distribution. 
+
+
+```r
 m1 <- 
-  glm(count ~ factor(filler), # formula
-      data = sdac_disfluencies, # selected data
-      family = "poisson") # selected distribution
-m1 %>% summary()
+  glm(formula = sum ~ filler, # formula
+      data = sdac_fillers, # dataset
+      family = "poisson") # distribution family
+
+summary(m1) # preview the test results
 #> 
 #> Call:
-#> glm(formula = count ~ factor(filler), family = "poisson", data = sdac_disfluencies)
+#> glm(formula = sum ~ filler, family = "poisson", data = sdac_fillers)
 #> 
 #> Deviance Residuals: 
 #>    Min      1Q  Median      3Q     Max  
-#> -0.531  -0.531  -0.249  -0.249   8.612  
+#> -11.95   -5.61   -3.94    0.80   41.99  
 #> 
 #> Coefficients:
-#>                  Estimate Std. Error z value Pr(>|z|)    
-#> (Intercept)      -1.96066    0.00564    -348   <2e-16 ***
-#> factor(filler)um -1.51308    0.01327    -114   <2e-16 ***
+#>             Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)  4.26794    0.00564     757   <2e-16 ***
+#> fillerum    -1.51308    0.01327    -114   <2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> 
 #> (Dispersion parameter for poisson family taken to be 1)
 #> 
-#>     Null deviance: 208714  on 447211  degrees of freedom
-#> Residual deviance: 191736  on 447210  degrees of freedom
-#> AIC: 259073
+#>     Null deviance: 72049  on 881  degrees of freedom
+#> Residual deviance: 55071  on 880  degrees of freedom
+#> AIC: 58524
 #> 
 #> Number of Fisher Scoring iterations: 6
-m1 %>% tidy()
-#> # A tibble: 2 × 5
-#>   term             estimate std.error statistic p.value
-#>   <chr>               <dbl>     <dbl>     <dbl>   <dbl>
-#> 1 (Intercept)         -1.96   0.00564     -348.       0
-#> 2 factor(filler)um    -1.51   0.0133      -114.       0
-
-effects <- effectsize(m1)
-
-effects %>% 
-  kable(booktabs = TRUE,
-        caption = "Effect size.")
 ```
 
+Let's focus on the coefficients, specifically for the 'fillerum' line. Since our factor `filler` has two levels one level is used as the reference to contrast with the other level. In this case by default the first level is used as the reference. Therefore the coefficients we see in 'fillerum' are 'um' in contrast to 'uh'. Without digging into the details of the other parameter statistics, let's focus on the last column which contains the $p$-value. A convenient aspect of the `summary()` function when applied to regression model results is that it provides statistical significance codes. In this case we can see that the contrast between 'uh' and 'um' is signficant at $p < .001$ which of course is lower than our standard threshold of $.05$.  
+
+Therefore we can say with some confidence that the filler 'uh' is more frequent than 'um'. 
 
 
-Table: (\#tab:i-sdac-disfluencies-filler-count)Effect size.
+**Evaluation**
 
-|Parameter        | Std_Coefficient|   CI| CI_low| CI_high|
-|:----------------|---------------:|----:|------:|-------:|
-|(Intercept)      |           -1.96| 0.95|  -1.97|   -1.95|
-|factor(filler)um |           -1.51| 0.95|  -1.54|   -1.49|
+Given we have found a significant effect for `filler`, let's look at evaluating the effect size and the confidence interval. Again, we use the `effectsize()` function. We then can preview the `effects` object. Note that effect size of interest is in the second row of the coefficient (`Std_Coefficient`) so we subset this column to extract only the effect coefficient for the `filler` contrast.
+
 
 ```r
+effects <- effectsize(m1)  # evaluate effect size and generate a confidence interval
 
-effects$Std_Coefficient[2] %>% interpret_r()
+effects  # preview effect size and confidence interval
+#> # Standardization method: refit
+#> 
+#> Parameter   | Coefficient (std.) |         95% CI
+#> -------------------------------------------------
+#> (Intercept) |               4.27 | [ 4.26,  4.28]
+#> fillerum    |              -1.51 | [-1.54, -1.49]
+#> 
+#> (Response is unstandardized)
+
+interpret_r(effects$Std_Coefficient[2])  # interpret the effect size
 #> [1] "very large"
 #> (Rules: funder2019)
 ```
 
-<img src="09-inference_files/figure-html/i-sdac-disfluencies-filler-count-1.png" width="90%" style="display: block; margin: auto;" />
-
+The coefficient statistic falls within the confidence interval and the effect size is strong so we can be confident that our findings are reliable given this data. 
 
 
 ## Multivariate analysis
 
+The last case to consider is when we have more than one independent variable we want to use to assess their potential relationship to the dependent variable. Again we will consider a categorical and non-categorical dependent variable. But, in this case the implementation methods are quite similar, as we will see. 
+
 ### Categorical
 
+For the categorical multivariate case we will again consider the `dative` dataset and build on the previous analyses. The question to be posed is whether modality in combination with the length of the recipient (`length_of_recipient`) together explain the distribution of the realization of the recipient (`realization_of_recipient`).
 
 **Descriptive assessment**
 
+Now that we have three variables, there is more to summarize to get our descriptive information. Luckily, however, the same process can be applied to three (or more) variables using the `group_by()` function and then passed to `skim()`. In this case we have two categorical variables and one numeric variable. So we will group by both the categorical variables and then pass the numeric variable to the custom `num_skim()` function --pulling out only the relevant descriptive information for numeric variables with `yank()`. 
+
+
+```r
+dative %>% # dataset
+  select(realization_of_recipient, modality, length_of_recipient) %>% # select key variables
+  group_by(realization_of_recipient, modality) %>% # grouping parameters
+  num_skim() %>% # get custom data summary
+  yank("numeric") # only show numeric-oriented information
+```
+
+
+
+**Variable type: numeric**
+
+|skim_variable       |realization_of_recipient |modality | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100| iqr|
+|:-------------------|:------------------------|:--------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|---:|
+|length_of_recipient |NP                       |spoken   |         0|             1| 1.14| 0.60|  1|   1|   1|   1|   12|   0|
+|length_of_recipient |NP                       |written  |         0|             1| 1.95| 1.59|  1|   1|   2|   2|   17|   1|
+|length_of_recipient |PP                       |spoken   |         0|             1| 2.30| 2.04|  1|   1|   2|   3|   15|   2|
+|length_of_recipient |PP                       |written  |         0|             1| 4.75| 4.10|  1|   2|   4|   6|   31|   4|
+
+There is much more information now that we are considering multiple independent variables, but if we look over the measures of dispersion we can see that the median and the IQR are relatively similar to their respective means suggesting that there are fewer outliers and relativley little skew. 
+
+Let's take a look at a visualization of this information. Since we are working with a categorical dependent variable and there is one non-categorical variable we can use a boxplot. The addition here is to include a `color` mapping which will provide a distinct box for each level of modality ('written' and 'spoken'). 
+
+
+
+```r
+p1 <- 
+  dative %>% # dataset
+  ggplot(aes(x = realization_of_recipient, y = length_of_recipient, color = modality)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  labs(x = "Realization of recipient", y = "Length of recipient (in words)", color = "Modality") # labels
+
+p2 <- 
+  dative %>% # dataset
+  ggplot(aes(x = realization_of_recipient, y = length_of_recipient, color = modality)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  ylim(0, 15) + # scale the y axis to trim outliers
+  labs(x = "Realization of recipient", y = "", color = "Modality") # labels
+
+p1 <- p1 + theme(legend.position = "none") # remove the legend from the left pane plot
+
+p1 + p2
+```
+
+<img src="09-inference_files/figure-html/i-multi-cat-visual-1.png" width="90%" style="display: block; margin: auto;" />
+
+In the left pane we see the entire visualization including all outliers. From this view it appears that there is a potential trend that the length of the recipient is larger when the realization of the recipient is 'PP'. There is also a potential trend for modality with written language showing longer recipient lengths overall. The pane on the right is scaled to get a better view of the boxes by scaling the y-axis down and as such trimming the outliers. This plot shows more clearly that the length of the recipient is longer when the recipient is realized as a 'PP'. Again, the contrast in modality is also a potential trend, but the boxes (of the same color), particularly for the spoken modality overlap to some degree. 
+
+So we have some trends in mind which will help us interpret the statistical interrogation so let's move there next.
+
 **Statistical interrogation**
 
+Once we involve more than two variables, the choice of statistical method turns towards regression. In the case that the dependent variable is categorical, however, we will use Logistic Regression. The workhorse function `glm()` can be used for a series of regression models, including logistic regression. The requirement, however, is that we specify the family of the distribution. For logistic regression the family is "binomial". The formula includes the dependent variable as a function of our other two variables, each are separated by the `+` operator.  
+
+
+```r
+m1 <- glm(formula = realization_of_recipient ~ modality + length_of_recipient, # formula
+          data = dative, # dataset
+          family = "binomial") # distribution family
+
+summary(m1) # preview the test results
+#> 
+#> Call:
+#> glm(formula = realization_of_recipient ~ modality + length_of_recipient, 
+#>     family = "binomial", data = dative)
+#> 
+#> Deviance Residuals: 
+#>    Min      1Q  Median      3Q     Max  
+#> -4.393  -0.598  -0.598   0.132   1.924  
+#> 
+#> Coefficients:
+#>                     Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)          -2.3392     0.0797  -29.35   <2e-16 ***
+#> modalitywritten      -0.0483     0.1069   -0.45     0.65    
+#> length_of_recipient   0.7081     0.0420   16.86   <2e-16 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> (Dispersion parameter for binomial family taken to be 1)
+#> 
+#>     Null deviance: 3741.1  on 3262  degrees of freedom
+#> Residual deviance: 3104.7  on 3260  degrees of freedom
+#> AIC: 3111
+#> 
+#> Number of Fisher Scoring iterations: 5
+```
+
+The results from the model again provide a wealth of information. But the key information to focus on is the coefficients. In particular the coefficients for the independent variables `modality` and `length_of_recipient`. What we notice, is that the $p$-value for `length_of_recipient` is significant, but the contrast between 'written' and 'spoken' for `modality` is not. If you recall, we used this same dataset to explore `modality` as a single indpendent variable earlier --and it was found to be significant. So why now is it not? The answer is that when multiple variables are used to explain the distribution of a measure (dependent variable) each variable now adds more information to explain the dependent variable --each has it's own contribution. Since `length_of_recipient` is significant, this suggests that the explanatory power of `modality` is weak, especially when compared to `length_of_recipient`. This make sense as we saw in the earlier model the fact that the effect size for `modality` was not strong and that is now more evident that the `length_of_recipient` is included in the model.
+
+
 **Evaluation**
+
+Now let's move on and gauge the effect size and calculate the confidence interval for `length_of_recipient` in our model. We apply the `effectsize()` function to the model and then use `interpret_r()` on the coefficient of interest (which is in the fourth row of the `Std_Coefficients` column).
+
+
+```r
+effects <- effectsize(m1)  # evaluate effect size and generate a confidence interval
+
+effects  # preview effect size and confidence interval
+#> # Standardization method: refit
+#> 
+#> Parameter           | Coefficient (std.) |         95% CI
+#> ---------------------------------------------------------
+#> (Intercept)         |              -1.03 | [-1.15, -0.92]
+#> modalitywritten     |              -0.05 | [-0.26,  0.16]
+#> length_of_recipient |               1.46 | [ 1.30,  1.64]
+#> 
+#> (Response is unstandardized)
+
+interpret_r(effects$Std_Coefficient[4])  # interpret the effect size
+#> [1] NA
+#> (Rules: funder2019)
+```
+
+We see we have a coefficient that falls within the confidence interval and the effect size is large. So we can saw with some confidence that the length of the recipient is a significant predictor of the use of 'PP' as the realization of the recipient in the dative alternation.
 
 ### Continuous
 
+The last case we will consider here is when the dependent variable is non-categorical and we have more than one independent variable. The question we will pose is whether the type of filler and the sex of the speaker can explain the use of fillers in conversational speech. 
+
+We will need to prepare the data before we get started as our current data frame `sdac_fillers` has filler and the sum count for each filler grouped by speaker --but it does not include the `sex` of each speaker. The `sdac_disfluencies` data frame does have the `sex` column, but it has not been grouped by speaker. So let's transform the `sdac_disfluencies` summarizing it to only get the `speaker_id` and `sex` combinations. This should result in a data frame with 441 observations, one observation for each speaker in the corpus.
+
+
+
+```r
+sdac_speakers_sex <- 
+  sdac_disfluencies %>% # dataset
+  distinct(speaker_id, sex) # summarize for distinct `speaker_id` and `sex` values
+```
+
+Let's preview the first 10 observations form this transformation.
+
+
+Table: (\#tab:i-multi-cont-transform-sdac-preview)First 10 observations of the `sdac_speakers_sex` data frame.
+
+|speaker_id |sex    |
+|:----------|:------|
+|155        |NA     |
+|1000       |FEMALE |
+|1001       |MALE   |
+|1002       |FEMALE |
+|1004       |FEMALE |
+|1005       |FEMALE |
+|1007       |FEMALE |
+|1008       |FEMALE |
+|1010       |MALE   |
+|1011       |FEMALE |
+
+Great, now we have each `speaker_id` and `sex` for all 441 speakers. One thing to note, however, is that speaker '155' does not have a value for `sex` --this seems to be an error in the metadata that we will need to deal with before we proceed in our analysis. Let's move on to join our new `sdac_speakers_sex` data frame and the `sdac_fillers` data frame.
+
+Now that we have a complete dataset with `speaker_id` and `sex` we will now join this dataset with our `sdac_fillers` dataset effectively adding the column `sex`. We want to keep all the observations in `sdac_fillers` and add the column `sex` for observations that correspond between each data frame for the column `speaker_id` so we will use a left join with the function `left_join()` with the `sdac_fillers` dataset on the left. 
+
+
+```r
+sdac_fillers_sex <- left_join(sdac_fillers, sdac_speakers_sex)  # join
+```
+
+Now let's preview the first observations in this new `sdac_fillers_sex` data frame.
+
+
+Table: (\#tab:i-multi-cont-sdac-fillers-sex-preview)First 10 observations of the `sdac_fillers_sex` data frame.
+
+|speaker_id |filler | sum|sex    |
+|:----------|:------|---:|:------|
+|155        |uh     |  28|NA     |
+|155        |um     |   0|NA     |
+|1000       |uh     |  37|FEMALE |
+|1000       |um     |   8|FEMALE |
+|1001       |uh     | 262|MALE   |
+|1001       |um     |   2|MALE   |
+|1002       |uh     |  34|FEMALE |
+|1002       |um     |  20|FEMALE |
+|1004       |uh     |  30|FEMALE |
+|1004       |um     |  15|FEMALE |
+
+At this point let's drop this speaker from the `sdac_speakers_sex` data frame. 
+
+
+```r
+sdac_fillers_sex <- 
+  sdac_fillers_sex %>% # dataset
+  filter(speaker_id != "155") # drop speaker_id 155
+```
+
+We are now ready to proceed in our analysis.
+
 **Descriptive assessment**
+
+The process by now should be quite routine for getting our descriptive statistics: select the key variables, group by the categorical variables, and finally pull the descriptives for the numeric variable.
+
+
+```r
+sdac_fillers_sex %>% # dataset
+  select(sum, filler, sex) %>% # select key variables
+  group_by(filler, sex) %>% # grouping parameters
+  num_skim() %>% # get custom data summary
+  yank("numeric") # only show numeric-oriented information
+```
+
+
+
+**Variable type: numeric**
+
+|skim_variable |filler |sex    | n_missing| complete_rate|  mean|    sd| p0|  p25|  p50|   p75| p100|  iqr|
+|:-------------|:------|:------|---------:|-------------:|-----:|-----:|--:|----:|----:|-----:|----:|----:|
+|sum           |uh     |FEMALE |         0|             1| 63.22|  76.5|  0| 12.0| 39.0|  81.8|  509| 69.8|
+|sum           |uh     |MALE   |         0|             1| 78.74| 102.6|  0| 15.2| 37.5| 101.5|  661| 86.2|
+|sum           |um     |FEMALE |         0|             1| 22.38|  36.3|  0|  1.0|  9.0|  28.0|  265| 27.0|
+|sum           |um     |MALE   |         0|             1|  9.92|  24.2|  0|  0.0|  1.0|   8.0|  217|  8.0|
+
+Looking at these descriptives, it seems like there is quite a bit of variability for some combinations and not others. In short, it's a mixed bag. Let's try to make sense of these numbers with a boxplot.
+
+
+
+```r
+p1 <- 
+  sdac_fillers_sex %>% # dataset
+  ggplot(aes(x = filler, y = sum, color = sex)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  labs(x = "Filler", y = "Counts", color = "Sex") # labels
+
+p2 <- 
+  sdac_fillers_sex %>% # dataset
+  ggplot(aes(x = filler, y = sum, color = sex)) + # mappings
+  geom_boxplot(notch = TRUE) + # geometry
+  ylim(0, 200) + # scale the y axis to trim outliers
+  labs(x = "Filler", y = "", color = "Sex") # labels
+
+p1 <- p1 + theme(legend.position = "none") # drop the legend from the left pane plot
+
+p1 + p2
+```
+
+<img src="09-inference_files/figure-html/i-mulit-cont-visual-1.png" width="90%" style="display: block; margin: auto;" />
+
+We can see that 'uh' is used more than 'um' overall. But that whereas men and women use 'uh' in similar ways, women use more 'um' than men. This is known as an interaction. So we will approach our statistical analysis with this in mind.
 
 **Statistical interrogation**
 
+We will again use a generalized linear model with the `glm()` function to conduct our test. The distribution family will be the same has we are again using the `sum` as our dependent variable which contains discrete count values. The formula we will use, however, is new. Instead of adding a new variable to our independent variables, we will test the possible interaction between `filler` and `sex` that we noted in the descriptive assessment. To encode an interaction the `*` operator is used. So our formula will take the form `sum ~ filler * sex`. Let's generate the model and view the summary of the test results as we have done before.
+
+
+```r
+m1 <- 
+  glm(formula = sum ~ filler * sex, # formula
+      data = sdac_fillers_sex, # dataset
+      family = "poisson") # distribution family
+
+summary(m1) # preview the test results
+#> 
+#> Call:
+#> glm(formula = sum ~ filler * sex, family = "poisson", data = sdac_fillers_sex)
+#> 
+#> Deviance Residuals: 
+#>    Min      1Q  Median      3Q     Max  
+#> -12.55   -6.21   -3.64    1.08   40.60  
+#> 
+#> Coefficients:
+#>                  Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)       4.14660    0.00876   473.2   <2e-16 ***
+#> fillerum         -1.03827    0.01714   -60.6   <2e-16 ***
+#> sexMALE           0.21955    0.01145    19.2   <2e-16 ***
+#> fillerum:sexMALE -1.03344    0.02791   -37.0   <2e-16 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> (Dispersion parameter for poisson family taken to be 1)
+#> 
+#>     Null deviance: 71956  on 879  degrees of freedom
+#> Residual deviance: 53543  on 876  degrees of freedom
+#> AIC: 56994
+#> 
+#> Number of Fisher Scoring iterations: 6
+```
+
+Again looking at the coefficients we something new. First we see that there is a row for the `filler` contrast and the `sex` contrast but also the interaction between `filler` and `sex` ('fillerum:sexMALE'). All rows show significant effects. It is important to note that when an interaction is explored and it is found to be significant, the other simple effects, known as main effects ('fillerum' and 'sexMALE'), are ignored. Only the higer-order effect is considered significant. 
+
+Now what does the 'fillerum:sexMALE' row mean. It means that there is an interaction between `filler` and `sex`. the directionality of that interaction should be interpreted using our descriptive assessment, in particular the visual boxplots we generated. In sum, women use more 'um' than men or stated another way men use 'um' less than women.
+
+
 **Evaluation**
+
+We finalize our analysis by looking at the effect size and confidence intervals.
+
+
+```r
+effects <- effectsize(m1)  # evaluate effect size and generate a confidence interval
+
+effects  # preview effect size and confidence interval
+#> # Standardization method: refit
+#> 
+#> Parameter        | Coefficient (std.) |         95% CI
+#> ------------------------------------------------------
+#> (Intercept)      |               4.15 | [ 4.13,  4.16]
+#> fillerum         |              -1.04 | [-1.07, -1.00]
+#> sexMALE          |               0.22 | [ 0.20,  0.24]
+#> fillerum:sexMALE |              -1.03 | [-1.09, -0.98]
+#> 
+#> (Response is unstandardized)
+
+interpret_r(effects$Std_Coefficient[4])  # interpret the effect size
+#> [1] "very large"
+#> (Rules: funder2019)
+```
+
+We can conclude, then, that there is a strong interaction effect for `filler` and `sex` and that women use more 'um' than men. 
+
+
+## Summary
+
+In this chapter we have discussed various approaches to conducting inferential data analysis. Each configuration, however, always includes a descriptive assessment, statistical interrogation, and an evaluation of the results. We considered univariate, bivariate, and multivariate analyses using both categorical and non-categorical dependent variables to explore the similarities and differences between these approaches. 
 
 <!-- IDEAS:
 
