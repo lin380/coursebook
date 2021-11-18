@@ -6,19 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 9 Prediction | Coursebook</title>
 <meta name="author" content="Jerid Francom">
-<meta name="description" content="INCOMPLETE DRAFT  …  In this chapter you will learn:  the goals of this textbook  the reasoning for using the R programming language  important text conventions employed in this textbook  #...">
+<meta name="description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter …. Orientation to the question(s) and dataset(s) to be explored …  9.1 Preparation Data set...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 9 Prediction | Coursebook">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/prediction.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
-<meta property="og:description" content="INCOMPLETE DRAFT  …  In this chapter you will learn:  the goals of this textbook  the reasoning for using the R programming language  important text conventions employed in this textbook  #...">
+<meta property="og:description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter …. Orientation to the question(s) and dataset(s) to be explored …  9.1 Preparation Data set...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 9 Prediction | Coursebook">
 <meta name="twitter:site" content="@jeridfrancom">
-<meta name="twitter:description" content="INCOMPLETE DRAFT  …  In this chapter you will learn:  the goals of this textbook  the reasoning for using the R programming language  important text conventions employed in this textbook  #...">
+<meta name="twitter:description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter …. Orientation to the question(s) and dataset(s) to be explored …  9.1 Preparation Data set...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -73,7 +73,7 @@
 <li><a class="active" href="prediction.html"><span class="header-section-number">9</span> Prediction</a></li>
 <li><a class="" href="exploration.html"><span class="header-section-number">10</span> Exploration</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="section-2.html"><span class="header-section-number">A</span> …</a></li>
+<li><a class="" href="section-1.html"><span class="header-section-number">A</span> …</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -94,17 +94,17 @@ INCOMPLETE DRAFT
 </blockquote>
 <div class="rmdkey">
 <p>
-In this chapter you will learn:
+The essential questions for this chapter are:
 </p>
 <ul>
 <li>
-the goals of this textbook
+…
 </li>
 <li>
-the reasoning for using the R programming language
+…
 </li>
 <li>
-important text conventions employed in this textbook
+…
 </li>
 </ul>
 </div>
@@ -131,37 +131,51 @@ GOALS:
 ...
 
 -->
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Packages pacman::p_load(caret)</span></code></pre></div>
-<p>text</p>
-<div id="section" class="section level2" number="9.1">
+<!-- IDEAS:
+
+- English/ Spanish language detection (chapter)
+  - ACTIVES
+  - SUBTLEX_us
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/Course/Video lectures/Language
+
+- SPAM (recipe)
+  - SMS messages
+  - tadr::sms
+
+- Nativeness (chapter)
+  - CEDEL2 (Spanish)
+  - Wricle and Locness (English?)
+    - http://wricle.learnercorpora.com/
+    - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/LOCNESS
+
+- Authorship (lab)
+  - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/Federalist papers
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/RStudio/Data/Federalist/Documents
+  
+- RateMyProfessor (from recipe 8)  
+  - https://data.mendeley.com/datasets/fvtfjyvw7d/2
+
+-->
+<p>In this chapter ….</p>
+<p>Orientation to the question(s) and dataset(s) to be explored …</p>
+<div id="preparation-1" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">9.1</span> …<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Preparation<a class="anchor" aria-label="anchor" href="#preparation-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>text</p>
-<p>In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sms_f</span> <span class="op">&lt;-</span> <span class="va">sms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">terms</span>, <span class="va">message</span>, token <span class="op">=</span> <span class="st">"regex"</span>, pattern <span class="op">=</span> <span class="st">" "</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">sms_type</span>, <span class="va">terms</span><span class="op">)</span>
-
-<span class="va">sms_f</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sms_type</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sms_type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sms_type</span>, <span class="va">terms</span>, frequency <span class="op">=</span> <span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"Top five most frequent terms for 'ham' and 'spam'."</span><span class="op">)</span></code></pre></div>
-<!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span>
-
-<span class="va">sms_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">sms</span>, strata <span class="op">=</span> <span class="st">"sms_type"</span><span class="op">)</span>
-<span class="va">train_data</span> <span class="op">&lt;-</span> <span class="fu">training</span><span class="op">(</span><span class="va">sms_split</span><span class="op">)</span>
-<span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu">testing</span><span class="op">(</span><span class="va">sms_split</span><span class="op">)</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/textrecipes">textrecipes</a></span><span class="op">)</span></code></pre></div>
+<p>Data set transformation</p>
+<p>Splitting into training and test sets</p>
+</div>
+<div id="model-training" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Model training<a class="anchor" aria-label="anchor" href="#model-training"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aim to use the create an abstraction of the patterns in the dataset</p>
+<ul>
+<li><p>Feature engineering</p></li>
+<li><p>Model selection</p></li>
+<li><p>Model evaluation</p></li>
+</ul>
 <p>The In Figure () Let’s consider the results from a hypothetical model of text classification on the SMS dataset I introduced at in this subsection.</p>
-<div class="inline-figure"><img src="images/10-prediction/pda-sms-contingency-table.png" width="90%" style="display: block; margin: auto;"></div>
 <ul>
 <li>accuracy (measure of overall correct predictions)</li>
 <li>precision (measure of the quality of the predictions)
@@ -176,10 +190,38 @@ GOALS:
 </li>
 <li>F1-score (summarizes the balance between precision and recall)</li>
 </ul>
+<p>Avoiding overfitting</p>
 </div>
-<div id="summary-11" class="section level2" number="9.2">
+<div id="model-testing" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">9.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary-11"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Model testing<a class="anchor" aria-label="anchor" href="#model-testing"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aim to test the abstracted model to new observations.</p>
+<p>Model testing</p>
+</div>
+<div id="evaluation" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Evaluation<a class="anchor" aria-label="anchor" href="#evaluation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Evaluation of results</p>
+<p>Relationship between predicted and actual classes in a confusion matrix as seen in Figure <a href="prediction.html#fig:pda-confusion-matrix-image">9.1</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pda-confusion-matrix-image"></span>
+<img src="images/10-prediction/pda-confusion-matrix.png" alt="Confusion matrix" width="90%"><p class="caption">
+Figure 9.1: Confusion matrix
+</p>
+</div>
+</div>
+<div id="section" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> …<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+</h2>
+<p>In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.</p>
+<!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
+</div>
+<div id="summary-11" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Summary<a class="anchor" aria-label="anchor" href="#summary-11"><i class="fas fa-link"></i></a>
 </h2>
 <p>…</p>
 
@@ -192,8 +234,12 @@ GOALS:
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#prediction"><span class="header-section-number">9</span> Prediction</a></li>
-<li><a class="nav-link" href="#section"><span class="header-section-number">9.1</span> …</a></li>
-<li><a class="nav-link" href="#summary-11"><span class="header-section-number">9.2</span> Summary</a></li>
+<li><a class="nav-link" href="#preparation-1"><span class="header-section-number">9.1</span> Preparation</a></li>
+<li><a class="nav-link" href="#model-training"><span class="header-section-number">9.2</span> Model training</a></li>
+<li><a class="nav-link" href="#model-testing"><span class="header-section-number">9.3</span> Model testing</a></li>
+<li><a class="nav-link" href="#evaluation"><span class="header-section-number">9.4</span> Evaluation</a></li>
+<li><a class="nav-link" href="#section"><span class="header-section-number">9.5</span> …</a></li>
+<li><a class="nav-link" href="#summary-11"><span class="header-section-number">9.6</span> Summary</a></li>
 </ul>
 
       <div class="book-extra">
@@ -211,7 +257,7 @@ GOALS:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 04, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 17, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

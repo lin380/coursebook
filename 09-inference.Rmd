@@ -842,21 +842,26 @@ In this chapter we have discussed various approaches to conducting inferential d
 
 <!-- IDEAS:
 
-- Use BELC dataset from "Approaching analysis" chapter
-  - Question(s): 
-    - 
 - Use Switchboard Dialogue Act Corpus
   - Disfluencies (uh/ um)
-- Santa Barbara Corpus of Spoken American English
-  - analyzr::sbc
-- Use other datasets from the "Transform datasets" chapter
 
 - languageR::dative
   - 
   
+-------
+
+- Use BELC dataset from "Approaching analysis" chapter
+  - Question(s): 
+    - 
+    
+- Santa Barbara Corpus of Spoken American English
+  - analyzr::sbc
+
 - Love on the Spectrum/ Love is Blind
   - Word frequency differences (from SUBTLEXus) as the dependent variable
 
+
+- Use other datasets from the "Transform datasets" chapter
 
 RESOURCES:
 

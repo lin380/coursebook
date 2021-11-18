@@ -5,14 +5,14 @@
 
 <p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
-> ...
+> Nobody ever figures out what life is all about, and it doesn't matter. Explore the world. Nearly everything is really interesting if you go into it deeply enough.
+>
+> -- Richard P. Feynman
 
 ```{block, type="rmdkey"}
-In this chapter you will learn:
+The essential questions for this chapter are:
 
-- the goals of this textbook
-- the reasoning for using the R programming language
-- important text conventions employed in this textbook
+- ...
 ```
 
 <!-- COURSE STRUCTURE
@@ -39,9 +39,635 @@ GOALS:
 
 -->
 
-## ...
 
-Idea....
+```{r exploration-data-packages, include=FALSE}
+# Packages
+pacman::p_load(tidyverse, tidytext, patchwork, lubridate, quanteda, quanteda, quanteda.textstats, quanteda.textplots, quanteda.textmodels)
+```
+
+
+In this chapter....
+
+- identify, interrogate, and interpret
+
+- EDA is an inductive approach. That is, it is bottom-up --we do not come into the analysis with strong preconceptions of what the data will tell us (IDA - hypothesis and PDA - target classes). The aim is to uncover and discover patterns that lead to insight based on qualitative interpretation. EDA, the, can be considered a quantitative-supported qualitative analysis.
+
+- Two main classes of exploratory data analysis: (1) descriptive analysis and (2) unsupervised machine learning. 
+  - descriptive analysis can be seen as a more detailed implementation of descriptive assessment, which is a key component of both inferential and predictive analysis approaches. .
+  - unsupervised machine learning is a more algorithmic approach to deriving knowledge which leverages ... to produce knowledge which can be interpreted. This approach falls under the umbrella of machine learning, as we have seen in predictive data analysis, however, whereas PDA assumes a potential relationship between input features and target outcomes, or classes, in unsupervised learning the classes are induced from the data itself and the classes groupings are interpreted and evaluated more ...?
+
+- It is, however, important to come to EDA with a research question in which the unit of analysis is clear. 
+
+
+Description of the datasets we will use to examine various exploratory methods. 
+
+**Lastfm**
+
+
+Last.fm webscrape of the top artists by genre which we acquired in Chapter 5 ["Acquire data"](#acquire-data) in the [web scrape section](acquire-data.html#scaling-up) and transformed in Chapter 6 ["Transform data"](transform-data.html#normalize). 
+
+
+```{r eda-lastfm-dataset, include=FALSE}
+lastfm_df <- 
+  read_csv("resources/08-transform-data/data/derived/lastfm/lastfm_transformed.csv") %>%
+  filter(genre != "metal")
+```
+
+```{r eda-lastfm-dataset-preview}
+glimpse(lastfm_df) # preview dataset structure
+```
+
+The `lastfm_df` dataset contains 155 observations and 4 variables. Each observation corresponds to a particular song.
+
+Let's look at the data dictionary for this dataset. 
+
+```{r eda-lastfm-data-dictionary-read, include=FALSE}
+lastfm_data_dictionary <- read_csv(file = "resources/08-transform-data/data/derived/lastfm/lastfm_transformed_data_dictionary.csv")
+```
+
+```{r eda-lastfm-data-dictionary-preview, echo=FALSE}
+lastfm_data_dictionary %>% 
+  knitr::kable(booktabs = TRUE,
+               caption = "Last.fm lyrics dataset data dictionary.")
+```
+From the data dictionary we see that each song encodes the artist, the song title, the genre of the song, and the lyrics for the song.
+
+To prepare for the upcoming exploration methods, we will convert the `lastfm_df` to a Quanteda corpus object. 
+
+```{r}
+# Create corpus object
+lastfm_corpus <- 
+  lastfm_df %>% # data frame
+  corpus(text_field = "lyrics") # create corpus
+
+lastfm_corpus %>% 
+  summary(n = 5) # preview
+```
+
+
+**SOTU**
+
+The quanteda package [@R-quanteda] includes various datasets. We will work with the State of the Union Corpus [@R-quanteda.corpora]. Let's take a look at the structure of this dataset. 
+
+```{r eda-sotu-dataset, include=FALSE}
+sotu_df <- 
+  quanteda.corpora::data_corpus_sotu %>% # access sotu corpus
+  corpus_subset(Date > "1946-01-01") %>% # subset post-WWII
+  tidytext::tidy() %>% # convert to tibble (data frame)
+  mutate(year = lubridate::year(Date)) %>% # create year column
+  select(president = President, delivery, party, year, text) %>% # select key variables
+  mutate_if(is.factor, as.character)
+```
+
+```{r eda-sotu-dataset-preview}
+glimpse(sotu_df) # preview dataset structure
+```
+
+In the `sotu_df` dataset there are 84 observations and 5 variables. Each observation corresponds to a presidential address.
+
+Let's look at the data dictionary to understand what each column measures. 
+
+```{r eda-sotu-data-dictionary-preview, echo=FALSE}
+# tribble
+tribble(
+  ~variable_name, ~name, ~description,
+  "president", "President", "Incumbent president",
+  "delivery", "Modality of delivery", "Modality of the address (spoken or written)",
+  "party", "Political party", "Party affliliation of the president",
+  "year", "Year", "Year that the statement was given",
+  "text", "Text", "Text or transcription of the address"
+) %>% 
+  knitr::kable(booktabs = TRUE,
+               caption = "SOTU dataset data dictionary.")
+```
+
+
+So we see that each observation corresponds to the president that gave the address, the modality of the address, the party the president was affliated with, the year that the address was given, and the address text. 
+
+
+## Descriptive analysis
+
+... overview summary of the aims of descriptive analysis methods...
+
+
+### Frequency analysis
+
+
+Explore word frequency. 
+
+```{r}
+# Create tokens object
+lastfm_tokens <- 
+  lastfm_corpus %>% # corpus object
+  tokens(what = "word", # tokenize by word
+         remove_punct = TRUE) %>% # remove punctuation
+  tokens_tolower() # lowercase tokens
+
+lastfm_tokens %>% 
+  head(n = 1) # preview one tokenized document
+```
+
+We see the tokenized output. 
+ 
+Many of the frequency analysis function provided with quanteda require that the dataset be in a document-frequency matrix. So let's create a dfm of the `lastfm_corpus` object using the `dfm()` function.
+
+```{r}
+# Create document-frequency matrix
+lastfm_dfm <- 
+  lastfm_tokens %>% # tokens object
+  dfm() # create dfm
+
+lastfm_dfm %>% 
+  head(n = 5) # preview 5 documents
+```
+
+Frequency distributions. 
+
+- Very few high frequency terms and many low frequency. 
+- This results in a long tail when plotted. 
+
+```{r, echo=FALSE}
+# Visualize frequency distributions
+p1 <- 
+  lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  # slice_head(n = 10) %>% 
+  ggplot(aes(x = reorder(feature, desc(frequency)), y = frequency, group = 1)) +
+  geom_line() +
+  theme(axis.text.x = element_blank()) +
+  labs(x = "Words", y = "Raw frequency", title = "All words")
+
+p2 <- 
+  lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  slice_head(n = 1000) %>% 
+  ggplot(aes(x = reorder(feature, desc(frequency)), y = frequency, group = 1)) +
+  geom_line() +
+  theme(axis.text.x = element_blank()) +
+  labs(x = "Words", y = "Raw frequency", title = "Top 1000")
+
+p3 <- 
+  lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  slice_head(n = 100) %>% 
+  ggplot(aes(x = reorder(feature, desc(frequency)), y = frequency, group = 1)) +
+  geom_line() +
+  theme(axis.text.x = element_blank()) +
+  labs(x = "Words", y = "Raw frequency", title = "Top 100")
+
+p4 <- 
+  lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  slice_head(n = 10) %>% 
+  ggplot(aes(x = reorder(feature, desc(frequency)), y = frequency, group = 1)) +
+  geom_line() +
+  labs(x = "Words", y = "Raw frequency", title = "Top 10")
+
+
+p1 + p2 + p3 + p4 + plot_annotation(title = "Raw frequency distribution", tag_levels = "A")
+
+```
+
+Let's take a closer look at the 50 most frequent word terms in `lastfm_dfm`. We use the `textstat_frequency()` function from the quanteda.textstats package to extract various frequency measures.
+
+```{r}
+lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  slice_head(n = 10)
+```
+We can then use this data frame to plot the frequency of the terms in descending order using `ggplot()`. 
+
+
+```{r}
+lastfm_dfm %>% 
+  textstat_frequency() %>% 
+  slice_head(n = 50) %>% 
+  ggplot(aes(x = reorder(feature, frequency), y = frequency)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "Words", y = "Raw frequency", title = "Top 50")
+```
+Now these are the most common terms for all of the song lyrics. In our case, let's look at the most common 15 terms for each of the genres. We will need at a `groups = ` argument to `textstat_frequency()` to get the `genre` and then we need to manipulate the data frame output and the extract the top 15 terms grouping by `genre`. 
+
+
+```{r}
+lastfm_dfm %>% # dfm
+  textstat_frequency(groups = genre) %>% # get frequency statistics
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "Raw frequency", y = NULL) # labels
+```
+
+```{block, type="rmdtip"}
+Note that I've used the plotting function `facet_wrap()` to tell ggplot2 to organize each of the genres in separate bar plots but in the same plotting space. The `scales = ` argument takes either `free`, `free_x`, or `free_y` as a value. This will let the all the axes or either the x- or y-axis vary freely between the separate plots.
+```
+
+
+Raw frequency is effected by the total number of words in each genre. Therefore we cannot safely make direct comparisons between the frequency counts for individual terms between genres.
+
+To make the term-genre comparisons comparable we normalized the term frequency by the number of terms in each genre. We can use the `dfm_weight()` function with the argument `scheme = "prop"` to give us the relative frequency of a term per the number of terms in the document it appears in. This weighting is known as Term frequency.
+
+
+```{r}
+lastfm_dfm %>% # dfm
+  dfm_weight(scheme = "prop") %>% # weigh by term frequency
+  textstat_frequency(groups = genre) %>% # get frequency statistics
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "Term frequency", y = NULL) # labels
+```
+
+Term frequency makes the frequency scores relative to the genre. This means that the frequencies are directly comparable as the number of words in each genre is taken into account when calculating the term frequency score. 
+
+Now our term frequency measures allow us to make direct comparisons, but one problem here is that the most frequent terms tend to be terms that are common across all language use. Since the aim of most frequency analyses which compare sub-groups is to discover what terms are most indicative of each sub-group we need a way to adjust or weigh our measures. The scheme often applied to scale terms according to how common they are is to apply  term frequency-inverse document frequency (tf-idf). The tf-idf measure is the result of multiplying the term frequency by the inverse document frequency.
+
+
+```{r}
+lastfm_df %>% # data frame
+  count(genre) %>%  # get number of documents for each genre
+  select(Genre = genre, `Number of documents` = n) %>% 
+  knitr::kable(booktabs = TRUE,
+               caption = "Number of documents per genre.")
+```
+
+```{r}
+lastfm_dfm %>% 
+  dfm_weight(scheme = "prop") %>% # term-frequency weight
+  textstat_frequency(groups = genre) %>% # include genre as a group
+  filter(feature == "i") # filter only "i"
+```
+
+
+```{r}
+# Manually calculate TF-IDF scores
+1.86 * log10(44/42) # i in country
+1.00 * log10(26/26) # i in hip hop
+1.64 * log10(41/38) # i in pop
+2.08 * log10(44/42) # i in rock
+```
+
+
+
+```{r}
+lastfm_dfm %>% 
+  dfm_tfidf(scheme_tf = "prop", ) %>%  
+  textstat_frequency(groups = genre, force = TRUE) %>% 
+  filter(str_detect(feature, "^(i|yeah)$")) %>% 
+  arrange(feature)
+```
+
+
+
+```{r}
+lastfm_dfm %>% # dfm
+  dfm_tfidf(scheme_tf = "prop") %>%  # weigh by tf-idf
+  textstat_frequency(groups = genre, force = TRUE) %>% # get frequency statistics
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "TF-IDF", y = NULL) # labels
+```
+
+TF-IDF works well to identify terms which are particularly indicative of a particular group but there is a shortcoming which is particularly salient when working with song lyrics. That is, that there are terms which are frequent but not common because they appear in one song and are repeated. This is common in song lyrics which tend to have repeated chorus sections. To minimize this influence, we can trim the document-frequency matrix and eliminate terms which only appear in one song.
+
+```{r}
+lastfm_dfm %>% # dfm
+  dfm_trim(min_docfreq = 2) %>% # keep terms appearing in 2 or more songs
+  dfm_tfidf(scheme_tf = "prop") %>%  # weigh by tf-idf
+  textstat_frequency(groups = genre, force = TRUE) %>% # get frequency statistics
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "TF-IDF", y = NULL) # labels
+```
+Now we are looking a terms which are indicative of their respective genres and appear in at least 2 songs.
+
+Another exploration method is to look at relative frequency, or keyness, measures. This type of analysis compares the relative frequency of terms of a target group in comparison to a reference group. If we set the target to one of our genres then the other genres become the reference. The results show which terms occur significantly more often than they occur in the reference group(s). The `textstat_keyness()` function implements this type of analysis in quanteda. 
+
+```{r}
+lastfm_keywords_country <- 
+  lastfm_dfm %>% # dfm
+  dfm_trim(min_docfreq = 2) %>% # keep terms appearing in 2 or more songs
+  textstat_keyness(target = lastfm_dfm$genre == "country") # compare country
+
+lastfm_keywords_country %>% 
+  slice_head(n = 10) # preview
+```
+The output of the `textstat_keyness()` function all terms from most frequent in the target group to the most frequent in the reference group(s). The `textplot_keyness()` takes advantage of this and we can see the most contrastive terms in a plot.
+
+Let's look at what terms are most and least indicative of the 'country' genre.
+
+```{r}
+lastfm_keywords_country %>% 
+  textplot_keyness(n = 25, labelsize = 2) + # plot most contrastive terms
+  labs(x = "Chi-squared statistic", 
+       title = "Term keyness", 
+       subtitle = "Country versus other genres") # labels
+```
+
+Interpretation....
+
+Now let's look at the 'Hip hop' genre.
+
+```{r}
+lastfm_dfm %>% # dfm
+  dfm_trim(min_docfreq = 2) %>% # keep terms appearing in 2 or more songs
+  textstat_keyness(target = lastfm_dfm$genre == "hip-hop") %>% # compare hip hop
+  textplot_keyness(n = 25, labelsize = 2) + # plot most contrastive terms
+  labs(x = "Chi-squared statistic",
+      title = "Term keyness", 
+       subtitle = "Hip hop versus other genres") # labels
+```
+
+Interpretation ...
+
+Now we have been working with words as our tokens/ features but a word is simply a unigram token. We can also consider multi-word tokens, or ngrams. To create bigrams (2-word tokens) we return to the `lastfm_tokens` object and add the function `tokens_ngrams()` with the argument `n = 2` (for bigrams). Then just as before we create a DFM object. I will go ahead and trim the DFM to exclude terms appearing only in one document (i.e. song).
+
+```{r}
+# Tokenize by bigrams
+lastfm_dfm_ngrams <- 
+  lastfm_tokens %>% # word tokens
+  tokens_ngrams(n = 2) %>% # create 2-term ngrams (bigrams)
+  dfm() %>% # create document-frequency matrix
+  dfm_trim(min_docfreq = 2) # keep terms appearing in 2 or more songs
+
+lastfm_dfm_ngrams %>% 
+  head(n = 1) # preview 1 document
+```
+
+Interpretation ...
+
+We can now repeat the same steps we did earlier to explore raw frequency, term frequency, and tf-idf frequency measures by genre. We will skip the visualization of raw frequency as it is inherently incompatible with direct comparisons between sub-groups.
+
+```{r, echo=FALSE}
+# Term frequency
+lastfm_dfm_ngrams %>% # dfm
+  dfm_weight(scheme = "prop") %>% # weigh by term frequency
+  textstat_frequency(groups = genre) %>% # calculate frequency statistics
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "Term frequency", y = NULL) # labels
+```
+
+Interpretation ...
+
+We can even pull out particular terms and explore them directly. 
+
+```{r}
+# Term frequency comparison
+lastfm_dfm_ngrams %>% 
+  dfm_weight(scheme = "prop") %>% 
+  textstat_frequency(groups = genre) %>% 
+  filter(str_detect(feature, "i_ain't"))
+```
+
+Interpretation ...
+
+
+
+
+```{r, echo=FALSE}
+# TF-IDF
+lastfm_dfm_ngrams %>% # dfm
+  dfm_tfidf(scheme_tf = "prop") %>%  # tf-idf weighting
+  textstat_frequency(groups = genre, force = TRUE) %>% # get frequency table
+  group_by(group) %>% # grouping parameters
+  slice_max(frequency, n = 15) %>% # extract top features
+  ungroup() %>% # remove grouping parameters
+  ggplot(aes(x = frequency, y = reorder_within(feature, frequency, group), fill = group)) + # mappings (reordering feature by frequency)
+  geom_col(show.legend = FALSE) + # bar plot
+  scale_y_reordered() + # clean up y-axis labels (features)
+  facet_wrap(~group, scales = "free_y") + # organize separate plots by genre
+  labs(x = "TF-IDF", y = NULL) # labels
+```
+
+```{r, echo=FALSE}
+# Keyness
+lastfm_dfm_ngrams %>% # dfm
+  textstat_keyness(target = lastfm_dfm$genre == "pop") %>% # compare pop
+  textplot_keyness(n = 25, labelsize = 2) + # plot most contrastive terms
+  labs(x = "Chi-squared statistic",
+      title = "Term keyness", 
+       subtitle = "Pop versus other genres") # labels
+```
+
+
+Before we leave this introduction to frequency analysis, let's consider another type of metric which can be used to explore term usage in and across documents which aims to estimate lexical diversity, the number of unique terms (types) to the total number of terms (tokens). This is known as the Type-Token Ratio (TTR). The TTR measure is biased when comparison documents or groups differ in the number of total tokens. To mitigate this issue the Moving-Average Type-Token Ratio (MATTR) is often used. MATTR the moving window size must be set to a reasonable size given the size of the documents. In this case we will use 50 as all the lyrics in the datasset have at least this number of words.
+
+I will use box plots to visualize the distribution of the TTR and MATTR estimates across the four genres. 
+
+```{r}
+lastfm_lexdiv <- 
+  lastfm_tokens %>% 
+  textstat_lexdiv(measure = c("TTR", "MATTR"), MATTR_window = 50)
+
+lastfm_docvars <- 
+  lastfm_tokens %>% 
+  docvars()
+
+lastfm_lexdiv_meta <- 
+  cbind(lastfm_docvars, lastfm_lexdiv)
+
+p1 <- 
+  lastfm_lexdiv_meta %>% 
+  ggplot(aes(x = reorder(genre, TTR), y = TTR, color = genre)) +
+  geom_boxplot(notch = TRUE, show.legend = FALSE) +
+  labs(x = "Genre")
+
+p2 <- 
+  lastfm_lexdiv_meta %>% 
+  ggplot(aes(x = reorder(genre, MATTR), y = MATTR, color = genre)) +
+  geom_boxplot(notch = TRUE, show.legend = FALSE) +
+  labs(x = "Genre")
+
+p1 + p2
+
+```
+
+We can see that there are similarities and differences between the two estimates of lexical diversity. In both cases, there is a trend towards 'country' being the most diverse and 'pop' the least diverse. 'rock' and 'hip-hop' are swapped given the estimate type. It is important, however, to note that the notches in the box plot provide us a rough guide to gauge whether these trends are statistically significant or not. Focusing on the more reliable MATTR and using the notches as our guide, it looks like we can safely say that 'country' is more lexically diverse than the other genres. Another potential take-home message is that pop appears to be the most internally variable --that is, there appears to be quite a bit of variability between the lexical diversity in songs in this genre.
+
+
+### Collocation analysis
+
+Where frequency analysis focuses on the usage of terms, collocation analysis focuses on the usage of terms in context.
+
+
+- Keyword in Context
+  - `kwic()`
+
+```{r}
+lastfm_tokens %>% 
+  tokens_group(groups = genre) %>% 
+  kwic(pattern = "ain't") %>% 
+  slice_sample(n = 10)
+```
+
+You can also search for multiword expressions using `phrase()`. You can use a pattern matching convention to make your key term searches more ('glob' and 'regex') or less ('fixed') flexible.
+
+```{r}
+lastfm_tokens %>% 
+  tokens_group(groups = genre) %>% 
+  kwic(pattern = phrase("ain't no*"), 
+       valuetype = "glob") %>% 
+  slice_sample(n = 10)
+```
+
+
+- Collocation analysis
+
+The frequency analysis of ngrams as terms is similar to but distinct from a collocation analysis. In a collocation analysis the frequency with which a two or more terms co-occur is balanced by the frequency of the terms when they do not cooccur. In other words, the sequences occur more than one would expect given the frequency of the individual terms. This provides an estimate of the tendency of a sequence of words to form a cohesive semantic or syntactic unit. 
+
+We can apply the `textstat_collocations()` function on a tokens object (`lastfm_tokens`) and retrieve the most cohesive collocations (using the $z$-statistic) for the entire dataset. 
+
+```{r}
+lastfm_tokens %>% 
+  textstat_collocations() %>% 
+  slice_head(n = 5)
+```
+
+
+Add a minimum frequency count (`min_count = `) to avoid hapaxes (terms which happen infrequently yet when they do occur, the cooccur with another specific term which also occurs infrequently). We can also specify the size of the collocation (the default is 2). If we set it to 3 then we will get three-word collocations.
+
+```{r}
+lastfm_tokens %>% 
+  textstat_collocations(min_count = 50, size = 2) %>% 
+  slice_head(n = 10)
+```
+If we want to explore the collocations for a specific group in our dataset, we can use the `tokens_subset()` function and specify the group that we want to subset and use. Note that the minimum count will need to be lowered (if used at all) as the size of the dataset is now a fraction of what is was when we considered all the documents (not just those from a particular genre).
+
+```{r}
+lastfm_tokens %>% 
+  tokens_subset(genre == "pop") %>% 
+  textstat_collocations(min_count = 10, size = 3) %>% 
+  slice_head(n = 25)
+```
+
+In this section we have covered some common strategies for doing exploration with descriptive analysis methods. These methods can be extended and combined to dig into and uncover patterns as the research and intermediate findings dictate. 
+
+
+## Unsupervised learning
+
+We now turn our attention to a second group of methods for conducting exploratory analyses --unsupervised learning. 
+
+
+- Clustering
+  - `textstat_dist()`
+
+```{r}
+library(factoextra)
+
+lastfm_clust <- 
+  lastfm_dfm %>% 
+  dfm_weight(scheme = "prop") %>% 
+  textstat_dist(method = "euclidean") %>% 
+  as.dist() %>% 
+  hclust(method = "ward.D2")
+
+lastfm_clust %>% 
+  fviz_dend(show_labels = FALSE, k = 4)
+```
+
+```{r}
+lastfm_clust %>% 
+  fviz_dend(show_labels = FALSE, k = 3)
+```
+
+
+
+```{r}
+clusters <- 
+  lastfm_clust %>% 
+  cutree(k = 3) %>% 
+  as_tibble(rownames = "document")
+
+clusters
+```
+
+```{r}
+docvars(lastfm_dfm, field = "cluster") <- clusters$value 
+lastfm_dfm$cluster <- clusters$value
+
+lastfm_dfm %>% 
+  docvars %>% 
+  head
+
+```
+```{r}
+lastfm_dfm %>% 
+  docvars() %>% 
+  janitor::tabyl(genre, cluster)
+```
+
+
+
+- Topic modeling
+
+
+
+<!-- IDEAS:
+
+
+
+- Lastfm lyrics [coursebook]
+  - Clustering -- genres or artists?
+  - Keyness
+  - Keyword in context
+  - Collocation
+  - Lexical diversity
+  
+- State of the Union [coursebook]
+  - `quanteda.corpora::data_corpus_sotu`
+    - clustering
+    - topic modeling
+    - collocation
+      - network graph
+
+- Tweets [Recipe]
+  - US Census data and US regionalisms
+  - /Users/francojc/Documents/Academic/Research/Data/_code/collect_tweets/data/original/tweets_us_regionalisms.csv
+
+- RateMyProfessor [lab]
+  - https://data.mendeley.com/datasets/fvtfjyvw7d/2
+    - Clustering
+    - Topic modeling
+
+- Nativeness [coursebook]
+  - CEDEL2 (Spanish)
+  - Wricle and Locness (English?)
+    - http://wricle.learnercorpora.com/
+    - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/LOCNESS
+
+- Love on the spectrum
+
+- Brown Corpus
+  - Clustering (document text version)
+  
+- ...
+
+
 
 Get [Meditations by Marcus Aurelius](https://en.wikipedia.org/wiki/Meditations) from `gutenbergr` (`gutenberg_id == 2680`). 
 
@@ -49,9 +675,4 @@ Get [Meditations by Marcus Aurelius](https://en.wikipedia.org/wiki/Meditations) 
 - A sentiment analysis would be interesting as well --do the books show similar/ different patterns in terms of sentiment?
 - Topic modeling to uncover themes in the books?
 
-### Packages {#exploration-packages}
-
-```{r acquire-data-packages}
-# Packages
-# pacman::p_load(quanteda)
-```
+-->

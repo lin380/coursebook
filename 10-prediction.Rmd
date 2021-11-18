@@ -8,11 +8,11 @@
 > ...
 
 ```{block, type="rmdkey"}
-In this chapter you will learn:
+The essential questions for this chapter are:
 
-- the goals of this textbook
-- the reasoning for using the R programming language
-- important text conventions employed in this textbook
+- ...
+- ...
+- ...
 ```
 
 <!-- COURSE STRUCTURE
@@ -40,22 +40,106 @@ GOALS:
 -->
 
 
-```{r prediction-data-packages}
+<!-- IDEAS:
+
+- English/ Spanish language detection (chapter)
+  - ACTIVES
+  - SUBTLEX_us
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/Course/Video lectures/Language
+
+- SPAM (recipe)
+  - SMS messages
+  - tadr::sms
+
+- Nativeness (chapter)
+  - CEDEL2 (Spanish)
+  - Wricle and Locness (English?)
+    - http://wricle.learnercorpora.com/
+    - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/LOCNESS
+
+- Authorship (lab)
+  - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/Federalist papers
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/RStudio/Data/Federalist/Documents
+  
+- RateMyProfessor (from recipe 8)  
+  - https://data.mendeley.com/datasets/fvtfjyvw7d/2
+
+-->
+
+
+```{r prediction-data-packages, echo=FALSE, message=FALSE}
 # Packages
-# pacman::p_load(caret)
+pacman::p_load(tidyverse, tidytext, caret, tidymodels, textrecipes)
+```
+
+In this chapter ....
+
+
+
+Orientation to the question(s) and dataset(s) to be explored ...
+
+## Preparation
+
+Data set transformation
+
+Splitting into training and test sets
+
+## Model training
+
+Aim to use the create an abstraction of the patterns in the dataset
+
+
+- Feature engineering
+
+- Model selection
+
+- Model evaluation
+
+The In Figure () Let's consider the results from a hypothetical model of text classification on the SMS dataset I introduced at in this subsection. 
+
+
+```{r pda-contigency-table, echo=FALSE, eval=FALSE}
+# Simulated table
+# sms observations (testing 25%): 1210
+
+knitr::include_graphics("images/10-prediction/pda-sms-contingency-table.png")
+
+```
+
+  - accuracy (measure of overall correct predictions)
+  - precision (measure of the quality of the predictions)
+    - Percentage of predicted 'ham' messages that were correct
+  - recall (measure of the quantity of the predictions)
+    - Percentage of actual 'ham' messages that were correct
+  - F1-score (summarizes the balance between precision and recall)
+
+Avoiding overfitting
+
+
+## Model testing
+
+Aim to test the abstracted model to new observations.  
+
+Model testing
+
+## Evaluation
+
+Evaluation of results
+
+Relationship between predicted and actual classes in a confusion matrix as seen in Figure \@ref(fig:pda-confusion-matrix-image).
+
+```{r pda-confusion-matrix-image, echo=FALSE, fig.cap='Confusion matrix'}
+knitr::include_graphics("images/10-prediction/pda-confusion-matrix.png")
 ```
 
 
-text
 
 ## ...
-
-text
 
 
 In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.
 
-```{r pred-sms-terms-freq, echo=TRUE, eval=FALSE}
+```{r pred-sms-terms-freq, echo=FALSE, eval=FALSE}
 sms_f <- 
   sms %>% 
   unnest_tokens(terms, message, token = "regex", pattern = " ") %>% 
@@ -72,7 +156,7 @@ sms_f %>%
 
 <!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
 
-```{r pred-sms-dtm, echo=TRUE, eval=FALSE}
+```{r pred-sms-dtm, echo=FALSE, eval=FALSE}
 library(tidymodels)
 
 sms_split <- initial_split(sms, strata = "sms_type")
@@ -82,26 +166,6 @@ test_data <- testing(sms_split)
 library(textrecipes)
 ```
 
-
-The In Figure () Let's consider the results from a hypothetical model of text classification on the SMS dataset I introduced at in this subsection. 
-
-
-```{r pda-contigency-table, echo=FALSE}
-# Simulated table
-# sms observations (testing 25%): 1210
-
-knitr::include_graphics("images/10-prediction/pda-sms-contingency-table.png")
-
-```
-
-
-
-  - accuracy (measure of overall correct predictions)
-  - precision (measure of the quality of the predictions)
-    - Percentage of predicted 'ham' messages that were correct
-  - recall (measure of the quantity of the predictions)
-    - Percentage of actual 'ham' messages that were correct
-  - F1-score (summarizes the balance between precision and recall)
 
 
 ## Summary
