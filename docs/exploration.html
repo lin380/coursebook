@@ -414,7 +414,7 @@ Note that I’ve used the plotting function <code><a href="https://ggplot2.tidyv
 <span class="co">#&gt; [1] 0.042</span></code></pre></div>
 <div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lastfm_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">dfm_tfidf</span><span class="op">(</span>scheme_tf <span class="op">=</span> <span class="st">"prop"</span>, <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm_tfidf</span><span class="op">(</span>scheme_tf <span class="op">=</span> <span class="st">"prop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">textstat_frequency</span><span class="op">(</span>groups <span class="op">=</span> <span class="va">genre</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">feature</span>, <span class="st">"^(i|yeah)$"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">feature</span><span class="op">)</span>
@@ -756,15 +756,25 @@ Now we are looking a terms which are indicative of their respective genres and a
 <div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lastfm_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu">docvars</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">genre</span>, <span class="va">cluster</span><span class="op">)</span>
-<span class="co">#&gt;    genre  1  2 3</span>
-<span class="co">#&gt;  country 21 18 5</span>
-<span class="co">#&gt;  hip-hop 18  5 3</span>
-<span class="co">#&gt;      pop 26  8 7</span>
-<span class="co">#&gt;     rock 24 14 6</span></code></pre></div>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">genre</span>, <span class="va">cluster</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/adorn_totals.html">adorn_totals</a></span><span class="op">(</span>where <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"row"</span>, <span class="st">"col"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/adorn_percentages.html">adorn_percentages</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/adorn_pct_formatting.html">adorn_pct_formatting</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt;    genre     1     2     3  Total</span>
+<span class="co">#&gt;  country 47.7% 40.9% 11.4% 100.0%</span>
+<span class="co">#&gt;  hip-hop 69.2% 19.2% 11.5% 100.0%</span>
+<span class="co">#&gt;      pop 63.4% 19.5% 17.1% 100.0%</span>
+<span class="co">#&gt;     rock 54.5% 31.8% 13.6% 100.0%</span>
+<span class="co">#&gt;    Total 57.4% 29.0% 13.5% 100.0%</span></code></pre></div>
+<p>Looking at the assigned clusters and the genres of the songs we see some interesting patterns. For one cluster 1 appears to have the majority of the songs, followed by cluster 2, and 3. In cluster 1 Hip hop and Pop make up the majority of the songs. In cluster 2 Country and Rock tend to dominate and in cluster 3 there is a scattering of genres.</p>
+<p>Now we can approach this again with distinct linguistic unit. Where in our current clusters we used words, we could switch to bigrams and see if the results change and how they change.</p>
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Clustering: bigram features</span></code></pre></div>
 <ul>
 <li>Topic modeling</li>
 </ul>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># textmodel_lsa()</span></code></pre></div>
 <!-- IDEAS:
 
 
@@ -814,6 +824,7 @@ Get [Meditations by Marcus Aurelius](https://en.wikipedia.org/wiki/Meditations) 
 - Topic modeling to uncover themes in the books?
 
 -->
+
 </div>
 </div>
 
@@ -850,7 +861,7 @@ Get [Meditations by Marcus Aurelius](https://en.wikipedia.org/wiki/Meditations) 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 17, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on December 09, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

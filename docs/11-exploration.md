@@ -349,7 +349,7 @@ lastfm_dfm %>%
 
 ```r
 lastfm_dfm %>%
-    dfm_tfidf(scheme_tf = "prop", ) %>%
+    dfm_tfidf(scheme_tf = "prop") %>%
     textstat_frequency(groups = genre, force = TRUE) %>%
     filter(str_detect(feature, "^(i|yeah)$")) %>%
     arrange(feature)
@@ -773,17 +773,36 @@ lastfm_dfm %>%
 ```r
 lastfm_dfm %>%
     docvars() %>%
-    janitor::tabyl(genre, cluster)
-#>    genre  1  2 3
-#>  country 21 18 5
-#>  hip-hop 18  5 3
-#>      pop 26  8 7
-#>     rock 24 14 6
+    janitor::tabyl(genre, cluster) %>%
+    janitor::adorn_totals(where = c("row", "col")) %>%
+    janitor::adorn_percentages() %>%
+    janitor::adorn_pct_formatting()
+#>    genre     1     2     3  Total
+#>  country 47.7% 40.9% 11.4% 100.0%
+#>  hip-hop 69.2% 19.2% 11.5% 100.0%
+#>      pop 63.4% 19.5% 17.1% 100.0%
+#>     rock 54.5% 31.8% 13.6% 100.0%
+#>    Total 57.4% 29.0% 13.5% 100.0%
+```
+
+Looking at the assigned clusters and the genres of the songs we see some interesting patterns. For one cluster 1 appears to have the majority of the songs, followed by cluster 2, and 3. In cluster 1 Hip hop and Pop make up the majority of the songs. In cluster 2 Country and Rock tend to dominate and in cluster 3 there is a scattering of genres. 
+
+Now we can approach this again with distinct linguistic unit. Where in our current clusters we used words, we could switch to bigrams and see if the results change and how they change. 
+
+
+```r
+# Clustering: bigram features
 ```
 
 
-
 - Topic modeling
+
+
+```r
+# textmodel_lsa()
+
+```
+
 
 
 

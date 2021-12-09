@@ -403,7 +403,7 @@ Regular Expressions are a powerful pattern matching syntax. They are used extens
 <p>Since this dataset is derived by our work, we will added it to the <code>derived/</code> directory. I’ll create a <code>europarle/</code> directory just to keep things organized.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Write the curated dataset to disk</span>
-<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/europarle/"</span><span class="op">)</span> <span class="co"># create the europarle directory</span>
+<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/europarle/"</span><span class="op">)</span> <span class="co"># create the europarle directory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">europarle_sentences_id</span>, <span class="co"># object to write</span>
           file <span class="op">=</span> <span class="st">"../data/derived/europarle/europarle_curated.csv"</span><span class="op">)</span> <span class="co"># target file location/ name</span></code></pre></div>
 <p>This is how the directory structure under the <code>derived/</code> directory looks now.</p>
@@ -461,7 +461,7 @@ Regular Expressions are a powerful pattern matching syntax. They are used extens
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sentence_id</span>, <span class="va">type</span><span class="op">)</span> <span class="co"># arrange the dataset</span>
 
 <span class="co"># Write the curated dataset to disk</span>
-<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/europarle/"</span><span class="op">)</span> <span class="co"># create the europarle directory</span>
+<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/europarle/"</span><span class="op">)</span> <span class="co"># create the europarle directory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">europarle_sentences_id</span>, <span class="co"># object to write</span>
           file <span class="op">=</span> <span class="st">"../data/derived/europarle/europarle_curated.csv"</span><span class="op">)</span> <span class="co"># target file location/ name</span></code></pre></div>
 <!-- TODOs:
@@ -832,7 +832,7 @@ You may notice that in addition to the lyrics being separated by line, there app
 </h3>
 <p>We now have a curated dataset that we can write to disk. Again, as with the Europarle Corpus dataset we curated before, we will write this dataset to the <code>data/derived/</code> directory –effectively ensuring that it is clear that this dataset was created by our project work.</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/lastfm/"</span><span class="op">)</span>  <span class="co"># create lastfm subdirectory</span>
+<code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/lastfm/"</span><span class="op">)</span>  <span class="co"># create lastfm subdirectory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">lastfm</span>, file <span class="op">=</span> <span class="st">"../data/derived/lastfm/lastfm_curated.csv"</span><span class="op">)</span>  <span class="co"># write lastfm to disk and label as the curated dataset</span></code></pre></div>
 <p>And here’s an overview of our new directory structure.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="curate-data.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
@@ -876,7 +876,7 @@ You may notice that in addition to the lyrics being separated by line, there app
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">genre</span>, <span class="va">artist</span><span class="op">)</span> <span class="co"># arrange rows by `genre` and `artist`</span>
 
 <span class="co"># Write curated dataset to disk</span>
-<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/lastfm/"</span><span class="op">)</span> <span class="co"># create lastfm subdirectory</span>
+<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/lastfm/"</span><span class="op">)</span> <span class="co"># create lastfm subdirectory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">lastfm</span>, 
           file <span class="op">=</span> <span class="st">"../data/derived/lastfm/lastfm_curated.csv"</span><span class="op">)</span> <span class="co"># write lastfm to disk and label as the curated dataset</span></code></pre></div>
 <!-- Consider:
@@ -1361,10 +1361,10 @@ One twist you will notice is that regular expressions in R require double backsl
 #&gt; $ utterance_text &lt;chr&gt; "Okay.  /", "{D So, }", "[ [ I guess, +", "What kind of…
 #&gt; $ speaker_id     &lt;chr&gt; "1632", "1632", "1519", "1632", "1519", "1632", "1519",…</code></pre>
 <p>Looks good!</p>
-<p>So now it’s time to create a vector with the paths to all of the conversation files. <code><a href="http://fs.r-lib.org/reference/dir_ls.html">fs::dir_ls()</a></code> interfaces with our OS file system and will return the paths to the files in the specified directory. We also add a pattern to match conversation files (<code>regexp = \\.utt$</code>) so we don’t accidentally include other files in the corpus. <code>recurse</code> set to <code>TRUE</code> means we will get the full path to each file.</p>
+<p>So now it’s time to create a vector with the paths to all of the conversation files. <code><a href="https://fs.r-lib.org/reference/dir_ls.html">fs::dir_ls()</a></code> interfaces with our OS file system and will return the paths to the files in the specified directory. We also add a pattern to match conversation files (<code>regexp = \\.utt$</code>) so we don’t accidentally include other files in the corpus. <code>recurse</code> set to <code>TRUE</code> means we will get the full path to each file.</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sdac_files</span> <span class="op">&lt;-</span> 
-  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
+  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
              recurse <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># traverse all sub-directories</span>
              type <span class="op">=</span> <span class="st">"file"</span>, <span class="co"># only return files</span>
              regexp <span class="op">=</span> <span class="st">"\\.utt$"</span><span class="op">)</span> <span class="co"># only return files ending in .utt</span>
@@ -1401,7 +1401,7 @@ One twist you will notice is that regular expressions in R require double backsl
 </h3>
 <p>Again as in the previous cases, we will write this dataset to disk to prepare for the next step in our text analysis project.</p>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span>  <span class="co"># create sdac subdirectory</span>
+<code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span>  <span class="co"># create sdac subdirectory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">sdac</span>, file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_curated.csv"</span><span class="op">)</span>  <span class="co"># write sdac to disk and label as the curated dataset</span></code></pre></div>
 <p>The directory structure now looks like this:</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="curate-data.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/</span></span>
@@ -1440,7 +1440,7 @@ One twist you will notice is that regular expressions in R require double backsl
 
 <span class="co"># Get list of the corpus files (.utt)</span>
 <span class="va">sdac_files</span> <span class="op">&lt;-</span> 
-  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
+  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/original/sdac/"</span>, <span class="co"># source directory</span>
              recurse <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># traverse all sub-directories</span>
              type <span class="op">=</span> <span class="st">"file"</span>, <span class="co"># only return files</span>
              regexp <span class="op">=</span> <span class="st">"\\.utt$"</span><span class="op">)</span> <span class="co"># only return files ending in .utt</span>
@@ -1452,7 +1452,7 @@ One twist you will notice is that regular expressions in R require double backsl
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># bind the results into a single data frame</span>
   
 <span class="co"># Write curated dataset to disk</span>
-<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span> <span class="co"># create sdac subdirectory</span>
+<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"../data/derived/sdac/"</span><span class="op">)</span> <span class="co"># create sdac subdirectory</span>
 <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">sdac</span>, 
           file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_curated.csv"</span><span class="op">)</span> <span class="co"># write sdac to disk and label as the curated dataset</span></code></pre></div>
 <!-- Consider:
@@ -1602,7 +1602,7 @@ One twist you will notice is that regular expressions in R require double backsl
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on November 17, 2021 (latest version).</p>
+    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on December 09, 2021 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
