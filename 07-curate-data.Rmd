@@ -539,7 +539,7 @@ lastfm <-
 lastfm %>% # curated dataset
   slice_head(n = 5) %>% # first 5 observations
   knitr::kable(booktabs = TRUE, # print pretty table
-               captions = "Sample lyrics from curated Last.fm dataset.") # add caption to the table
+               caption = "Sample lyrics from curated Last.fm dataset.") # add caption to the table
 ```
 
 ### Write dataset

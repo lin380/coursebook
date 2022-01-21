@@ -75,7 +75,7 @@ PROJECT:
 
 ```{r understanding-data-packages, echo=FALSE}
 # Packages
-pacman::p_load(tidyverse, knitr, jsonlite, tadr)
+pacman::p_load(tidyverse, knitr, jsonlite, tadr, tidytext)
 ```
 
 
@@ -459,7 +459,7 @@ brown %>%
   filter(word_stems == "investig") %>% 
   slice_head(n = 10) %>% 
   kable(booktabs = TRUE,
-        caption = 'Results for a `word_stems` filter for "investig" in the Brown Corpus.')
+        caption = 'Results for filter word stems for "investig" in the Brown Corpus.')
 ```
 
 We can see from the results in Table \@ref(tab:recoding-stemming-brown-search) that searching for `word_stems` that match 'investig' returns a set of stem-related forms. But it is worth noting that these forms cut across a number of grammatical categories. If instead you want to draw a distinction between grammatical categories, we can apply lemmatization. This process is distinct from stemming in two important ways: (1) inflectional forms are grouped by grammatical category and (2) the resulting forms are lemmas or 'base' forms of words. 
@@ -482,7 +482,7 @@ brown %>%
   filter(word_lemmas == "investigation") %>% 
   slice_head(n = 10) %>% 
   kable(booktabs = TRUE,
-        caption = 'Results for a `word_lemmas` filter for "investigation" in the Brown Corpus.')
+        caption = 'Results for filter word stems for "investigation" in the Brown Corpus.')
 ```
 
 Only lemma forms of 'investigate' which are nouns appear. Let's run a similar search but for the lemma 'be'.
@@ -495,7 +495,7 @@ brown %>%
   filter(word_lemmas == "be") %>% 
   slice_head(n = 10) %>% 
   kable(booktabs = TRUE,
-        caption = 'Results for a `word_lemmas` filter for "be" in the Brown Corpus.')
+        caption = 'Results for filter word stems for "be" in the Brown Corpus.')
 ```
 
 Again only words of the same grammatical category are returned. In this case the verb 'be' has many more inflectional forms than 'investigate'.
@@ -514,7 +514,7 @@ swda_disfluencies %>%
   select(utterance_text, disfluency_count) %>% 
   slice_head(n = 10) %>% 
   kable(booktabs = TRUE,
-        caption = 'Disfluency counts in the first 10 `utterance_text` values from the Switchboard Corpus.')
+        caption = 'Disfluency counts in the first 10 utterance text values from the Switchboard Corpus.')
 ```
 
 

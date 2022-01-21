@@ -558,7 +558,7 @@ A few things to note here. First there are a number of stemming algorithms both 
 As an example, let's identify all the word forms for the stem 'investig'. 
 
 
-Table: (\#tab:recoding-stemming-brown-search)Results for a `word_stems` filter for "investig" in the Brown Corpus.
+Table: (\#tab:recoding-stemming-brown-search)Results for filter word stems for "investig" in the Brown Corpus.
 
 |document_id |category |words          |pos |word_stems |
 |:-----------|:--------|:--------------|:---|:----------|
@@ -594,7 +594,7 @@ Table: (\#tab:recoding-lemmatization-brown-example)Results for lemmatization of 
 To appreciate the difference between stemming and lemmatization, let's compare a filter for `word_lemmas` which match 'investigation'.
 
 
-Table: (\#tab:recoding-lemmatization-brown-investigation)Results for a `word_lemmas` filter for "investigation" in the Brown Corpus.
+Table: (\#tab:recoding-lemmatization-brown-investigation)Results for filter word stems for "investigation" in the Brown Corpus.
 
 |document_id |category |words          |pos |word_lemmas   |
 |:-----------|:--------|:--------------|:---|:-------------|
@@ -612,7 +612,7 @@ Table: (\#tab:recoding-lemmatization-brown-investigation)Results for a `word_lem
 Only lemma forms of 'investigate' which are nouns appear. Let's run a similar search but for the lemma 'be'.
 
 
-Table: (\#tab:recoding-lemmatization-brown-be)Results for a `word_lemmas` filter for "be" in the Brown Corpus.
+Table: (\#tab:recoding-lemmatization-brown-be)Results for filter word stems for "be" in the Brown Corpus.
 
 |document_id |category |words |pos  |word_lemmas |
 |:-----------|:--------|:-----|:----|:-----------|
@@ -634,7 +634,7 @@ Again only words of the same grammatical category are returned. In this case the
 Another form of recoding is to detect a pattern in the values of an existing variable and create a new variable whose values are the extracted pattern or register that the pattern occurs and/ or how many times it occurs. As an example, let's count the number of disfluencies ('uh' or 'um') that occur in each utterance in `utterance_text` from the Switchboard Dialog Act Corpus. *Note I've simplified the dataset dropping the non-relevant variables for this example.*
 
 
-Table: (\#tab:recoding-extract-switchboard)Disfluency counts in the first 10 `utterance_text` values from the Switchboard Corpus.
+Table: (\#tab:recoding-extract-switchboard)Disfluency counts in the first 10 utterance text values from the Switchboard Corpus.
 
 |utterance_text                                                             | disfluency_count|
 |:--------------------------------------------------------------------------|----------------:|

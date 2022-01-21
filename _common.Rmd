@@ -20,5 +20,11 @@ options(digits = 3)
 pacman::p_load(tidyverse, rmarkdown, here, DT, webshot, knitr, tidytext)
 
 theme_set(theme_minimal())
+
+options(knitr.table.format = function() {
+  if (knitr::is_latex_output())
+    "latex" else "pipe"
+})
+
 ```
 

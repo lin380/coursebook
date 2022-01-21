@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Acquire data | Coursebook</title>
+<title>Chapter 5 Acquire data | Text as Data</title>
 <meta name="author" content="Jerid Francom">
 <meta name="description" content="DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?  What...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Acquire data | Coursebook">
+<meta property="og:title" content="Chapter 5 Acquire data | Text as Data">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/acquire-data.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
 <meta property="og:description" content="DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?  What...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Acquire data | Coursebook">
+<meta name="twitter:title" content="Chapter 5 Acquire data | Text as Data">
 <meta name="twitter:site" content="@jeridfrancom">
 <meta name="twitter:description" content="DRAFT  The scariest moment is always just before you start. ―–Stephen King  The essential questions for this chapter are:  What are the most common strategies for acquiring corpus data?  What...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
@@ -22,6 +22,7 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Favicon --><link rel="shortcut icon" href="assets/images/favicon.ico">
 <!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -39,8 +40,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Text as Data: An introduction to quantitative text analysis and reproducible research with R">Coursebook</a>:
-        <small class="text-muted">Text as Data: An introduction to quantitative text analysis and reproducible research with R</small>
+        <a href="index.html" title="An introduction to quantitative text analysis and reproducible research with R">Text as Data</a>:
+        <small class="text-muted">An introduction to quantitative text analysis and reproducible research with R</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -624,6 +625,11 @@ A couple R programming notes on the code phrase <code>gutenberg_id %in% ids$gute
 <h3>
 <span class="header-section-number">5.2.2</span> Authentication<a class="anchor" aria-label="anchor" href="#authentication"><i class="fas fa-link"></i></a>
 </h3>
+<!-- Other APIs:
+
+- News API https://newsapi.org/ with newsanchor package 
+
+-->
 <p>Some APIs and the R interfaces that provide access to them require authentication. This may either be through an interactive process that is mediated between R and the web service and/ or by visiting the developer website of the particular API. In either case, there is an extra step that is necessary to make the connect to the API to access the data.</p>
 <p>Let’s take a look at the popular micro-blogging platform Twitter. The rtweet package <span class="citation">(<a href="references.html#ref-R-rtweet" role="doc-biblioref">Kearney, 2020</a>)</span> provides access to tweets in various ways. To get started install and/or load the rtweet package.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
@@ -1449,7 +1455,7 @@ Figure 5.8: Tracks by genre list page on last.fm
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on December 09, 2021 (latest version).</p>
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on January 21, 2022 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

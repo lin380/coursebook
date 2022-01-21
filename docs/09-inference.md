@@ -414,21 +414,23 @@ At this point we may think we are done. We have statistically interrogated the `
 
 
 ```r
-effects <- effectsize(c1)  # evaluate effect size and generate a confidence interval
+effects <- effectsize(c1, type = "phi")  # evaluate effect size and generate a confidence interval (phi type given 2x1 contingency table)
 
 effects  # preview effect size and confidence interval
-#> Cramer's V |       95% CI
-#> -------------------------
-#> 0.48       | [0.39, 0.52]
+#> Phi  |           95% CI
+#> -----------------------
+#> 0.48 | [0.45,      Inf]
+#> 
+#> - One-sided CIs: upper bound fixed at (Inf).
 ```
 
-`effectsize()` recognizes the type of test results in `c1` and calculates the appropriate effect size measure and generates a confidence interval. Since the effect statistic ("Cramer's V") falls between the 95\% confidence interval this suggests the results are reliably interpreted (chances of Type I (false positive) or Type II (false negative) are low). 
+`effectsize()` recognizes the type of test results in `c1` and calculates the appropriate effect size measure and generates a confidence interval. Since the effect statistic ("Phi") falls between the 95\% confidence interval this suggests the results are reliably interpreted (chances of Type I (false positive) or Type II (false negative) are low). 
 
 Now, the remaining question is to evaluate whether the significant result here is a strong effect or not. To do this we can pass the effect size measure to the `interpret_r()` function. 
 
 
 ```r
-interpret_r(effects$Cramers_v)  # interpret the effect size 
+interpret_r(effects$phi)  # interpret the effect size 
 #> [1] "very large"
 #> (Rules: funder2019)
 ```

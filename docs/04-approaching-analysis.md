@@ -410,8 +410,8 @@ In both plots `ttr` is on the y-axis and `num_tokens` on the x-axis. The points 
 Let's add another variable to the mix, in this case the categorical variable `sex`, taking our bivariate exploration to a multivariate exploration. Again each point corresponds to an observation where the values for `num_tokens` and `ttr` intersect. But now each of these points is given a color that reflects which level of `sex` it is associated with.  
 
 <div class="figure" style="text-align: center">
-<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-scatterplot-belc-1.png" alt="Scatterplot visualizing the relationship between `num_tokens` and `ttr`." width="90%" />
-<p class="caption">(\#fig:summaries-multivariate-scatterplot-belc)Scatterplot visualizing the relationship between `num_tokens` and `ttr`.</p>
+<img src="04-approaching-analysis_files/figure-html/summaries-multivariate-scatterplot-belc-1.png" alt="Scatterplot visualizing the relationship between `num\_tokens` and `ttr`." width="90%" />
+<p class="caption">(\#fig:summaries-multivariate-scatterplot-belc)Scatterplot visualizing the relationship between `num\_tokens` and `ttr`.</p>
 </div>
 
 In this multivariate case, the scatterplot without the trend line is more difficult to interpret. The trend lines for the levels of `sex` help visually understand the variation of the relationship of `num_tokens`and `ttr` much better. But it is important to note that when there are multiple trend lines there is more than one slope to evaluate. The correlation coefficient can be calculated for each level of `sex` (i.e. 'male' and 'female') independently but the relationship between the each slope can be visually inspected and provide important information regarding each level's relative distribution. If the trend lines are parallel (ignoring the ribbons for the moment), as it appears in this case, this suggests that the relationship between the continuous variables is stable across the levels of the categorical variable, with males showing more lexical diversity than females declining at a similar rate. If the lines were to cross, or suggest that they would cross at some point, then there would be a potentially important difference between the levels of the categorical variable (known as an interaction). Now let's consider the meaning of the ribbons. Since the ribbons reflect the range in which the real trend line could fall, and these ribbons overlap, the differences between the levels of our categorical variable are likely not distinct. So at a descriptive level, this visual summary would suggest that there are no differences between the relationship between `num_tokens` and `ttr` for the distinct levels of `sex`.
@@ -463,8 +463,8 @@ The SEM is a metric which summarizes variation based on the number of values and
 Because we are assessing a categorical variable in combination with a continuous variable a table is an available visual summary. But as I have said before, a graphic summary is hard to beat. In the following figure (\@ref(fig:summaries-bivariate-barplot-belc)) a barplot is provided which includes the means of `num_tokens` for each level of `age_group`. The overlaid bars represent the confidence interval for each mean score. 
     
 <div class="figure" style="text-align: center">
-<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num_tokens` by `age_group` from the BELC dataset." width="90%" />
-<p class="caption">(\#fig:summaries-bivariate-barplot-belc)Barplot comparing the mean `num_tokens` by `age_group` from the BELC dataset.</p>
+<img src="04-approaching-analysis_files/figure-html/summaries-bivariate-barplot-belc-1.png" alt="Barplot comparing the mean `num\_tokens` by `age\_group` from the BELC dataset." width="90%" />
+<p class="caption">(\#fig:summaries-bivariate-barplot-belc)Barplot comparing the mean `num\_tokens` by `age\_group` from the BELC dataset.</p>
 </div>
 
 When CI ranges overlap, just as with ribbons in scatterplots, the likelihood that the differences between levels are 'real' is diminished. 

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Understanding data | Coursebook</title>
+<title>Chapter 2 Understanding data | Text as Data</title>
 <meta name="author" content="Jerid Francom">
 <meta name="description" content="DRAFT  The plural of anecdote is not data. — Marc Bekoff  The essential questions for this chapter are:  What are the distinct types of data and how do they differ?  What is information and what...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 2 Understanding data | Coursebook">
+<meta property="og:title" content="Chapter 2 Understanding data | Text as Data">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/understanding-data.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
 <meta property="og:description" content="DRAFT  The plural of anecdote is not data. — Marc Bekoff  The essential questions for this chapter are:  What are the distinct types of data and how do they differ?  What is information and what...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 Understanding data | Coursebook">
+<meta name="twitter:title" content="Chapter 2 Understanding data | Text as Data">
 <meta name="twitter:site" content="@jeridfrancom">
 <meta name="twitter:description" content="DRAFT  The plural of anecdote is not data. — Marc Bekoff  The essential questions for this chapter are:  What are the distinct types of data and how do they differ?  What is information and what...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
@@ -22,6 +22,7 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Favicon --><link rel="shortcut icon" href="assets/images/favicon.ico">
 <!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -39,8 +40,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Text as Data: An introduction to quantitative text analysis and reproducible research with R">Coursebook</a>:
-        <small class="text-muted">Text as Data: An introduction to quantitative text analysis and reproducible research with R</small>
+        <a href="index.html" title="An introduction to quantitative text analysis and reproducible research with R">Text as Data</a>:
+        <small class="text-muted">An introduction to quantitative text analysis and reproducible research with R</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -1261,7 +1262,7 @@ All tabular data does not have the ‘tidy’ format that I have described here.
 <p>As an example, let’s identify all the word forms for the stem ‘investig.’</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:recoding-stemming-brown-search">Table 2.16: </span>Results for a <code>word_stems</code> filter for “investig” in the Brown Corpus.</caption>
+<span id="tab:recoding-stemming-brown-search">Table 2.16: </span>Results for filter word stems for “investig” in the Brown Corpus.</caption>
 <thead><tr class="header">
 <th align="left">document_id</th>
 <th align="left">category</th>
@@ -1429,7 +1430,7 @@ All tabular data does not have the ‘tidy’ format that I have described here.
 <p>To appreciate the difference between stemming and lemmatization, let’s compare a filter for <code>word_lemmas</code> which match ‘investigation.’</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:recoding-lemmatization-brown-investigation">Table 2.18: </span>Results for a <code>word_lemmas</code> filter for “investigation” in the Brown Corpus.</caption>
+<span id="tab:recoding-lemmatization-brown-investigation">Table 2.18: </span>Results for filter word stems for “investigation” in the Brown Corpus.</caption>
 <thead><tr class="header">
 <th align="left">document_id</th>
 <th align="left">category</th>
@@ -1513,7 +1514,7 @@ All tabular data does not have the ‘tidy’ format that I have described here.
 <p>Only lemma forms of ‘investigate’ which are nouns appear. Let’s run a similar search but for the lemma ‘be.’</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:recoding-lemmatization-brown-be">Table 2.19: </span>Results for a <code>word_lemmas</code> filter for “be” in the Brown Corpus.</caption>
+<span id="tab:recoding-lemmatization-brown-be">Table 2.19: </span>Results for filter word stems for “be” in the Brown Corpus.</caption>
 <thead><tr class="header">
 <th align="left">document_id</th>
 <th align="left">category</th>
@@ -1599,7 +1600,7 @@ All tabular data does not have the ‘tidy’ format that I have described here.
 <p>Another form of recoding is to detect a pattern in the values of an existing variable and create a new variable whose values are the extracted pattern or register that the pattern occurs and/ or how many times it occurs. As an example, let’s count the number of disfluencies (‘uh’ or ‘um’) that occur in each utterance in <code>utterance_text</code> from the Switchboard Dialog Act Corpus. <em>Note I’ve simplified the dataset dropping the non-relevant variables for this example.</em></p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:recoding-extract-switchboard">Table 2.20: </span>Disfluency counts in the first 10 <code>utterance_text</code> values from the Switchboard Corpus.</caption>
+<span id="tab:recoding-extract-switchboard">Table 2.20: </span>Disfluency counts in the first 10 utterance text values from the Switchboard Corpus.</caption>
 <colgroup>
 <col width="81%">
 <col width="18%">
@@ -2430,7 +2431,7 @@ Chapter 1.4 "Types of variables"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on December 09, 2021 (latest version).</p>
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on January 21, 2022 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

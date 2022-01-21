@@ -693,6 +693,12 @@ data
 
 ### Authentication
 
+<!-- Other APIs:
+
+- News API https://newsapi.org/ with newsanchor package 
+
+-->
+
 Some APIs and the R interfaces that provide access to them require authentication. This may either be through an interactive process that is mediated between R and the web service and/ or by visiting the developer website of the particular API. In either case, there is an extra step that is necessary to make the connect to the API to access the data. 
 
 Let's take a look at the popular micro-blogging platform Twitter. The rtweet package [@R-rtweet] provides access to tweets in various ways. To get started install and/or load the rtweet package. 

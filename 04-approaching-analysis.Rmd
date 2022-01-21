@@ -355,7 +355,7 @@ In plots comparing two or more variables, the choice of which variable to plot o
 
 Let's add another variable to the mix, in this case the categorical variable `sex`, taking our bivariate exploration to a multivariate exploration. Again each point corresponds to an observation where the values for `num_tokens` and `ttr` intersect. But now each of these points is given a color that reflects which level of `sex` it is associated with.  
 
-```{r summaries-multivariate-scatterplot-belc, echo=FALSE, fig.cap='Scatterplot visualizing the relationship between `num_tokens` and `ttr`.'}
+```{r summaries-multivariate-scatterplot-belc, echo=FALSE, fig.cap='Scatterplot visualizing the relationship between `num\\_tokens` and `ttr`.'}
 p1 <- 
   belc %>% 
   ggplot(aes(x = num_tokens, y = ttr, color = sex)) + 
@@ -390,7 +390,7 @@ The SEM is a metric which summarizes variation based on the number of values and
 
 Because we are assessing a categorical variable in combination with a continuous variable a table is an available visual summary. But as I have said before, a graphic summary is hard to beat. In the following figure (\@ref(fig:summaries-bivariate-barplot-belc)) a barplot is provided which includes the means of `num_tokens` for each level of `age_group`. The overlaid bars represent the confidence interval for each mean score. 
     
-```{r summaries-bivariate-barplot-belc, echo=FALSE, fig.cap='Barplot comparing the mean `num_tokens` by `age_group` from the BELC dataset.'}
+```{r summaries-bivariate-barplot-belc, echo=FALSE, fig.cap='Barplot comparing the mean `num\\_tokens` by `age\\_group` from the BELC dataset.'}
 p1 <- 
   belc %>% 
   group_by(age_group) %>% 

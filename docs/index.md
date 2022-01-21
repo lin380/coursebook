@@ -1,8 +1,8 @@
 --- 
-title: "Coursebook"
-subtitle: "Text as Data: An introduction to quantitative text analysis and reproducible research with R"
+title: "Text as Data"
+subtitle: "An introduction to quantitative text analysis and reproducible research with R"
 author: "Jerid Francom"
-date: "December 09, 2021 (latest version)"
+date: "January 21, 2022 (latest version)"
 site: bookdown::bookdown_site
 bibliography: [coursebook.bib, packages.bib]
 biblio-style: apalike
@@ -14,7 +14,6 @@ github-repo: lin380/coursebook
 twitter-handle: jeridfrancom
 description: "Coursebook to accompany Linguistics 380 'Language Use and Technology'"
 cover-image: assets/images/logo.png
-favicon: assets/images/favicon.ico
 ---
 
 # Welcome {-}
@@ -23,7 +22,7 @@ favicon: assets/images/favicon.ico
 
 
 
-<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
+<p style="font-weight:bold; color:red;">DRAFT</p>
 
 
 <img src="assets/images/logo.png" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> This is the coursebook to accompany Linguistics 380 "Language Use and Technology" at Wake Forest University. The working title for this coursebook is *Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research with R*. 

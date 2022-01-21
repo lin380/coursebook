@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Framing research | Coursebook</title>
+<title>Chapter 4 Framing research | Text as Data</title>
 <meta name="author" content="Jerid Francom">
 <meta name="description" content="DRAFT  If we knew what it was we were doing, it would not be called research, would it? ―–Albert Einstein  The essential questions for this chapter are:  What are the strategies for selecting a...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 4 Framing research | Coursebook">
+<meta property="og:title" content="Chapter 4 Framing research | Text as Data">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/framing-research.html">
 <meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
 <meta property="og:description" content="DRAFT  If we knew what it was we were doing, it would not be called research, would it? ―–Albert Einstein  The essential questions for this chapter are:  What are the strategies for selecting a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 Framing research | Coursebook">
+<meta name="twitter:title" content="Chapter 4 Framing research | Text as Data">
 <meta name="twitter:site" content="@jeridfrancom">
 <meta name="twitter:description" content="DRAFT  If we knew what it was we were doing, it would not be called research, would it? ―–Albert Einstein  The essential questions for this chapter are:  What are the strategies for selecting a...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
@@ -22,6 +22,7 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Favicon --><link rel="shortcut icon" href="assets/images/favicon.ico">
 <!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -39,8 +40,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Text as Data: An introduction to quantitative text analysis and reproducible research with R">Coursebook</a>:
-        <small class="text-muted">Text as Data: An introduction to quantitative text analysis and reproducible research with R</small>
+        <a href="index.html" title="An introduction to quantitative text analysis and reproducible research with R">Text as Data</a>:
+        <small class="text-muted">An introduction to quantitative text analysis and reproducible research with R</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -341,6 +342,13 @@ PROJECT:
 <p>For predictive-based research, the informational value of the target variable is key to deciding whether the prediction will be a classification task or a numeric prediction task. This has downstream effects when it comes time to evaluate and interpret the results. Although the feature engineering process in predictive analyses means that the features do not need to be specified from the outset and can be tweaked and changed as needed during an analysis, it is a good idea to start with a basic sense of what features most likely will be helpful in developing a robust predictive model. Furthermore, while the number and informational values of the features (predictor variables) are not as important to selecting a prediction method (algorithm) as they are in inferential analysis methods, it is important to recognize that algorithms have strengths and shortcomings when working large numbers and/ or types of features <span class="citation">(<a href="references.html#ref-Lantz2013" role="doc-biblioref">Lantz, 2013</a>)</span>.</p>
 <p>Exploratory research is the least restricted of the three types of analysis approaches. Although it may be the case that a research will not be able to specify from the outset of a project what the exact analysis methods will be, an attempt to consider what types of analysis methods will be most promising to provide results to address the research question goes a long way to steering a project in the right direction and grounding the research. As with the other analysis approaches, it is important to be aware of what the analysis methods available and what type of information they produce in light of the research question.</p>
 <p>In sum, the identification of the data, information, and analysis methods that will be used in the proposed research are key to ensuring the research is viable. Be sure to document this process in prose and describe the strengths and potential shortcomings of (1) the corpus data selected, (2) the information to be extracted for analysis, and (3) the analysis method(s) that are appropriate for the research aim and what the evaluation method will be. Furthermore, not every eventuality can be foreseen. It is helpful to include a description of aspects of this process which may pose challenges and to include potential contingency plans as part of this prose description.</p>
+<!-- Pre-registration
+
+- [Open Science Framwork](https://osf.io/)
+- [Center for Open Science](https://www.cos.io/initiatives/prereg)
+  - [Examples](https://osf.io/registries)
+
+-->
 </div>
 <div id="plan" class="section level3" number="4.3.2">
 <h3>
@@ -358,6 +366,11 @@ PROJECT:
 <li>Everything should be documented. This includes analysis steps, script code comments, data description in data dictionaries, information about the computing environment and packages used to conduct the analysis, and detailed instructions on how to reproduce the research.</li>
 </ol>
 <p>These seven principles can be physically implemented in countless ways. In recent years, there has been a growing number of efforts to create R packages and templates to quickly generate the scaffolding and tools to facilitate reproducible research. Some notable R packages include <a href="https://jdblischak.github.io/workflowr/">workflowr</a> and <a href="http://projecttemplate.net/">ProjectTemplate</a> but there are many other resources for R included on the <a href="https://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN Task View for Reproducible Research</a>. There are many advantages to working with pre-existing frameworks for the savvy R programmer.</p>
+<!-- Other protocols:
+
+[Project TIER](https://www.projecttier.org/)
+
+-->
 <p>In this coursebook, however, I have developed a project template (<a href="https://github.com/lin380/project_template">available on GitHub</a>) which I believe simplifies and makes the process more transparent for beginning and intermediate R programmers, the directory structure is provided below.</p>
 <pre><code>#&gt; ../project_template/
 #&gt; ├── README.md
@@ -509,7 +522,7 @@ linguistic theory to guide their interpretation of quantitative corpus findings.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Coursebook</strong>: Text as Data: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on December 09, 2021 (latest version).</p>
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on January 21, 2022 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

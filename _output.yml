@@ -1,10 +1,17 @@
 bookdown::bs4_book:
   theme:
-    primary: "#9E7E38"
+    primary: "#37579e"
   css: [assets/bs4.css]
   repo: https://github.com/lin380/coursebook
   includes:
     in_header: includes.html
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
 bookdown::gitbook:
   css: [assets/style.css]
   split_by: chapter
@@ -28,10 +35,3 @@ bookdown::gitbook:
       facebook: no
       twitter: yes
       all: []
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default

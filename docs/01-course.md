@@ -258,7 +258,7 @@ This coursebook was written in [bookdown](http://bookdown.org/) inside [RStudio]
 
 <!-- and automatically updated after every commit by [Travis-CI](https://travis-ci.org).  -->
 
-This version of the coursebook was built with R version 4.0.2 (2020-06-22). 
+This version of the coursebook was built with R version 4.1.2 (2021-11-01). 
 
 
 

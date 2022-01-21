@@ -189,6 +189,14 @@ Exploratory research is the least restricted of the three types of analysis appr
 
 In sum, the identification of the data, information, and analysis methods that will be used in the proposed research are key to ensuring the research is viable. Be sure to document this process in prose and describe the strengths and potential shortcomings of (1) the corpus data selected, (2) the information to be extracted for analysis, and (3) the analysis method(s) that are appropriate for the research aim and what the evaluation method will be. Furthermore, not every eventuality can be foreseen. It is helpful to include a description of aspects of this process which may pose challenges and to include potential contingency plans as part of this prose description. 
 
+<!-- Pre-registration
+
+- [Open Science Framwork](https://osf.io/)
+- [Center for Open Science](https://www.cos.io/initiatives/prereg)
+  - [Examples](https://osf.io/registries)
+
+-->
+
 
 ### Plan
 
@@ -205,6 +213,12 @@ There are a set of guiding principles to accomplish these goals [@Gentleman2007;
 7. Everything should be documented. This includes analysis steps, script code comments, data description in data dictionaries, information about the computing environment and packages used to conduct the analysis, and detailed instructions on how to reproduce the research. 
 
 These seven principles can be physically implemented in countless ways. In recent years, there has been a growing number of efforts to create R packages and templates to quickly generate the scaffolding and tools to facilitate reproducible research. Some notable R packages include [workflowr](https://jdblischak.github.io/workflowr/) and [ProjectTemplate](http://projecttemplate.net/) but there are many other resources for R included on the [CRAN Task View for Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html). There are many advantages to working with pre-existing frameworks for the savvy R programmer. 
+
+<!-- Other protocols:
+
+[Project TIER](https://www.projecttier.org/)
+
+-->
 
 In this coursebook, however, I have developed a project template ([available on GitHub](https://github.com/lin380/project_template)) which I believe simplifies and makes the process more transparent for beginning and intermediate R programmers, the directory structure is provided below.
 

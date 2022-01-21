@@ -56,6 +56,9 @@ GOALS:
   - Wricle and Locness (English?)
     - http://wricle.learnercorpora.com/
     - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/LOCNESS
+      - Overall prediction native/ learner
+      - ?Genitive construction markers native/ learner
+      - ?Consider exploring the Mudpar approach
 
 - Authorship (lab)
   - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/Federalist papers
@@ -67,16 +70,234 @@ GOALS:
 -->
 
 
-```{r prediction-data-packages, echo=FALSE, message=FALSE}
+```{r prediction-data-packages, include=FALSE}
 # Packages
-pacman::p_load(tidyverse, tidytext, caret, tidymodels, textrecipes)
+pacman::p_load(tidyverse, tidytext, caret, quanteda, quanteda.textstats, quanteda.textmodels)
 ```
 
-In this chapter ....
+In this chapter we will
 
 
 
 Orientation to the question(s) and dataset(s) to be explored ...
+
+```{r p-read-datasets}
+wricle_df <- read_csv(file = "resources/10-prediction/data/derived/wricle_formal_curated.csv")
+
+locness_df <- read_csv(file = "resources/10-prediction/data/derived/locness_curated.csv")
+```
+
+```{r}
+learners_df <- 
+  wricle_df %>% 
+  filter(native_language == "Spanish") %>% 
+  mutate(student = "Spanish") %>% 
+  mutate(type = "Learner") %>% 
+  select(essay_id = id, type, student, essay)
+
+glimpse(learners_df)
+```
+
+
+
+```{r}
+natives_df <- 
+  locness_df %>% 
+  unite(col = doc_id, c("file_id", "essay_id"), sep = "-") %>% 
+  mutate(doc_id = str_replace(doc_id, "\\.txt", "")) %>% 
+  mutate(type = "Native") %>% 
+  select(essay_id = doc_id, type, student, essay)
+
+glimpse(natives_df)
+```
+
+```{r}
+nativeness_df <- rbind(learners_df, natives_df) # combine
+```
+
+```{r}
+nativeness_df %>% 
+  janitor::tabyl(type)
+```
+
+```{r}
+nativeness_df %>% 
+  unnest_tokens(output = "word", input = "essay") %>% 
+  count(word, type) %>% 
+  group_by(type) %>% 
+  summarize(total_words = sum(n)) 
+```
+```{r}
+nativeness_corpus <- 
+  nativeness_df %>% 
+  corpus(text_field = "essay")
+
+nativeness_corpus_summary <- 
+  nativeness_corpus %>% 
+  summary(n = ndoc(nativeness_corpus))
+
+nativeness_corpus_summary %>% 
+  slice_head(n = 10)
+
+```
+
+```{r}
+nativeness_corpus$doc_id <- 1:ndoc(nativeness_corpus)
+
+nativeness_corpus %>% 
+  docvars() %>% 
+  slice_head(n = 5)
+```
+
+```{r}
+nativeness_tokens <- 
+  nativeness_corpus %>% 
+  tokens(what = "word",
+         remove_punct = TRUE, 
+         remove_numbers = TRUE, 
+         remove_symbols = TRUE)
+
+nativeness_tokens %>% 
+  tokens_group(groups = type) %>% 
+  head()
+
+```
+
+```{r}
+nativeness_dfm <- 
+  nativeness_tokens %>% 
+  dfm()
+
+nativeness_dfm %>% 
+  head(n = 5)
+
+nativeness_dfm %>% 
+  dfm_group(groups = type) %>% 
+  head(n = 5)
+
+```
+
+```{r}
+nativeness_dfm %>% 
+  topfeatures(n = 25)
+```
+
+```{r}
+nativeness_dfm %>% 
+  textstat_frequency(n = 5, groups = type)
+```
+
+```{r}
+nativeness_dfm %>% 
+  dfm_tfidf() %>% 
+  textstat_frequency(n = 5, groups = type, force = TRUE)
+```
+```{r}
+set.seed(4321) # make reproducible
+
+num_docs <- 
+  nativeness_dfm %>% 
+  ndoc()
+
+train_size <- 
+  (num_docs * .75) %>% # get size of sample
+  round() # round to nearest whole number
+
+train_ids <- sample(x = 1:num_docs, # population
+                   size = train_size, # size of sample
+                   replace = FALSE) # without replacement
+```
+
+
+```{r}
+nativeness_dfm_train <- 
+  nativeness_dfm %>% 
+  dfm_subset(doc_id %in% train_ids)
+
+nativeness_dfm_test <- 
+  nativeness_dfm %>% 
+  dfm_subset(!doc_id %in% train_ids)
+```
+
+
+```{r}
+nativeness_dfm %>% 
+  docvars() %>% 
+  janitor::tabyl(type)
+
+nativeness_dfm_train %>% 
+  docvars() %>% 
+  janitor::tabyl(type)
+
+nativeness_dfm_test %>% 
+  docvars() %>% 
+  janitor::tabyl(type)
+```
+
+
+```{r}
+nb1 <- textmodel_nb(x = nativeness_dfm_train, y = nativeness_dfm_train$type)
+
+summary(nb1)
+coef(nb1) %>% head()
+
+predict(nb1, type = "prob") %>% # get the predicted document scores
+  tail # preview predicted probability scores
+```
+
+```{r}
+nb1_predictions <- 
+  predict(nb1, type = "prob") %>% # get the predicted document scores
+  as.data.frame() %>% # convert to data frame
+  mutate(document = rownames(.)) %>% # add the document names to the data frame
+  as_tibble() %>% # convert to tibble
+  pivot_longer(cols = c("Learner", "Native"), # convert from wide to long format
+               names_to = "prediction", # new column for ham/spam predictions
+               values_to = "probability") %>% # probablity scores for each
+  group_by(document) %>% # group parameter by document
+  slice_max(probability, n = 1) %>% # keep the document row with highest probablity
+  slice_head(n = 1) %>% # for predictions that were 50/50 
+  ungroup() %>% # remove grouping parameter
+  mutate(doc_id = str_remove(document, "text") %>% as.numeric) %>% # clean up document column so it matches doc_id in
+  arrange(doc_id) # order by doc_id
+
+nb1_predictions %>% 
+  slice_head(n = 10) # preview
+```
+
+
+```{r}
+nb1_predictions_actual <- 
+  cbind(actual = nb1$y, nb1_predictions) %>% # column-bind actual classes
+  select(doc_id, document, actual, prediction, probability) # organize variables
+
+nb1_predictions_actual %>% 
+  slice_head(n = 5) # preview
+```
+
+```{r}
+tab_class <- 
+  table(nb1_predictions_actual$actual, # actual class labels
+        nb1_predictions_actual$prediction) # predicted class labels
+
+caret::confusionMatrix(tab_class, mode = "prec_recall") # model performance statistics
+```
+
+
+```{r}
+predicted_class <- 
+  predict(nb1, newdata = nativeness_dfm_test)
+
+actual_class <- nativeness_dfm_test$type
+
+tab_class <- table(actual_class, predicted_class)  # cross-tabulate actual and predicted class labels
+
+caret::confusionMatrix(tab_class, mode = "prec_recall")  # model performance statistics
+
+
+```
+
+
 
 ## Preparation
 

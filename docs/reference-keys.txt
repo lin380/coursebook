@@ -86,6 +86,7 @@ tab:cd-structured-example-table-csv
 tab:cd-structured-read-single-run
 tab:cd-structured-idealized-dataset
 tab:cd-structure-lastfm-collapse-table
+tab:cd-structure-lastfm-order-arrange
 tab:cd-semi-sdac-idealized-dataset
 tab:cd-semi-sdac-text-8
 fig:cd-regex-101-image
