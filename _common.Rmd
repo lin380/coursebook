@@ -13,13 +13,13 @@ knitr::opts_chunk$set(
   tidy = TRUE
 )
 
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop) # remove graphics margins
 
-options(digits = 3)
+options(digits = 3) # default to 3 decimal places
 
-pacman::p_load(tidyverse, rmarkdown, here, DT, webshot, knitr, tidytext)
+pacman::p_load(tidyverse, rmarkdown, here, DT, webshot, knitr, tidytext) # base packages to include in each Rmd document
 
-theme_set(theme_minimal())
+theme_set(theme_minimal()) # default graphics theme
 
 options(knitr.table.format = function() {
   if (knitr::is_latex_output())

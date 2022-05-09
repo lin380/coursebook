@@ -1,9 +1,9 @@
-# Transform data {#transform-data}
+# Transform datasets {#transform-datasets-chapter}
 
 ```{r, child="_common.Rmd"}
 ```
 
-<p style="font-weight:bold; color:red;">DRAFT</p>
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > Nothing is lost. Everything is transformed.
 >
@@ -49,7 +49,7 @@ GOALS:
 pacman::p_load(tidyverse, knitr, tidytext, cleanNLP)
 ```
 
-In this chapter we turn out attention to the process of moving a curated dataset one step closer to analysis. Where in the process of curating data into a dataset the goal was to derived a tidy dataset that contained the main relational characteristics of the data for our text analysis project, the transformation step refines and potential expands these characteristics such that they are more in line with our analysis aims. In this chapter I have grouped various transformation steps into four categories: normalization, recoding, generation, and merging. It is of note that the these categories have been ordered and are covered separately for descriptive reasons. In practice the ordering of which transformation to apply before another is highly idiosyncrastic and requires that the researcher evaluate the characteristics of the dataset and the desired results.  
+In this chapter we turn out attention to the process of moving a curated dataset one step closer to analysis. Where in the process of curating data into a dataset the goal was to derived a tidy dataset that contained the main relational characteristics of the data for our text analysis project, the transformation step refines and potential expands these characteristics such that they are more in line with our analysis aims. In this chapter I have grouped various transformation steps into four categories: normalization, recoding, generation, and merging. It is of note that the these categories have been ordered and are covered separately for descriptive reasons. In practice the ordering of which transformation to apply before another is highly idiosyncratic and requires that the researcher evaluate the characteristics of the dataset and the desired results.  
 
 Furthermore, since in any given project there may be more than one analysis that may be performed on the data, there may be distinct transformation steps which correspond to each analysis approach. Therefore it is possible that there are more than one transformed dataset created from the curated dataset. This is one of the reasons that we create a curated dataset instead of derived a transformed dataset from the original data. The curated dataset serves as a point of departure from which multiple transformational methods can derive distinct formats for distinct analyses. 
 

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Prediction | Text as Data</title>
+<meta name="author" content="Jerid Francom">
+<meta name="description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter we will Orientation to the question(s) and dataset(s) to be explored … wricle_df &lt;- read_csv(file =...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Prediction | Text as Data">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://lin380.github.io/coursebook/prediction-chapter.html">
+<meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<meta property="og:description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter we will Orientation to the question(s) and dataset(s) to be explored … wricle_df &lt;- read_csv(file =...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Prediction | Text as Data">
+<meta name="twitter:site" content="@jeridfrancom">
+<meta name="twitter:description" content="INCOMPLETE DRAFT  …  The essential questions for this chapter are:  …  …  …   In this chapter we will Orientation to the question(s) and dataset(s) to be explored … wricle_df &lt;- read_csv(file =...">
+<meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Favicon --><link rel="shortcut icon" href="assets/images/favicon.ico">
+<!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-57189160-3', 'auto');
+      ga('send', 'pageview');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="An introduction to quantitative text analysis and reproducible research with R">Text as Data</a>:
+        <small class="text-muted">An introduction to quantitative text analysis and reproducible research with R</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li class="book-part">Foundations</li>
+<li><a class="" href="foundations-overview.html">Overview</a></li>
+<li><a class="" href="text-analysis-chapter.html"><span class="header-section-number">1</span> Text analysis in context</a></li>
+<li class="book-part">Orientation</li>
+<li><a class="" href="orientation-overview.html">Overview</a></li>
+<li><a class="" href="understanding-data-chapter.html"><span class="header-section-number">2</span> Understanding data</a></li>
+<li><a class="" href="approaching-analysis-chapter.html"><span class="header-section-number">3</span> Approaching analysis</a></li>
+<li><a class="" href="framing-research-chapter.html"><span class="header-section-number">4</span> Framing research</a></li>
+<li class="book-part">Preparation</li>
+<li><a class="" href="preparation-overview.html">Overview</a></li>
+<li><a class="" href="acquire-data-chapter.html"><span class="header-section-number">5</span> Acquire data</a></li>
+<li><a class="" href="curate-datasets-chapter.html"><span class="header-section-number">6</span> Curate data(sets)</a></li>
+<li><a class="" href="transform-datasets-chapter.html"><span class="header-section-number">7</span> Transform datasets</a></li>
+<li class="book-part">Analysis</li>
+<li><a class="" href="analysis-overview.html">Overview</a></li>
+<li><a class="" href="inference-chapter.html"><span class="header-section-number">8</span> Inference</a></li>
+<li><a class="active" href="prediction-chapter.html"><span class="header-section-number">9</span> Prediction</a></li>
+<li><a class="" href="exploration-chapter.html"><span class="header-section-number">10</span> Exploration</a></li>
+<li class="book-part">Communication</li>
+<li><a class="" href="communication-overview.html">Overview</a></li>
+<li><a class="" href="reporting-chapter.html"><span class="header-section-number">11</span> Reporting</a></li>
+<li><a class="" href="collaboration-chapter.html"><span class="header-section-number">12</span> Collaboration</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="appendix-data.html"><span class="header-section-number">A</span> Data</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/lin380/coursebook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="prediction-chapter" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Prediction<a class="anchor" aria-label="anchor" href="#prediction-chapter"><i class="fas fa-link"></i></a>
+</h1>
+<p style="font-weight:bold; color:red;">
+INCOMPLETE DRAFT
+</p>
+<blockquote>
+<p>…</p>
+</blockquote>
+<div class="rmdkey">
+<p>
+The essential questions for this chapter are:
+</p>
+<ul>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+</ul>
+</div>
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- ...
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+<!-- IDEAS:
+
+- English/ Spanish language detection (chapter)
+  - ACTIVES
+  - SUBTLEX_us
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/Course/Video lectures/Language
+
+- SPAM (recipe)
+  - SMS messages
+  - tadr::sms
+
+- Nativeness (chapter)
+  - CEDEL2 (Spanish)
+  - Wricle and Locness (English?)
+    - http://wricle.learnercorpora.com/
+    - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/LOCNESS
+      - Overall prediction native/ learner
+      - ?Genitive construction markers native/ learner
+      - ?Consider exploring the Mudpar approach
+
+- Authorship (lab)
+  - /Users/francojc/Documents/Academic/Research/Data/Language/Corpora/Federalist papers
+  - /Users/francojc/Documents/Academic/Teaching/Courses/2018-2019 Spring/LIN 380/RStudio/Data/Federalist/Documents
+  
+- RateMyProfessor (from recipe 8)  
+  - https://data.mendeley.com/datasets/fvtfjyvw7d/2
+
+-->
+<p>In this chapter we will</p>
+<p>Orientation to the question(s) and dataset(s) to be explored …</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wricle_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"resources/10-prediction/data/derived/wricle_formal_curated.csv"</span><span class="op">)</span>
+
+<span class="va">locness_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"resources/10-prediction/data/derived/locness_curated.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learners_df</span> <span class="op">&lt;-</span> <span class="va">wricle_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">native_language</span> <span class="op">==</span> <span class="st">"Spanish"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>student <span class="op">=</span> <span class="st">"Spanish"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Learner"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>essay_id <span class="op">=</span> <span class="va">id</span>, <span class="va">type</span>, <span class="va">student</span>, <span class="va">essay</span><span class="op">)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">learners_df</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 689</span>
+<span class="co">#&gt; Columns: 4</span>
+<span class="co">#&gt; $ essay_id &lt;chr&gt; "A1-1", "A1-2", "A10-1", "A10-2", "A101-1", "A101-2", "A101-3…</span>
+<span class="co">#&gt; $ type     &lt;chr&gt; "Learner", "Learner", "Learner", "Learner", "Learner", "Learn…</span>
+<span class="co">#&gt; $ student  &lt;chr&gt; "Spanish", "Spanish", "Spanish", "Spanish", "Spanish", "Spani…</span>
+<span class="co">#&gt; $ essay    &lt;chr&gt; "In our present society gay people is asking for the same rig…</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">natives_df</span> <span class="op">&lt;-</span> <span class="va">locness_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">doc_id</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"file_id"</span>, <span class="st">"essay_id"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>doc_id <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">doc_id</span>, <span class="st">"\\.txt"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Native"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>essay_id <span class="op">=</span> <span class="va">doc_id</span>, <span class="va">type</span>, <span class="va">student</span>, <span class="va">essay</span><span class="op">)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">natives_df</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 411</span>
+<span class="co">#&gt; Columns: 4</span>
+<span class="co">#&gt; $ essay_id &lt;chr&gt; "alevels1-1", "alevels1-2", "alevels1-3", "alevels1-4", "alev…</span>
+<span class="co">#&gt; $ type     &lt;chr&gt; "Native", "Native", "Native", "Native", "Native", "Native", "…</span>
+<span class="co">#&gt; $ student  &lt;chr&gt; "British", "British", "British", "British", "British", "Briti…</span>
+<span class="co">#&gt; $ essay    &lt;chr&gt; "The basic dilema facing the UK's rail and road transport sys…</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">learners_df</span>, <span class="va">natives_df</span><span class="op">)</span>  <span class="co"># combine</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span>
+<span class="co">#&gt;     type   n percent</span>
+<span class="co">#&gt;  Learner 689   0.626</span>
+<span class="co">#&gt;   Native 411   0.374</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="st">"word"</span>, input <span class="op">=</span> <span class="st">"essay"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_words <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 × 2</span>
+<span class="co">#&gt;   type    total_words</span>
+<span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt;</span>
+<span class="co">#&gt; 1 Learner      640535</span>
+<span class="co">#&gt; 2 Native       324269</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_corpus</span> <span class="op">&lt;-</span> <span class="va">nativeness_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">corpus</span><span class="op">(</span>text_field <span class="op">=</span> <span class="st">"essay"</span><span class="op">)</span>
+
+<span class="va">nativeness_corpus_summary</span> <span class="op">&lt;-</span> <span class="va">nativeness_corpus</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">ndoc</span><span class="op">(</span><span class="va">nativeness_corpus</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">nativeness_corpus_summary</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+<span class="co">#&gt; Corpus consisting of 1100 documents, showing 1100 documents:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    Text Types Tokens Sentences essay_id    type student</span>
+<span class="co">#&gt;   text1   210    496        26     A1-1 Learner Spanish</span>
+<span class="co">#&gt;   text2   253    655        29     A1-2 Learner Spanish</span>
+<span class="co">#&gt;   text3   280    722        30    A10-1 Learner Spanish</span>
+<span class="co">#&gt;   text4   177    389        15    A10-2 Learner Spanish</span>
+<span class="co">#&gt;   text5   245    636        19   A101-1 Learner Spanish</span>
+<span class="co">#&gt;   text6   219    692        17   A101-2 Learner Spanish</span>
+<span class="co">#&gt;   text7   213    615        16   A101-3 Learner Spanish</span>
+<span class="co">#&gt;   text8   319    914        23   A101-4 Learner Spanish</span>
+<span class="co">#&gt;   text9   253    654        19   A102-1 Learner Spanish</span>
+<span class="co">#&gt;  text10   310    816        21   A102-2 Learner Spanish</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_corpus</span><span class="op">$</span><span class="va">doc_id</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu">ndoc</span><span class="op">(</span><span class="va">nativeness_corpus</span><span class="op">)</span>
+
+<span class="va">nativeness_corpus</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">docvars</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="co">#&gt;   essay_id    type student doc_id</span>
+<span class="co">#&gt; 1     A1-1 Learner Spanish      1</span>
+<span class="co">#&gt; 2     A1-2 Learner Spanish      2</span>
+<span class="co">#&gt; 3    A10-1 Learner Spanish      3</span>
+<span class="co">#&gt; 4    A10-2 Learner Spanish      4</span>
+<span class="co">#&gt; 5   A101-1 Learner Spanish      5</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_tokens</span> <span class="op">&lt;-</span> <span class="va">nativeness_corpus</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">tokens</span><span class="op">(</span>what <span class="op">=</span> <span class="st">"word"</span>, remove_punct <span class="op">=</span> <span class="cn">TRUE</span>, remove_numbers <span class="op">=</span> <span class="cn">TRUE</span>, remove_symbols <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="va">nativeness_tokens</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">tokens_group</span><span class="op">(</span>groups <span class="op">=</span> <span class="va">type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Tokens consisting of 2 documents and 1 docvar.</span>
+<span class="co">#&gt; Learner :</span>
+<span class="co">#&gt;  [1] "In"      "our"     "present" "society" "gay"     "people"  "is"     </span>
+<span class="co">#&gt;  [8] "asking"  "for"     "the"     "same"    "rights" </span>
+<span class="co">#&gt; [ ... and 636,407 more ]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Native :</span>
+<span class="co">#&gt;  [1] "The"       "basic"     "dilema"    "facing"    "the"       "UK's"     </span>
+<span class="co">#&gt;  [7] "rail"      "and"       "road"      "transport" "system"    "is"       </span>
+<span class="co">#&gt; [ ... and 321,936 more ]</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm</span> <span class="op">&lt;-</span> <span class="va">nativeness_tokens</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="co">#&gt; Document-feature matrix of: 5 documents, 28,129 features (99.24% sparse) and 4 docvars.</span>
+<span class="co">#&gt;        features</span>
+<span class="co">#&gt; docs    in our present society gay people is asking for the</span>
+<span class="co">#&gt;   text1 12   5       4       5   5     10 12      1   3  23</span>
+<span class="co">#&gt;   text2 26   2       1       4   0     10 14      0   1  45</span>
+<span class="co">#&gt;   text3 12   4       0       4   9     16 12      0   0  12</span>
+<span class="co">#&gt;   text4 15   1       0       1   0      9  7      0   1  10</span>
+<span class="co">#&gt;   text5 15   1       1       2   0      7 17      0   6  40</span>
+<span class="co">#&gt; [ reached max_nfeat ... 28,119 more features ]</span>
+
+<span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm_group</span><span class="op">(</span>groups <span class="op">=</span> <span class="va">type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="co">#&gt; Document-feature matrix of: 2 documents, 28,129 features (33.74% sparse) and 1 docvar.</span>
+<span class="co">#&gt;          features</span>
+<span class="co">#&gt; docs         in  our present society gay people    is asking  for   the</span>
+<span class="co">#&gt;   Learner 15518 1279     322    1269 520   5980 12931     33 4993 36728</span>
+<span class="co">#&gt;   Native   6357  584     109     422   6   1569  6307     12 3144 21090</span>
+<span class="co">#&gt; [ reached max_nfeat ... 28,119 more features ]</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">topfeatures</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+<span class="co">#&gt;     the      of      to     and      in    that       a      is      it    this </span>
+<span class="co">#&gt;   57818   32821   31155   24158   21875   20847   19981   19238   11259   10357 </span>
+<span class="co">#&gt;      be     are    they     not     for      as  people    have    with      or </span>
+<span class="co">#&gt;   10096   10085    8438    8196    8137    7977    7549    7506    6007    5568 </span>
+<span class="co">#&gt;   their       i      on      by because </span>
+<span class="co">#&gt;    5192    5128    4820    4579    4511</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">textstat_frequency</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, groups <span class="op">=</span> <span class="va">type</span><span class="op">)</span>
+<span class="co">#&gt;    feature frequency rank docfreq   group</span>
+<span class="co">#&gt; 1      the     36728    1     689 Learner</span>
+<span class="co">#&gt; 2       of     22095    2     689 Learner</span>
+<span class="co">#&gt; 3       to     20417    3     689 Learner</span>
+<span class="co">#&gt; 4     that     15929    4     689 Learner</span>
+<span class="co">#&gt; 5      and     15836    5     689 Learner</span>
+<span class="co">#&gt; 6      the     21090    1     410  Native</span>
+<span class="co">#&gt; 7       to     10738    2     410  Native</span>
+<span class="co">#&gt; 8       of     10726    3     410  Native</span>
+<span class="co">#&gt; 9      and      8322    4     409  Native</span>
+<span class="co">#&gt; 10       a      6827    5     410  Native</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm_tfidf</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">textstat_frequency</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, groups <span class="op">=</span> <span class="va">type</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt;      feature frequency rank docfreq   group</span>
+<span class="co">#&gt; 1   abortion      1108    1      69 Learner</span>
+<span class="co">#&gt; 2  marijuana       901    2      46 Learner</span>
+<span class="co">#&gt; 3  education       746    3     204 Learner</span>
+<span class="co">#&gt; 4   children       735    4     317 Learner</span>
+<span class="co">#&gt; 5        sex       658    5     133 Learner</span>
+<span class="co">#&gt; 6         he       803    1     199  Native</span>
+<span class="co">#&gt; 7        his       573    2     194  Native</span>
+<span class="co">#&gt; 8    candide       522    3      27  Native</span>
+<span class="co">#&gt; 9      quote       402    4      26  Native</span>
+<span class="co">#&gt; 10  caligula       394    5      11  Native</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4321</span><span class="op">)</span> <span class="co"># make reproducible</span>
+
+<span class="va">num_docs</span> <span class="op">&lt;-</span> 
+  <span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">ndoc</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">train_size</span> <span class="op">&lt;-</span> 
+  <span class="op">(</span><span class="va">num_docs</span> <span class="op">*</span> <span class="fl">.75</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get size of sample</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># round to nearest whole number</span>
+
+<span class="va">train_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">num_docs</span>, <span class="co"># population</span>
+                   size <span class="op">=</span> <span class="va">train_size</span>, <span class="co"># size of sample</span>
+                   replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># without replacement</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm_train</span> <span class="op">&lt;-</span> <span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm_subset</span><span class="op">(</span><span class="va">doc_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">train_ids</span><span class="op">)</span>
+
+<span class="va">nativeness_dfm_test</span> <span class="op">&lt;-</span> <span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">dfm_subset</span><span class="op">(</span><span class="op">!</span><span class="va">doc_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">train_ids</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nativeness_dfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">docvars</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span>
+<span class="co">#&gt;     type   n percent</span>
+<span class="co">#&gt;  Learner 689   0.626</span>
+<span class="co">#&gt;   Native 411   0.374</span>
+
+<span class="va">nativeness_dfm_train</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">docvars</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span>
+<span class="co">#&gt;     type   n percent</span>
+<span class="co">#&gt;  Learner 516   0.625</span>
+<span class="co">#&gt;   Native 309   0.375</span>
+
+<span class="va">nativeness_dfm_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">docvars</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/tabyl.html">tabyl</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span>
+<span class="co">#&gt;     type   n percent</span>
+<span class="co">#&gt;  Learner 173   0.629</span>
+<span class="co">#&gt;   Native 102   0.371</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nb1</span> <span class="op">&lt;-</span> <span class="fu">textmodel_nb</span><span class="op">(</span>x <span class="op">=</span> <span class="va">nativeness_dfm_train</span>, y <span class="op">=</span> <span class="va">nativeness_dfm_train</span><span class="op">$</span><span class="va">type</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">nb1</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; textmodel_nb.dfm(x = nativeness_dfm_train, y = nativeness_dfm_train$type)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Class Priors:</span>
+<span class="co">#&gt; (showing first 2 elements)</span>
+<span class="co">#&gt; Learner  Native </span>
+<span class="co">#&gt;     0.5     0.5 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Estimated Feature Scores:</span>
+<span class="co">#&gt;             in     our  present society      gay  people     is   asking</span>
+<span class="co">#&gt; Learner 0.0230 0.00186 0.000476 0.00193 7.62e-04 0.00889 0.0193 5.76e-05</span>
+<span class="co">#&gt; Native  0.0174 0.00163 0.000315 0.00114 2.22e-05 0.00460 0.0176 2.96e-05</span>
+<span class="co">#&gt;             for    the     same   rights   that heterosexual    some     of</span>
+<span class="co">#&gt; Learner 0.00747 0.0544 0.001318 0.000909 0.0238     3.06e-04 0.00476 0.0328</span>
+<span class="co">#&gt; Native  0.00886 0.0582 0.000563 0.000252 0.0140     1.11e-05 0.00157 0.0298</span>
+<span class="co">#&gt;            this     are     to      be  allowed      get  married    and</span>
+<span class="co">#&gt; Learner 0.01148 0.01114 0.0300 0.01023 0.000326 0.001054 3.67e-04 0.0233</span>
+<span class="co">#&gt; Native  0.00796 0.00745 0.0296 0.00932 0.000278 0.000763 8.52e-05 0.0224</span>
+<span class="co">#&gt;            adopt children  request     has    been accepted</span>
+<span class="co">#&gt; Learner 2.64e-04  0.00268 1.39e-05 0.00414 0.00187 0.000137</span>
+<span class="co">#&gt; Native  3.71e-05  0.00119 2.22e-05 0.00435 0.00213 0.000141</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">nb1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt;          Learner   Native</span>
+<span class="co">#&gt; in      0.023045 1.74e-02</span>
+<span class="co">#&gt; our     0.001856 1.63e-03</span>
+<span class="co">#&gt; present 0.000476 3.15e-04</span>
+<span class="co">#&gt; society 0.001929 1.14e-03</span>
+<span class="co">#&gt; gay     0.000762 2.22e-05</span>
+<span class="co">#&gt; people  0.008893 4.60e-03</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">nb1</span>, type <span class="op">=</span> <span class="st">"prob"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get the predicted document scores</span>
+  <span class="va">tail</span> <span class="co"># preview predicted probability scores</span>
+<span class="co">#&gt;            Learner Native</span>
+<span class="co">#&gt; text1092 2.37e-164      1</span>
+<span class="co">#&gt; text1094  3.18e-28      1</span>
+<span class="co">#&gt; text1095  8.53e-49      1</span>
+<span class="co">#&gt; text1096  1.83e-37      1</span>
+<span class="co">#&gt; text1097  7.45e-39      1</span>
+<span class="co">#&gt; text1098  2.35e-55      1</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nb1_predictions</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">nb1</span>, type <span class="op">=</span> <span class="st">"prob"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get the predicted document scores</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># convert to data frame</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>document <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># add the document names to the data frame</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># convert to tibble</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Learner"</span>, <span class="st">"Native"</span><span class="op">)</span>, <span class="co"># convert from wide to long format</span>
+               names_to <span class="op">=</span> <span class="st">"prediction"</span>, <span class="co"># new column for ham/spam predictions</span>
+               values_to <span class="op">=</span> <span class="st">"probability"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># probablity scores for each</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">document</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># group parameter by document</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">probability</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># keep the document row with highest probablity</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># for predictions that were 50/50 </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove grouping parameter</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>doc_id <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">document</span>, <span class="st">"text"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">as.numeric</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># clean up document column so it matches doc_id in</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">doc_id</span><span class="op">)</span> <span class="co"># order by doc_id</span>
+
+<span class="va">nb1_predictions</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># preview</span>
+<span class="co">#&gt; # A tibble: 10 × 4</span>
+<span class="co">#&gt;    document prediction probability doc_id</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 text1    Learner              1      1</span>
+<span class="co">#&gt;  2 text3    Learner              1      3</span>
+<span class="co">#&gt;  3 text4    Learner              1      4</span>
+<span class="co">#&gt;  4 text5    Learner              1      5</span>
+<span class="co">#&gt;  5 text6    Learner              1      6</span>
+<span class="co">#&gt;  6 text8    Learner              1      8</span>
+<span class="co">#&gt;  7 text9    Learner              1      9</span>
+<span class="co">#&gt;  8 text11   Learner              1     11</span>
+<span class="co">#&gt;  9 text12   Learner              1     12</span>
+<span class="co">#&gt; 10 text13   Learner              1     13</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nb1_predictions_actual</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>actual <span class="op">=</span> <span class="va">nb1</span><span class="op">$</span><span class="va">y</span>, <span class="va">nb1_predictions</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># column-bind actual classes</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">doc_id</span>, <span class="va">document</span>, <span class="va">actual</span>, <span class="va">prediction</span>, <span class="va">probability</span><span class="op">)</span> <span class="co"># organize variables</span>
+
+<span class="va">nb1_predictions_actual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># preview</span>
+<span class="co">#&gt;   doc_id document  actual prediction probability</span>
+<span class="co">#&gt; 1      1    text1 Learner    Learner           1</span>
+<span class="co">#&gt; 2      3    text3 Learner    Learner           1</span>
+<span class="co">#&gt; 3      4    text4 Learner    Learner           1</span>
+<span class="co">#&gt; 4      5    text5 Learner    Learner           1</span>
+<span class="co">#&gt; 5      6    text6 Learner    Learner           1</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tab_class</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">nb1_predictions_actual</span><span class="op">$</span><span class="va">actual</span>, <span class="co"># actual class labels</span>
+        <span class="va">nb1_predictions_actual</span><span class="op">$</span><span class="va">prediction</span><span class="op">)</span> <span class="co"># predicted class labels</span>
+
+<span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span><span class="va">tab_class</span>, mode <span class="op">=</span> <span class="st">"prec_recall"</span><span class="op">)</span> <span class="co"># model performance statistics</span>
+<span class="co">#&gt; Confusion Matrix and Statistics</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;          </span>
+<span class="co">#&gt;           Learner Native</span>
+<span class="co">#&gt;   Learner     516      0</span>
+<span class="co">#&gt;   Native       10    299</span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;                Accuracy : 0.988         </span>
+<span class="co">#&gt;                  95% CI : (0.978, 0.994)</span>
+<span class="co">#&gt;     No Information Rate : 0.638         </span>
+<span class="co">#&gt;     P-Value [Acc &gt; NIR] : &lt; 2e-16       </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;                   Kappa : 0.974         </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;  Mcnemar's Test P-Value : 0.00443       </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;               Precision : 1.000         </span>
+<span class="co">#&gt;                  Recall : 0.981         </span>
+<span class="co">#&gt;                      F1 : 0.990         </span>
+<span class="co">#&gt;              Prevalence : 0.638         </span>
+<span class="co">#&gt;          Detection Rate : 0.625         </span>
+<span class="co">#&gt;    Detection Prevalence : 0.625         </span>
+<span class="co">#&gt;       Balanced Accuracy : 0.990         </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;        'Positive' Class : Learner       </span>
+<span class="co">#&gt; </span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">predicted_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">nb1</span>, newdata <span class="op">=</span> <span class="va">nativeness_dfm_test</span><span class="op">)</span>
+
+<span class="va">actual_class</span> <span class="op">&lt;-</span> <span class="va">nativeness_dfm_test</span><span class="op">$</span><span class="va">type</span>
+
+<span class="va">tab_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">actual_class</span>, <span class="va">predicted_class</span><span class="op">)</span>  <span class="co"># cross-tabulate actual and predicted class labels</span>
+
+<span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span><span class="va">tab_class</span>, mode <span class="op">=</span> <span class="st">"prec_recall"</span><span class="op">)</span>  <span class="co"># model performance statistics</span>
+<span class="co">#&gt; Confusion Matrix and Statistics</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;             predicted_class</span>
+<span class="co">#&gt; actual_class Learner Native</span>
+<span class="co">#&gt;      Learner     172      1</span>
+<span class="co">#&gt;      Native        9     93</span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;                Accuracy : 0.964         </span>
+<span class="co">#&gt;                  95% CI : (0.934, 0.982)</span>
+<span class="co">#&gt;     No Information Rate : 0.658         </span>
+<span class="co">#&gt;     P-Value [Acc &gt; NIR] : &lt;2e-16        </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;                   Kappa : 0.921         </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;  Mcnemar's Test P-Value : 0.0269        </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;               Precision : 0.994         </span>
+<span class="co">#&gt;                  Recall : 0.950         </span>
+<span class="co">#&gt;                      F1 : 0.972         </span>
+<span class="co">#&gt;              Prevalence : 0.658         </span>
+<span class="co">#&gt;          Detection Rate : 0.625         </span>
+<span class="co">#&gt;    Detection Prevalence : 0.629         </span>
+<span class="co">#&gt;       Balanced Accuracy : 0.970         </span>
+<span class="co">#&gt;                                         </span>
+<span class="co">#&gt;        'Positive' Class : Learner       </span>
+<span class="co">#&gt; </span></code></pre></div>
+<div id="preparation-1" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Preparation<a class="anchor" aria-label="anchor" href="#preparation-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data set transformation</p>
+<p>Splitting into training and test sets</p>
+</div>
+<div id="model-training" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Model training<a class="anchor" aria-label="anchor" href="#model-training"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aim to use the create an abstraction of the patterns in the dataset</p>
+<ul>
+<li><p>Feature engineering</p></li>
+<li><p>Model selection</p></li>
+<li><p>Model evaluation</p></li>
+</ul>
+<p>The In Figure () Let’s consider the results from a hypothetical model of text classification on the SMS dataset I introduced at in this subsection.</p>
+<ul>
+<li>accuracy (measure of overall correct predictions)</li>
+<li>precision (measure of the quality of the predictions)
+<ul>
+<li>Percentage of predicted ‘ham’ messages that were correct</li>
+</ul>
+</li>
+<li>recall (measure of the quantity of the predictions)
+<ul>
+<li>Percentage of actual ‘ham’ messages that were correct</li>
+</ul>
+</li>
+<li>F1-score (summarizes the balance between precision and recall)</li>
+</ul>
+<p>Avoiding overfitting</p>
+</div>
+<div id="model-testing" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Model testing<a class="anchor" aria-label="anchor" href="#model-testing"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aim to test the abstracted model to new observations.</p>
+<p>Model testing</p>
+</div>
+<div id="evaluation" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Evaluation<a class="anchor" aria-label="anchor" href="#evaluation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Evaluation of results</p>
+<p>Relationship between predicted and actual classes in a confusion matrix as seen in Figure <a href="prediction-chapter.html#fig:pda-confusion-matrix-image">9.1</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pda-confusion-matrix-image"></span>
+<img src="images/10-prediction/pda-confusion-matrix.png" alt="Confusion matrix" width="90%"><p class="caption">
+Figure 9.1: Confusion matrix
+</p>
+</div>
+</div>
+<div id="section" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> …<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+</h2>
+<p>In Table () we see the top five terms for each class after breaking the messages into terms and then counting up the frequencies.</p>
+<!-- There are a couple things we may want to take into consideration given our first-pass results. First, there appears to some overlap in the top terms in each class (i.e. 'you', 'to', and 'a'). Ideally we want to create maximum separation between the terms that are most indicative of each class. Think of this from the point of view of a human learner. If you were to study a frequency list like this to try to learn how do distinguish between 'spam' and 'ham' and then you were given the term 'you' to make your decision on a test your decision would almost be a complete guess --the uncertainty is high because term figures prominently in both classes. Second you will note that the frequency for the first five terms of 'ham' is much higher than terms in 'spam'. This imbalance suggests that there are simply more 'ham' messages in our data or that 'ham' messages are longer (have more terms), or both. Any of these sources can potentially bias our machine learner to choose 'ham' over 'spam' for reasons which are not founded on the distinction between terms. -->
+</div>
+<div id="summary-12" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Summary<a class="anchor" aria-label="anchor" href="#summary-12"><i class="fas fa-link"></i></a>
+</h2>
+<p>…</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="inference-chapter.html"><span class="header-section-number">8</span> Inference</a></div>
+<div class="next"><a href="exploration-chapter.html"><span class="header-section-number">10</span> Exploration</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prediction-chapter"><span class="header-section-number">9</span> Prediction</a></li>
+<li><a class="nav-link" href="#preparation-1"><span class="header-section-number">9.1</span> Preparation</a></li>
+<li><a class="nav-link" href="#model-training"><span class="header-section-number">9.2</span> Model training</a></li>
+<li><a class="nav-link" href="#model-testing"><span class="header-section-number">9.3</span> Model testing</a></li>
+<li><a class="nav-link" href="#evaluation"><span class="header-section-number">9.4</span> Evaluation</a></li>
+<li><a class="nav-link" href="#section"><span class="header-section-number">9.5</span> …</a></li>
+<li><a class="nav-link" href="#summary-12"><span class="header-section-number">9.6</span> Summary</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/lin380/coursebook/blob/master/10-prediction.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/lin380/coursebook/edit/master/10-prediction.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on May 09, 2022 (latest version).</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -27,7 +27,6 @@ pre code {
   font-size: .75rem; /* added to make code output smaller */
 }
 
-
 /* Sidebar formating --------------------------------------------*/
 
 div.sidebar {
@@ -51,19 +50,30 @@ div.sidebar {
 
 /* Notes */
 
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdquestion, .rmdstudy {
+.rmdkey, .rmdcode,  .rmdquestion, .rmdstudy, .rmdtip, .rmdwarning, .rmdactivity, .rmdlab {
   border-radius: 10px;
   border: 2px solid rgb(225,225,225);
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
+  background: rgb(248,248,248) no-repeat 5px center/3em; /* grey for all */
 }
+
+/* block colors
 
 .rmdkey {
   background: rgb(248,248,248) no-repeat 5px center/3em;
 }
 
-.rmdnote  {
-  background: rgb(235,249,144) no-repeat 5px center/3em;
+.rmdcode {
+  background: rgb(144,249,158) no-repeat 5px center/3em;
+}
+
+.rmdquestion {
+  background: rgb(192,148,224) no-repeat 5px center/3em;
+}
+
+.rmdstudy {
+  background: rgb(249,219,174) no-repeat 5px center/3em;
 }
 
 .rmdtip  {
@@ -74,36 +84,46 @@ div.sidebar {
   background: rgb(249,158,144) no-repeat 5px center/3em;
 }
 
-.rmdactivity {
-  background: rgb(144,249,158) no-repeat 5px center/3em;
+.rmdactivity  {
+  background: rgb(235,249,144) no-repeat 5px center/3em;
 }
 
-.rmdquestion {
-  background: rgb(114,249,204) no-repeat 5px center/3em;
+.rmdlab  {
+  background: rgb(235,249,144) no-repeat 5px center/3em;
 }
 
-.rmdstudy {
-  background: rgb(249,219,174) no-repeat 5px center/3em;
-}
+*/
+
+/* block images */
 
 .rmdkey {
   background-image: url("images/key.png");
 }
-.rmdnote {
-  background-image: url("images/note.png");
+
+.rmdcode {
+  background-image: url("images/code.png");
 }
+
+.rmdquestion {
+  background-image: url("images/question.png");
+}
+
 .rmdtip {
   background-image: url("images/tip.png");
 }
+
 .rmdwarning {
   background-image: url("images/warning.png");
 }
-.rmdactivity {
-  background-image: url("images/code.png");
-}
+
 .rmdstudy {
-  background-image: url("images/paper.png");
+  background-image: url("images/study.png");
 }
-.rmdquestion {
-  background-image: url("images/question.png");
+
+.rmdactivity {
+  background-image: url("images/activity.png");
+}
+
+.rmdlab {
+  background-image: url("images/lab.png");
 }

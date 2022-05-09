@@ -1,9 +1,9 @@
-# Approaching analysis {#approaching-analysis}
+# Approaching analysis {#approaching-analysis-chapter}
 
 ```{r, child="_common.Rmd"}
 ```
 
-<p style="font-weight:bold; color:red;">DRAFT</p>
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write.
 > 
@@ -970,7 +970,7 @@ gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2)
 
 Just as feature selection and analysis method, the interpretation of the results in EDA are much more varied than in the other analysis methods. EDA methods provide information which requires much more human intervention and associative interpretation. In this way, EDA can be seen as a quantitatively informed qualitative assessment approach. The results from one approach can be used as the input to another. Findings can lead to further exploration and probing of nuances in the data. Speculative as they are the results from exploratory methods can be highly informative and lead to new insight and inspire further study in directions that may not have been expected.
 
-## Reporting
+## Reporting {#reporting}
 
 Much of the necessary reporting for an analysis features in prose as part of the write-up of a report or article. This will include descriptive summaries, a blueprint of the method(s) used, and the results. Descriptive summaries will often include assessments of individual variables and/ or relationships between variables (central tendency, dispersion, association strength, etc.). Any procedures applied to diagnose or to correct the data should also be included in the final report. This information is key to helping readers assess the results from the analysis. A blueprint of the methods used will describe the variable selection process, how the variables were used in the statistical analysis, and any other information that is relevant for a reader to understand what was done and why it was done. Reporting results from an analysis will depend on the type of analysis and the particular method(s) employed. For inferential analyses this will include the test statistic(s) ($X^2$, $R^2$, etc.) and some measure of confidence ($p$-value, confidence interval, effect size). In predictive analyses accuracy results and related information will need to be reported. For exploratory analyses, the reporting of results will vary and often include visualizations and metrics that require more human interpretation than the other analysis types.
 

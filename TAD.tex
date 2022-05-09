@@ -4,17 +4,6 @@
 %
 \documentclass[
 ]{article}
-\title{Text as Data}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{An introduction to quantitative text analysis and reproducible research with R}
-\author{Jerid Francom}
-\date{December 13, 2021 (latest version)}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -188,25 +177,22 @@
   {\begin{rmdblock}{question}}
   {\end{rmdblock}}
 
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+
+\title{Text as Data}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{An introduction to quantitative text analysis and reproducible research with R}
+\author{Jerid Francom}
+\date{March 21, 2022 (latest version)}
 
 \begin{document}
 \maketitle
@@ -219,7 +205,7 @@
 \section*{Welcome}\label{welcome}}
 \addcontentsline{toc}{section}{Welcome}
 
-INCOMPLETE DRAFT
+DRAFT
 
 This is the coursebook to accompany Linguistics 380 ``Language Use and Technology'' at Wake Forest University. The working title for this coursebook is \emph{Text as Data: An Introduction to Quantitative Text Analysis and Reproducible Research with R}.
 
@@ -275,7 +261,7 @@ The essential questions for this chapter are:
 \end{itemize}
 \end{rmdkey}
 
-This chapter aims to provide a brief summary of current research trends that form the context for the rationale for this coursebook It also provides instructors and students an overview of the purpose and approach of the coursebook It will also include a description of the main components of each section and chapter and provide a guide to conventions used in the book and resources available.
+This chapter aims to provide a brief summary of current research trends that form the context for the rationale for this coursebook. It also provides instructors and students an overview of the purpose and approach of the coursebook It will also include a description of the main components of each section and chapter and provide a guide to conventions used in the book and resources available.
 
 \hypertarget{rationale}{%
 \subsection*{Rationale}\label{rationale}}
@@ -424,11 +410,13 @@ Inline code will be used when code blocks are short and the results are not need
 
 When necessary meta-description of code will appear. This is particularly relevant for R Markdown documents.
 
-\begin{verbatim}
-```{r test-code}
-1 + 1
-```
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r test{-}code\}}
+\NormalTok{1 + 1}
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
 
 In terms of prose, key concepts will be signaled using \textbf{\emph{bold italics}}. Terms that appear in this typeface will also appear in the {[}glossary{]} at the end of the text (TODO). Furthermore, there are four pose text blocks that will be used to signal the reader's attention: \emph{key points}, \emph{notes}, \emph{tips}, \emph{questions}, and \emph{warnings}.
 
@@ -447,6 +435,12 @@ In this chapter you will learn:
   important text conventions employed in this coursebook
 \end{itemize}
 \end{rmdkey}
+
+Case studies are provided in-line which highlight key concepts and/ or methodological approaches relevant to the current topic or section.
+
+\begin{rmdstudy}
+\citet{Eisenstein2012} track the geographic spread of neologisms from city to city in the United States using Twitter data collected between 6/2009 and 5/2011. They only used tweets with geolocation data and then associated each tweet with a zipcode using the US Census. The most populous metropolitan areas were used. They also used the demographics from these areas to make associations between lexical innovations and demographic attributes. From this analysis they are able to reconstruct a network of linguistic influence. One of the main findings is that demographically-similar cities are more likely to share linguistic influence. At the individual level, there is a strong, potentially stronger role of demographics than geographical location.
+\end{rmdstudy}
 
 Notes provide a bit more information on the topic or where to find more information.
 
@@ -478,6 +472,12 @@ Consider the objectives in this course: what ways can the knowledge and
 skills you will learn benefit you in your academic studies and/ or
 professional and personal life?
 \end{rmdquestion}
+
+Activities\ldots.
+
+\begin{rmdactivity}
+This is an activity\ldots.
+\end{rmdactivity}
 
 Errors will be an inevitable part of learning, but some errors can be avoided. The text will used the warning text block to highlight typical pitfalls and errors.
 
@@ -621,7 +621,7 @@ In this chapter I will aim to introduce the topic of text analysis and text anal
 \hypertarget{making-sense-of-a-complex-world}{%
 \subsection{Making sense of a complex world}\label{making-sense-of-a-complex-world}}
 
-The world around us is full of actions and interactions so numerous that it is difficult to really comprehend. Through the lens each individual sees and experiences this world. We gain knowledge about this world and build up heuristic knowledge about how it works and how we do and can interact with it. This happens regardless of your educational background. As humans we are built for this. Our minds process countless sensory inputs many of which never make it to our conscious mind. They underlie skills and abilities that we take for granted like being able to predict what will happen if you see someone about to knock a wine glass off a table and onto a concrete floor. You've never seen this object before and this is the first time you've been to this winery, but somehow and from somewhere you `instinctively' make an effort to warn the would-be-glass-breaker before it is too late. You most likely have not stopped to consider where this predictive knowledge has come from, or if you have, you may have just chalked it up to `common sense'. As common as it may be, it is an incredible display of the brain's capacity to monitor your environment, relate the events and observations that take place, and store that information all the time not making a big fuss to tell you conscious mind what it's up to.
+The world around us is full of actions and interactions so numerous that it is difficult to really comprehend. Through the lens each individual sees and experiences this world. We gain knowledge about this world and build up heuristic knowledge about how it works and how we do and can interact with it. This happens regardless of your educational background. As humans we are built for this. Our minds process countless sensory inputs many of which never make it to our conscious mind. They underlie skills and abilities that we take for granted like being able to predict what will happen if you see someone about to knock a wine glass off a table and onto a concrete floor. You've never seen this object before and this is the first time you've been to this winery, but somehow and from somewhere you `instinctively' make an effort to warn the would-be-glass-breaker before it is too late. You most likely have not stopped to consider where this predictive knowledge has come from, or if you have, you may have just chalked it up to `common sense'. As common as it may be, it is an incredible display of the brain's capacity to monitor your environment, relate the events and observations that take place, and store that information all the time not making a big fuss to tell your conscious mind what it's up to.
 
 So wait, this is a coursebook on text analytics and language, right? So what does all this have to do with that? Well, there are two points to make that are relevant for framing our journey: (1) the world is full of countless information which unfold in real-time at a scale that is daunting and (2) for all the power of the brain that works so efficiently behind the scene making sense of the world, we are one individual living one life that has a limited view of the world at large. Let me expand on these two points a little more.
 
@@ -793,6 +793,10 @@ Part III ``Preparation'' and Part IV ``Analysis'' serve as practical and more de
 In this chapter I started with some general observations about the difficulty of making sense of a complex world. The standard approach to overcoming inherent human limitations in sense making is science. In the 21st century the toolbelt for doing scientific research and exploration has grown in terms of the amount of data available, the statistical methods for analyzing the data, and the computational power to manage, store, and share the data, methods, and results from quantitative research. The methods and tools for deriving insight from data have made significant inroads in and outside academia, and increasingly figure in the quantitative investigation of language. Text analysis is a particular branch of this enterprise based on observational data from real-world language and is used in a wide variety of fields. This coursebook aims to develop your knowledge and skills in three fundamental areas: Data Literacy, Research Skills, and Programming Skills.
 
 In the end I hope that you enjoy this exploration into text analysis. Although learning curve at times may seem steep --the experience you will gain will not only improve your data literacy, research skills, and programmings skills but also enhance your appreciation for the richness of human language and its important role in our everyday lives.
+
+\hypertarget{activities}{%
+\subsection*{Activities}\label{activities}}
+\addcontentsline{toc}{subsection}{Activities}
 
 \hypertarget{part-orientation}{%
 \part{Orientation}\label{part-orientation}}
@@ -4518,18 +4522,20 @@ With the data downloaded into the \texttt{data/original/europarle/} directory we
 
 Looking at the first 10 lines of the first file, we can see that this is running text.
 
-\begin{verbatim}
-Resumption of the session
-I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.
-Although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.
-You have requested a debate on this subject in the course of the next few days, during this part-session.
-In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union.
-Please rise, then, for this minute' s silence.
-(The House rose and observed a minute' s silence)
-Madam President, on a point of order.
-You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.
-One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago.
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Resumption of the session}
+\NormalTok{I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.}
+\NormalTok{Although, as you will have seen, the dreaded \textquotesingle{}millennium bug\textquotesingle{} failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.}
+\NormalTok{You have requested a debate on this subject in the course of the next few days, during this part{-}session.}
+\NormalTok{In the meantime, I should like to observe a minute\textquotesingle{} s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union.}
+\NormalTok{Please rise, then, for this minute\textquotesingle{} s silence.}
+\NormalTok{(The House rose and observed a minute\textquotesingle{} s silence)}
+\NormalTok{Madam President, on a point of order.}
+\NormalTok{You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.}
+\NormalTok{One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago.}
+\end{Highlighting}
+\end{Shaded}
 
 The only meta information that we can surmise from these files is the fact that we know one is the source language and one is the target language and that each sentence is aligned (parallel) with the lines in the other file.
 
@@ -4806,11 +4812,13 @@ On the opposite side of the spectrum from unstructured data, structured data inc
 
 There are file formats which are purposely designed for storing structured datasets. Some very common file types are .csv, .xml, .json, etc. The data within these files is explicitly organized. For example, in a .csv file, the dataset structure is represented by delimiting the columns and rows by commas.
 
-\begin{verbatim}
-column_1,column_2,column_3
-row 1 value 1,row 1 value 2,row 1 value 3
-row 2 value 1,row 2 value 2,row 2 value 3
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{column\_1,column\_2,column\_3}
+\NormalTok{row 1 value 1,row 1 value 2,row 1 value 3}
+\NormalTok{row 2 value 1,row 2 value 2,row 2 value 3}
+\end{Highlighting}
+\end{Shaded}
 
 When read into R, the .csv file format is converted to a data frame with the appropriate structure.
 
@@ -5204,47 +5212,49 @@ The \texttt{README} file contains basic information about the resource, the \tex
 
 Let's take a look at the first conversation file (\texttt{sw\_0001\_4325.utt}) to see how it is structured.
 
-\begin{verbatim}
-*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*
-*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*
-*x*                                                                     *x*
-*x*            Copyright (C) 1995 University of Pennsylvania            *x*
-*x*                                                                     *x*
-*x*    The data in this file are part of a preliminary version of the   *x*
-*x*    Penn Treebank Corpus and should not be redistributed.  Any       *x*
-*x*    research using this corpus or based on it should acknowledge     *x*
-*x*    that fact, as well as the preliminary nature of the corpus.      *x*
-*x*                                                                     *x*
-*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*
-*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*}
+\NormalTok{*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*}
+\NormalTok{*x*                                                                     *x*}
+\NormalTok{*x*            Copyright (C) 1995 University of Pennsylvania            *x*}
+\NormalTok{*x*                                                                     *x*}
+\NormalTok{*x*    The data in this file are part of a preliminary version of the   *x*}
+\NormalTok{*x*    Penn Treebank Corpus and should not be redistributed.  Any       *x*}
+\NormalTok{*x*    research using this corpus or based on it should acknowledge     *x*}
+\NormalTok{*x*    that fact, as well as the preliminary nature of the corpus.      *x*}
+\NormalTok{*x*                                                                     *x*}
+\NormalTok{*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*}
+\NormalTok{*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*}
 
 
-FILENAME:   4325_1632_1519
-TOPIC#:     323
-DATE:       920323
-TRANSCRIBER:    glp
-UTT_CODER:  tc
-DIFFICULTY: 1
-TOPICALITY: 3
-NATURALNESS:    2
-ECHO_FROM_B:    1
-ECHO_FROM_A:    4
-STATIC_ON_A:    1
-STATIC_ON_B:    1
-BACKGROUND_A:   1
-BACKGROUND_B:   2
-REMARKS:        None.
+\NormalTok{FILENAME:   4325\_1632\_1519}
+\NormalTok{TOPIC\#:     323}
+\NormalTok{DATE:       920323}
+\NormalTok{TRANSCRIBER:    glp}
+\NormalTok{UTT\_CODER:  tc}
+\NormalTok{DIFFICULTY: 1}
+\NormalTok{TOPICALITY: 3}
+\NormalTok{NATURALNESS:    2}
+\NormalTok{ECHO\_FROM\_B:    1}
+\NormalTok{ECHO\_FROM\_A:    4}
+\NormalTok{STATIC\_ON\_A:    1}
+\NormalTok{STATIC\_ON\_B:    1}
+\NormalTok{BACKGROUND\_A:   1}
+\NormalTok{BACKGROUND\_B:   2}
+\NormalTok{REMARKS:        None.}
 
-=========================================================================
+\NormalTok{=========================================================================}
   
 
-o          A.1 utt1: Okay.  /
-qw          A.1 utt2: {D So, }   
+\NormalTok{o          A.1 utt1: Okay.  /}
+\NormalTok{qw          A.1 utt2: \{D So, \}   }
 
-qy^d          B.2 utt1: [ [ I guess, +   
+\NormalTok{qy\^{}d          B.2 utt1: [ [ I guess, +   }
 
-+          A.3 utt1: What kind of experience [ do you, + do you ] have, then with child care? /
-\end{verbatim}
+\NormalTok{+          A.3 utt1: What kind of experience [ do you, + do you ] have, then with child care? /}
+\end{Highlighting}
+\end{Shaded}
 
 There are few things to take note of here. First we see that the conversation files have a meta-data header offset from the conversation text by a line of \texttt{=} characters. Second the header contains meta-information of various types. Third, the text is interleaved with an annotation scheme.
 
@@ -5252,26 +5262,30 @@ Some of the information may be readily understandable, such as the various piece
 
 At this point we open the the \texttt{doc/manual.august1.html} file in a browser and do some investigation. We find out that `DAMSL' stands for `Discourse Annotation and Markup System of Labeling' and that the first characters of each line of the conversation text correspond to one or a combination of labels for each utterance. So for our first utterances we have:
 
-\begin{verbatim}
-o = "Other"
-qw = "Wh-Question"
-qy^d = "Declarative Yes-No-Question"
-+ = "Segment (multi-utterance)"
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{o = "Other"}
+\NormalTok{qw = "Wh{-}Question"}
+\NormalTok{qy\^{}d = "Declarative Yes{-}No{-}Question"}
+\NormalTok{+ = "Segment (multi{-}utterance)"}
+\end{Highlighting}
+\end{Shaded}
 
 Each utterance is also labeled for speaker (`A' or `B'), speaker turn (`1', `2', `3', etc.), and each utterance within that turn (`utt1', `utt2', etc.). There is other annotation provided withing each utterance, but this should be enough to get us started on the conversations.
 
 Now let's turn to the meta-data in the header. We see here that there is information about the creation of the file: `FILENAME', `TOPIC', `DATE', etc. The \texttt{doc/manual.august1.html} file doesn't have much to say about this information so I returned to the \href{https://catalog.ldc.upenn.edu/docs/LDC97S62/}{LDC Documentation} and found more information in the \href{https://catalog.ldc.upenn.edu/docs/LDC97S62/}{Online Documentation} section. After some poking around in this documentation I discovered that that meta-data for each speaker in the corpus is found in the \texttt{caller\_tab.csv} file. This tabular file does not contain column names, but the \texttt{caller\_doc.txt} does. After inspecting these files manually and comparing them with the information in the conversation file I noticed that the `FILENAME' information contained three pieces of useful information delimited by underscores \texttt{\_}.
 
-\begin{verbatim}
-*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*}
 
 
-FILENAME:   4325_1632_1519
-TOPIC#:     323
-DATE:       920323
-TRANSCRIBER:    glp
-\end{verbatim}
+\NormalTok{FILENAME:   4325\_1632\_1519}
+\NormalTok{TOPIC\#:     323}
+\NormalTok{DATE:       920323}
+\NormalTok{TRANSCRIBER:    glp}
+\end{Highlighting}
+\end{Shaded}
 
 The first information is the document id (\texttt{4325}), the second and third correspond to the speaker number: the first being speaker A (\texttt{1632}) and the second speaker B (\texttt{1519}).
 
@@ -5488,18 +5502,20 @@ The best way to learn regular expressions is to use them. To this end I've inclu
 
 Open this site and copy the text below into the `TEST STRING' field.
 
-\begin{verbatim}
-o          A.1 utt1: Okay.  /
-qw          A.1 utt2: {D So, }
-qy^d          B.2 utt1: [ [ I guess, +
-+          A.3 utt1: What kind of experience [ do you, + do you ] have, then with child care? /
-+          B.4 utt1: I think, ] + {F uh, } I wonder ] if that worked. /
-qy          A.5 utt1: Does it say something? /
-sd          B.6 utt1: I think it usually does.  /
-ad          B.6 utt2: You might try, {F uh, }  /
-h          B.6 utt3: I don't know,  /
-ad          B.6 utt4: hold it down a little longer,  /
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{o          A.1 utt1: Okay.  /}
+\NormalTok{qw          A.1 utt2: \{D So, \}}
+\NormalTok{qy\^{}d          B.2 utt1: [ [ I guess, +}
+\NormalTok{+          A.3 utt1: What kind of experience [ do you, + do you ] have, then with child care? /}
+\NormalTok{+          B.4 utt1: I think, ] + \{F uh, \} I wonder ] if that worked. /}
+\NormalTok{qy          A.5 utt1: Does it say something? /}
+\NormalTok{sd          B.6 utt1: I think it usually does.  /}
+\NormalTok{ad          B.6 utt2: You might try, \{F uh, \}  /}
+\NormalTok{h          B.6 utt3: I don\textquotesingle{}t know,  /}
+\NormalTok{ad          B.6 utt4: hold it down a little longer,  /}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{figure}
 
@@ -5512,12 +5528,14 @@ ad          B.6 utt4: hold it down a little longer,  /
 
 Now manually type the following regular expressions into the `REGULAR EXPRESSION' field one-by-one (each is on a separate line). Notice what is matched as you type and when you've finished typing. You can find out exactly what the component parts of each expression are doing by toggling the top right icon in the window or hovering your mouse over the relevant parts of the expression.
 
-\begin{verbatim}
-^.+?\s
-[AB]\.\d+
-utt\d+
-:.+$
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\^{}.+?\textbackslash{}s}
+\NormalTok{[AB]\textbackslash{}.\textbackslash{}d+}
+\NormalTok{utt\textbackslash{}d+}
+\NormalTok{:.+$}
+\end{Highlighting}
+\end{Shaded}
 
 As you can now see, we have regular expressions that will match the damsl tags, speaker and speaker turn, utterance number, and the utterance text. To apply these expressions to our data and extract this information into separate columns we will make use of the \texttt{mutate()} and \texttt{str\_extract()} functions. \texttt{mutate()} will take our data frame and create new columns with values we match and extract from each row in the data frame with \texttt{str\_extract()}. Notice that \texttt{str\_extract()} is different than \texttt{str\_extract\_all()}. When we work with \texttt{mutate()} each row will be evaluated in turn, therefore we only need to make one match per row in \texttt{data\$text}.
 
@@ -5736,14 +5754,16 @@ So now it's time to create a vector with the paths to all of the conversation fi
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-../data/original/sdac/sw00utt/sw_0001_4325.utt
-../data/original/sdac/sw00utt/sw_0002_4330.utt
-../data/original/sdac/sw00utt/sw_0003_4103.utt
-../data/original/sdac/sw00utt/sw_0004_4327.utt
-../data/original/sdac/sw00utt/sw_0005_4646.utt
-../data/original/sdac/sw00utt/sw_0006_4108.utt
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{../data/original/sdac/sw00utt/sw\_0001\_4325.utt}
+\NormalTok{../data/original/sdac/sw00utt/sw\_0002\_4330.utt}
+\NormalTok{../data/original/sdac/sw00utt/sw\_0003\_4103.utt}
+\NormalTok{../data/original/sdac/sw00utt/sw\_0004\_4327.utt}
+\NormalTok{../data/original/sdac/sw00utt/sw\_0005\_4646.utt}
+\NormalTok{../data/original/sdac/sw00utt/sw\_0006\_4108.utt}
+\end{Highlighting}
+\end{Shaded}
 
 To pass each conversation file in the vector of paths to our conversation files iteratively to the \texttt{extract\_sdac\_metadata()} function we use \texttt{map()}. This will apply the function to each conversation file and return a data frame for each. \texttt{bind\_rows()} will then join the resulting data frames by rows to give us a single tidy dataset for all 1155 conversations. Note there is a lot of processing going on here we have to be patient.
 
@@ -5952,7 +5972,7 @@ The essential questions for this chapter are:
 \end{itemize}
 \end{rmdkey}
 
-In this chapter we turn out attention to the process of moving a curated dataset one step closer to analysis. Where in the process of curating data into a dataset the goal was to derived a tidy dataset that contained the main relational characteristics of the data for our text analysis project, the transformation step refines and potential expands these characteristics such that they are more in line with our analysis aims. In this chapter I have grouped various transformation steps into four categories: normalization, recoding, generation, and merging. It is of note that the these categories have been ordered and are covered separately for descriptive reasons. In practice the ordering of which transformation to apply before another is highly idiosyncrastic and requires that the researcher evaluate the characteristics of the dataset and the desired results.
+In this chapter we turn out attention to the process of moving a curated dataset one step closer to analysis. Where in the process of curating data into a dataset the goal was to derived a tidy dataset that contained the main relational characteristics of the data for our text analysis project, the transformation step refines and potential expands these characteristics such that they are more in line with our analysis aims. In this chapter I have grouped various transformation steps into four categories: normalization, recoding, generation, and merging. It is of note that the these categories have been ordered and are covered separately for descriptive reasons. In practice the ordering of which transformation to apply before another is highly idiosyncratic and requires that the researcher evaluate the characteristics of the dataset and the desired results.
 
 Furthermore, since in any given project there may be more than one analysis that may be performed on the data, there may be distinct transformation steps which correspond to each analysis approach. Therefore it is possible that there are more than one transformed dataset created from the curated dataset. This is one of the reasons that we create a curated dataset instead of derived a transformed dataset from the original data. The curated dataset serves as a point of departure from which multiple transformational methods can derive distinct formats for distinct analyses.
 
@@ -7105,7 +7125,7 @@ The essential questions for this chapter are:
 \end{itemize}
 \end{rmdkey}
 
-In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the information is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in \protect\hyperlink{approaching-analysis}{Chapter 3 ``Approaching analysis''} and implements descriptive assessments, statistical tests, and evaluation procedures for series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.
+In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the data is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in \protect\hyperlink{approaching-analysis}{Chapter 3 ``Approaching analysis''} and implements descriptive assessments, statistical tests, and evaluation procedures for a series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.
 
 For this discussion two datasets will be used as the base to pose various questions to submit for interrogation. It is of note that the questions in the subsequent sections are posited to highlight various descriptive, statistic, and evaluation procedures and do not reflect the standard approach to hypothesis testing which assumes that the null and alternative hypotheses are developed at the outset of the research project.
 
@@ -8389,6 +8409,450 @@ In this chapter we will
 
 Orientation to the question(s) and dataset(s) to be explored \ldots{}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wricle\_df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"resources/10{-}prediction/data/derived/wricle\_formal\_curated.csv"}\NormalTok{)}
+
+\NormalTok{locness\_df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"resources/10{-}prediction/data/derived/locness\_curated.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{learners\_df }\OtherTok{\textless{}{-}}\NormalTok{ wricle\_df }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(native\_language }\SpecialCharTok{==} \StringTok{"Spanish"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{student =} \StringTok{"Spanish"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{type =} \StringTok{"Learner"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(}\AttributeTok{essay\_id =}\NormalTok{ id, type, student, essay)}
+
+\FunctionTok{glimpse}\NormalTok{(learners\_df)}
+\CommentTok{\#\textgreater{} Rows: 689}
+\CommentTok{\#\textgreater{} Columns: 4}
+\CommentTok{\#\textgreater{} $ essay\_id \textless{}chr\textgreater{} "A1{-}1", "A1{-}2", "A10{-}1", "A10{-}2", "A101{-}1", "A101{-}2", "A101{-}3\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ type     \textless{}chr\textgreater{} "Learner", "Learner", "Learner", "Learner", "Learner", "Learn\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ student  \textless{}chr\textgreater{} "Spanish", "Spanish", "Spanish", "Spanish", "Spanish", "Spani\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ essay    \textless{}chr\textgreater{} "In our present society gay people is asking for the same rig\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{natives\_df }\OtherTok{\textless{}{-}}\NormalTok{ locness\_df }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{unite}\NormalTok{(}\AttributeTok{col =}\NormalTok{ doc\_id, }\FunctionTok{c}\NormalTok{(}\StringTok{"file\_id"}\NormalTok{, }\StringTok{"essay\_id"}\NormalTok{), }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{doc\_id =} \FunctionTok{str\_replace}\NormalTok{(doc\_id, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.txt"}\NormalTok{, }\StringTok{""}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{type =} \StringTok{"Native"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(}\AttributeTok{essay\_id =}\NormalTok{ doc\_id, type, student, essay)}
+
+\FunctionTok{glimpse}\NormalTok{(natives\_df)}
+\CommentTok{\#\textgreater{} Rows: 411}
+\CommentTok{\#\textgreater{} Columns: 4}
+\CommentTok{\#\textgreater{} $ essay\_id \textless{}chr\textgreater{} "alevels1{-}1", "alevels1{-}2", "alevels1{-}3", "alevels1{-}4", "alev\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ type     \textless{}chr\textgreater{} "Native", "Native", "Native", "Native", "Native", "Native", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ student  \textless{}chr\textgreater{} "British", "British", "British", "British", "British", "Briti\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ essay    \textless{}chr\textgreater{} "The basic dilema facing the UK\textquotesingle{}s rail and road transport sys\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_df }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(learners\_df, natives\_df)  }\CommentTok{\# combine}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_df }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{tabyl}\NormalTok{(type)}
+\CommentTok{\#\textgreater{}     type   n percent}
+\CommentTok{\#\textgreater{}  Learner 689   0.626}
+\CommentTok{\#\textgreater{}   Native 411   0.374}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_df }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{unnest\_tokens}\NormalTok{(}\AttributeTok{output =} \StringTok{"word"}\NormalTok{, }\AttributeTok{input =} \StringTok{"essay"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{count}\NormalTok{(word, type) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(type) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}\AttributeTok{total\_words =} \FunctionTok{sum}\NormalTok{(n))}
+\CommentTok{\#\textgreater{} \# A tibble: 2 x 2}
+\CommentTok{\#\textgreater{}   type    total\_words}
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}         \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{} 1 Learner      640535}
+\CommentTok{\#\textgreater{} 2 Native       324269}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_corpus }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_df }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{corpus}\NormalTok{(}\AttributeTok{text\_field =} \StringTok{"essay"}\NormalTok{)}
+
+\NormalTok{nativeness\_corpus\_summary }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_corpus }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summary}\NormalTok{(}\AttributeTok{n =} \FunctionTok{ndoc}\NormalTok{(nativeness\_corpus))}
+
+\NormalTok{nativeness\_corpus\_summary }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} Corpus consisting of 1100 documents, showing 1100 documents:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}    Text Types Tokens Sentences essay\_id    type student}
+\CommentTok{\#\textgreater{}   text1   210    496        26     A1{-}1 Learner Spanish}
+\CommentTok{\#\textgreater{}   text2   253    655        29     A1{-}2 Learner Spanish}
+\CommentTok{\#\textgreater{}   text3   280    722        30    A10{-}1 Learner Spanish}
+\CommentTok{\#\textgreater{}   text4   177    389        15    A10{-}2 Learner Spanish}
+\CommentTok{\#\textgreater{}   text5   245    636        19   A101{-}1 Learner Spanish}
+\CommentTok{\#\textgreater{}   text6   219    692        17   A101{-}2 Learner Spanish}
+\CommentTok{\#\textgreater{}   text7   213    615        16   A101{-}3 Learner Spanish}
+\CommentTok{\#\textgreater{}   text8   319    914        23   A101{-}4 Learner Spanish}
+\CommentTok{\#\textgreater{}   text9   253    654        19   A102{-}1 Learner Spanish}
+\CommentTok{\#\textgreater{}  text10   310    816        21   A102{-}2 Learner Spanish}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_corpus}\SpecialCharTok{$}\NormalTok{doc\_id }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ndoc}\NormalTok{(nativeness\_corpus)}
+
+\NormalTok{nativeness\_corpus }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{docvars}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{}   essay\_id    type student doc\_id}
+\CommentTok{\#\textgreater{} 1     A1{-}1 Learner Spanish      1}
+\CommentTok{\#\textgreater{} 2     A1{-}2 Learner Spanish      2}
+\CommentTok{\#\textgreater{} 3    A10{-}1 Learner Spanish      3}
+\CommentTok{\#\textgreater{} 4    A10{-}2 Learner Spanish      4}
+\CommentTok{\#\textgreater{} 5   A101{-}1 Learner Spanish      5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_tokens }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_corpus }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{tokens}\NormalTok{(}\AttributeTok{what =} \StringTok{"word"}\NormalTok{, }\AttributeTok{remove\_punct =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{remove\_numbers =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{remove\_symbols =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{nativeness\_tokens }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{tokens\_group}\NormalTok{(}\AttributeTok{groups =}\NormalTok{ type) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{head}\NormalTok{()}
+\CommentTok{\#\textgreater{} Tokens consisting of 2 documents and 1 docvar.}
+\CommentTok{\#\textgreater{} Learner :}
+\CommentTok{\#\textgreater{}  [1] "In"      "our"     "present" "society" "gay"     "people"  "is"     }
+\CommentTok{\#\textgreater{}  [8] "asking"  "for"     "the"     "same"    "rights" }
+\CommentTok{\#\textgreater{} [ ... and 636,407 more ]}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Native :}
+\CommentTok{\#\textgreater{}  [1] "The"       "basic"     "dilema"    "facing"    "the"       "UK\textquotesingle{}s"     }
+\CommentTok{\#\textgreater{}  [7] "rail"      "and"       "road"      "transport" "system"    "is"       }
+\CommentTok{\#\textgreater{} [ ... and 321,936 more ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_tokens }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{dfm}\NormalTok{()}
+
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{head}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} Document{-}feature matrix of: 5 documents, 28,129 features (99.24\% sparse) and 4 docvars.}
+\CommentTok{\#\textgreater{}        features}
+\CommentTok{\#\textgreater{} docs    in our present society gay people is asking for the}
+\CommentTok{\#\textgreater{}   text1 12   5       4       5   5     10 12      1   3  23}
+\CommentTok{\#\textgreater{}   text2 26   2       1       4   0     10 14      0   1  45}
+\CommentTok{\#\textgreater{}   text3 12   4       0       4   9     16 12      0   0  12}
+\CommentTok{\#\textgreater{}   text4 15   1       0       1   0      9  7      0   1  10}
+\CommentTok{\#\textgreater{}   text5 15   1       1       2   0      7 17      0   6  40}
+\CommentTok{\#\textgreater{} [ reached max\_nfeat ... 28,119 more features ]}
+
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{dfm\_group}\NormalTok{(}\AttributeTok{groups =}\NormalTok{ type) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{head}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} Document{-}feature matrix of: 2 documents, 28,129 features (33.74\% sparse) and 1 docvar.}
+\CommentTok{\#\textgreater{}          features}
+\CommentTok{\#\textgreater{} docs         in  our present society gay people    is asking  for   the}
+\CommentTok{\#\textgreater{}   Learner 15518 1279     322    1269 520   5980 12931     33 4993 36728}
+\CommentTok{\#\textgreater{}   Native   6357  584     109     422   6   1569  6307     12 3144 21090}
+\CommentTok{\#\textgreater{} [ reached max\_nfeat ... 28,119 more features ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{topfeatures}\NormalTok{(}\AttributeTok{n =} \DecValTok{25}\NormalTok{)}
+\CommentTok{\#\textgreater{}     the      of      to     and      in    that       a      is      it    this }
+\CommentTok{\#\textgreater{}   57818   32821   31155   24158   21875   20847   19981   19238   11259   10357 }
+\CommentTok{\#\textgreater{}      be     are    they     not     for      as  people    have    with      or }
+\CommentTok{\#\textgreater{}   10096   10085    8438    8196    8137    7977    7549    7506    6007    5568 }
+\CommentTok{\#\textgreater{}   their       i      on      by because }
+\CommentTok{\#\textgreater{}    5192    5128    4820    4579    4511}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{textstat\_frequency}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{groups =}\NormalTok{ type)}
+\CommentTok{\#\textgreater{}    feature frequency rank docfreq   group}
+\CommentTok{\#\textgreater{} 1      the     36728    1     689 Learner}
+\CommentTok{\#\textgreater{} 2       of     22095    2     689 Learner}
+\CommentTok{\#\textgreater{} 3       to     20417    3     689 Learner}
+\CommentTok{\#\textgreater{} 4     that     15929    4     689 Learner}
+\CommentTok{\#\textgreater{} 5      and     15836    5     689 Learner}
+\CommentTok{\#\textgreater{} 6      the     21090    1     410  Native}
+\CommentTok{\#\textgreater{} 7       to     10738    2     410  Native}
+\CommentTok{\#\textgreater{} 8       of     10726    3     410  Native}
+\CommentTok{\#\textgreater{} 9      and      8322    4     409  Native}
+\CommentTok{\#\textgreater{} 10       a      6827    5     410  Native}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{dfm\_tfidf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{textstat\_frequency}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{groups =}\NormalTok{ type, }\AttributeTok{force =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{}      feature frequency rank docfreq   group}
+\CommentTok{\#\textgreater{} 1   abortion      1108    1      69 Learner}
+\CommentTok{\#\textgreater{} 2  marijuana       901    2      46 Learner}
+\CommentTok{\#\textgreater{} 3  education       746    3     204 Learner}
+\CommentTok{\#\textgreater{} 4   children       735    4     317 Learner}
+\CommentTok{\#\textgreater{} 5        sex       658    5     133 Learner}
+\CommentTok{\#\textgreater{} 6         he       803    1     199  Native}
+\CommentTok{\#\textgreater{} 7        his       573    2     194  Native}
+\CommentTok{\#\textgreater{} 8    candide       522    3      27  Native}
+\CommentTok{\#\textgreater{} 9      quote       402    4      26  Native}
+\CommentTok{\#\textgreater{} 10  caligula       394    5      11  Native}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{4321}\NormalTok{) }\CommentTok{\# make reproducible}
+
+\NormalTok{num\_docs }\OtherTok{\textless{}{-}} 
+\NormalTok{  nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ndoc}\NormalTok{()}
+
+\NormalTok{train\_size }\OtherTok{\textless{}{-}} 
+\NormalTok{  (num\_docs }\SpecialCharTok{*}\NormalTok{ .}\DecValTok{75}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# get size of sample}
+  \FunctionTok{round}\NormalTok{() }\CommentTok{\# round to nearest whole number}
+
+\NormalTok{train\_ids }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_docs, }\CommentTok{\# population}
+                   \AttributeTok{size =}\NormalTok{ train\_size, }\CommentTok{\# size of sample}
+                   \AttributeTok{replace =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# without replacement}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm\_train }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{dfm\_subset}\NormalTok{(doc\_id }\SpecialCharTok{\%in\%}\NormalTok{ train\_ids)}
+
+\NormalTok{nativeness\_dfm\_test }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{dfm\_subset}\NormalTok{(}\SpecialCharTok{!}\NormalTok{doc\_id }\SpecialCharTok{\%in\%}\NormalTok{ train\_ids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nativeness\_dfm }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{docvars}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{tabyl}\NormalTok{(type)}
+\CommentTok{\#\textgreater{}     type   n percent}
+\CommentTok{\#\textgreater{}  Learner 689   0.626}
+\CommentTok{\#\textgreater{}   Native 411   0.374}
+
+\NormalTok{nativeness\_dfm\_train }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{docvars}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{tabyl}\NormalTok{(type)}
+\CommentTok{\#\textgreater{}     type   n percent}
+\CommentTok{\#\textgreater{}  Learner 516   0.625}
+\CommentTok{\#\textgreater{}   Native 309   0.375}
+
+\NormalTok{nativeness\_dfm\_test }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{docvars}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{tabyl}\NormalTok{(type)}
+\CommentTok{\#\textgreater{}     type   n percent}
+\CommentTok{\#\textgreater{}  Learner 173   0.629}
+\CommentTok{\#\textgreater{}   Native 102   0.371}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nb1 }\OtherTok{\textless{}{-}} \FunctionTok{textmodel\_nb}\NormalTok{(}\AttributeTok{x =}\NormalTok{ nativeness\_dfm\_train, }\AttributeTok{y =}\NormalTok{ nativeness\_dfm\_train}\SpecialCharTok{$}\NormalTok{type)}
+
+\FunctionTok{summary}\NormalTok{(nb1)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} textmodel\_nb.dfm(x = nativeness\_dfm\_train, y = nativeness\_dfm\_train$type)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Class Priors:}
+\CommentTok{\#\textgreater{} (showing first 2 elements)}
+\CommentTok{\#\textgreater{} Learner  Native }
+\CommentTok{\#\textgreater{}     0.5     0.5 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Estimated Feature Scores:}
+\CommentTok{\#\textgreater{}             in     our  present society      gay  people     is   asking}
+\CommentTok{\#\textgreater{} Learner 0.0230 0.00186 0.000476 0.00193 7.62e{-}04 0.00889 0.0193 5.76e{-}05}
+\CommentTok{\#\textgreater{} Native  0.0174 0.00163 0.000315 0.00114 2.22e{-}05 0.00460 0.0176 2.96e{-}05}
+\CommentTok{\#\textgreater{}             for    the     same   rights   that heterosexual    some     of}
+\CommentTok{\#\textgreater{} Learner 0.00747 0.0544 0.001318 0.000909 0.0238     3.06e{-}04 0.00476 0.0328}
+\CommentTok{\#\textgreater{} Native  0.00886 0.0582 0.000563 0.000252 0.0140     1.11e{-}05 0.00157 0.0298}
+\CommentTok{\#\textgreater{}            this     are     to      be  allowed      get  married    and}
+\CommentTok{\#\textgreater{} Learner 0.01148 0.01114 0.0300 0.01023 0.000326 0.001054 3.67e{-}04 0.0233}
+\CommentTok{\#\textgreater{} Native  0.00796 0.00745 0.0296 0.00932 0.000278 0.000763 8.52e{-}05 0.0224}
+\CommentTok{\#\textgreater{}            adopt children  request     has    been accepted}
+\CommentTok{\#\textgreater{} Learner 2.64e{-}04  0.00268 1.39e{-}05 0.00414 0.00187 0.000137}
+\CommentTok{\#\textgreater{} Native  3.71e{-}05  0.00119 2.22e{-}05 0.00435 0.00213 0.000141}
+\FunctionTok{coef}\NormalTok{(nb1) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\CommentTok{\#\textgreater{}          Learner   Native}
+\CommentTok{\#\textgreater{} in      0.023045 1.74e{-}02}
+\CommentTok{\#\textgreater{} our     0.001856 1.63e{-}03}
+\CommentTok{\#\textgreater{} present 0.000476 3.15e{-}04}
+\CommentTok{\#\textgreater{} society 0.001929 1.14e{-}03}
+\CommentTok{\#\textgreater{} gay     0.000762 2.22e{-}05}
+\CommentTok{\#\textgreater{} people  0.008893 4.60e{-}03}
+
+\FunctionTok{predict}\NormalTok{(nb1, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# get the predicted document scores}
+\NormalTok{  tail }\CommentTok{\# preview predicted probability scores}
+\CommentTok{\#\textgreater{}            Learner Native}
+\CommentTok{\#\textgreater{} text1092 2.37e{-}164      1}
+\CommentTok{\#\textgreater{} text1094  3.18e{-}28      1}
+\CommentTok{\#\textgreater{} text1095  8.53e{-}49      1}
+\CommentTok{\#\textgreater{} text1096  1.83e{-}37      1}
+\CommentTok{\#\textgreater{} text1097  7.45e{-}39      1}
+\CommentTok{\#\textgreater{} text1098  2.35e{-}55      1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nb1\_predictions }\OtherTok{\textless{}{-}} 
+  \FunctionTok{predict}\NormalTok{(nb1, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# get the predicted document scores}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# convert to data frame}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{document =} \FunctionTok{rownames}\NormalTok{(.)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# add the document names to the data frame}
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# convert to tibble}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"Learner"}\NormalTok{, }\StringTok{"Native"}\NormalTok{), }\CommentTok{\# convert from wide to long format}
+               \AttributeTok{names\_to =} \StringTok{"prediction"}\NormalTok{, }\CommentTok{\# new column for ham/spam predictions}
+               \AttributeTok{values\_to =} \StringTok{"probability"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# probablity scores for each}
+  \FunctionTok{group\_by}\NormalTok{(document) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# group parameter by document}
+  \FunctionTok{slice\_max}\NormalTok{(probability, }\AttributeTok{n =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# keep the document row with highest probablity}
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# for predictions that were 50/50 }
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# remove grouping parameter}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{doc\_id =} \FunctionTok{str\_remove}\NormalTok{(document, }\StringTok{"text"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ as.numeric) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# clean up document column so it matches doc\_id in}
+  \FunctionTok{arrange}\NormalTok{(doc\_id) }\CommentTok{\# order by doc\_id}
+
+\NormalTok{nb1\_predictions }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{) }\CommentTok{\# preview}
+\CommentTok{\#\textgreater{} \# A tibble: 10 x 4}
+\CommentTok{\#\textgreater{}    document prediction probability doc\_id}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}    \textless{}chr\textgreater{}            \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 text1    Learner              1      1}
+\CommentTok{\#\textgreater{}  2 text3    Learner              1      3}
+\CommentTok{\#\textgreater{}  3 text4    Learner              1      4}
+\CommentTok{\#\textgreater{}  4 text5    Learner              1      5}
+\CommentTok{\#\textgreater{}  5 text6    Learner              1      6}
+\CommentTok{\#\textgreater{}  6 text8    Learner              1      8}
+\CommentTok{\#\textgreater{}  7 text9    Learner              1      9}
+\CommentTok{\#\textgreater{}  8 text11   Learner              1     11}
+\CommentTok{\#\textgreater{}  9 text12   Learner              1     12}
+\CommentTok{\#\textgreater{} 10 text13   Learner              1     13}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nb1\_predictions\_actual }\OtherTok{\textless{}{-}} 
+  \FunctionTok{cbind}\NormalTok{(}\AttributeTok{actual =}\NormalTok{ nb1}\SpecialCharTok{$}\NormalTok{y, nb1\_predictions) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# column{-}bind actual classes}
+  \FunctionTok{select}\NormalTok{(doc\_id, document, actual, prediction, probability) }\CommentTok{\# organize variables}
+
+\NormalTok{nb1\_predictions\_actual }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\CommentTok{\# preview}
+\CommentTok{\#\textgreater{}   doc\_id document  actual prediction probability}
+\CommentTok{\#\textgreater{} 1      1    text1 Learner    Learner           1}
+\CommentTok{\#\textgreater{} 2      3    text3 Learner    Learner           1}
+\CommentTok{\#\textgreater{} 3      4    text4 Learner    Learner           1}
+\CommentTok{\#\textgreater{} 4      5    text5 Learner    Learner           1}
+\CommentTok{\#\textgreater{} 5      6    text6 Learner    Learner           1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab\_class }\OtherTok{\textless{}{-}} 
+  \FunctionTok{table}\NormalTok{(nb1\_predictions\_actual}\SpecialCharTok{$}\NormalTok{actual, }\CommentTok{\# actual class labels}
+\NormalTok{        nb1\_predictions\_actual}\SpecialCharTok{$}\NormalTok{prediction) }\CommentTok{\# predicted class labels}
+
+\NormalTok{caret}\SpecialCharTok{::}\FunctionTok{confusionMatrix}\NormalTok{(tab\_class, }\AttributeTok{mode =} \StringTok{"prec\_recall"}\NormalTok{) }\CommentTok{\# model performance statistics}
+\CommentTok{\#\textgreater{} Confusion Matrix and Statistics}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}          }
+\CommentTok{\#\textgreater{}           Learner Native}
+\CommentTok{\#\textgreater{}   Learner     516      0}
+\CommentTok{\#\textgreater{}   Native       10    299}
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}                Accuracy : 0.988         }
+\CommentTok{\#\textgreater{}                  95\% CI : (0.978, 0.994)}
+\CommentTok{\#\textgreater{}     No Information Rate : 0.638         }
+\CommentTok{\#\textgreater{}     P{-}Value [Acc \textgreater{} NIR] : \textless{} 2e{-}16       }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}                   Kappa : 0.974         }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}  Mcnemar\textquotesingle{}s Test P{-}Value : 0.00443       }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}               Precision : 1.000         }
+\CommentTok{\#\textgreater{}                  Recall : 0.981         }
+\CommentTok{\#\textgreater{}                      F1 : 0.990         }
+\CommentTok{\#\textgreater{}              Prevalence : 0.638         }
+\CommentTok{\#\textgreater{}          Detection Rate : 0.625         }
+\CommentTok{\#\textgreater{}    Detection Prevalence : 0.625         }
+\CommentTok{\#\textgreater{}       Balanced Accuracy : 0.990         }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}        \textquotesingle{}Positive\textquotesingle{} Class : Learner       }
+\CommentTok{\#\textgreater{} }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predicted\_class }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(nb1, }\AttributeTok{newdata =}\NormalTok{ nativeness\_dfm\_test)}
+
+\NormalTok{actual\_class }\OtherTok{\textless{}{-}}\NormalTok{ nativeness\_dfm\_test}\SpecialCharTok{$}\NormalTok{type}
+
+\NormalTok{tab\_class }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(actual\_class, predicted\_class)  }\CommentTok{\# cross{-}tabulate actual and predicted class labels}
+
+\NormalTok{caret}\SpecialCharTok{::}\FunctionTok{confusionMatrix}\NormalTok{(tab\_class, }\AttributeTok{mode =} \StringTok{"prec\_recall"}\NormalTok{)  }\CommentTok{\# model performance statistics}
+\CommentTok{\#\textgreater{} Confusion Matrix and Statistics}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}             predicted\_class}
+\CommentTok{\#\textgreater{} actual\_class Learner Native}
+\CommentTok{\#\textgreater{}      Learner     172      1}
+\CommentTok{\#\textgreater{}      Native        9     93}
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}                Accuracy : 0.964         }
+\CommentTok{\#\textgreater{}                  95\% CI : (0.934, 0.982)}
+\CommentTok{\#\textgreater{}     No Information Rate : 0.658         }
+\CommentTok{\#\textgreater{}     P{-}Value [Acc \textgreater{} NIR] : \textless{}2e{-}16        }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}                   Kappa : 0.921         }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}  Mcnemar\textquotesingle{}s Test P{-}Value : 0.0269        }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}               Precision : 0.994         }
+\CommentTok{\#\textgreater{}                  Recall : 0.950         }
+\CommentTok{\#\textgreater{}                      F1 : 0.972         }
+\CommentTok{\#\textgreater{}              Prevalence : 0.658         }
+\CommentTok{\#\textgreater{}          Detection Rate : 0.625         }
+\CommentTok{\#\textgreater{}    Detection Prevalence : 0.629         }
+\CommentTok{\#\textgreater{}       Balanced Accuracy : 0.970         }
+\CommentTok{\#\textgreater{}                                         }
+\CommentTok{\#\textgreater{}        \textquotesingle{}Positive\textquotesingle{} Class : Learner       }
+\CommentTok{\#\textgreater{} }
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{preparation-1}{%
 \subsection{Preparation}\label{preparation-1}}
 
@@ -9315,6 +9779,19 @@ Now we can approach this again with distinct linguistic unit. Where in our curre
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# textmodel\_lsa()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sentiment analysis
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(vader)  }\CommentTok{\# sentiment analysis for micro{-}blogging text}
+\FunctionTok{library}\NormalTok{(syuzhet)  }\CommentTok{\# general sentiment analysis}
 \end{Highlighting}
 \end{Shaded}
 

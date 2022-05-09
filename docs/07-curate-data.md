@@ -1,10 +1,10 @@
-# Curate data {#curate-data}
+# Curate data(sets) {#curate-datasets-chapter}
 
 
 
 
 
-<p style="font-weight:bold; color:red;">DRAFT</p>
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > The hardest bit of information to extract is the first piece.
 >

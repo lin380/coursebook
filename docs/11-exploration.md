@@ -1,4 +1,4 @@
-# Exploration
+# Exploration {#exploration-chapter}
 
 
 
@@ -803,6 +803,13 @@ Now we can approach this again with distinct linguistic unit. Where in our curre
 
 ```
 
+- Sentiment analysis
+
+
+```r
+library(vader)  # sentiment analysis for micro-blogging text
+library(syuzhet)  # general sentiment analysis
+```
 
 
 

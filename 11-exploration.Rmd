@@ -1,4 +1,4 @@
-# Exploration
+# Exploration {#exploration-chapter}
 
 ```{r, child="_common.Rmd"}
 ```
@@ -640,6 +640,12 @@ Now we can approach this again with distinct linguistic unit. Where in our curre
 
 ```
 
+- Sentiment analysis
+
+```{r load-sentiment-analysis-packages, eval=FALSE}
+library(vader)  # sentiment analysis for micro-blogging text
+library(syuzhet) # general sentiment analysis
+```
 
 
 

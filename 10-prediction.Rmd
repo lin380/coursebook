@@ -1,4 +1,4 @@
-# Prediction {#prediction}
+# Prediction {#prediction-chapter}
 
 ```{r, child="_common.Rmd"}
 ```

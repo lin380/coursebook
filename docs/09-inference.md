@@ -2,15 +2,15 @@
 
 # Overview {-#analysis-overview}
 
-... UNDER DEVELOPMENT ...
+In this section we turn to the analysis of datasets, the evaluation of results, and the interpretation of the findings. We will outline the three main types of statistical analyses: Inferential Data Analysis (IDA), Predictive Data Analysis (PDA), and Exploratory Data Analysis (EDA). Each of these analysis types have distinct, non-overlapping aims and therefore should be determined from the outset of the research project and included as part of the research blueprint. The aim of this section is to establish a clearer picture of the goals, methods, and value of each of these approaches.
 
 
 
 
 
-# Inference {#inference}
+# Inference {#inference-chapter}
 
-<p style="font-weight:bold; color:red;">DRAFT</p>
+<p style="font-weight:bold; color:red;">INCOMPLETE DRAFT</p>
 
 > People generally see what they look for, and hear what they listen for.
 >
@@ -53,7 +53,7 @@ GOALS:
 
 
 
-In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the information is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in [Chapter 3 "Approaching analysis"](#approaching-analysis) and implements descriptive assessments, statistical tests, and evaluation procedures for series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.
+In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the data is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in [Chapter 3 "Approaching analysis"](#approaching-analysis) and implements descriptive assessments, statistical tests, and evaluation procedures for a series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.
 
 For this discussion two datasets will be used as the base to pose various questions to submit for interrogation. It is of note that the questions in the subsequent sections are posited to highlight various descriptive, statistic, and evaluation procedures and do not reflect the standard approach to hypothesis testing which assumes that the null and alternative hypotheses are developed at the outset of the research project.
 

@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Transform datasets | Text as Data</title>
+<meta name="author" content="Jerid Francom">
+<meta name="description" content="INCOMPLETE DRAFT  Nothing is lost. Everything is transformed. — Michael Ende, The Neverending Story  The essential questions for this chapter are:  What is the role of data transformation in a...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Transform datasets | Text as Data">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://lin380.github.io/coursebook/transform-datasets-chapter.html">
+<meta property="og:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<meta property="og:description" content="INCOMPLETE DRAFT  Nothing is lost. Everything is transformed. — Michael Ende, The Neverending Story  The essential questions for this chapter are:  What is the role of data transformation in a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Transform datasets | Text as Data">
+<meta name="twitter:site" content="@jeridfrancom">
+<meta name="twitter:description" content="INCOMPLETE DRAFT  Nothing is lost. Everything is transformed. — Michael Ende, The Neverending Story  The essential questions for this chapter are:  What is the role of data transformation in a...">
+<meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Favicon --><link rel="shortcut icon" href="assets/images/favicon.ico">
+<!-- Embed Hypothes.is --><script src="https://hypothes.is/embed.js" async></script><!-- Google Analytics --><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-57189160-3', 'auto');
+      ga('send', 'pageview');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="An introduction to quantitative text analysis and reproducible research with R">Text as Data</a>:
+        <small class="text-muted">An introduction to quantitative text analysis and reproducible research with R</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li class="book-part">Foundations</li>
+<li><a class="" href="foundations-overview.html">Overview</a></li>
+<li><a class="" href="text-analysis-chapter.html"><span class="header-section-number">1</span> Text analysis in context</a></li>
+<li class="book-part">Orientation</li>
+<li><a class="" href="orientation-overview.html">Overview</a></li>
+<li><a class="" href="understanding-data-chapter.html"><span class="header-section-number">2</span> Understanding data</a></li>
+<li><a class="" href="approaching-analysis-chapter.html"><span class="header-section-number">3</span> Approaching analysis</a></li>
+<li><a class="" href="framing-research-chapter.html"><span class="header-section-number">4</span> Framing research</a></li>
+<li class="book-part">Preparation</li>
+<li><a class="" href="preparation-overview.html">Overview</a></li>
+<li><a class="" href="acquire-data-chapter.html"><span class="header-section-number">5</span> Acquire data</a></li>
+<li><a class="" href="curate-datasets-chapter.html"><span class="header-section-number">6</span> Curate data(sets)</a></li>
+<li><a class="active" href="transform-datasets-chapter.html"><span class="header-section-number">7</span> Transform datasets</a></li>
+<li class="book-part">Analysis</li>
+<li><a class="" href="analysis-overview.html">Overview</a></li>
+<li><a class="" href="inference-chapter.html"><span class="header-section-number">8</span> Inference</a></li>
+<li><a class="" href="prediction-chapter.html"><span class="header-section-number">9</span> Prediction</a></li>
+<li><a class="" href="exploration-chapter.html"><span class="header-section-number">10</span> Exploration</a></li>
+<li class="book-part">Communication</li>
+<li><a class="" href="communication-overview.html">Overview</a></li>
+<li><a class="" href="reporting-chapter.html"><span class="header-section-number">11</span> Reporting</a></li>
+<li><a class="" href="collaboration-chapter.html"><span class="header-section-number">12</span> Collaboration</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="appendix-data.html"><span class="header-section-number">A</span> Data</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/lin380/coursebook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform-datasets-chapter" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Transform datasets<a class="anchor" aria-label="anchor" href="#transform-datasets-chapter"><i class="fas fa-link"></i></a>
+</h1>
+<p style="font-weight:bold; color:red;">
+INCOMPLETE DRAFT
+</p>
+<blockquote>
+<p>Nothing is lost. Everything is transformed.</p>
+<p>— Michael Ende, The Neverending Story</p>
+</blockquote>
+<div class="rmdkey">
+<p>
+The essential questions for this chapter are:
+</p>
+<ul>
+<li>
+What is the role of data transformation in a text analysis project?
+</li>
+<li>
+What are the general processes for preparing datasets for analysis?
+</li>
+<li>
+How do each of these general processes transform datasets?
+</li>
+</ul>
+</div>
+<!-- COURSE STRUCTURE
+
+TUTORIALS:
+
+- Primers: 
+    - Join datasets
+    - Tidytext tutorial https://juliasilge.shinyapps.io/learntidytext/#section-introduction
+
+SWIRL:
+
+- ...
+
+WORKED/ RECIPE:
+
+- ...
+
+PROJECT:
+
+- ...
+
+GOALS:
+
+...
+
+-->
+<p>In this chapter we turn out attention to the process of moving a curated dataset one step closer to analysis. Where in the process of curating data into a dataset the goal was to derived a tidy dataset that contained the main relational characteristics of the data for our text analysis project, the transformation step refines and potential expands these characteristics such that they are more in line with our analysis aims. In this chapter I have grouped various transformation steps into four categories: normalization, recoding, generation, and merging. It is of note that the these categories have been ordered and are covered separately for descriptive reasons. In practice the ordering of which transformation to apply before another is highly idiosyncratic and requires that the researcher evaluate the characteristics of the dataset and the desired results.</p>
+<p>Furthermore, since in any given project there may be more than one analysis that may be performed on the data, there may be distinct transformation steps which correspond to each analysis approach. Therefore it is possible that there are more than one transformed dataset created from the curated dataset. This is one of the reasons that we create a curated dataset instead of derived a transformed dataset from the original data. The curated dataset serves as a point of departure from which multiple transformational methods can derive distinct formats for distinct analyses.</p>
+<p>Let’s now turn to demonstrations of some common transformational steps using datasets with which we are now familiar</p>
+<div id="normalize" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Normalize<a class="anchor" aria-label="anchor" href="#normalize"><i class="fas fa-link"></i></a>
+</h2>
+<p>The process of normalizing datasets in essence is to santize the values of variable or set of variables such that there are no artifacts that will contaminate subsequent processing. It may be the case that non-linguistic metadata may require normalization but more often than not linguistic information is the most common target for normalization as text often includes artifacts from the acquisition process which will not be desired in the analysis.</p>
+<p><strong>Europarle Corpus</strong></p>
+<p>Consider the curated Europarle Corpus dataset. I will read in the dataset. Since the dataset is quite large, I have also subsetted the dataset keeping only the first 1,000 observations for each of value of <code>type</code> for demonstration purposes.</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">europarle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"../data/derived/europarle/europarle_curated.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># read curated dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sentence_id</span> <span class="op">&lt;</span> <span class="fl">1001</span><span class="op">)</span> <span class="co"># keep first 1000 observations for each type</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">europarle</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Rows: 2,000
+#&gt; Columns: 3
+#&gt; $ type        &lt;chr&gt; "Source", "Target", "Source", "Target", "Source", "Target"…
+#&gt; $ sentence_id &lt;dbl&gt; 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, …
+#&gt; $ sentence    &lt;chr&gt; "Reanudación del período de sesiones", "Resumption of the …</code></pre>
+<p>Simply looking at the first 14 lines of this dataset, we can see that if our goal is to work with the transcribed (‘Source’) and translated (‘Target’) language, there are lines which do not appear to be of interest.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-europarle-preview-1">Table 7.1: </span>Europarle Corpus curated dataset preview.</caption>
+<colgroup>
+<col width="2%">
+<col width="4%">
+<col width="92%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">type</th>
+<th align="right">sentence_id</th>
+<th align="left">sentence</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">1</td>
+<td align="left">Reanudación del período de sesiones</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">1</td>
+<td align="left">Resumption of the session</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">2</td>
+<td align="left">Declaro reanudado el período de sesiones del Parlamento Europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a Sus Señorías mi deseo de que hayan tenido unas buenas vacaciones.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">2</td>
+<td align="left">I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">3</td>
+<td align="left">Como todos han podido comprobar, el gran “efecto del año 2000” no se ha producido. En cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">3</td>
+<td align="left">Although, as you will have seen, the dreaded ‘millennium bug’ failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">4</td>
+<td align="left">Sus Señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">4</td>
+<td align="left">You have requested a debate on this subject in the course of the next few days, during this part-session.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">5</td>
+<td align="left">A la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la Unión Europea afectados.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">5</td>
+<td align="left">In the meantime, I should like to observe a minute’ s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">6</td>
+<td align="left">Invito a todos a que nos pongamos de pie para guardar un minuto de silencio.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">6</td>
+<td align="left">Please rise, then, for this minute’ s silence.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">7</td>
+<td align="left">(El Parlamento, de pie, guarda un minuto de silencio)</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">7</td>
+<td align="left">(The House rose and observed a minute’ s silence)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>sentence_id</code> 1 appears to be title and <code>sentence_id</code> 7 reflects description of the parliamentary session. Both of these are artifacts that we would like to remove from the dataset.</p>
+<p>To remove these lines we can turn to the programming strategies we’ve previously worked with. Namely we will use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to filter observations in combination with <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> to detect matches for some pattern that is indicative of these lines that we want to remove and not of the other lines that we want to keep.</p>
+<p>Before we remove any lines, let’s try craft a search pattern to identify these lines, and exclude the lines we will want to keep. Condition one is lines which start with an opening parenthesis <code>(</code>. Condition two is lines that do not end in standard sentence punctuation (<code>.</code>, <code>!</code>, or <code>?</code>). I’ve added both conditions to one <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> using the logical <em>OR</em> operator (<code>|</code>) to ensure that either condition is matched in the output.</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Identify non-speech lines</span>
+<span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">sentence</span>, <span class="st">"^\\("</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">sentence</span>, <span class="st">"[^.!?]$"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># filter lines that detect a match for either condition 1 or 2</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># random sample of 10 observations</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">'Non-speech lines in the Europarle dataset.'</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-europarle-search-non-speech">Table 7.2: </span>Non-speech lines in the Europarle dataset.</caption>
+<colgroup>
+<col width="2%">
+<col width="4%">
+<col width="92%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">type</th>
+<th align="right">sentence_id</th>
+<th align="left">sentence</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">85</td>
+<td align="left">(Applause from the PSE Group)</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">66</td>
+<td align="left">Agenda</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">670</td>
+<td align="left">Reforma de la política europea de competencia</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">133</td>
+<td align="left">Safety advisers for the transport of dangerous goods</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">110</td>
+<td align="left">(El Parlamento rechaza la propuesta por 164 votos a favor, 166 votos en contra y 7 abstenciones)</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">293</td>
+<td align="left">Structural Funds - Cohesion Fund coordination</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">66</td>
+<td align="left">Orden de los trabajos</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">673</td>
+<td align="left">A5-0069/1999 by Mr von Wogau, on behalf of the Committee on Economic and Monetary Affairs, on the Commission White Paper on modernisation of the rules implementing Articles 85 and 86 of the EC Treaty [COM(1999) 101 - C5-0105/1999 - 1999/2108(COS)];</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">674</td>
+<td align="left">A5-0087/1999 del Sr. Jonckheer, en nombre de la Comisión de Asuntos Económicos y Monetarios, sobre el séptimo informe sobre ayudas estatales a la industria y a otros sectores en la Unión Europea (COM(1999) 148- C5-0107/1999 - 1999/2110(COS));</td>
+</tr>
+<tr class="even">
+<td align="left">Source</td>
+<td align="right">1</td>
+<td align="left">Reanudación del período de sesiones</td>
+</tr>
+</tbody>
+</table></div>
+<p>Since this search appears to match lines that we do not want to preserve, let’s move now to eliminate these lines from the dataset. To do this we will use the same regular expression patterns, but now each condition will have it’s own <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> call and the <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> will be negated with a prefixed <code>!</code>.</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">europarle</span> <span class="op">&lt;-</span> 
+  <span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">sentence</span>, pattern <span class="op">=</span> <span class="st">"^\\("</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove lines starting with (</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">sentence</span>, pattern <span class="op">=</span> <span class="st">"[^.!?]$"</span><span class="op">)</span><span class="op">)</span> <span class="co"># remove lines not ending in ., !, or ?</span></code></pre></div>
+<p>Let’s look at the first 14 lines again, now that we have eliminated these artifacts.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-europarle-preview-2">Table 7.3: </span>Europarle Corpus non-speech lines removed.</caption>
+<colgroup>
+<col width="2%">
+<col width="4%">
+<col width="92%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">type</th>
+<th align="right">sentence_id</th>
+<th align="left">sentence</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">2</td>
+<td align="left">Declaro reanudado el período de sesiones del Parlamento Europeo, interrumpido el viernes 17 de diciembre pasado, y reitero a Sus Señorías mi deseo de que hayan tenido unas buenas vacaciones.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">2</td>
+<td align="left">I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">3</td>
+<td align="left">Como todos han podido comprobar, el gran “efecto del año 2000” no se ha producido. En cambio, los ciudadanos de varios de nuestros países han sido víctimas de catástrofes naturales verdaderamente terribles.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">3</td>
+<td align="left">Although, as you will have seen, the dreaded ‘millennium bug’ failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">4</td>
+<td align="left">Sus Señorías han solicitado un debate sobre el tema para los próximos días, en el curso de este período de sesiones.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">4</td>
+<td align="left">You have requested a debate on this subject in the course of the next few days, during this part-session.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">5</td>
+<td align="left">A la espera de que se produzca, de acuerdo con muchos colegas que me lo han pedido, pido que hagamos un minuto de silencio en memoria de todas las víctimas de las tormentas, en los distintos países de la Unión Europea afectados.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">5</td>
+<td align="left">In the meantime, I should like to observe a minute’ s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">6</td>
+<td align="left">Invito a todos a que nos pongamos de pie para guardar un minuto de silencio.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">6</td>
+<td align="left">Please rise, then, for this minute’ s silence.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">8</td>
+<td align="left">Señora Presidenta, una cuestión de procedimiento.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">8</td>
+<td align="left">Madam President, on a point of order.</td>
+</tr>
+<tr class="odd">
+<td align="left">Source</td>
+<td align="right">9</td>
+<td align="left">Sabrá usted por la prensa y la televisión que se han producido una serie de explosiones y asesinatos en Sri Lanka.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">9</td>
+<td align="left">You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.</td>
+</tr>
+</tbody>
+</table></div>
+<p>One further issue that we may want to resolve concerns the fact that there are whitespaces between possessive forms (i.e. “minute’ s silence”). In this case we can employ <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all()</a></code> inside the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to overwrite the <code>sentence</code> values that match an apostrophe <code>'</code> with whitespace (<code>\\s</code>) before <code>s</code>.</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">europarle</span> <span class="op">&lt;-</span> 
+  <span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sentence <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">sentence</span>, 
+                                    pattern <span class="op">=</span> <span class="st">"'\\ss"</span>, 
+                                    replacement <span class="op">=</span> <span class="st">"'s"</span><span class="op">)</span><span class="op">)</span> <span class="co"># replace ' s with `s</span></code></pre></div>
+<p>Now we have normalized text in the <code>sentence</code> column in the Europarle dataset.</p>
+<p><strong>Last FM Lyrics</strong></p>
+<!-- (stanza separation, other) -->
+<p>Let’s look at another dataset we have worked with during this coursebook: the Lastfm lyrics. Reading in the <code>lastfm_curated</code> dataset from the <code>data/derived/</code> directory we can see the structure for the curated structure.</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"../data/derived/lastfm/lastfm_curated.csv"</span><span class="op">)</span>  <span class="co"># read in lastfm_curated dataset</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-read-preview">Table 7.4: </span>Last fm lyrics dataset preview with one artist/ song per genre and the <code>lyrics</code> text truncated at 200 characters for display purposes.</caption>
+<colgroup>
+<col width="5%">
+<col width="7%">
+<col width="83%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">lyrics</th>
+<th align="left">genre</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">Have a little love on a little honeymoonYou got a little dish and you got a little spoonA little bitty house and a little bitty yardA little bitty dog and a little bitty car Well, it’s alright to b…</td>
+<td align="left">country</td>
+</tr>
+<tr class="even">
+<td align="left">50 Cent</td>
+<td align="left">In Da Club</td>
+<td align="left">Go, go, go, go, go, goGo, shortyIt’s your birthdayWe gon’ party like it’s your birthdayWe gon’ sip Bacardi like it’s your birthdayAnd you know we don’t give a fuck it’s not your birthday You can fi…</td>
+<td align="left">hip-hop</td>
+</tr>
+<tr class="odd">
+<td align="left">Black Sabbath</td>
+<td align="left">Paranoid</td>
+<td align="left">Finished with my woman’Cause she couldn’t help me with my mindPeople think I’m insaneBecause I am frowning all the time All day long, I think of thingsBut nothing seems to satisfyThink I’ll lose my…</td>
+<td align="left">metal</td>
+</tr>
+<tr class="even">
+<td align="left">a-ha</td>
+<td align="left">Take On Me</td>
+<td align="left">Talking awayI don’t know whatWhat to sayI’ll say it anywayToday is another day to find youShying awayOh, I’ll be coming for your love, okay? Take On Me (Take On Me)Take me on (Take On Me)I’ll be go…</td>
+<td align="left">pop</td>
+</tr>
+<tr class="odd">
+<td align="left">3 Doors Down</td>
+<td align="left">Here Without You</td>
+<td align="left">A hundred days have made me olderSince the last time that I saw your pretty faceA thousand lies have made me colderAnd I don’t think I can look at this the same But all the miles that separateDisap…</td>
+<td align="left">rock</td>
+</tr>
+</tbody>
+</table></div>
+<p>There are a few things that we might want to clean out of the <code>lyrics</code> column’s values. First, there are lines from the original webscrape where the end of one stanza runs into the next without whitespace between them (i.e. “honeymoonYou”). These reflect contiguous end-new line segments where stanzas were joined in the curation process. Second, we see that there are what appear to be backing vocals which appear between parentheses (i.e. “(Take On Me)”).</p>
+<p>In both cases we will use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. With contiguous end-new line segments we will use <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all()</a></code> inside and for backing vocals in parentheses we will use <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all()</a></code>.</p>
+<p>The pattern to match for end-new lines from the stanzas will use some regular expression magic. The base pattern includes finding a pair of lowercase-uppercase letters (i.e. “nY”, in “honeymoo<strong>nY</strong>ou”). For this we can use the pattern <code>[a-z][A-Z]</code>. To replace this pattern using the lowercase letter then a space and then the uppercase letter we take advantage of the grouping syntax in regular expressions <code>(...)</code>. So we add parentheses around the two groups to capture like this <code>([a-z])([A-Z])</code>. In the replacement argument of the <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all()</a></code> function we then specify to use the captured groups in the order they appear <code>\\1</code> for the lowercase letter match and <code>\\2</code> for the uppercase letter match.</p>
+<p>Now, I’ve looked more extensively at the <code>lyrics</code> column and found that there are other combinations that are joined between stanzas. Namely that <code>'</code>, <code>!</code>, <code>,</code>, <code>)</code>, <code>?</code>, and <code>I</code> also may precede the uppercase letter. To make sure we capture these possibilities as well I’ve updated the regular expression to <code>([a-z'!,.)?I])([A-Z])</code>.</p>
+<p>Now to remove the backing vocals, the regex pattern is <code>\\(.+?\\)</code> –match the parentheses and everything within the parentheses. The added <code>?</code> after the <code>+</code> operator is what is known as a ‘lazy’ operator. This specifies that the <code>.+</code> will match the minimal string that is enclosed by the trailing <code>)</code>. If we did not include this then we would get matches that span from the first parenthesis <code>(</code> all the way to the last, which would match real lyrics, not just the backing vocals.</p>
+<p>Putting this to work let’s clean the <code>lyrics</code> column.</p>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm</span> <span class="op">&lt;-</span> 
+  <span class="va">lastfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lyrics <span class="op">=</span> 
+           <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">lyrics</span>, 
+                           pattern <span class="op">=</span> <span class="st">"([a-z'!,.)?I])([A-Z])"</span>, <span class="co"># find contiguous end/ new line segments</span>
+                           replacement <span class="op">=</span> <span class="st">"\\1 \\2"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># replace with whitespace between</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lyrics <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">lyrics</span>, <span class="st">"\\(.+?\\)"</span><span class="op">)</span><span class="op">)</span> <span class="co"># remove backing vocals (Take On Me)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-clean-end-lines-preview">Table 7.5: </span>Last fm lyrics with cleaned lyrics…</caption>
+<colgroup>
+<col width="5%">
+<col width="7%">
+<col width="83%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">lyrics</th>
+<th align="left">genre</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">Have a little love on a little honeymoon You got a little dish and you got a little spoon A little bitty house and a little bitty yard A little bitty dog and a little bitty car Well, it’s alright t…</td>
+<td align="left">country</td>
+</tr>
+<tr class="even">
+<td align="left">50 Cent</td>
+<td align="left">In Da Club</td>
+<td align="left">Go, go, go, go, go, go Go, shorty It’s your birthday We gon’ party like it’s your birthday We gon’ sip Bacardi like it’s your birthday And you know we don’t give a fuck it’s not your birthday You c…</td>
+<td align="left">hip-hop</td>
+</tr>
+<tr class="odd">
+<td align="left">Black Sabbath</td>
+<td align="left">Paranoid</td>
+<td align="left">Finished with my woman’ Cause she couldn’t help me with my mind People think I’m insane Because I am frowning all the time All day long, I think of things But nothing seems to satisfy Think I’ll lo…</td>
+<td align="left">metal</td>
+</tr>
+<tr class="even">
+<td align="left">a-ha</td>
+<td align="left">Take On Me</td>
+<td align="left">Talking away I don’t know what What to say I’ll say it anyway Today is another day to find you Shying away Oh, I’ll be coming for your love, okay? Take On Me Take me on I’ll be gone In a day or t…</td>
+<td align="left">pop</td>
+</tr>
+<tr class="odd">
+<td align="left">3 Doors Down</td>
+<td align="left">Here Without You</td>
+<td align="left">A hundred days have made me older Since the last time that I saw your pretty face A thousand lies have made me colder And I don’t think I can look at this the same But all the miles that separate D…</td>
+<td align="left">rock</td>
+</tr>
+</tbody>
+</table></div>
+<p>Now given the fact that songs are poems, there are many lines that are not complete sentences so there is no practical way to try to segment these into grammatical sentence units. So in this case, this seems like a good stopping point for normalizing the lastfm dataset.</p>
+<!-- Consider:
+
+- last.fm lyrics, line-break artifacts
+- 
+
+
+The process of normalization aims to _sanitize_ the values within a variable or set of variables. This may include removing whitespace, punctuation, numerals, or special characters or substituting uppercase for lowercase characters, numerals for word versions, acronyms for their full forms, irregular or incorrect spelling for accepted forms, or removing common words (stopwords), etc.
+
+-->
+</div>
+<div id="recode" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Recode<a class="anchor" aria-label="anchor" href="#recode"><i class="fas fa-link"></i></a>
+</h2>
+<!-- Consider:
+
+The process of recoding aims to _recast_ the values of a variable or set of variables to a new variable or set of variables to enable more direct access. This may include extracting values from a variable, stemming or lemmatization of words, tokenization of linguistic forms (words, ngrams, sentences, etc.), calculating the lengths of linguistic units, removing variables that will not be used in the analysis, etc.
+-->
+<p>Normalizing text can be seen as an extension of dataset curation to some extent in that the structure of the dataset is maintained. In both the Europarle and Lastfm cases we saw this to be true. In the case of recoding, and other transformational steps, the aim will be to modify the dataset structure either by rows, columns, or both. Recoding processes can be characterized by the creation of structural changes which are derived from values in variables effectively recasting values as new variables to enable more direct access in our analyses.</p>
+<p><strong>Switchboard Dialogue Act Corpus</strong></p>
+<p>The Switchboard Dialogue Act Corpus dataset that was curated in the previous chapter contains a number of variables describing conversations between speakers of American English.</p>
+<p>Let’s read in this dataset and take a closer look.</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_curated.csv"</span><span class="op">)</span>  <span class="co"># read curated dataset</span></code></pre></div>
+<p>Among a number of metadata variables, curated dataset includes the <code>utterance_text</code> column which contains dialogue from the conversations interleaved with a <a href="https://staff.fnwi.uva.nl/r.fernandezrovira/teaching/DM-materials/DFL-book.pdf">disfluency annotation scheme</a>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-sdac-preview-curated-dataset">Table 7.6: </span>20 randomly sampled lines of the SDAC curated dataset.</caption>
+<colgroup>
+<col width="3%">
+<col width="5%">
+<col width="4%">
+<col width="4%">
+<col width="7%">
+<col width="67%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="left">damsl_tag</th>
+<th align="left">speaker</th>
+<th align="right">turn_num</th>
+<th align="right">utterance_num</th>
+<th align="left">utterance_text</th>
+<th align="right">speaker_id</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">2289</td>
+<td align="left">sv</td>
+<td align="left">A</td>
+<td align="right">75</td>
+<td align="right">2</td>
+<td align="left">{C But, } I think, - /</td>
+<td align="right">1214</td>
+</tr>
+<tr class="even">
+<td align="right">3584</td>
+<td align="left">sd</td>
+<td align="left">A</td>
+<td align="right">85</td>
+<td align="right">1</td>
+<td align="left">{C But, } in the house itself, I’ve been working inside, {D you know, } [ these, + [ lo-, + ] these ] many months – /</td>
+<td align="right">1051</td>
+</tr>
+<tr class="odd">
+<td align="right">2380</td>
+<td align="left">b^r</td>
+<td align="left">B</td>
+<td align="right">23</td>
+<td align="right">1</td>
+<td align="left">Uh-huh. /</td>
+<td align="right">1035</td>
+</tr>
+<tr class="even">
+<td align="right">2926</td>
+<td align="left">aa</td>
+<td align="left">A</td>
+<td align="right">143</td>
+<td align="right">1</td>
+<td align="left">Yeah, /</td>
+<td align="right">1257</td>
+</tr>
+<tr class="odd">
+<td align="right">3039</td>
+<td align="left">%</td>
+<td align="left">B</td>
+<td align="right">84</td>
+<td align="right">2</td>
+<td align="left">Yeah, /</td>
+<td align="right">1281</td>
+</tr>
+<tr class="even">
+<td align="right">2549</td>
+<td align="left">sd</td>
+<td align="left">A</td>
+<td align="right">42</td>
+<td align="right">2</td>
+<td align="left">{D like } the press would get down on Landry, /</td>
+<td align="right">1168</td>
+</tr>
+<tr class="odd">
+<td align="right">2820</td>
+<td align="left">b@</td>
+<td align="left">A</td>
+<td align="right">99</td>
+<td align="right">1</td>
+<td align="left"># Huh-uh. # *[[slash error]]</td>
+<td align="right">1074</td>
+</tr>
+<tr class="even">
+<td align="right">3688</td>
+<td align="left">qw</td>
+<td align="left">A</td>
+<td align="right">39</td>
+<td align="right">1</td>
+<td align="left">How old are your kids? /</td>
+<td align="right">1477</td>
+</tr>
+<tr class="odd">
+<td align="right">2316</td>
+<td align="left">sd</td>
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">6</td>
+<td align="left">{C and } the schools down here rate, {D you know, } bottom ten percent across the country /</td>
+<td align="right">1059</td>
+</tr>
+<tr class="even">
+<td align="right">4092</td>
+<td align="left">%</td>
+<td align="left">B</td>
+<td align="right">114</td>
+<td align="right">3</td>
+<td align="left">{C and } they just, -/</td>
+<td align="right">1602</td>
+</tr>
+<tr class="odd">
+<td align="right">3146</td>
+<td align="left">sd</td>
+<td align="left">A</td>
+<td align="right">127</td>
+<td align="right">5</td>
+<td align="left">they must have a special source for getting them because even at the Farmer’s Market, {F uh, }</td>
+<td align="right">1316</td>
+</tr>
+<tr class="even">
+<td align="right">3085</td>
+<td align="left">b</td>
+<td align="left">B</td>
+<td align="right">70</td>
+<td align="right">1</td>
+<td align="left">Uh-huh. /</td>
+<td align="right">1264</td>
+</tr>
+<tr class="odd">
+<td align="right">3345</td>
+<td align="left">sd</td>
+<td align="left">A</td>
+<td align="right">51</td>
+<td align="right">4</td>
+<td align="left">{C but } I’m always aware of what’s going on like that – /</td>
+<td align="right">1413</td>
+</tr>
+<tr class="even">
+<td align="right">2038</td>
+<td align="left">qh</td>
+<td align="left">B</td>
+<td align="right">11</td>
+<td align="right">7</td>
+<td align="left">[ [ {C and, } + {C and, } ] + {C and } ] [ do we, + do we ] support the Sandinistas [ or, + or ] do we support, {F uh, } - /</td>
+<td align="right">1039</td>
+</tr>
+<tr class="odd">
+<td align="right">2767</td>
+<td align="left">qy^d</td>
+<td align="left">A</td>
+<td align="right">131</td>
+<td align="right">1</td>
+<td align="left"># {F Oh, } he was, #</td>
+<td align="right">1130</td>
+</tr>
+<tr class="even">
+<td align="right">3342</td>
+<td align="left">sd</td>
+<td align="left">B</td>
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left"><laughter> I’m not so sure I’m good at it, /</laughter></td>
+<td align="right">1422</td>
+</tr>
+<tr class="odd">
+<td align="right">2479</td>
+<td align="left">+</td>
+<td align="left">A</td>
+<td align="right">161</td>
+<td align="right">1</td>
+<td align="left"># and having # some <children> peace and quiet /</children>
+</td>
+<td align="right">1231</td>
+</tr>
+<tr class="even">
+<td align="right">4028</td>
+<td align="left">sd</td>
+<td align="left">B</td>
+<td align="right">24</td>
+<td align="right">1</td>
+<td align="left">– {C and, } {F um, } {F uh, } I did have surgery last summer /</td>
+<td align="right">1442</td>
+</tr>
+<tr class="odd">
+<td align="right">3830</td>
+<td align="left">sd</td>
+<td align="left">B</td>
+<td align="right">122</td>
+<td align="right">2</td>
+<td align="left">they voted them in /</td>
+<td align="right">1493</td>
+</tr>
+<tr class="even">
+<td align="right">2565</td>
+<td align="left">%</td>
+<td align="left">A</td>
+<td align="right">70</td>
+<td align="right">2</td>
+<td align="left">I, {F um, } - /</td>
+<td align="right">1211</td>
+</tr>
+</tbody>
+</table></div>
+<p>Let’s drop a few variables from our dataset to rein in our focus. I will keep the <code>doc_id</code>, <code>speaker_id</code>, and <code>utterance_text</code>.</p>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_simplified</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">doc_id</span>, <span class="va">speaker_id</span>, <span class="va">utterance_text</span><span class="op">)</span> <span class="co"># columns to retain</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-sdac-simple-preview">Table 7.7: </span>First 10 lines of the simplified SDAC curated dataset.</caption>
+<colgroup>
+<col width="7%">
+<col width="11%">
+<col width="80%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">speaker_id</th>
+<th align="left">utterance_text</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Does it say something? /</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think it usually does. /</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">You might try, {F uh, } /</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I don’t know, /</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">hold it down a little longer, /</td>
+</tr>
+</tbody>
+</table></div>
+<p>In this disfluency annotation system, there are various conventions used for non-sentence elements. If say, for example, a researcher were to be interested in understanding the use of filled pauses (‘uh’ or ‘uh’), the aim would be to identify those lines where the <code>{F ...}</code> annotation is used around the utterances ‘uh’ and ‘um’.</p>
+<p>To do this we turn to the <code><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count()</a></code> function. This function will count the number of matches found for a pattern. We can use a regular expression to identify the pattern of interest which is all the instances of <code>{F</code> followed by either <code>uh</code> or <code>um</code>. Since the disfluencies may start an utterance, and therefore be capitalized we need to formulate a regular expression which allows for either <code>U</code> or <code>u</code> for each disfluency type. The result from each disfluency match will be added to a new column. To create a new column we will wrap each <code><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and give the new column a meaningful name. In this case I’ve opted for <code>uh</code> and <code>um</code>.</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_simplified</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>uh <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">utterance_text</span>, <span class="st">"\\{F [Uu]h"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># match {F Uh or {F uh}</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>um <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">utterance_text</span>, <span class="st">"\\{F [Uu]m"</span><span class="op">)</span><span class="op">)</span> <span class="co"># match {F Um or {F um}</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-sdac-count-disfluencies-show">Table 7.8: </span>First 20 lines of SDAC dataset with counts for the disfluencies ‘uh’ and ‘um’.</caption>
+<colgroup>
+<col width="7%">
+<col width="11%">
+<col width="75%">
+<col width="3%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">speaker_id</th>
+<th align="left">utterance_text</th>
+<th align="right">uh</th>
+<th align="right">um</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Does it say something? /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think it usually does. /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">You might try, {F uh, } /</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I don’t know, /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">hold it down a little longer, /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">{C and } see if it, {F uh, } -/</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay <beep>. /</beep>
+</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">&lt;<long pause>&gt; {D Well, }</long>
+</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">Okay /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ I, +</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Does it usually make a recording or s-, /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">{D Well, } I ] don’t remember. /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">It seemed like it did, /</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">{C but } <laughter> it might not. /</laughter>
+</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ I guess + –</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Now we have two new columns, <code>uh</code> and <code>um</code> which indicate how many times the relevant pattern was matched for a given utterance. By choosing to focus on disfluencies, however, we have made a decision to change the unit of observation from the utterance to the use of filled pauses (<code>uh</code> and <code>um</code>). This means that as the dataset stands, it is not in tidy format –where each observation corresponds to the observational unit. When datasets are misaligned in this particular way, there are in what is known as ‘wide’ format. What we want to do, then, is to restructure our dataset such that each row corresponds to the unit of observation –in this case each filled pause type.</p>
+<p>To convert our current (wide) dataset to one where each filler type is listed and the counts are measured for each utterance we turn to the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function. This function creates two new columns, one in which the column names are listed and one for the values for each of the column names.</p>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"uh"</span>, <span class="st">"um"</span><span class="op">)</span>, <span class="co"># columns to convert</span>
+               names_to <span class="op">=</span> <span class="st">"filler"</span>, <span class="co"># column for the column names (i.e. filler types)</span>
+               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="co"># column for the column values (i.e. counts)</span></code></pre></div>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<caption>
+<span id="tab:td-sdac-count-disfluencies-longer-show">Table 7.9: </span>First 20 lines of SDAC dataset with tidy format for <code>fillers</code> as the unit of observation.</caption>
+<colgroup>
+<col width="6%">
+<col width="10%">
+<col width="70%">
+<col width="6%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">speaker_id</th>
+<th align="left">utterance_text</th>
+<th align="left">filler</th>
+<th align="right">count</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+<td align="left">uh</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Does it say something? /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Does it say something? /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think it usually does. /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think it usually does. /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">You might try, {F uh, } /</td>
+<td align="left">uh</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">You might try, {F uh, } /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I don’t know, /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I don’t know, /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">hold it down a little longer, /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">hold it down a little longer, /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Last fm</strong></p>
+<!-- tokenization (`unnest_tokens`, words/ n-grams) -->
+<p>In the previous example, we used a matching approach to extract information embedded in one column of the dataset and recoded the dataset to maintain the fidelity between the particular unit of observation and the other metadata.</p>
+<p>Another common approach for recoding datasets in text analysis projects involves recoding linguistic units as smaller units; a process known as tokenization.</p>
+<p>Let’s return to the <code>lastfm</code> object we normalized earlier in the chapter to see the various ways one can choose to tokenize linguistic information.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-clean-end-lines-preview-2">Table 7.10: </span>Last fm dataset with normalized lyrics.</caption>
+<colgroup>
+<col width="5%">
+<col width="7%">
+<col width="83%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">lyrics</th>
+<th align="left">genre</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">Have a little love on a little honeymoon You got a little dish and you got a little spoon A little bitty house and a little bitty yard A little bitty dog and a little bitty car Well, it’s alright t…</td>
+<td align="left">country</td>
+</tr>
+<tr class="even">
+<td align="left">50 Cent</td>
+<td align="left">In Da Club</td>
+<td align="left">Go, go, go, go, go, go Go, shorty It’s your birthday We gon’ party like it’s your birthday We gon’ sip Bacardi like it’s your birthday And you know we don’t give a fuck it’s not your birthday You c…</td>
+<td align="left">hip-hop</td>
+</tr>
+<tr class="odd">
+<td align="left">Black Sabbath</td>
+<td align="left">Paranoid</td>
+<td align="left">Finished with my woman’ Cause she couldn’t help me with my mind People think I’m insane Because I am frowning all the time All day long, I think of things But nothing seems to satisfy Think I’ll lo…</td>
+<td align="left">metal</td>
+</tr>
+<tr class="even">
+<td align="left">a-ha</td>
+<td align="left">Take On Me</td>
+<td align="left">Talking away I don’t know what What to say I’ll say it anyway Today is another day to find you Shying away Oh, I’ll be coming for your love, okay? Take On Me Take me on I’ll be gone In a day or t…</td>
+<td align="left">pop</td>
+</tr>
+<tr class="odd">
+<td align="left">3 Doors Down</td>
+<td align="left">Here Without You</td>
+<td align="left">A hundred days have made me older Since the last time that I saw your pretty face A thousand lies have made me colder And I don’t think I can look at this the same But all the miles that separate D…</td>
+<td align="left">rock</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the current <code>lastfm</code> dataset, the unit of observation is the lyrics for the entire artist, song, and genre combination. If, however, we would like to change the unit to say words, we would like each word used to appear on its own row, while still maintaining the other relevant attributes associated with each word.</p>
+<p>The tidytext package includes a very useful function <code>unnest_tokens()</code> which allows us to tokenize some textual input into smaller linguistic units. The ‘unnest’ part of the the function name refers to the process of extracting the unit of interest while maintaining the other relevant attributes. Let’s see this in action.</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">word</span>, <span class="co"># column for tokenized output</span>
+                input <span class="op">=</span> <span class="va">lyrics</span>, <span class="co"># input column</span>
+                token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># tokenize unit type</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># preview first 10 lines</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for lastfm dataset tokenized by words."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-tokenize-words">Table 7.11: </span>First 10 observations for lastfm dataset tokenized by words.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">word</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">have</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">on</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">honeymoon</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">you</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got</td>
+</tr>
+</tbody>
+</table></div>
+<p>We can see from the output, each word appears on a separate line in the order of appearance in the input text (<code>lyrics</code>). Furthermore, the output is in tidy format as each of the words is still associated with the relevant attribute values (<code>artist</code>, <code>song</code>, and <code>genre</code>). By default the tokenized text output is lowercased and the original text input column is dropped. These can be overridden, however, if desired.</p>
+<p>In addition to ‘words’, the <code>unnest_tokens()</code> function provides easy access to a number of common tokenized units including ‘characters’, ‘sentences’, and ‘paragraphs’.</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">character</span>, <span class="co"># column for tokenized output</span>
+                input <span class="op">=</span> <span class="va">lyrics</span>, <span class="co"># input column</span>
+                token <span class="op">=</span> <span class="st">"characters"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># tokenize unit type</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># preview first 10 lines</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for lastfm dataset tokenized by characters."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-tokenize-characters">Table 7.12: </span>First 10 observations for lastfm dataset tokenized by characters.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">character</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">h</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">v</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">e</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">l</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">i</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">t</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">t</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">l</td>
+</tr>
+</tbody>
+</table></div>
+<p>The other two built-in options ‘sentences’ and ‘paragraphs’ depend on punctuation and/ or line breaks to function, so in this particular dataset, these options will not work given the particular characteristics of the <code>lyrics</code> variable.</p>
+<p>There are even other options which allow for the creation of sequences of linguistic units. Say we want to tokenize our lyrics into two-word sequences, we can specify the <code>token</code> as ‘ngrams’ and then add the argument <code>n = 2</code> to reflect we want two-word sequences.</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">bigram</span>, <span class="co"># column for tokenized output</span>
+                input <span class="op">=</span> <span class="va">lyrics</span>, <span class="co"># input column</span>
+                token <span class="op">=</span> <span class="st">"ngrams"</span>, <span class="co"># tokenize unit type</span>
+                n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># size of word sequences </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># preview first 10 lines</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for lastfm dataset tokenized by bigrams"</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-tokenize-bigrams">Table 7.13: </span>First 10 observations for lastfm dataset tokenized by bigrams</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">bigram</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">have a</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a little</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little love</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love on</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">on a</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a little</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little honeymoon</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">honeymoon you</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">you got</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got a</td>
+</tr>
+</tbody>
+</table></div>
+<p>The ‘n’ in ‘ngram’ refers to the number of word-sequence units we want to tokenize. Two-word sequences are known as ‘bigrams’, three-word sequences ‘trigrams’, and so on.</p>
+<!-- - (BELC (speaker ages) -`case_when()`) -->
+</div>
+<div id="generate" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Generate<a class="anchor" aria-label="anchor" href="#generate"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the process of recoding a dataset the transformation of the dataset works with information that is already explicit. The process of generation, however, aims to make implicit information explicit. The most common type of operation involved in the generation process is the addition of linguistic annotation. This process can be accomplished manually by a researcher or research team or automatically through the use of pre-trained linguistic resources and/ or software. Ideally the annotation of linguistic information can be conducted automatically.</p>
+<p>There are important considerations, however, that need to be taken into account when choosing whether linguistic annotation can be conducted automatically. First and foremost has to do with the type of annotation desired. Information such as part of speech (grammatical category) and morpho-syntactic information are the the most common types of linguistic annotation that can be conducted automatically. Second the degree to which the resource that will be used to annotate the linguistic information is aligned with the language variety and/or register is also a key consideration. As noted, automatic linguistic annotation methods are contingent on pre-trained resources. The language and language variety used to develop these resources may not be available for the language under investigation, or if it does, the language variety and/ or register may not align. The degree to which a resource does not align with the linguistic information targeted for annotation is directly related to the quality of the final annotations. To be clear, no annotation method, whether manual or automatic is guaranteed to be perfectly accurate.</p>
+<p>Let’s take a look at annotation some of the language from the Europarle dataset we normalized.</p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Target"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"First 10 lines in English from the normalized SDAC dataset."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-3">Table 7.14: </span>First 10 lines in English from the normalized SDAC dataset.</caption>
+<colgroup>
+<col width="2%">
+<col width="3%">
+<col width="93%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">type</th>
+<th align="right">sentence_id</th>
+<th align="left">sentence</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">2</td>
+<td align="left">I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">3</td>
+<td align="left">Although, as you will have seen, the dreaded ‘millennium bug’ failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful.</td>
+</tr>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">4</td>
+<td align="left">You have requested a debate on this subject in the course of the next few days, during this part-session.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">5</td>
+<td align="left">In the meantime, I should like to observe a minute’s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union.</td>
+</tr>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">6</td>
+<td align="left">Please rise, then, for this minute’s silence.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">8</td>
+<td align="left">Madam President, on a point of order.</td>
+</tr>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">9</td>
+<td align="left">You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka.</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">10</td>
+<td align="left">One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago.</td>
+</tr>
+<tr class="odd">
+<td align="left">Target</td>
+<td align="right">11</td>
+<td align="left">Would it be appropriate for you, Madam President, to write a letter to the Sri Lankan President expressing Parliament’s regret at his and the other violent deaths in Sri Lanka and urging her to do everything she possibly can to seek a peaceful reconciliation to a very difficult situation?</td>
+</tr>
+<tr class="even">
+<td align="left">Target</td>
+<td align="right">12</td>
+<td align="left">Yes, Mr Evans, I feel an initiative of the type you have just suggested would be entirely appropriate.</td>
+</tr>
+</tbody>
+</table></div>
+<p>We will use the cleanNLP package to do our linguistic annotation. The annotation process depends on the pre-trained language models. There is <a href="https://github.com/bnosac/udpipe#pre-trained-models">a list of the models available to access</a>. The <code>load_model_udpipe()</code> custom function below downloads the specified language model and initialized the <code>udpipe</code> engine (<code>cnlp_init_udpipe()</code>) for conducting annotations.</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">load_model_udpipe</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">model_lang</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Function</span>
+  <span class="co"># Download and load the specified udpipe language model</span>
+  
+  <span class="fu">cnlp_init_udpipe</span><span class="op">(</span><span class="va">model_lang</span><span class="op">)</span> <span class="co"># to download the model, if not downloaded</span>
+<span class="va">base_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"cleanNLP"</span><span class="op">)</span> <span class="co"># get the base path</span>
+  <span class="va">model_name</span> <span class="op">&lt;-</span> <span class="co"># extract the model_name</span>
+    <span class="va">base_path</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># extract the base path</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get the directory</span>
+    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_subset.html">str_subset</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"^"</span>, <span class="va">model_lang</span><span class="op">)</span><span class="op">)</span> <span class="co"># extract the name of the model</span>
+  
+  <span class="fu">udpipe</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/udpipe/man/udpipe_load_model.html">udpipe_load_model</a></span><span class="op">(</span>file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">base_path</span>, <span class="va">model_name</span>, fsep <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># create the path to the downloaded model stored on disk</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>In a test case, let’s load the ‘english’ model to annotate a sentence line from the Europarle dataset to illustrate the basic workflow.</p>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">eng_model</span> <span class="op">&lt;-</span> <span class="fu">load_model_udpipe</span><span class="op">(</span><span class="st">"english"</span><span class="op">)</span> <span class="co"># load and initialize the language model, 'english' in this case.</span>
+
+<span class="va">eng_annotation</span> <span class="op">&lt;-</span> 
+  <span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Target"</span> <span class="op">&amp;</span> <span class="va">sentence_id</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select English and sentence_id 6</span>
+  <span class="fu">cnlp_annotate</span><span class="op">(</span>text_name <span class="op">=</span> <span class="st">"sentence"</span>, <span class="co"># input text (sentence)</span>
+                doc_name <span class="op">=</span> <span class="st">"sentence_id"</span><span class="op">)</span> <span class="co"># specify the grouping column (sentence_id)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">eng_annotation</span><span class="op">)</span> <span class="co"># preview structure</span>
+<span class="co">#&gt; List of 2</span>
+<span class="co">#&gt;  $ token   : tibble [11 × 11] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;   ..$ doc_id       : num [1:11] 6 6 6 6 6 6 6 6 6 6 ...</span>
+<span class="co">#&gt;   ..$ sid          : int [1:11] 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;   ..$ tid          : chr [1:11] "1" "2" "3" "4" ...</span>
+<span class="co">#&gt;   ..$ token        : chr [1:11] "Please" "rise" "," "then" ...</span>
+<span class="co">#&gt;   ..$ token_with_ws: chr [1:11] "Please " "rise" ", " "then" ...</span>
+<span class="co">#&gt;   ..$ lemma        : chr [1:11] "please" "rise" "," "then" ...</span>
+<span class="co">#&gt;   ..$ upos         : chr [1:11] "INTJ" "VERB" "PUNCT" "ADV" ...</span>
+<span class="co">#&gt;   ..$ xpos         : chr [1:11] "UH" "VB" "," "RB" ...</span>
+<span class="co">#&gt;   ..$ feats        : chr [1:11] NA "Mood=Imp|VerbForm=Fin" NA "PronType=Dem" ...</span>
+<span class="co">#&gt;   ..$ tid_source   : chr [1:11] "2" "0" "2" "10" ...</span>
+<span class="co">#&gt;   ..$ relation     : chr [1:11] "discourse" "root" "punct" "advmod" ...</span>
+<span class="co">#&gt;  $ document: tibble [1 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;   ..$ type  : chr "Target"</span>
+<span class="co">#&gt;   ..$ doc_id: num 6</span>
+<span class="co">#&gt;  - attr(*, "class")= chr [1:2] "cnlp_annotation" "list"</span></code></pre></div>
+<p>We see that the structure returned by the <code>cnlp_annotate()</code> function is a list. This list contains two data frames (tibbles). One for the tokens (and there annotation information) and the document (the metadata information). We can inspect the annotation characteristics for this one sentence by targetting the <code>$tokens</code> data frame. Let’s take a look at the linguistic annotation information returned.</p>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<caption>
+<span id="tab:td-generation-test-annotation-english">Table 7.15: </span>Annotation information for a single English sentence from the Europarle dataset.</caption>
+<colgroup>
+<col width="6%">
+<col width="3%">
+<col width="3%">
+<col width="7%">
+<col width="13%">
+<col width="7%">
+<col width="5%">
+<col width="4%">
+<col width="28%">
+<col width="10%">
+<col width="9%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">sid</th>
+<th align="left">tid</th>
+<th align="left">token</th>
+<th align="left">token_with_ws</th>
+<th align="left">lemma</th>
+<th align="left">upos</th>
+<th align="left">xpos</th>
+<th align="left">feats</th>
+<th align="left">tid_source</th>
+<th align="left">relation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">1</td>
+<td align="left">Please</td>
+<td align="left">Please</td>
+<td align="left">please</td>
+<td align="left">INTJ</td>
+<td align="left">UH</td>
+<td align="left">NA</td>
+<td align="left">2</td>
+<td align="left">discourse</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">2</td>
+<td align="left">rise</td>
+<td align="left">rise</td>
+<td align="left">rise</td>
+<td align="left">VERB</td>
+<td align="left">VB</td>
+<td align="left">Mood=Imp|VerbForm=Fin</td>
+<td align="left">0</td>
+<td align="left">root</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">3</td>
+<td align="left">,</td>
+<td align="left">,</td>
+<td align="left">,</td>
+<td align="left">PUNCT</td>
+<td align="left">,</td>
+<td align="left">NA</td>
+<td align="left">2</td>
+<td align="left">punct</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">4</td>
+<td align="left">then</td>
+<td align="left">then</td>
+<td align="left">then</td>
+<td align="left">ADV</td>
+<td align="left">RB</td>
+<td align="left">PronType=Dem</td>
+<td align="left">10</td>
+<td align="left">advmod</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">5</td>
+<td align="left">,</td>
+<td align="left">,</td>
+<td align="left">,</td>
+<td align="left">PUNCT</td>
+<td align="left">,</td>
+<td align="left">NA</td>
+<td align="left">10</td>
+<td align="left">punct</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">6</td>
+<td align="left">for</td>
+<td align="left">for</td>
+<td align="left">for</td>
+<td align="left">ADP</td>
+<td align="left">IN</td>
+<td align="left">NA</td>
+<td align="left">10</td>
+<td align="left">case</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">7</td>
+<td align="left">this</td>
+<td align="left">this</td>
+<td align="left">this</td>
+<td align="left">DET</td>
+<td align="left">DT</td>
+<td align="left">Number=Sing|PronType=Dem</td>
+<td align="left">8</td>
+<td align="left">det</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">8</td>
+<td align="left">minute</td>
+<td align="left">minute</td>
+<td align="left">minute</td>
+<td align="left">NOUN</td>
+<td align="left">NN</td>
+<td align="left">Number=Sing</td>
+<td align="left">10</td>
+<td align="left">nmod:poss</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">9</td>
+<td align="left">’s</td>
+<td align="left">’s</td>
+<td align="left">’s</td>
+<td align="left">PART</td>
+<td align="left">POS</td>
+<td align="left">NA</td>
+<td align="left">8</td>
+<td align="left">case</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">10</td>
+<td align="left">silence</td>
+<td align="left">silence</td>
+<td align="left">silence</td>
+<td align="left">NOUN</td>
+<td align="left">NN</td>
+<td align="left">Number=Sing</td>
+<td align="left">2</td>
+<td align="left">conj</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">11</td>
+<td align="left">.</td>
+<td align="left">.</td>
+<td align="left">.</td>
+<td align="left">PUNCT</td>
+<td align="left">.</td>
+<td align="left">NA</td>
+<td align="left">2</td>
+<td align="left">punct</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is quite a bit of information which is returned from <code>cnlp_annotate()</code>. First note that the input sentence has been tokenized by word. Each token includes the token, lemma, part of speech (<code>upos</code> and <code>xpos</code>), morphological features (<code>feats</code>), and syntactic relationships (<code>tid_source</code> and <code>relation</code>). It is also key to note that the <code>doc_id</code>, <code>sid</code> and <code>tid</code> maintain the relational attributes from the original dataset –and therefore maintains our annotated dataset in tidy format.</p>
+<p>Let’s now annotate the same sentence from the Europarle corpus for the Source (‘Spanish’) and note the similarities and differences.</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">spa_model</span> <span class="op">&lt;-</span> <span class="fu">load_model_udpipe</span><span class="op">(</span><span class="st">"spanish"</span><span class="op">)</span> <span class="co"># load and initialize the language model, 'spanish' in this case.</span>
+
+<span class="va">spa_annotation</span> <span class="op">&lt;-</span> 
+  <span class="va">europarle</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Source"</span> <span class="op">&amp;</span> <span class="va">sentence_id</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select Spanish and sentence_id 6</span>
+  <span class="fu">cnlp_annotate</span><span class="op">(</span>text_name <span class="op">=</span> <span class="st">"sentence"</span>, <span class="co"># input text (sentence)</span>
+                doc_name <span class="op">=</span> <span class="st">"sentence_id"</span><span class="op">)</span> <span class="co"># specify the grouping column (sentence_id)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-generation-test-annotation-spanish">Table 7.16: </span>Annotation information for a single Spanish sentence from the Europarle dataset.</caption>
+<colgroup>
+<col width="4%">
+<col width="2%">
+<col width="2%">
+<col width="5%">
+<col width="8%">
+<col width="5%">
+<col width="3%">
+<col width="2%">
+<col width="55%">
+<col width="6%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">sid</th>
+<th align="left">tid</th>
+<th align="left">token</th>
+<th align="left">token_with_ws</th>
+<th align="left">lemma</th>
+<th align="left">upos</th>
+<th align="left">xpos</th>
+<th align="left">feats</th>
+<th align="left">tid_source</th>
+<th align="left">relation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">1</td>
+<td align="left">Invito</td>
+<td align="left">Invito</td>
+<td align="left">Invito</td>
+<td align="left">VERB</td>
+<td align="left">NA</td>
+<td align="left">Gender=Masc|Number=Sing|VerbForm=Fin</td>
+<td align="left">0</td>
+<td align="left">root</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">2</td>
+<td align="left">a</td>
+<td align="left">a</td>
+<td align="left">a</td>
+<td align="left">ADP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3</td>
+<td align="left">case</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">3</td>
+<td align="left">todos</td>
+<td align="left">todos</td>
+<td align="left">todo</td>
+<td align="left">PRON</td>
+<td align="left">NA</td>
+<td align="left">Gender=Masc|Number=Plur|PronType=Tot</td>
+<td align="left">1</td>
+<td align="left">obj</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">4</td>
+<td align="left">a</td>
+<td align="left">a</td>
+<td align="left">a</td>
+<td align="left">ADP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">7</td>
+<td align="left">mark</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">5</td>
+<td align="left">que</td>
+<td align="left">que</td>
+<td align="left">que</td>
+<td align="left">SCONJ</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">4</td>
+<td align="left">fixed</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">6</td>
+<td align="left">nos</td>
+<td align="left">nos</td>
+<td align="left">yo</td>
+<td align="left">PRON</td>
+<td align="left">NA</td>
+<td align="left">Case=Acc,Dat|Number=Plur|Person=1|PrepCase=Npr|PronType=Prs|Reflex=Yes</td>
+<td align="left">7</td>
+<td align="left">iobj</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">7</td>
+<td align="left">pongamos</td>
+<td align="left">pongamos</td>
+<td align="left">pongar</td>
+<td align="left">VERB</td>
+<td align="left">NA</td>
+<td align="left">Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin</td>
+<td align="left">1</td>
+<td align="left">advcl</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">8</td>
+<td align="left">de</td>
+<td align="left">de</td>
+<td align="left">de</td>
+<td align="left">ADP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">9</td>
+<td align="left">case</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">9</td>
+<td align="left">pie</td>
+<td align="left">pie</td>
+<td align="left">pie</td>
+<td align="left">NOUN</td>
+<td align="left">NA</td>
+<td align="left">Gender=Masc|Number=Sing</td>
+<td align="left">7</td>
+<td align="left">obl</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">10</td>
+<td align="left">para</td>
+<td align="left">para</td>
+<td align="left">para</td>
+<td align="left">ADP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">11</td>
+<td align="left">mark</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">11</td>
+<td align="left">guardar</td>
+<td align="left">guardar</td>
+<td align="left">guardar</td>
+<td align="left">VERB</td>
+<td align="left">NA</td>
+<td align="left">VerbForm=Inf</td>
+<td align="left">1</td>
+<td align="left">advcl</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">12</td>
+<td align="left">un</td>
+<td align="left">un</td>
+<td align="left">uno</td>
+<td align="left">DET</td>
+<td align="left">NA</td>
+<td align="left">Definite=Ind|Gender=Masc|Number=Sing|PronType=Art</td>
+<td align="left">13</td>
+<td align="left">det</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">13</td>
+<td align="left">minuto</td>
+<td align="left">minuto</td>
+<td align="left">minuto</td>
+<td align="left">NOUN</td>
+<td align="left">NA</td>
+<td align="left">Gender=Masc|Number=Sing</td>
+<td align="left">11</td>
+<td align="left">obj</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">14</td>
+<td align="left">de</td>
+<td align="left">de</td>
+<td align="left">de</td>
+<td align="left">ADP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">15</td>
+<td align="left">case</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">15</td>
+<td align="left">silencio</td>
+<td align="left">silencio</td>
+<td align="left">silencio</td>
+<td align="left">NOUN</td>
+<td align="left">NA</td>
+<td align="left">Gender=Masc|Number=Sing</td>
+<td align="left">13</td>
+<td align="left">nmod</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">16</td>
+<td align="left">.</td>
+<td align="left">.</td>
+<td align="left">.</td>
+<td align="left">PUNCT</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">punct</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the Spanish version of this sentence, we see the same variables. However, the <code>feats</code> variable has morphological information which is specific to Spanish –notably gender and mood.</p>
+
+<div class="rmdtip">
+The rsyntax package <span class="citation">(<a href="references.html#ref-R-rsyntax" role="doc-biblioref">Welbers &amp; van Atteveldt, 2022</a>)</span> can be used to recode and extract patterns from the output from automatic linguistic annotations using cleanNLP. <a href="https://github.com/vanatteveldt/rsyntax">See the documentation for more information</a>.
+</div>
+<!-- Consider:
+
+
+- Europarle Corpus, syntactic annotation
+
+- Syntactic parsing for last.fm music lyrics, phrasal verbs (compound:prt) a la [@Akbary2018], with automated approach
+- SOTU Corpus, frequency weighting and scaling for clustering algorithm?
+- ...
+
+
+The process of generation aims to _augment_ a variable or set of variables. In essence this aims to make implicit attributes explicit to that they are directly accessible. This often targeted at the automatic generation of linguistic annotations such as grammatical category (part-of-speech) or syntactic structure. 
+
+
+-->
+</div>
+<div id="merge" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Merge<a class="anchor" aria-label="anchor" href="#merge"><i class="fas fa-link"></i></a>
+</h2>
+<p>One final class of transformations that can be applied to curated datasets to enhance their informativeness for a research project is the process of merging two or more datasets. To merge datasets it is required that the datasets share one or more attributes. With a common attribute two datasets can be joined to coordinate the attributes of one dataset with the other effectively adding attributes and one dataset with extended information. Another approach is to join datasets with the goal of filtering one of the datasets given the matching attribute.</p>
+<p>Let’s see this in practice. Take the <code>lastfm</code> dataset. Let’s tokenize the dataset into words, using <code>unnest_tokens()</code> such that our unit of observation is words.</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm_words</span> <span class="op">&lt;-</span> 
+  <span class="va">lastfm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="st">"word"</span>, <span class="co"># output column</span>
+                input <span class="op">=</span> <span class="st">"lyrics"</span>, <span class="co"># input column</span>
+                token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span> <span class="co"># tokenized unit (words)</span>
+
+<span class="va">lastfm_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># first 10 observations</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for `lastfm_words` dataset."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 7.17: </span>First 10 observations for <code>lastfm_words</code> dataset.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">word</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">have</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">on</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">honeymoon</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">you</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got</td>
+</tr>
+</tbody>
+</table></div>
+<p>Consider the <code>get_sentiments()</code> function which returns words which have been classified as ‘positive’- or ‘negative’-biased, if the lexicon is set to ‘bing’ <span class="citation">(<a href="references.html#ref-Hu2004" role="doc-biblioref">Hu &amp; Liu, 2004</a>)</span>.</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sentiments_bing</span> <span class="op">&lt;-</span> <span class="fu">get_sentiments</span><span class="op">(</span>lexicon <span class="op">=</span> <span class="st">"bing"</span><span class="op">)</span>  <span class="co"># get 'bing' lexicon</span>
+
+<span class="va">sentiments_bing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># preview first 10 observations</span>
+<span class="co">#&gt; # A tibble: 10 × 2</span>
+<span class="co">#&gt;    word        sentiment</span>
+<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    </span>
+<span class="co">#&gt;  1 2-faces     negative </span>
+<span class="co">#&gt;  2 abnormal    negative </span>
+<span class="co">#&gt;  3 abolish     negative </span>
+<span class="co">#&gt;  4 abominable  negative </span>
+<span class="co">#&gt;  5 abominably  negative </span>
+<span class="co">#&gt;  6 abominate   negative </span>
+<span class="co">#&gt;  7 abomination negative </span>
+<span class="co">#&gt;  8 abort       negative </span>
+<span class="co">#&gt;  9 aborted     negative </span>
+<span class="co">#&gt; 10 aborts      negative</span></code></pre></div>
+<p>Since the <code>sentiments_bing</code> dataset and the <code>lastfm_words</code> dataset both share a column <code>word</code> (which has the same type of values) we can join these two datasets. The <code>sentiments_bing</code> dataset has 6786 unique words. Let’s check how many distinct words our <code>lastfm_words</code> dataset has.</p>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lastfm_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">word</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># find unique words</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># count distinct rows/ words</span>
+<span class="co">#&gt; [1] 4614</span></code></pre></div>
+<p>One thing to note is that the <code>sentiments_bing</code> dataset does not include function words, that is words that are associated with closed-class categories (pronouns, determiners, prepositions, etc.) as these words do not have semantic content along the lines of positive and negative. So many of the words that appear in the <code>lastfm_words</code> will not be matched. Other thing to note is that the <code>sentiments_bing</code> lexicon will undoubtly have words that do not appear in the <code>lastfm_words</code> and vice versa.</p>
+<p>If we want to keep all the words in the <code>lastfm_words</code> and add the sentiment information for those words that do match in both datasets, we can use the <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> function. <code>lastfm_words</code> will be the dataset on the ‘left’ and therefore all rows in this dataset will be retained.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">lastfm_words</span>, <span class="va">sentiments_bing</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># first 10 observations</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for the `lastfm_words` sentiments_bing` left join."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-words-bing-left-joing">Table 7.18: </span>First 10 observations for the <code>lastfm_words</code> sentiments_bing` left join.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">word</th>
+<th align="left">sentiment</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">have</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love</td>
+<td align="left">positive</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">on</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">a</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">honeymoon</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">you</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table></div>
+<p>So we see that quite a few of the words from <code>lastfm_words</code> are not matched. To focus in on those words in <code>lastfm_words</code> that do match, we’ll run the same join operation and filter for rows where <code>sentiment</code> is not empty (i.e. that there is a match in the <code>sentiments_bing</code> lexicon).</p>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">lastfm_words</span>, <span class="va">sentiments_bing</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sentiment</span> <span class="op">!=</span> <span class="st">""</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># return matched sentiments</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># first 10 observations</span>
+  <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
+        caption <span class="op">=</span> <span class="st">"First 10 observations for the `lastfm_words` sentiments_bing` left join."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-words-bing-left-joing-filter">Table 7.19: </span>First 10 observations for the <code>lastfm_words</code> sentiments_bing` left join.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">word</th>
+<th align="left">sentiment</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love</td>
+<td align="left">positive</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">smile</td>
+<td align="left">positive</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">well</td>
+<td align="left">positive</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">smile</td>
+<td align="left">positive</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">good</td>
+<td align="left">positive</td>
+</tr>
+</tbody>
+</table></div>
+<p>Let’s turn to another type of join: an anti-join. The purpose of an anti-join is to eliminate matches. This makes sense for a quick and dirty approach to removing function words (i.e. those grammatical words with little semantic content). In this case we use the <code>get_stopwords()</code> function to get the dataset. We’ll specify English as the language and we’ll use the default lexicon (‘Snowball’).</p>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">english_stopwords</span> <span class="op">&lt;-</span> <span class="fu">get_stopwords</span><span class="op">(</span>language <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span>  <span class="co"># get English stopwords from the Snowball lexicon</span>
+
+<span class="va">english_stopwords</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># preview first 10 observations</span>
+<span class="co">#&gt; # A tibble: 10 × 2</span>
+<span class="co">#&gt;    word      lexicon </span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 i         snowball</span>
+<span class="co">#&gt;  2 me        snowball</span>
+<span class="co">#&gt;  3 my        snowball</span>
+<span class="co">#&gt;  4 myself    snowball</span>
+<span class="co">#&gt;  5 we        snowball</span>
+<span class="co">#&gt;  6 our       snowball</span>
+<span class="co">#&gt;  7 ours      snowball</span>
+<span class="co">#&gt;  8 ourselves snowball</span>
+<span class="co">#&gt;  9 you       snowball</span>
+<span class="co">#&gt; 10 your      snowball</span></code></pre></div>
+<p>Now if we want to eliminate stopwords from our <code>lastfm_words</code> dataset we use <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>. All the observations in the <code>lastfm_words</code> where there is not a match in <code>english_stopwords</code> will be returned.</p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">lastfm_words</span>, <span class="va">english_stopwords</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu">kable</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, caption <span class="op">=</span> <span class="st">"First 10 observations in `lastfm_words` after filtering for English stopwords."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-lastfm-words-stopwords-anti-join">Table 7.20: </span>First 10 observations in <code>lastfm_words</code> after filtering for English stopwords.</caption>
+<thead><tr class="header">
+<th align="left">artist</th>
+<th align="left">song</th>
+<th align="left">genre</th>
+<th align="left">word</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">love</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">honeymoon</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">dish</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">got</td>
+</tr>
+<tr class="odd">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">little</td>
+</tr>
+<tr class="even">
+<td align="left">Alan Jackson</td>
+<td align="left">Little Bitty</td>
+<td align="left">country</td>
+<td align="left">spoon</td>
+</tr>
+</tbody>
+</table></div>
+<p>We can also merge datasets that we generate in our analysis or that we import from other sources. This can be useful when there are cases in which a corpus has associated metadata that is contained in files separate from the corpus itself. This is the case for the Switchboard Dialogue Act Corpus.</p>
+<p>Our existing, disfluency recoded, version includes the following variables.</p>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># preview first 10 observations</span>
+<span class="co">#&gt; # A tibble: 10 × 5</span>
+<span class="co">#&gt;    doc_id speaker_id utterance_text                                 filler count</span>
+<span class="co">#&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                                          &lt;chr&gt;  &lt;int&gt;</span>
+<span class="co">#&gt;  1   4325       1632 Okay.  /                                       uh         0</span>
+<span class="co">#&gt;  2   4325       1632 Okay.  /                                       um         0</span>
+<span class="co">#&gt;  3   4325       1632 {D So, }                                       uh         0</span>
+<span class="co">#&gt;  4   4325       1632 {D So, }                                       um         0</span>
+<span class="co">#&gt;  5   4325       1519 [ [ I guess, +                                 uh         0</span>
+<span class="co">#&gt;  6   4325       1519 [ [ I guess, +                                 um         0</span>
+<span class="co">#&gt;  7   4325       1632 What kind of experience [ do you, + do you ] … uh         0</span>
+<span class="co">#&gt;  8   4325       1632 What kind of experience [ do you, + do you ] … um         0</span>
+<span class="co">#&gt;  9   4325       1519 I think, ] + {F uh, } I wonder ] if that work… uh         1</span>
+<span class="co">#&gt; 10   4325       1519 I think, ] + {F uh, } I wonder ] if that work… um         0</span></code></pre></div>
+<p>The <a href="https://catalog.ldc.upenn.edu/docs/LDC97S62/">online documentation page</a> provides a key file <code>caller_tab.csv</code> which contains speaker metadata information. Included in this <code>.csv</code> file is a column <code>caller_no</code> which contains the <code>speaker_id</code> we currently have in the <code>sdac_disfluencies</code> dataset. Let’s read this file into our R session renaming <code>caller_no</code> to <code>speaker_id</code> to prepare to join these datasets.</p>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_speaker_meta</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://catalog.ldc.upenn.edu/docs/LDC97S62/caller_tab.csv"</span>, 
+           col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"speaker_id"</span>, <span class="co"># changed from `caller_no`</span>
+                         <span class="st">"pin"</span>,
+                         <span class="st">"target"</span>,
+                         <span class="st">"sex"</span>,
+                         <span class="st">"birth_year"</span>,
+                         <span class="st">"dialect_area"</span>,
+                         <span class="st">"education"</span>,
+                         <span class="st">"ti"</span>,
+                         <span class="st">"payment_type"</span>,
+                         <span class="st">"amt_pd"</span>,
+                         <span class="st">"con"</span>,
+                         <span class="st">"remarks"</span>,
+                         <span class="st">"calls_deleted"</span>,
+                         <span class="st">"speaker_partition"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sdac_speaker_meta</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 543</span>
+<span class="co">#&gt; Columns: 14</span>
+<span class="co">#&gt; $ speaker_id        &lt;dbl&gt; 1000, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1010…</span>
+<span class="co">#&gt; $ pin               &lt;dbl&gt; 32, 102, 104, 5656, 123, 166, 274, 322, 445, 461, 57…</span>
+<span class="co">#&gt; $ target            &lt;chr&gt; "N", "N", "N", "N", "N", "Y", "N", "N", "N", "N", "Y…</span>
+<span class="co">#&gt; $ sex               &lt;chr&gt; "FEMALE", "MALE", "FEMALE", "MALE", "FEMALE", "FEMAL…</span>
+<span class="co">#&gt; $ birth_year        &lt;dbl&gt; 1954, 1940, 1963, 1947, 1958, 1956, 1965, 1939, 1932…</span>
+<span class="co">#&gt; $ dialect_area      &lt;chr&gt; "SOUTH MIDLAND", "WESTERN", "SOUTHERN", "NORTH MIDLA…</span>
+<span class="co">#&gt; $ education         &lt;dbl&gt; 1, 3, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 3, 3, 2, 3…</span>
+<span class="co">#&gt; $ ti                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ payment_type      &lt;chr&gt; "CASH", "GIFT", "GIFT", "NONE", "GIFT", "GIFT", "CAS…</span>
+<span class="co">#&gt; $ amt_pd            &lt;dbl&gt; 15, 10, 11, 7, 11, 22, 20, 3, 11, 9, 25, 9, 1, 16, 1…</span>
+<span class="co">#&gt; $ con               &lt;chr&gt; "N", "N", "N", "Y", "N", "Y", "N", "Y", "N", "N", "N…</span>
+<span class="co">#&gt; $ remarks           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ calls_deleted     &lt;dbl&gt; 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0…</span>
+<span class="co">#&gt; $ speaker_partition &lt;chr&gt; "DN2", "XP", "XP", "DN2", "XP", "ET", "DN1", "DN1", …</span></code></pre></div>
+<p>Now to join the <code>sdac_disfluencies</code> and <code>sdac_speaker_meta</code>. Let’s turn to <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> again as we want to retain all the observations (rows) from <code>sdac_disfluencies</code> and add the columns for <code>sdac_speaker_meta</code> where the <code>speaker_id</code> column values match.</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">sdac_disfluencies</span>, <span class="va">sdac_speaker_meta</span><span class="op">)</span>  <span class="co"># join by ``speaker_id`</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sdac_disfluencies</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 447,212</span>
+<span class="co">#&gt; Columns: 18</span>
+<span class="co">#&gt; $ doc_id            &lt;dbl&gt; 4325, 4325, 4325, 4325, 4325, 4325, 4325, 4325, 4325…</span>
+<span class="co">#&gt; $ speaker_id        &lt;dbl&gt; 1632, 1632, 1632, 1632, 1519, 1519, 1632, 1632, 1519…</span>
+<span class="co">#&gt; $ utterance_text    &lt;chr&gt; "Okay.  /", "Okay.  /", "{D So, }", "{D So, }", "[ […</span>
+<span class="co">#&gt; $ filler            &lt;chr&gt; "uh", "um", "uh", "um", "uh", "um", "uh", "um", "uh"…</span>
+<span class="co">#&gt; $ count             &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0…</span>
+<span class="co">#&gt; $ pin               &lt;dbl&gt; 7713, 7713, 7713, 7713, 775, 775, 7713, 7713, 775, 7…</span>
+<span class="co">#&gt; $ target            &lt;chr&gt; "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N…</span>
+<span class="co">#&gt; $ sex               &lt;chr&gt; "FEMALE", "FEMALE", "FEMALE", "FEMALE", "FEMALE", "F…</span>
+<span class="co">#&gt; $ birth_year        &lt;dbl&gt; 1962, 1962, 1962, 1962, 1971, 1971, 1962, 1962, 1971…</span>
+<span class="co">#&gt; $ dialect_area      &lt;chr&gt; "WESTERN", "WESTERN", "WESTERN", "WESTERN", "SOUTH M…</span>
+<span class="co">#&gt; $ education         &lt;dbl&gt; 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1…</span>
+<span class="co">#&gt; $ ti                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ payment_type      &lt;chr&gt; "CASH", "CASH", "CASH", "CASH", "CASH", "CASH", "CAS…</span>
+<span class="co">#&gt; $ amt_pd            &lt;dbl&gt; 10, 10, 10, 10, 4, 4, 10, 10, 4, 4, 10, 10, 4, 4, 4,…</span>
+<span class="co">#&gt; $ con               &lt;chr&gt; "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y…</span>
+<span class="co">#&gt; $ remarks           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="co">#&gt; $ calls_deleted     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ speaker_partition &lt;chr&gt; "UNC", "UNC", "UNC", "UNC", "UNC", "UNC", "UNC", "UN…</span></code></pre></div>
+<p>Now there are some metadata columns we may want to keep and others we may want to drop as they may not be of importance for our analysis. I’m going to assume that we want to keep <code>sex</code>, <code>birth_year</code>, <code>dialect_area</code>, and <code>education</code> and drop the rest.</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdac_disfluencies</span> <span class="op">&lt;-</span> 
+  <span class="va">sdac_disfluencies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">doc_id</span><span class="op">:</span><span class="va">count</span>, <span class="va">sex</span><span class="op">:</span><span class="va">education</span><span class="op">)</span> <span class="co"># subset key columns</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:td-sdac-disfluencies-meta-preview">Table 7.21: </span>First 10 observations for the <code>sdac_disfluencies</code> dataset with speaker metadata.</caption>
+<colgroup>
+<col width="4%">
+<col width="7%">
+<col width="50%">
+<col width="4%">
+<col width="4%">
+<col width="4%">
+<col width="7%">
+<col width="9%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">doc_id</th>
+<th align="right">speaker_id</th>
+<th align="left">utterance_text</th>
+<th align="left">filler</th>
+<th align="right">count</th>
+<th align="left">sex</th>
+<th align="right">birth_year</th>
+<th align="left">dialect_area</th>
+<th align="right">education</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">Okay. /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">{D So, }</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1971</td>
+<td align="left">SOUTH MIDLAND</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">[ [ I guess, +</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1971</td>
+<td align="left">SOUTH MIDLAND</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+<td align="left">uh</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1632</td>
+<td align="left">What kind of experience [ do you, + do you ] have, then with child care? /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1962</td>
+<td align="left">WESTERN</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+<td align="left">uh</td>
+<td align="right">1</td>
+<td align="left">FEMALE</td>
+<td align="right">1971</td>
+<td align="left">SOUTH MIDLAND</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4325</td>
+<td align="right">1519</td>
+<td align="left">I think, ] + {F uh, } I wonder ] if that worked. /</td>
+<td align="left">um</td>
+<td align="right">0</td>
+<td align="left">FEMALE</td>
+<td align="right">1971</td>
+<td align="left">SOUTH MIDLAND</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table></div>
+<!-- Consider:
+
+- sentiment lexicons
+- 
+- Switchboard Dialog Act Corpus, stand-off meta-data files
+- 
+
+
+The process of merging aims to _join_ a variable or set of variables with another variable or set of variables from another dataset. The option to merge two (or more) datasets requires that there is a shared variable that indexes and aligns the datasets. 
+
+-->
+</div>
+<div id="documentation-3" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Documentation of the transformed dataset is just as important as the curated dataset. Therefore we use the same process as covered in the previous chapter. First we write the transformed dataset to disk and then we work to provide a data dictionary for this dataset. I’ve included the <code>data_dic_starter()</code> custom function to apply to our dataset(s).</p>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_dic_starter</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file_path</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Function:</span>
+  <span class="co"># Creates a .csv file with the basic information</span>
+  <span class="co"># to document a curated dataset</span>
+  
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>variable_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, <span class="co"># column with existing variable names </span>
+       name <span class="op">=</span> <span class="st">""</span>, <span class="co"># column for human-readable names</span>
+       description <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># column for prose description</span>
+  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">file_path</span><span class="op">)</span> <span class="co"># write to disk</span>
+<span class="op">}</span></code></pre></div>
+<p>Let’s apply our function to the <code>sdac_disfluencies</code> dataset using the R console (not part of our project script to avoid overwriting our documentation!).</p>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">data_dic_starter</span><span class="op">(</span>data <span class="op">=</span> <span class="va">sdac_disfluencies</span>, file_path <span class="op">=</span> <span class="st">"../data/derived/sdac/sdac_disfluencies_data_dictionary.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb183-1"><a href="transform-datasets-chapter.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/derived/</span></span>
+<span id="cb183-2"><a href="transform-datasets-chapter.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> sdac/</span>
+<span id="cb183-3"><a href="transform-datasets-chapter.html#cb183-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> data_dictionary_sdac.csv</span>
+<span id="cb183-4"><a href="transform-datasets-chapter.html#cb183-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> sdac_curated.csv</span>
+<span id="cb183-5"><a href="transform-datasets-chapter.html#cb183-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> sdac_disfluencies.csv</span>
+<span id="cb183-6"><a href="transform-datasets-chapter.html#cb183-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sdac_disfluencies_data_dictionary.csv</span></code></pre></div>
+<p>Open the <code>data_dictionary_sdac_disfluencies.csv</code> file in spreadsheet software and add the relevant description of the dataset.</p>
+</div>
+<div id="summary-10" class="section level2 unnumbered">
+<h2>Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this chapter we covered the process of transforming datasets. The goal is to manipulate the curated dataset to make it align better for analysis.
+There are four general types of transformation steps: normalization, recoding, generation, and merging. In any given research project some or all of these steps will be employed –but not necessarily in the order presented in this chapter. Furthermore there may also be various datasets generated in at this stage each with a distinct analysis focus in mind. In any case it is important to write these datasets to disk and to document them according to the principles that we have established in the previous chapter.</p>
+<p>This chapter concludes the section on data/ dataset preparation. The next section we turn to analyzing datasets. This is the stage where we interrogate the datasets to derive knowledge and insight either through inference, prediction, and/ or exploratory methods.</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="curate-datasets-chapter.html"><span class="header-section-number">6</span> Curate data(sets)</a></div>
+<div class="next"><a href="analysis-overview.html">Overview</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#transform-datasets-chapter"><span class="header-section-number">7</span> Transform datasets</a></li>
+<li><a class="nav-link" href="#normalize"><span class="header-section-number">7.1</span> Normalize</a></li>
+<li><a class="nav-link" href="#recode"><span class="header-section-number">7.2</span> Recode</a></li>
+<li><a class="nav-link" href="#generate"><span class="header-section-number">7.3</span> Generate</a></li>
+<li><a class="nav-link" href="#merge"><span class="header-section-number">7.4</span> Merge</a></li>
+<li><a class="nav-link" href="#documentation-3"><span class="header-section-number">7.5</span> Documentation</a></li>
+<li><a class="nav-link" href="#summary-10">Summary</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/lin380/coursebook/blob/master/08-transform-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/lin380/coursebook/edit/master/08-transform-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on May 09, 2022 (latest version).</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

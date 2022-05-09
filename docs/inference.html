@@ -7,7 +7,7 @@
 <title>Chapter 8 Inference | Text as Data</title>
 <meta name="author" content="Jerid Francom">
 <meta name="description" content="DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three main types of...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Inference | Text as Data">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://lin380.github.io/coursebook/inference.html">
@@ -18,7 +18,7 @@
 <meta name="twitter:site" content="@jeridfrancom">
 <meta name="twitter:description" content="DRAFT  People generally see what they look for, and hear what they listen for. – Harper Lee, To Kill a Mockingbird  The essential questions for this chapter are:  what are the three main types of...">
 <meta name="twitter:image" content="https://lin380.github.io/coursebook/assets/images/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -30,7 +30,33 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-57189160-3', 'auto');
       ga('send', 'pageview');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/bs4.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -57,7 +83,7 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li class="book-part">Foundations</li>
 <li><a class="" href="foundations-overview.html">Overview</a></li>
-<li><a class="" href="data-language-and-text-analysis.html"><span class="header-section-number">1</span> Data, language, and text analysis</a></li>
+<li><a class="" href="text-analysis-in-context.html"><span class="header-section-number">1</span> Text analysis in context</a></li>
 <li class="book-part">Orientation</li>
 <li><a class="" href="orientation-overview.html">Overview</a></li>
 <li><a class="" href="understanding-data.html"><span class="header-section-number">2</span> Understanding data</a></li>
@@ -66,15 +92,19 @@
 <li class="book-part">Preparation</li>
 <li><a class="" href="preparation-overview.html">Overview</a></li>
 <li><a class="" href="acquire-data.html"><span class="header-section-number">5</span> Acquire data</a></li>
-<li><a class="" href="curate-data.html"><span class="header-section-number">6</span> Curate data</a></li>
+<li><a class="" href="curate-data.html"><span class="header-section-number">6</span> Curate data(sets)</a></li>
 <li><a class="" href="transform-data.html"><span class="header-section-number">7</span> Transform data</a></li>
 <li class="book-part">Analysis</li>
 <li><a class="" href="analysis-overview.html">Overview</a></li>
 <li><a class="active" href="inference.html"><span class="header-section-number">8</span> Inference</a></li>
 <li><a class="" href="prediction.html"><span class="header-section-number">9</span> Prediction</a></li>
 <li><a class="" href="exploration.html"><span class="header-section-number">10</span> Exploration</a></li>
+<li class="book-part">Communication</li>
+<li><a class="" href="communication-overview.html">Overview</a></li>
+<li><a class="" href="reporting.html"><span class="header-section-number">11</span> Reporting</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">12</span> Collaboration</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="section-1.html"><span class="header-section-number">A</span> …</a></li>
+<li><a class="" href="appendix-data.html"><span class="header-section-number">A</span> Data</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -133,7 +163,7 @@ GOALS:
 ...
 
 -->
-<p>In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the information is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in <a href="approaching-analysis.html#approaching-analysis">Chapter 3 “Approaching analysis”</a> and implements descriptive assessments, statistical tests, and evaluation procedures for series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.</p>
+<p>In this chapter we consider approaches to deriving knowledge from information which can be generalized to the population from which the data is sampled. This process is known as statistical inference. The discussion here builds on concepts developed in <a href="approaching-analysis.html#approaching-analysis">Chapter 3 “Approaching analysis”</a> and implements descriptive assessments, statistical tests, and evaluation procedures for a series of contexts which are common in the analysis of corpus-based data. The chapter is structured into three main sections which correspond to the number of variables included in the statistical procedure. Each of these sections includes a subsection dedicated to the informational value of the dependent variable; the variable whose variation is to be explained.</p>
 <p>For this discussion two datasets will be used as the base to pose various questions to submit for interrogation. It is of note that the questions in the subsequent sections are posited to highlight various descriptive, statistic, and evaluation procedures and do not reflect the standard approach to hypothesis testing which assumes that the null and alternative hypotheses are developed at the outset of the research project.</p>
 <p>The process for each inferential data analysis in this section will include three steps: (1) descriptive assessment, (2) statistical interrogation, and (3) evaluation of the results.</p>
 <!-- TODO:
@@ -180,15 +210,21 @@ GOALS:
 <li>They give a drug test [to you <sub>PP</sub>].</li>
 </ol>
 <p>Together these two syntactic options are known as the Dative Alternation.</p>
-<p>The observational unit for this dataset is <code>RealizationOfRecipient</code> variable which is either ‘NP’ or ‘PP.’ For the purposes of this chapter I will select a subset of the key variables we will use in the upcoming analyses and drop the others.</p>
+<p>The observational unit for this dataset is <code>RealizationOfRecipient</code> variable which is either ‘NP’ or ‘PP’. For the purposes of this chapter I will select a subset of the key variables we will use in the upcoming analyses and drop the others.</p>
 <div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dative</span> <span class="op">&lt;-</span> 
   <span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">RealizationOfRecipient</span>, <span class="va">Modality</span>, <span class="va">LengthOfRecipient</span>, <span class="va">LengthOfTheme</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># select key variables</span>
   <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># normalize variable names</span></code></pre></div>
-<div class="inline-table"><table class="table table-sm">
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
 <caption>
 <span id="tab:i-dative-preview">Table 8.1: </span>First 10 observations of simplified <code>dative</code> dataset.</caption>
+<colgroup>
+<col width="35%">
+<col width="12%">
+<col width="28%">
+<col width="22%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">realization_of_recipient</th>
 <th align="left">modality</th>
@@ -531,7 +567,7 @@ GOALS:
 <h3>
 <span class="header-section-number">8.2.1</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical"><i class="fas fa-link"></i></a>
 </h3>
-<p>As an example of a univariate analysis where the variable used in the analysis is categorical we will look at the <code>dative</code> dataset. In this analysis we may be interested in knowing whether the recipient role in a ditransitive construction is realized more as an ‘NP’ or ‘PP.’</p>
+<p>As an example of a univariate analysis where the variable used in the analysis is categorical we will look at the <code>dative</code> dataset. In this analysis we may be interested in knowing whether the recipient role in a ditransitive construction is realized more as an ‘NP’ or ‘PP’.</p>
 <p><strong>Descriptive assessment</strong></p>
 <p>The <code>realization_of_recipient</code> variable contains the relevant information. Let’s take a first look using the skimr package.</p>
 <div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
@@ -540,7 +576,15 @@ GOALS:
   <span class="fu">skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get data summary</span>
   <span class="fu">yank</span><span class="op">(</span><span class="st">"factor"</span><span class="op">)</span> <span class="co"># only show factor-oriented information</span></code></pre></div>
 <p><strong>Variable type: factor</strong></p>
-<div class="inline-table"><table class="table table-sm">
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="29%">
+<col width="11%">
+<col width="16%">
+<col width="9%">
+<col width="10%">
+<col width="21%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -559,7 +603,7 @@ GOALS:
 </tr></tbody>
 </table></div>
 <p>The output from <code>skim()</code> produces various pieces of information that can be helpful. On the one hand we get diagnostics that tell us if there are missing cases (<code>NA</code> values), what the proportion of complete cases is, if the the factor is ordered, how many distinct levels the factor has, as well as the level counts.</p>
-<p>Looking at the <code>top_counts</code> we can see that of the 3,263 observations, in 2,414 the dative is expressed as an ‘NP’ and 849 as ‘PP.’ Numerically we can see that there is a difference between the use of the alternation types. A visualization is often helpful for descriptive purposes in statistical analysis. In this particular case, however, we are considering a single categorical variable with only two levels (values) so a visualization is not likely to be more informative than the numeric values we have already obtained. But for demonstration purposes and to get more familiar with building plots, let’s create a visualization.</p>
+<p>Looking at the <code>top_counts</code> we can see that of the 3,263 observations, in 2,414 the dative is expressed as an ‘NP’ and 849 as ‘PP’. Numerically we can see that there is a difference between the use of the alternation types. A visualization is often helpful for descriptive purposes in statistical analysis. In this particular case, however, we are considering a single categorical variable with only two levels (values) so a visualization is not likely to be more informative than the numeric values we have already obtained. But for demonstration purposes and to get more familiar with building plots, let’s create a visualization.</p>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dative</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># dataset</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">realization_of_recipient</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># mapping</span>
@@ -710,6 +754,19 @@ This is an important step when working with numeric dependent variables as the t
   <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
 <p><strong>Variable type: numeric</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="19%">
+<col width="14%">
+<col width="19%">
+<col width="7%">
+<col width="5%">
+<col width="4%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="7%">
+<col width="5%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -814,6 +871,14 @@ Note that I’ve used the patchwork package for organizing the display of plots 
   <span class="fu">yank</span><span class="op">(</span><span class="st">"factor"</span><span class="op">)</span> <span class="co"># only show factor-oriented information</span></code></pre></div>
 <p><strong>Variable type: factor</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="29%">
+<col width="11%">
+<col width="16%">
+<col width="9%">
+<col width="10%">
+<col width="23%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -855,6 +920,12 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:i-bi-cat-contingency-table">Table 8.6: </span>Contingency table for <code>realization_of_recipient</code> and <code>modality</code>.</caption>
+<colgroup>
+<col width="49%">
+<col width="17%">
+<col width="15%">
+<col width="17%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">realization_of_recipient/modality</th>
 <th align="left">spoken</th>
@@ -1030,6 +1101,20 @@ Note that I’ve used the patchwork package for organizing the display of plots 
   <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
 <p><strong>Variable type: numeric</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="17%">
+<col width="8%">
+<col width="12%">
+<col width="17%">
+<col width="6%">
+<col width="6%">
+<col width="3%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="6%">
+<col width="5%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="left">filler</th>
@@ -1093,7 +1178,7 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></code></pre></div>
 <div class="inline-figure"><img src="09-inference_files/figure-html/i-bi-cont-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>In the plot in the left pane we see a couple things. First, it appears that there is in fact quite a bit of dispersion as there are quite a few outliers (dots) above the lines extending from the boxes. Recall that the boxes represent the first and third quantile, that is the IQR and that the notches represent the confidence interval. Second, when we compare the boxes and their notches we see that there is little overlap (looking horizontally). In the right pane I’ve zoomed in a bit trimming some outliers to get a better view of the relationship between the boxes. Since the overlap is minimal and in particular the notches do not overlap at all, this is a good indication that there is a significant trend.</p>
-<p>From the descriptive statistics and the visual summary it appears that the filler ‘uh’ is more common than ‘um.’ It’s now time to submit this to statistical interrogation.</p>
+<p>From the descriptive statistics and the visual summary it appears that the filler ‘uh’ is more common than ‘um’. It’s now time to submit this to statistical interrogation.</p>
 <p><strong>Statistical interrogation</strong></p>
 <!-- TODO:
 - Investigate How to choose a family
@@ -1130,8 +1215,8 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 <span class="co">#&gt; AIC: 58524</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Number of Fisher Scoring iterations: 6</span></code></pre></div>
-<p>Let’s focus on the coefficients, specifically for the ‘fillerum’ line. Since our factor <code>filler</code> has two levels one level is used as the reference to contrast with the other level. In this case by default the first level is used as the reference. Therefore the coefficients we see in ‘fillerum’ are ‘um’ in contrast to ‘uh.’ Without digging into the details of the other parameter statistics, let’s focus on the last column which contains the <span class="math inline">\(p\)</span>-value. A convenient aspect of the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function when applied to regression model results is that it provides statistical significance codes. In this case we can see that the contrast between ‘uh’ and ‘um’ is signficant at <span class="math inline">\(p &lt; .001\)</span> which of course is lower than our standard threshold of <span class="math inline">\(.05\)</span>.</p>
-<p>Therefore we can say with some confidence that the filler ‘uh’ is more frequent than ‘um.’</p>
+<p>Let’s focus on the coefficients, specifically for the ‘fillerum’ line. Since our factor <code>filler</code> has two levels one level is used as the reference to contrast with the other level. In this case by default the first level is used as the reference. Therefore the coefficients we see in ‘fillerum’ are ‘um’ in contrast to ‘uh’. Without digging into the details of the other parameter statistics, let’s focus on the last column which contains the <span class="math inline">\(p\)</span>-value. A convenient aspect of the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function when applied to regression model results is that it provides statistical significance codes. In this case we can see that the contrast between ‘uh’ and ‘um’ is signficant at <span class="math inline">\(p &lt; .001\)</span> which of course is lower than our standard threshold of <span class="math inline">\(.05\)</span>.</p>
+<p>Therefore we can say with some confidence that the filler ‘uh’ is more frequent than ‘um’.</p>
 <p><strong>Evaluation</strong></p>
 <p>Given we have found a significant effect for <code>filler</code>, let’s look at evaluating the effect size and the confidence interval. Again, we use the <code>effectsize()</code> function. We then can preview the <code>effects</code> object. Note that effect size of interest is in the second row of the coefficient (<code>Std_Coefficient</code>) so we subset this column to extract only the effect coefficient for the <code>filler</code> contrast.</p>
 <div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
@@ -1286,10 +1371,10 @@ Note that I’ve used the patchwork package for organizing the display of plots 
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></code></pre></div>
 <div class="inline-figure"><img src="09-inference_files/figure-html/i-multi-cat-visual-1.png" width="90%" style="display: block; margin: auto;"></div>
-<p>In the left pane we see the entire visualization including all outliers. From this view it appears that there is a potential trend that the length of the recipient is larger when the realization of the recipient is ‘PP.’ There is also a potential trend for modality with written language showing longer recipient lengths overall. The pane on the right is scaled to get a better view of the boxes by scaling the y-axis down and as such trimming the outliers. This plot shows more clearly that the length of the recipient is longer when the recipient is realized as a ‘PP.’ Again, the contrast in modality is also a potential trend, but the boxes (of the same color), particularly for the spoken modality overlap to some degree.</p>
+<p>In the left pane we see the entire visualization including all outliers. From this view it appears that there is a potential trend that the length of the recipient is larger when the realization of the recipient is ‘PP’. There is also a potential trend for modality with written language showing longer recipient lengths overall. The pane on the right is scaled to get a better view of the boxes by scaling the y-axis down and as such trimming the outliers. This plot shows more clearly that the length of the recipient is longer when the recipient is realized as a ‘PP’. Again, the contrast in modality is also a potential trend, but the boxes (of the same color), particularly for the spoken modality overlap to some degree.</p>
 <p>So we have some trends in mind which will help us interpret the statistical interrogation so let’s move there next.</p>
 <p><strong>Statistical interrogation</strong></p>
-<p>Once we involve more than two variables, the choice of statistical method turns towards regression. In the case that the dependent variable is categorical, however, we will use Logistic Regression. The workhorse function <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> can be used for a series of regression models, including logistic regression. The requirement, however, is that we specify the family of the distribution. For logistic regression the family is “binomial.” The formula includes the dependent variable as a function of our other two variables, each are separated by the <code>+</code> operator.</p>
+<p>Once we involve more than two variables, the choice of statistical method turns towards regression. In the case that the dependent variable is categorical, however, we will use Logistic Regression. The workhorse function <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> can be used for a series of regression models, including logistic regression. The requirement, however, is that we specify the family of the distribution. For logistic regression the family is “binomial”. The formula includes the dependent variable as a function of our other two variables, each are separated by the <code>+</code> operator.</p>
 <div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">realization_of_recipient</span> <span class="op">~</span> <span class="va">modality</span> <span class="op">+</span> <span class="va">length_of_recipient</span>, <span class="co"># formula</span>
           data <span class="op">=</span> <span class="va">dative</span>, <span class="co"># dataset</span>
@@ -1495,7 +1580,22 @@ Note that I’ve used the patchwork package for organizing the display of plots 
   <span class="fu">num_skim</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get custom data summary</span>
   <span class="fu">yank</span><span class="op">(</span><span class="st">"numeric"</span><span class="op">)</span> <span class="co"># only show numeric-oriented information</span></code></pre></div>
 <p><strong>Variable type: numeric</strong></p>
-<div class="inline-table"><table class="table table-sm">
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="15%">
+<col width="7%">
+<col width="7%">
+<col width="10%">
+<col width="15%">
+<col width="6%">
+<col width="6%">
+<col width="3%">
+<col width="5%">
+<col width="5%">
+<col width="6%">
+<col width="5%">
+<col width="5%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="left">filler</th>
@@ -1735,7 +1835,7 @@ RESOURCES:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on January 21, 2022 (latest version).</p>
+    <p>"<strong>Text as Data</strong>: An introduction to quantitative text analysis and reproducible research with R" was written by Jerid Francom. It was last built on May 02, 2022 (latest version).</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

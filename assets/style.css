@@ -129,7 +129,7 @@ li.appendix span, li.part span { /* for TOC part names */
 
 /* Notes */
 
-.rmdnote, .rmdtip, .rmdwarning, .rmdkey, .rmdactivity, .rmdtodo {
+.rmdactivity, .rmdtip, .rmdwarning, .rmdkey, .rmdcode, .rmdtodo {
   border-radius: 10px;
   border: 2px solid rgb(225,225,225);
   padding: 1em 1em 1em 4em;
@@ -140,7 +140,7 @@ li.appendix span, li.part span { /* for TOC part names */
   background: rgb(248,248,248) no-repeat 5px center/3em;
 }
 
-.rmdnote  {
+.rmdactivity  {
   background: rgb(235,249,144) no-repeat 5px center/3em;
 }
 
@@ -152,7 +152,7 @@ li.appendix span, li.part span { /* for TOC part names */
   background: rgb(249,158,144) no-repeat 5px center/3em;
 }
 
-.rmdactivity {
+.rmdcode {
   background: rgb(144,249,158) no-repeat 5px center/3em;
 }
 
@@ -163,8 +163,8 @@ li.appendix span, li.part span { /* for TOC part names */
 .rmdkey {
   background-image: url("images/key.png");
 }
-.rmdnote {
-  background-image: url("images/note.png");
+.rmdactivity {
+  background-image: url("images/activity.png");
 }
 .rmdtip {
   background-image: url("images/tip.png");
@@ -172,9 +172,9 @@ li.appendix span, li.part span { /* for TOC part names */
 .rmdwarning {
   background-image: url("images/warning.png");
 }
-.rmdactivity {
+.rmdcode {
   background-image: url("../images/code.png");
 }
 .rmdtodo {
-  background-image: url("../images/paper.png");
+  background-image: url("../images/study.png");
 }
