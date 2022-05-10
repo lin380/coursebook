@@ -150,6 +150,19 @@ With the notion of sampling frames in mind, some corpora are compiled with the a
 
 Specialized corpora aim to represent more specific populations. The [Santa Barbara Corpus of Spoken American English (SBCSAE)](https://www.linguistics.ucsb.edu/research/santa-barbara-corpus), as you can imagine from the name of the resource, aims to model spoken American English. No claim to written English is included. There are even more specific types of corpora which attempt to model other types of sub-populations such as scientific writing, [computer-mediated communication (CMC)](https://www.clarin.eu/resource-families/cmc-corpora), language use in specific [regions of the world](http://ice-corpora.net/ice/index.html), a [country](https://cesa.arizona.edu), or a [region](https://cesa.arizona.edu), *etc*. 
 
+
+<!-- ADD: 
+
+- Word mapper: Twitter data exploration with map https://isogloss.shinyapps.io/isogloss/
+  - Consider searching for terms: slang (hella, wicked), geographical (mountains), meterological (snow, rain)
+  - What do these searches potentially tell you about language's relationship to culture?
+
+-->
+
+```{block2, type="rmdquestion"}
+<img src="images/03-understanding-data/word-mapper.png" width="200" align="right"/> @Grieve2018 compiled a 8.9 billion-word corpus of geotagged posts from Twitter between 2013-2014 in the United States. The authors provide a [search interface](https://isogloss.shinyapps.io/isogloss/) to explore relationship between lexical usage and geographic location. Explore this corpus searching for terms related to slang ("hella", "wicked"), geographical ("mountain", "river"), meteorological ("snow", "rain"), and/ or any other term types. What types of patterns do you find? What are the benefits and/ or limitations of this type of interface?
+```
+
 Another set of specialized corpora are resources which aim to compile texts from different languages or different language varieties for direct or indirect comparison. Corpora that are directly comparable, that is they include source and translated texts, are called __parallel corpora__. Parallel corpora include different languages or language varieties that are indexed and aligned at some linguistic level (*i.e.* word, phrase, sentence, paragraph, or document), see [OPUS](https://opus.nlpl.eu/). Corpora that are compiled with different languages or language varieties but are not directly aligned are called __comparable corpora__. The comparable language or language varieties are sampled with the same or similar sampling frame, for example [Brown](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/0402) and [LOB](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/0167) corpora.
 
 The aim of the quantitative text researcher is to select the corpus or corpora (plural of corpus) which best aligns with the purpose of the research. Therefore a general corpus such as the ANC may be better suited to address a question dealing with the way American English works, but this general resource may lack detail in certain areas, such as [medical language](http://www.hd.uib.no/icame/ij22/vihla.pdf), that may be vital for a research project aimed at understanding changes in medical terminology.
