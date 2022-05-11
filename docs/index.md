@@ -44,7 +44,7 @@ Dr. Jerid Francom is Associate Professor of Spanish and Linguistics at Wake Fore
 
 ## Acknowledgements {- #acknowledgements}
 
-TAD has been reviewed by and suggestions and changes incorporated based on the feedback through [the TAD Hypothes.is group](https://hypothes.is/groups/Q3o92MJg/tad) by the following people: Andrea Bowling, Caroline Brady, Declan Golsen, Asya Little, ...
+TAD has been reviewed by and suggestions and changes incorporated based on the feedback through [the TAD Hypothes.is group](https://hypothes.is/groups/Q3o92MJg/tad) by the following people: Andrea Bowling, Caroline Brady, Declan Golsen, Asya Little, Claudia Valdez, ...
 
 ## Build information {-}
 
