@@ -1,3 +1,3 @@
-# LIN 380 Coursebook
-> Language Use and Technology
+# Text as Data
+> An Introduction to Quantitative Text Analysis and Reproducible Research with R
 
