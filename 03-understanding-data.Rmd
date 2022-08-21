@@ -343,7 +343,7 @@ brown_example %>%
         caption = 'First 10 words from the Brown Corpus.')
 ```
 
-In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a __tidy dataset__ refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
+In this textbook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a __tidy dataset__ refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
 
 ```{r tidy-format-image, echo=FALSE, fig.cap='Visual summary of the tidy format.'}
 knitr::include_graphics("images/03-understanding-data/tidy-format-paper.png")
@@ -365,7 +365,7 @@ europarle_example_words %>%
         caption = 'Europarle Paralle Corpus with `words` as primary unit of investigation.')
 ```
 
-The values for the variables `type` and `sentence_id` maintain the necessary description for each `word` to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for `type` and `sentence_id` are repeated numerous times but this 'redundancy' makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this coursebook.
+The values for the variables `type` and `sentence_id` maintain the necessary description for each `word` to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for `type` and `sentence_id` are repeated numerous times but this 'redundancy' makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this textbook.
 
 ```{r summarized-words-europarle, echo=FALSE, eval=FALSE}
 europarle_example_words %>% 
@@ -682,7 +682,7 @@ In some cases a researcher would like to merge information that does not already
 In sum, the transformation steps described here collectively aim to produce higher quality datasets that are relevant in content and structure to submit to analysis. The process may include one or more of the previous transformations but is rarely linear and is most often iterative. It is typical to do some normalization then generation, then recoding, and then return to normalizing, and so forth. This process is highly idiosyncratic given the characteristics of the derived dataset and the ultimate goals for the analysis dataset. 
 
 ```{block, type="rmdtip"}
-Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats (*e.g.* Corpus and Document-Term Matrix (DTM) objects in R) when we dive into particular statistical approaches that require them later in the coursebook.
+Note in some cases we may convert our tidy tabular dataset to other data formats that may be required for some particular statistic approaches but at all times the relationship between the variables should be maintained in line with our research purpose. We will touch on examples of other types of data formats (*e.g.* Corpus and Document-Term Matrix (DTM) objects in R) when we dive into particular statistical approaches that require them later in the textbook.
 ```
 
 ## Documentation

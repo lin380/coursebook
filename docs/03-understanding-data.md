@@ -433,7 +433,7 @@ Table: (\#tab:structure-brown)First 10 words from the Brown Corpus.
 |01          |A        |investigation |NN  |
 |01          |A        |of            |IN  |
 
-In this coursebook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a __tidy dataset__ refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
+In this textbook, the selection of the attributes from a corpus and the juxtaposition of these attributes in a relational format, or dataset, that converts data into information will be referred to as __data curation__. The process of data curation minimally involves creating a base dataset, or _derived dataset_, which establishes the main informational associations according to philosophical approach outlined by @Wickham2014a. In this work, a __tidy dataset__ refers both to the structural (physical) and informational (semantic) organization of the dataset. Physically, a tidy dataset is a tabular data structure where each _row_ is an observation and each _column_ is a variable that contains measures of a feature or attribute of each observation. Each cell where a given row-column intersect contains a _value_ which is a particular attribute of a particular observation for the particular observation-feature pair also known as a *data point*.
 
 <div class="figure" style="text-align: center">
 <img src="images/03-understanding-data/tidy-format-paper.png" alt="Visual summary of the tidy format." width="90%" />
@@ -460,7 +460,7 @@ Table: (\#tab:tidy-words-europarle)Europarle Paralle Corpus with `words` as prim
 |Target |           1|de          |
 |Target |           1|sesiones    |
 
-The values for the variables `type` and `sentence_id` maintain the necessary description for each `word` to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for `type` and `sentence_id` are repeated numerous times but this 'redundancy' makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this coursebook.
+The values for the variables `type` and `sentence_id` maintain the necessary description for each `word` to ensure the required semantic relationships to identify the particular attributes for each word observation. This dataset may seem redundant in that the values for `type` and `sentence_id` are repeated numerous times but this 'redundancy' makes the relationship between each variable associated with the primary unit of investigation explicit. This format makes a tidy dataset a versatile format for researchers to conduct analyses in a powerful and flexible way, as we will see throughout this textbook.
 
 
 
@@ -858,7 +858,7 @@ approaches but at all times the relationship between the variables
 should be maintained in line with our research purpose. We will touch on
 examples of other types of data formats (<em>e.g.</em> Corpus and
 Document-Term Matrix (DTM) objects in R) when we dive into particular
-statistical approaches that require them later in the coursebook.</p>
+statistical approaches that require them later in the textbook.</p>
 </div>
 
 ## Documentation

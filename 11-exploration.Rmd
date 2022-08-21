@@ -573,7 +573,7 @@ In this section we have covered some common strategies for doing exploration wit
 We now turn our attention to a second group of methods for conducting exploratory analyses --unsupervised learning. 
 
 
-- Clustering
+### Clustering
   - `textstat_dist()`
 
 ```{r}
@@ -633,21 +633,33 @@ Now we can approach this again with distinct linguistic unit. Where in our curre
 ```
 
 
-- Topic modeling
+### Topic modeling
 
 ```{r}
 # textmodel_lsa()
 
 ```
 
-- Sentiment analysis
+### Sentiment analysis
 
 ```{r load-sentiment-analysis-packages, eval=FALSE}
 library(vader)  # sentiment analysis for micro-blogging text
 library(syuzhet) # general sentiment analysis
 ```
 
+### Vector Space Models
 
+State of the Union Corpus (?)
+
+```{r load-sotu}
+sotu_corpus <- quanteda.corpora::data_corpus_sotu # sotu
+sotu_corpus %>% 
+  summary(n = 5)
+```
+
+- By document
+
+- By word
 
 <!-- IDEAS:
 
